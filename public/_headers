@@ -1,0 +1,15 @@
+# Cloudflare cache headers
+
+# Hashed assets (JS/CSS with content hash) — immutable 1 year
+/dpl-pv01/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images — 30 days
+/images/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+# HTML — no cache (always fresh for ad tracking)
+/dpl-pv01/
+  Cache-Control: no-cache, no-store, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
