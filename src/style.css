@@ -37,6 +37,19 @@
 }
 
 /* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 6px 32px rgba(245,193,68,0.28); }
+  50%       { box-shadow: 0 8px 48px rgba(245,193,68,0.55); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
    RESET & BASE
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -159,10 +172,13 @@ ul { list-style: none; }
   padding: clamp(20px, 3.5vw, 24px) clamp(36px, 7vw, 64px);
 }
 
+.btn-cta { animation: pulse-glow 2.8s ease-in-out infinite; }
+
 .btn-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 40px rgba(245, 193, 68, 0.45);
-  filter: brightness(1.08);
+  box-shadow: 0 10px 40px rgba(245, 193, 68, 0.55);
+  filter: brightness(1.1);
+  animation: none;
 }
 
 .btn-cta:active { transform: translateY(0); }
@@ -453,7 +469,7 @@ ul { list-style: none; }
 .checklist li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
   font-size: 15px;
   color: var(--text-muted);
   line-height: 1.5;
@@ -545,8 +561,9 @@ ul { list-style: none; }
 }
 
 .bullet-list li {
-  position: relative;
-  padding-left: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   font-size: 16px;
   color: var(--text-muted);
   line-height: 1.55;
@@ -554,13 +571,13 @@ ul { list-style: none; }
 
 .bullet-list li::before {
   content: '—';
-  position: absolute;
-  left: 0;
   color: var(--accent);
   font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
-.bullet-list--no li::before { content: '✗'; color: var(--accent-red); }
+.bullet-list--no li::before  { content: '✗'; color: var(--accent-red); }
 .bullet-list--plain li::before { content: '—'; color: var(--text-dim); }
 
 .quote-block {
@@ -849,19 +866,19 @@ ul { list-style: none; }
 }
 
 .truth__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   font-size: 17px;
   color: var(--text-muted);
-  padding-left: 28px;
-  position: relative;
   line-height: 1.5;
 }
 
 .truth__list li::before {
   content: '✓';
-  position: absolute;
-  left: 0;
   color: var(--accent-green);
   font-weight: 900;
+  flex-shrink: 0;
 }
 
 /* ============================================================
@@ -960,27 +977,26 @@ ul { list-style: none; }
 .foryou__col ul { display: flex; flex-direction: column; gap: 12px; }
 
 .foryou__col li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   font-size: 15px;
   color: var(--text-muted);
-  padding-left: 20px;
-  position: relative;
   line-height: 1.5;
 }
 
 .foryou__col--yes li::before {
   content: '✓';
-  position: absolute;
-  left: 0;
   color: var(--accent-green);
   font-weight: 900;
+  flex-shrink: 0;
 }
 
 .foryou__col--no li::before {
   content: '✗';
-  position: absolute;
-  left: 0;
   color: var(--accent-red);
   font-weight: 900;
+  flex-shrink: 0;
 }
 
 /* ============================================================
@@ -1133,11 +1149,27 @@ ul { list-style: none; }
 }
 
 .pricing__price {
-  font-size: clamp(52px, 8vw, 72px);
+  font-size: clamp(64px, 10vw, 88px);
   font-weight: 900;
   color: var(--accent);
   line-height: 1;
-  text-shadow: 0 8px 24px rgba(245,193,68,0.25);
+  text-shadow: 0 8px 32px rgba(245,193,68,0.4);
+  letter-spacing: -2px;
+}
+
+/* Urgency stripe above pricing CTA */
+.pricing .btn-cta--xl {
+  position: relative;
+}
+.pricing .btn-cta--xl::after {
+  content: '🔒 Compra 100% segura · Acesso em 5 minutos';
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.55);
+  margin-top: 10px;
+  text-align: center;
 }
 
 .pricing__bundle-img {
@@ -1330,6 +1362,16 @@ ul { list-style: none; }
   margin-bottom: 16px;
 }
 
+/* force left-align for lists inside centered containers */
+.reengagement__inner .bullet-list,
+.reengagement__inner .bullet-list--no,
+.reengagement__inner .bullet-list--plain {
+  text-align: left;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .bundle-wrap {
   margin: 32px 0;
 }
@@ -1380,15 +1422,16 @@ ul { list-style: none; }
 .choice-card ul { display: flex; flex-direction: column; gap: 10px; }
 
 .choice-card li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
   font-size: 14px;
   color: var(--text-muted);
-  padding-left: 18px;
-  position: relative;
   line-height: 1.5;
 }
 
-.choice-card--bad li::before { content: '✗'; position: absolute; left: 0; color: var(--accent-red); }
-.choice-card--good li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-green); }
+.choice-card--bad li::before  { content: '✗'; color: var(--accent-red);   flex-shrink: 0; }
+.choice-card--good li::before { content: '✓'; color: var(--accent-green); flex-shrink: 0; }
 
 /* ============================================================
    FAQ — Accordion
