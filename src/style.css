@@ -333,8 +333,11 @@ ul { list-style: none; }
 
 .mockup-card__img {
   width: 100%;
-  object-fit: cover;
+  height: 220px;
+  object-fit: contain;
   border-radius: var(--r-md) var(--r-md) 0 0;
+  padding: 12px 12px 0;
+  background: rgba(255,255,255,0.02);
 }
 
 .mockup-card__label {

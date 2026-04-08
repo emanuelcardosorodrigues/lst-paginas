@@ -115,5 +115,4 @@ document.addEventListener('DOMContentLoaded', () => {
   wrapAccordionPanels()
   initAccordion()
   initSmoothScroll()
-  initStickyCTA()
 })
