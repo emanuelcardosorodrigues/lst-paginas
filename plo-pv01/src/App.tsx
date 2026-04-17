@@ -238,9 +238,10 @@ function OQueVaiAcontecerSection() {
       <div className="blob-container blob-teal"></div>
       <div className="content-relative max-w-[480px] mx-auto">
         <SectionLabel>O QUE VAI ACONTECER</SectionLabel>
-        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-10 text-center">Nas próximas semanas, você não vai trabalhar mais… 
-
-        você vai finalmente coletar o dinheiro que já está dentro da sua clínica.</h2>
+        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-10 text-center">
+          Nas próximas semanas, você não vai trabalhar mais…<br /><br />
+          você vai finalmente <span className="bg-[#4ADE80] text-[#080C09] px-1">coletar o dinheiro que já está dentro da sua clínica.</span>
+        </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-[0.875rem]">
           {cards.map((card) => (
@@ -352,9 +353,17 @@ function SocialProofSection() {
   return (
     <section className="bg-[#FFFFFF] w-full py-[clamp(3.5rem,7vw,6rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="max-w-[480px] mx-auto">
-        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#0A0F0B] mb-10">
-          Esses dentistas não trouxeram um único paciente novo. Só pararam de perder dinheiro… e o lucro apareceu.
-        </h2>
+        <div className="mb-10 text-center">
+          <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#0A0F0B] mb-3">
+            Esses dentistas não trouxeram um único paciente novo.
+          </h2>
+          <p className="font-semibold text-[1.15rem] text-[#4A5244] leading-[1.5] mb-2">
+            Só pararam de perder dinheiro…
+          </p>
+          <p className="font-bold text-[1.15rem]">
+            <span className="bg-[#4ADE80] text-[#080C09] px-1">e o lucro apareceu.</span>
+          </p>
+        </div>
         
         <div>
           {proofs.map((p, i) => <SocialProofCard key={i} data={p} />)}
@@ -381,11 +390,11 @@ function UrgenciaSection() {
       <div className="blob-container blob-green"></div>
       <div className="content-relative max-w-[480px] mx-auto">
         
-        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-10">
+        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-10 text-center">
           Cada mês que você continua sem ajustar isso… é dinheiro que sai da sua clínica e não volta mais.
         </h2>
 
-        <p className="font-normal text-[0.9375rem] text-[#A0A89A] mb-4">Um dentista que fatura R$40.000,00 por mês pode estar perdendo…</p>
+        <p className="font-normal text-[0.9375rem] text-[#A0A89A] mb-4 text-center">Um dentista que fatura R$40.000,00 por mês pode estar perdendo…</p>
         
         <div className="bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] rounded-[0.875rem] overflow-hidden mb-8">
           <div className="bg-[rgba(255,255,255,0.05)] border-b border-[rgba(255,255,255,0.06)] text-[#A0A89A] font-medium text-[0.65rem] tracking-[0.12em] uppercase p-3 px-4 flex justify-between">
@@ -432,7 +441,7 @@ function UrgenciaSection() {
         <p className="text-center italic text-[#5A6354] text-[0.9375rem] mb-12">Dinheiro que não tem reembolso. Não tem aviso. Não volta.</p>
 
 
-        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-8">
+        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-8 text-center">
           Isso não é só sobre dinheiro.
         </h2>
 
@@ -450,7 +459,7 @@ function UrgenciaSection() {
           ))}
         </div>
 
-        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-6">
+        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-6 text-center">
           Se nada mudar… o mais provável é que você continue:
         </h2>
 
@@ -507,7 +516,7 @@ function MetodoSection() {
                   {f.num}
                 </div>
                 <h3 className="font-semibold text-[0.9375rem] text-[#F8FAF8] tracking-[-0.01em]">{f.title}</h3>
-                <p className="font-normal text-[0.8125rem] text-[#5A6354] leading-[1.6]">{f.desc}</p>
+                <p className="font-normal text-[0.8125rem] text-[#A0A89A] leading-[1.6]">{f.desc}</p>
               </div>
             </div>
           ))}
@@ -522,10 +531,10 @@ function ProdutoSection() {
   return (
     <section className="bg-[#FFFFFF] w-full py-[clamp(3.5rem,7vw,6rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="max-w-[480px] mx-auto">
-        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#0A0F0B] mb-4">
+        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#0A0F0B] mb-4 text-center">
           Esse é o Sistema Completo que você vai receber dentro do Protocolo Lucro Oculto!
         </h2>
-        <p className="font-normal text-[1.05rem] text-[#4A5244] leading-[1.75] mb-8">
+        <p className="font-normal text-[1.05rem] text-[#4A5244] leading-[1.75] mb-8 text-center">
           Tudo foi pensado para gerar resultado rápido — mesmo que você não entenda nada de números ou gestão.
         </p>
 
@@ -556,13 +565,13 @@ function ConsultoresSection() {
       <div className="blob-container blob-green"></div>
       <div className="content-relative max-w-[480px] mx-auto">
         
-        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-2 uppercase">
+        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-2 uppercase text-center">
           OS CONSULTORES
         </h2>
-        <h3 className="font-normal text-[1.05rem] text-[#A0A89A] leading-[1.6] mb-4">
+        <h3 className="font-normal text-[1.05rem] text-[#A0A89A] leading-[1.6] mb-4 text-center">
           Você não precisa pensar. Os consultores fazem isso por você.
         </h3>
-        <p className="font-normal text-[0.9375rem] text-[#5A6354] leading-[1.7] mb-10">
+        <p className="font-normal text-[0.9375rem] text-[#A0A89A] leading-[1.7] mb-10 text-center">
           Dentro do protocolo, você tem acesso a um time de consultores treinados para clínica odontológica:
         </p>
 
@@ -572,7 +581,7 @@ function ConsultoresSection() {
                <img src={c.image} alt={c.title} className="w-20 h-20 rounded-full object-cover mx-auto shadow-[0_0_12px_rgba(0,255,100,0.3)] border border-[rgba(74,222,128,0.3)]" />
                <div>
                   <h4 className="font-bold text-[0.75rem] tracking-[0.06em] uppercase text-[#F8FAF8] mb-2">{c.title}</h4>
-                  <p className="font-normal text-[0.8125rem] text-[#5A6354] leading-[1.55]">{c.desc}</p>
+                  <p className="font-normal text-[0.8125rem] text-[#A0A89A] leading-[1.55]">{c.desc}</p>
                </div>
             </div>
           ))}
@@ -595,7 +604,7 @@ function BonusSection() {
   return (
     <section className="bg-[#FFFFFF] w-full py-[clamp(3.5rem,7vw,6rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="max-w-[480px] mx-auto">
-        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#0A0F0B] mb-10">
+        <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#0A0F0B] mb-10 text-center">
           E para garantir que você tenha resultado ainda mais rápido… você também recebe isso:
         </h2>
 
@@ -640,7 +649,7 @@ function StackValorSection() {
         <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-4 text-center">
           Se você fosse contratar tudo isso separadamente… quanto isso custaria?
         </h2>
-        <p className="font-normal text-[1.05rem] text-[#A0A89A] leading-[1.75] mb-10">
+        <p className="font-normal text-[1.05rem] text-[#A0A89A] leading-[1.75] mb-10 text-center">
           Vamos somar o valor real de tudo que você recebe hoje:
         </p>
 
@@ -656,8 +665,8 @@ function StackValorSection() {
               <tbody>
                 {stack.map((s, i) => (
                   <tr key={i} className="border-b border-[rgba(255,255,255,0.05)]">
-                    <td data-label="Item" className="p-3.5 px-4 font-normal text-[0.875rem] text-[#A0A89A]">{s.item}</td>
-                    <td data-label="Valor" className="p-3.5 px-4 font-normal text-[0.875rem] text-[#5A6354] line-through sm:text-right">{s.val}</td>
+                    <td data-label="Item" className="p-3.5 px-4 font-normal text-[0.875rem] text-[#F8FAF8]">{s.item}</td>
+                    <td data-label="Valor" className="p-3.5 px-4 font-normal text-[0.875rem] text-[#A0A89A] line-through sm:text-right">{s.val}</td>
                   </tr>
                 ))}
                 <tr className="bg-[rgba(212,168,67,0.08)] border-t border-[rgba(212,168,67,0.25)]">
@@ -670,9 +679,9 @@ function StackValorSection() {
         </div>
 
         <div className="text-center mb-10">
-          <p className="font-light italic text-[1.05rem] text-[#5A6354] mb-2">"Mas você não vai pagar isso."</p>
+          <p className="font-light italic text-[1.05rem] text-[#5A6354] mb-2">Mas você não vai pagar isso.</p>
           <div className="w-16 h-px bg-[rgba(74,222,128,0.3)] mx-auto my-3"></div>
-          <p className="font-light italic text-[1.05rem] text-[#5A6354] mb-8">"Nem perto disso."</p>
+          <p className="font-light italic text-[1.05rem] text-[#5A6354] mb-8">Nem perto disso.</p>
           
           <div className="mb-6">
             <span className="font-[800] text-[clamp(2.75rem,11vw,4rem)] leading-none tracking-[-0.035em] text-[#4ADE80] drop-shadow-[0_0_16px_rgba(74,222,128,0.45)]">
@@ -759,7 +768,7 @@ function FaqSection() {
   return (
     <section className="bg-[#FFFFFF] w-full py-[clamp(3.5rem,7vw,6rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="max-w-[480px] mx-auto">
-        <p className="font-normal text-[1.05rem] text-[#4A5244] leading-[1.7] mb-8">
+        <p className="font-normal text-[1.05rem] text-[#4A5244] leading-[1.7] mb-8 text-center">
           Se você ainda está com alguma dúvida, aqui estão as respostas mais diretas:
         </p>
 
