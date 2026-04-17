@@ -4,7 +4,7 @@
   "description": "Página de vendas — Protocolo do Dentista Parceiro Lucrativo",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run build:plo",
+    "build": "vite build && npm run build:plo && cp public/_headers dist/_headers",
     "build:dpl": "vite build",
     "build:plo": "npm install --prefix plo-pv01 && npm run build --prefix plo-pv01",
     "preview": "vite preview"
