@@ -9,6 +9,8 @@ import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
 const checkoutUrl = "https://pay.hotmart.com/K105045449J?off=tanuaurl&split=12&offDiscount=MAPAOCULTO&bid=1776377238546";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const img = (path: string) => `${base}${path}`;
 
 // --- Hooks ---
 function useIntersectionObserver(options = {}) {
@@ -206,25 +208,25 @@ function PosVslSection() {
 function OQueVaiAcontecerSection() {
   const cards = [
     {
-      image: "/images/transformation_01_confusion.png",
+      image: img("/images/transformation_01_confusion.png"),
       alt: "Dentista analisando números da clínica com expressão de dúvida",
       title: 'O FIM DO "NÃO SEI PRA ONDE FOI O DINHEIRO"',
       desc: "Hoje, 1 em cada 3 dentistas termina o mês com zero de lucro. Não por falta de paciente… mas porque o dinheiro some antes de chegar até você.",
     },
     {
-      image: "/images/transformation_02_fixing.png",
+      image: img("/images/transformation_02_fixing.png"),
       alt: "Mãos de dentista analisando painel financeiro no computador",
       title: "O CORTE DOS VAZAMENTOS",
       desc: "Imposto pago errado. Maquininha comendo margem. Parceiro ficando com o lucro. Você vê cada 'buraco' com número — e fecha um por um.",
     },
     {
-      image: "/images/transformation_03_relief.png",
+      image: img("/images/transformation_03_relief.png"),
       alt: "Dentista aliviado vendo indicadores financeiros positivos",
       title: "DINHEIRO SOBRANDO",
       desc: "A conta começa a ficar mais cheia e o fim do mês não te assusta mais.",
     },
     {
-      image: "/images/transformation_04_control.png",
+      image: img("/images/transformation_04_control.png"),
       alt: "Dentista confiante acompanhando agenda e gráficos financeiros",
       title: "CONTROLE REAL",
       desc: "Você passa a saber quanto vai tirar no mês antes dele acabar. Não é mais 'ver quanto sobra' — é olhar sua agenda… e já saber o resultado dela.",
@@ -319,7 +321,7 @@ function SocialProofSection() {
       profitBefore: "R$4.000",
       profitAfter: "R$22000",
       badge: "+450%",
-      photo: "/images/social_jose_ronaldo.webp",
+      photo: img("/images/social_jose_ronaldo.webp"),
       photoPosition: "center 30%"
     },
     {
@@ -331,7 +333,7 @@ function SocialProofSection() {
       profitBefore: "R$6.000",
       profitAfter: "R$16000",
       badge: "+167%",
-      photo: "/images/social_maria_emilia.webp",
+      photo: img("/images/social_maria_emilia.webp"),
       photoPosition: "center 30%"
     },
     {
@@ -343,7 +345,7 @@ function SocialProofSection() {
       profitBefore: "R$7.000",
       profitAfter: "R$13000",
       badge: "+86%",
-      photo: "/images/social_ana_beatriz.webp"
+      photo: img("/images/social_ana_beatriz.webp")
     }
   ];
 
@@ -480,12 +482,12 @@ function UrgenciaSection() {
 
 function MetodoSection() {
   const fases = [
-    { num: "01", image: "/images/process_01_decision.png", title: "Reset do Protocolo de Decisão", desc: "Você para de tomar decisão errada sem perceber." },
-    { num: "02", image: "/images/process_02_diagnosis.png", title: "Diagnóstico", desc: "Você descobre exatamente quanto está perdendo hoje." },
-    { num: "03", image: "/images/process_03_leaks.png", title: "Tapa Buracos", desc: "Você corrige os vazamentos e o lucro começa a aparecer." },
-    { num: "04", image: "/images/process_04_sales.png", title: "Comercial", desc: "Você passa a fechar mais sem depender de \"jeito pra vender\"." },
-    { num: "05", image: "/images/process_05_acquisition.png", title: "Captação de Pacientes a Custo Zero", desc: "Pacientes que já confiam em você voltam a gerar receita." },
-    { num: "06", image: "/images/process_06_scale.png", title: "Escala e Independência", desc: "Sua clínica começa a funcionar sem depender de você o tempo todo." },
+    { num: "01", image: img("/images/process_01_decision.png"), title: "Reset do Protocolo de Decisão", desc: "Você para de tomar decisão errada sem perceber." },
+    { num: "02", image: img("/images/process_02_diagnosis.png"), title: "Diagnóstico", desc: "Você descobre exatamente quanto está perdendo hoje." },
+    { num: "03", image: img("/images/process_03_leaks.png"), title: "Tapa Buracos", desc: "Você corrige os vazamentos e o lucro começa a aparecer." },
+    { num: "04", image: img("/images/process_04_sales.png"), title: "Comercial", desc: "Você passa a fechar mais sem depender de \"jeito pra vender\"." },
+    { num: "05", image: img("/images/process_05_acquisition.png"), title: "Captação de Pacientes a Custo Zero", desc: "Pacientes que já confiam em você voltam a gerar receita." },
+    { num: "06", image: img("/images/process_06_scale.png"), title: "Escala e Independência", desc: "Sua clínica começa a funcionar sem depender de você o tempo todo." },
   ];
 
   return (
@@ -542,11 +544,11 @@ function ProdutoSection() {
 
 function ConsultoresSection() {
   const consultores = [
-    { image: "/images/consultant_01_diagnosis.png", title: "CONSULTOR DE DIAGNÓSTICO", desc: "Descobre quanto você está perdendo hoje — em minutos" },
-    { image: "/images/consultant_02_pricing.png", title: "CONSULTOR DE PRECIFICAÇÃO", desc: "Coloca o preço lucrativo nos seus procedimentos em minutos" },
-    { image: "/images/consultant_03_negotiation.png", title: "CONSULTOR DE NEGOCIAÇÃO", desc: "Calcula se seu parceiro te dá lucro ou prejuízo e gera o script pronto pra renegociar" },
-    { image: "/images/consultant_04_financial.png", title: "CONSULTOR FINANCEIRO", desc: "Organiza seus números sem planilha complicada" },
-    { image: "/images/consultant_05_commercial.png", title: "CONSULTOR COMERCIAL", desc: "Gera mensagens prontas para fechar pacientes" }
+    { image: img("/images/consultant_01_diagnosis.png"), title: "CONSULTOR DE DIAGNÓSTICO", desc: "Descobre quanto você está perdendo hoje — em minutos" },
+    { image: img("/images/consultant_02_pricing.png"), title: "CONSULTOR DE PRECIFICAÇÃO", desc: "Coloca o preço lucrativo nos seus procedimentos em minutos" },
+    { image: img("/images/consultant_03_negotiation.png"), title: "CONSULTOR DE NEGOCIAÇÃO", desc: "Calcula se seu parceiro te dá lucro ou prejuízo e gera o script pronto pra renegociar" },
+    { image: img("/images/consultant_04_financial.png"), title: "CONSULTOR FINANCEIRO", desc: "Organiza seus números sem planilha complicada" },
+    { image: img("/images/consultant_05_commercial.png"), title: "CONSULTOR COMERCIAL", desc: "Gera mensagens prontas para fechar pacientes" }
   ];
 
   return (
@@ -583,11 +585,11 @@ function ConsultoresSection() {
 
 function BonusSection() {
   const bonus = [
-    { num: "BÔNUS 1", image: "/images/bonus_01_execution.png", title: "EXECUÇÃO GARANTIDA", desc: "Você não precisa executar nada sozinho. Se você não tem tempo, não gosta de tecnologia ou simplesmente não quer fazer… você pode entregar tudo para alguém da sua equipe executar por você. Eu gravei aulas simples que qualquer pessoa consegue seguir e aplicar." },
-    { num: "BÔNUS 2", image: "/images/bonus_02_convenios.png", title: "COMO SAIR DOS CONVÊNIOS SEM QUEBRAR", desc: "Como parar de depender de convênios… sem ver sua agenda esvaziar. Um plano seguro para transição: sair dos convênios aos poucos / manter faturamento / aumentar margem." },
-    { num: "BÔNUS 3", image: "/images/bonus_03_48h.png", title: "LUCRO EM 48 HORAS", desc: "Coloque dinheiro no caixa em até 48 horas. Scripts prontos para reativar pacientes que já passaram pela sua clínica. É copiar, colar… e mandar." },
-    { num: "BÔNUS 4", image: "/images/bonus_04_community.png", title: "COMUNIDADE + ACESSO AOS CONSULTORES", desc: "Acesso à comunidade + atualizações dos consultores. Você não vai fazer isso sozinho. Você entra em um grupo com dentistas que estão aplicando o protocolo. Acesso contínuo às atualizações dos consultores de IA." },
-    { num: "BÔNUS 5", image: "/images/bonus_05_intensive.png", title: "INTENSIVÃO Lucro no Bolso", desc: "Imersão prática para destravar seu lucro na primeira semana. Um encontro onde você aplica os pilares do protocolo: tapar buracos / organizar comercial / ativar pacientes." }
+    { num: "BÔNUS 1", image: img("/images/bonus_01_execution.png"), title: "EXECUÇÃO GARANTIDA", desc: "Você não precisa executar nada sozinho. Se você não tem tempo, não gosta de tecnologia ou simplesmente não quer fazer… você pode entregar tudo para alguém da sua equipe executar por você. Eu gravei aulas simples que qualquer pessoa consegue seguir e aplicar." },
+    { num: "BÔNUS 2", image: img("/images/bonus_02_convenios.png"), title: "COMO SAIR DOS CONVÊNIOS SEM QUEBRAR", desc: "Como parar de depender de convênios… sem ver sua agenda esvaziar. Um plano seguro para transição: sair dos convênios aos poucos / manter faturamento / aumentar margem." },
+    { num: "BÔNUS 3", image: img("/images/bonus_03_48h.png"), title: "LUCRO EM 48 HORAS", desc: "Coloque dinheiro no caixa em até 48 horas. Scripts prontos para reativar pacientes que já passaram pela sua clínica. É copiar, colar… e mandar." },
+    { num: "BÔNUS 4", image: img("/images/bonus_04_community.png"), title: "COMUNIDADE + ACESSO AOS CONSULTORES", desc: "Acesso à comunidade + atualizações dos consultores. Você não vai fazer isso sozinho. Você entra em um grupo com dentistas que estão aplicando o protocolo. Acesso contínuo às atualizações dos consultores de IA." },
+    { num: "BÔNUS 5", image: img("/images/bonus_05_intensive.png"), title: "INTENSIVÃO Lucro no Bolso", desc: "Imersão prática para destravar seu lucro na primeira semana. Um encontro onde você aplica os pilares do protocolo: tapar buracos / organizar comercial / ativar pacientes." }
   ];
 
   return (
@@ -699,7 +701,7 @@ function GarantiaSection() {
       <div className="blob-container blob-green"></div>
       <div className="content-relative max-w-[480px] mx-auto text-center flex flex-col items-center">
         
-        <img src="/guarantee-seal.svg" alt="Selo de Garantia 7 Dias" className="w-[160px] h-[160px] mb-10" />
+        <img src={img("/guarantee-seal.svg")} alt="Selo de Garantia 7 Dias" className="w-[160px] h-[160px] mb-10" />
 
         <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-8">
           Teste o Protocolo na sua clínica… sem risco nenhum
