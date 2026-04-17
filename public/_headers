@@ -13,3 +13,13 @@
   Cache-Control: no-cache, no-store, must-revalidate
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
+
+# Hashed assets for PLO page — immutable 1 year
+/plo-pv01/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML for PLO page — no cache (always fresh for ad tracking)
+/plo-pv01/
+  Cache-Control: no-cache, no-store, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
