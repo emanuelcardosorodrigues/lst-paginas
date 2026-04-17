@@ -39,19 +39,21 @@ function useCountUp(end: number, start = 0, duration = 2000, startAnimation = tr
 
   useEffect(() => {
     if (!startAnimation) return;
-    
+
     let startTime: number | null = null;
+    let rafId: number;
     const step = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
       setCount(Math.floor(progress * (end - start) + start));
-      
+
       if (progress < 1) {
-        window.requestAnimationFrame(step);
+        rafId = window.requestAnimationFrame(step);
       }
     };
-    
-    window.requestAnimationFrame(step);
+
+    rafId = window.requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafId);
   }, [end, start, duration, startAnimation]);
 
   return count;
@@ -155,14 +157,21 @@ function StickyFooter() {
 // --- Sections ---
 
 function HeroSection() {
+  const today = new Date();
+  const diasSemana = ["domingo","segunda","terça","quarta","quinta","sexta","sábado"];
+  const meses = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+  const diaSemana = diasSemana[today.getDay()];
+  const dia = today.getDate();
+  const mes = meses[today.getMonth()];
+
   return (
     <section className="section-dark bg-[#080C09] w-full pt-[clamp(4rem,8vw,7rem)] pb-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="blob-container blob-green"></div>
       <div className="content-relative max-w-[480px] mx-auto flex flex-col items-center">
-        
+
         <div className="mb-6 flex items-center justify-center bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] rounded-full px-3 py-1.5">
           <span className="inline-block w-[7px] h-[7px] rounded-full bg-[#F87171] shadow-[0_0_6px_rgba(248,113,113,0.7)] animate-live-pulse mr-2 align-middle"></span>
-          <span className="text-sm font-normal italic text-[#A0A89A]">Essa aula sai do ar hoje — Toque abaixo</span>
+          <span className="text-sm font-normal italic text-[#A0A89A]">Essa aula sai do ar hoje, {diaSemana}, {dia}/{mes}</span>
         </div>
 
         <h1 className="font-[800] text-[clamp(2.25rem,9vw,3.25rem)] leading-[1.08] tracking-[-0.03em] text-[#F8FAF8] text-center mb-8">
@@ -179,6 +188,10 @@ function HeroSection() {
             ▶ ASSISTIR AULA GRATUITA
           </div>
         </div>
+
+        <p className="text-[0.8125rem] font-normal text-[#A0A89A] text-center leading-[1.5] -mt-4">
+          Toque abaixo e veja a aula antes que ela saia do ar
+        </p>
 
       </div>
     </section>
@@ -246,7 +259,7 @@ function OQueVaiAcontecerSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-[0.875rem]">
           {cards.map((card) => (
             <div key={card.title} className="glass-card overflow-hidden flex flex-col">
-              <img src={card.image} alt={card.alt} className="w-full h-[180px] object-cover rounded-t-[1rem]" />
+              <img src={card.image} alt={card.alt} loading="lazy" className="w-full h-[180px] object-cover rounded-t-[1rem]" />
               <div className="p-[1.5rem] flex flex-col gap-4">
                 <h3 className="font-bold text-[0.8rem] tracking-[0.05em] uppercase text-[#F8FAF8]">{card.title}</h3>
                 <p className="font-normal text-[0.8125rem] text-[#A0A89A] leading-[1.6]">{card.desc}</p>
@@ -270,7 +283,7 @@ function SocialProofCard({ data }: any) {
 
   return (
     <div className="glass-card p-[1.5rem] flex flex-col gap-4 mb-6 !bg-[#0A0F0B] !border-[#E2E8F0] shadow-[0_4px_32px_rgba(0,0,0,0.10)] text-[#F8FAF8]">
-        <img src={data.photo} alt={data.name} style={{ objectPosition: data.photoPosition || "center" }} className="w-full h-[140px] object-cover rounded-[0.625rem] bg-[#E2E8F0]" />
+        <img src={data.photo} alt={data.name} loading="lazy" style={{ objectPosition: data.photoPosition || "center" }} className="w-full h-[140px] object-cover rounded-[0.625rem] bg-[#E2E8F0]" />
       
       <div>
         <h3 className="font-bold text-[1.1rem] text-[#F8FAF8] tracking-[-0.01em]">{data.name}</h3>
@@ -510,7 +523,7 @@ function MetodoSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {fases.map((f) => (
             <div key={f.num} className="bg-[rgba(255,255,255,0.025)] border border-[rgba(74,222,128,0.12)] hover:border-[rgba(74,222,128,0.25)] transition-colors rounded-[0.875rem] overflow-hidden flex flex-col">
-              <img src={f.image} alt={f.title} className="w-full h-[160px] object-cover rounded-t-[0.875rem]" />
+              <img src={f.image} alt={f.title} loading="lazy" className="w-full h-[220px] object-cover rounded-t-[0.875rem]" />
               <div className="p-5 flex flex-col gap-3">
                 <div className="w-9 h-9 rounded-full bg-[rgba(74,222,128,0.12)] border border-[rgba(74,222,128,0.3)] text-[#4ADE80] font-bold text-[0.875rem] flex items-center justify-center">
                   {f.num}
@@ -578,7 +591,7 @@ function ConsultoresSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {consultores.map((c, i) => (
             <div key={i} className="glass-card p-5 hover:border-[rgba(74,222,128,0.2)] flex flex-col gap-4 text-center">
-               <img src={c.image} alt={c.title} className="w-20 h-20 rounded-full object-cover mx-auto shadow-[0_0_12px_rgba(0,255,100,0.3)] border border-[rgba(74,222,128,0.3)]" />
+               <img src={c.image} alt={c.title} loading="lazy" className="w-20 h-20 rounded-full object-cover mx-auto shadow-[0_0_12px_rgba(0,255,100,0.3)] border border-[rgba(74,222,128,0.3)]" />
                <div>
                   <h4 className="font-bold text-[0.75rem] tracking-[0.06em] uppercase text-[#F8FAF8] mb-2">{c.title}</h4>
                   <p className="font-normal text-[0.8125rem] text-[#A0A89A] leading-[1.55]">{c.desc}</p>
@@ -611,7 +624,7 @@ function BonusSection() {
         <div className="flex flex-col gap-4">
            {bonus.map((b, i) => (
              <div key={i} className="bg-[#080C09] border border-[rgba(0,0,0,0.08)] rounded-2xl overflow-hidden shadow-md text-left">
-                <img src={b.image} alt={b.title} className="w-full h-[200px] object-cover rounded-t-2xl" />
+                <img src={b.image} alt={b.title} loading="lazy" className="w-full h-[200px] object-cover rounded-t-2xl" />
                 <div className="p-6">
                   <span className="inline-block bg-[rgba(74,222,128,0.1)] border border-[rgba(74,222,128,0.2)] text-[#4ADE80] font-semibold text-[0.65rem] tracking-[0.1em] uppercase px-2.5 py-1 rounded-full mb-3">
                     {b.num}
@@ -710,7 +723,7 @@ function GarantiaSection() {
       <div className="blob-container blob-green"></div>
       <div className="content-relative max-w-[480px] mx-auto text-center flex flex-col items-center">
         
-        <img src={img("/guarantee-seal.svg")} alt="Selo de Garantia 7 Dias" className="w-[160px] h-[160px] mb-10" />
+        <img src={img("/guarantee-seal.svg")} alt="Selo de Garantia 7 Dias" loading="lazy" className="w-[160px] h-[160px] mb-10" />
 
         <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-8">
           Teste o Protocolo na sua clínica… sem risco nenhum
