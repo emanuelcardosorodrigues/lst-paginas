@@ -19,6 +19,14 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "../dist/plo-pv01"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          icons: ['lucide-react'],
+        },
+      },
+    },
   },
   server: {
     port: 5174,
