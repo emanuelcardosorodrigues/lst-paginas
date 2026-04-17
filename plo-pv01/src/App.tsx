@@ -1,16 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Switch, Route, Router as WouterRouter } from "wouter";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import { useEffect, useRef, useState, type AnchorHTMLAttributes, type ImgHTMLAttributes, type ReactNode } from "react";
 import { Play, MapPin, AlertCircle, Calendar, BarChart3, User, X, Check, ArrowRight } from "lucide-react";
-import NotFound from "@/pages/not-found";
-
-const queryClient = new QueryClient();
 const checkoutUrl = "https://pay.hotmart.com/K105045449J?off=tanuaurl&split=12&offDiscount=MAPAOCULTO&bid=1776377238546";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const img = (path: string) => `${base}${path}`;
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+const transformationSrcSet = (name: string) =>
+  `${img(`/images/${name}-704.webp`)} 704w, ${img(`/images/${name}-960.webp`)} 960w, ${img(`/images/${name}.webp`)} 1408w`;
 
 // --- Hooks ---
 function useIntersectionObserver(options = {}) {
@@ -77,14 +72,19 @@ function pushGtmClick(label: string, isPrimary: boolean) {
   });
 }
 
-function CtaButton({ children, primary = true, className = "", ...props }: any) {
+type CtaButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  children: ReactNode;
+  primary?: boolean;
+};
+
+function CtaButton({ children, primary = true, className = "", ...props }: CtaButtonProps) {
   const { onClick, href = checkoutUrl, ...rest } = props;
 
   const label = typeof children === "string" ? children : "CTA";
 
-  const handleClick = () => {
+  const handleClick: NonNullable<CtaButtonProps["onClick"]> = (event) => {
     pushGtmClick(label, primary);
-    if (onClick) onClick();
+    onClick?.(event);
   };
 
   if (primary) {
@@ -117,7 +117,31 @@ function CtaButton({ children, primary = true, className = "", ...props }: any) 
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
+function LandingImage({
+  alt,
+  className,
+  eager = false,
+  sizes = "100vw",
+  src,
+  srcSet,
+  ...rest
+}: ImgHTMLAttributes<HTMLImageElement> & { eager?: boolean }) {
+  return (
+    <img
+      alt={alt}
+      className={className}
+      decoding="async"
+      fetchPriority={eager ? "high" : "auto"}
+      loading={eager ? "eager" : "lazy"}
+      sizes={sizes}
+      src={src}
+      srcSet={srcSet}
+      {...rest}
+    />
+  );
+}
+
+function SectionLabel({ children }: { children: ReactNode }) {
   return (
     <div className="mb-4">
       <span className="block w-8 h-[1px] bg-[rgba(74,222,128,0.5)] mb-2.5"></span>
@@ -145,11 +169,25 @@ function StickyFooter() {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-[rgba(8,12,9,0.92)] backdrop-blur-[16px] border-t border-[rgba(74,222,128,0.2)] md:hidden">
       <div className="max-w-[480px] mx-auto">
-         <CtaButton onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+         <CtaButton onClick={scrollToTop}>
             GARANTIR MINHA VAGA!
          </CtaButton>
       </div>
     </div>
+  );
+}
+
+function FaqItem({ answer, question }: { answer: string; question: string }) {
+  return (
+    <details className="faq-item border border-[rgba(0,0,0,0.08)] rounded-lg bg-[#FAFAFA] px-4">
+      <summary className="list-none py-4 font-semibold text-[0.9375rem] text-[#0A0F0B] cursor-pointer transition-colors">
+        <span>{question}</span>
+        <span aria-hidden="true" className="faq-marker text-[#4ADE80] text-xl leading-none">+</span>
+      </summary>
+      <div className="pb-4 font-normal text-[0.9375rem] text-[#4A5244] leading-[1.65]">
+        {answer}
+      </div>
+    </details>
   );
 }
 
@@ -200,7 +238,7 @@ function HeroSection() {
 
 function PosVslSection() {
   return (
-    <section className="bg-[#FFFFFF] w-full py-[clamp(3.5rem,7vw,6rem)] px-[clamp(1rem,5vw,1.5rem)]">
+    <section className="deferred-section bg-[#FFFFFF] w-full py-[clamp(3.5rem,7vw,6rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="max-w-[480px] mx-auto">
         <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#0A0F0B] mb-6">
           Dobre o Lucro do Seu Consultório em 90 Dias
@@ -210,7 +248,7 @@ function PosVslSection() {
           <li className="font-normal text-[1.05rem] text-[#4A5244] leading-[1.7]">Sem ter mais pacientes</li>
           <li className="font-normal text-[1.05rem] text-[#4A5244] leading-[1.7]">Sem inflar faturamento tóxico</li>
         </ul>
-        <CtaButton onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <CtaButton onClick={scrollToTop}>
           GARANTIR MINHA VAGA!
         </CtaButton>
       </div>
@@ -222,24 +260,28 @@ function OQueVaiAcontecerSection() {
   const cards = [
     {
       image: img("/images/transformation_01_confusion.webp"),
+      imageSet: transformationSrcSet("transformation_01_confusion"),
       alt: "Dentista analisando números da clínica com expressão de dúvida",
       title: 'O FIM DO "NÃO SEI PRA ONDE FOI O DINHEIRO"',
       desc: "Hoje, 1 em cada 3 dentistas termina o mês com zero de lucro. Não por falta de paciente… mas porque o dinheiro some antes de chegar até você.",
     },
     {
       image: img("/images/transformation_02_fixing.webp"),
+      imageSet: transformationSrcSet("transformation_02_fixing"),
       alt: "Mãos de dentista analisando painel financeiro no computador",
       title: "O CORTE DOS VAZAMENTOS",
       desc: "Imposto pago errado. Maquininha comendo margem. Parceiro ficando com o lucro. Você vê cada 'buraco' com número — e fecha um por um.",
     },
     {
       image: img("/images/transformation_03_relief.webp"),
+      imageSet: transformationSrcSet("transformation_03_relief"),
       alt: "Dentista aliviado vendo indicadores financeiros positivos",
       title: "DINHEIRO SOBRANDO",
       desc: "A conta começa a ficar mais cheia e o fim do mês não te assusta mais.",
     },
     {
       image: img("/images/transformation_04_control.webp"),
+      imageSet: transformationSrcSet("transformation_04_control"),
       alt: "Dentista confiante acompanhando agenda e gráficos financeiros",
       title: "CONTROLE REAL",
       desc: "Você passa a saber quanto vai tirar no mês antes dele acabar. Não é mais 'ver quanto sobra' — é olhar sua agenda… e já saber o resultado dela.",
@@ -247,7 +289,7 @@ function OQueVaiAcontecerSection() {
   ];
 
   return (
-    <section className="section-dark bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
+    <section className="section-dark deferred-section bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="blob-container blob-teal"></div>
       <div className="content-relative max-w-[480px] mx-auto">
         <SectionLabel>O QUE VAI ACONTECER</SectionLabel>
@@ -259,7 +301,13 @@ function OQueVaiAcontecerSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-[0.875rem]">
           {cards.map((card) => (
             <div key={card.title} className="glass-card overflow-hidden flex flex-col">
-              <img src={card.image} alt={card.alt} loading="lazy" className="w-full h-[180px] object-cover rounded-t-[1rem]" />
+              <LandingImage
+                src={card.image}
+                srcSet={card.imageSet}
+                sizes="(max-width: 767px) 100vw, 50vw"
+                alt={card.alt}
+                className="w-full h-[180px] object-cover rounded-t-[1rem]"
+              />
               <div className="p-[1.5rem] flex flex-col gap-4">
                 <h3 className="font-bold text-[0.8rem] tracking-[0.05em] uppercase text-[#F8FAF8]">{card.title}</h3>
                 <p className="font-normal text-[0.8125rem] text-[#A0A89A] leading-[1.6]">{card.desc}</p>
@@ -283,11 +331,11 @@ function SocialProofCard({ data }: any) {
 
   return (
     <div className="glass-card p-[1.5rem] flex flex-col gap-4 mb-6 !bg-[#0A0F0B] !border-[#E2E8F0] shadow-[0_4px_32px_rgba(0,0,0,0.10)] text-[#F8FAF8]">
-        <img src={data.photo} alt={data.name} loading="lazy" style={{ objectPosition: data.photoPosition || "center" }} className="w-full h-[140px] object-cover rounded-[0.625rem] bg-[#E2E8F0]" />
+        <LandingImage src={data.photo} alt={data.name} style={{ objectPosition: data.photoPosition || "center" }} className="w-full h-[140px] object-cover rounded-[0.625rem] bg-[#E2E8F0]" />
       
       <div>
         <h3 className="font-bold text-[1.1rem] text-[#F8FAF8] tracking-[-0.01em]">{data.name}</h3>
-        <span className="font-medium text-[0.65rem] uppercase tracking-[0.12em] text-[#5A6354] block mt-1">{data.clinic}</span>
+        <span className="font-medium text-[0.65rem] uppercase tracking-[0.12em] text-[#7F897A] block mt-1">{data.clinic}</span>
         <div className="flex items-center mt-2">
           <MapPin className="w-3 h-3 text-[#4ADE80] mr-1.5" />
           <span className="font-normal text-[0.75rem] text-[#A0A89A]">{data.location}</span>
@@ -295,9 +343,9 @@ function SocialProofCard({ data }: any) {
       </div>
 
       <div className="mt-2">
-        <span className="font-medium text-[0.6rem] tracking-[0.12em] uppercase text-[#5A6354] block mb-1">Faturamento</span>
+        <span className="font-medium text-[0.6rem] tracking-[0.12em] uppercase text-[#7F897A] block mb-1">Faturamento</span>
         <div className="flex items-center gap-2">
-          <span className="font-normal text-[0.875rem] line-through text-[#5A6354]">{data.revenueBefore}</span>
+          <span className="font-normal text-[0.875rem] line-through text-[#7F897A]">{data.revenueBefore}</span>
           <ArrowRight className="w-4 h-4 text-[#4ADE80]" />
           <span className="font-bold text-[1.5rem] tracking-[-0.02em] text-[#F8FAF8]">{data.revenueAfter}</span>
         </div>
@@ -306,7 +354,7 @@ function SocialProofCard({ data }: any) {
       <div ref={ref} className="bg-[rgba(74,222,128,0.06)] border border-[rgba(74,222,128,0.15)] rounded-[0.625rem] p-4 relative overflow-hidden">
         <span className="font-medium text-[0.6rem] tracking-[0.12em] uppercase text-[#4ADE80] opacity-70 block mb-1">Lucro</span>
         <div className="flex items-center gap-2 mb-2">
-          <span className="font-normal text-[0.85rem] line-through text-[#5A6354]">{data.profitBefore}</span>
+          <span className="font-normal text-[0.85rem] line-through text-[#7F897A]">{data.profitBefore}</span>
           <ArrowRight className="w-4 h-4 text-[#4ADE80]" />
         </div>
         <div className="flex items-center justify-between">
@@ -399,7 +447,7 @@ function UrgenciaSection() {
   const format = (v: number) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(v);
 
   return (
-    <section className="section-dark bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
+    <section className="section-dark deferred-section bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="blob-container blob-green"></div>
       <div className="content-relative max-w-[480px] mx-auto">
         
@@ -451,7 +499,7 @@ function UrgenciaSection() {
           </div>
         </div>
 
-        <p className="text-center italic text-[#5A6354] text-[0.9375rem] mb-12">Dinheiro que não tem reembolso. Não tem aviso. Não volta.</p>
+        <p className="text-center italic text-[#7F897A] text-[0.9375rem] mb-12">Dinheiro que não tem reembolso. Não tem aviso. Não volta.</p>
 
 
         <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-8 text-center">
@@ -478,22 +526,22 @@ function UrgenciaSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
           <div className="glass-card p-4 flex flex-col items-center text-center gap-3">
-            <Calendar className="w-8 h-8 text-[#5A6354]" />
+            <Calendar className="w-8 h-8 text-[#7F897A]" />
             <span className="text-[#F8FAF8] font-medium text-[0.875rem]">com agenda cheia</span>
           </div>
           <div className="glass-card p-4 flex flex-col items-center text-center gap-3">
-            <BarChart3 className="w-8 h-8 text-[#5A6354]" />
+            <BarChart3 className="w-8 h-8 text-[#7F897A]" />
             <span className="text-[#F8FAF8] font-medium text-[0.875rem]">com bom faturamento</span>
           </div>
           <div className="glass-card p-4 flex flex-col items-center text-center gap-3">
-            <User className="w-8 h-8 text-[#5A6354]" />
+            <User className="w-8 h-8 text-[#7F897A]" />
             <span className="text-[#F8FAF8] font-medium text-[0.875rem]">sem construir liberdade nenhuma</span>
           </div>
         </div>
 
-        <p className="text-center italic text-[#5A6354] text-[0.9375rem] mb-10">Até o momento em que o corpo pedir para parar.</p>
+        <p className="text-center italic text-[#7F897A] text-[0.9375rem] mb-10">Até o momento em que o corpo pedir para parar.</p>
 
-        <CtaButton primary={false} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <CtaButton primary={false} onClick={scrollToTop}>
           Quero descobrir quanto estou perdendo por mês
         </CtaButton>
 
@@ -513,7 +561,7 @@ function MetodoSection() {
   ];
 
   return (
-    <section className="section-dark bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
+    <section className="section-dark deferred-section bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="blob-container blob-teal"></div>
       <div className="content-relative max-w-[480px] mx-auto">
         
@@ -523,13 +571,13 @@ function MetodoSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {fases.map((f) => (
             <div key={f.num} className="bg-[rgba(255,255,255,0.025)] border border-[rgba(74,222,128,0.12)] hover:border-[rgba(74,222,128,0.25)] transition-colors rounded-[0.875rem] overflow-hidden flex flex-col">
-              <img src={f.image} alt={f.title} loading="lazy" className="w-full h-[220px] object-cover rounded-t-[0.875rem]" />
+              <LandingImage src={f.image} alt={f.title} className="w-full h-[220px] object-cover rounded-t-[0.875rem]" />
               <div className="p-5 flex flex-col gap-3">
                 <div className="w-9 h-9 rounded-full bg-[rgba(74,222,128,0.12)] border border-[rgba(74,222,128,0.3)] text-[#4ADE80] font-bold text-[0.875rem] flex items-center justify-center">
                   {f.num}
                 </div>
                 <h3 className="font-semibold text-[0.9375rem] text-[#F8FAF8] tracking-[-0.01em]">{f.title}</h3>
-                <p className="font-normal text-[0.8125rem] text-[#A0A89A] leading-[1.6]">{f.desc}</p>
+                <p className="font-normal text-[0.8125rem] text-[#7F897A] leading-[1.6]">{f.desc}</p>
               </div>
             </div>
           ))}
@@ -542,7 +590,7 @@ function MetodoSection() {
 
 function ProdutoSection() {
   return (
-    <section className="bg-[#FFFFFF] w-full py-[clamp(3.5rem,7vw,6rem)] px-[clamp(1rem,5vw,1.5rem)]">
+    <section className="deferred-section bg-[#FFFFFF] w-full py-[clamp(3.5rem,7vw,6rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="max-w-[480px] mx-auto">
         <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#0A0F0B] mb-4 text-center">
           Esse é o Sistema Completo que você vai receber dentro do Protocolo Lucro Oculto!
@@ -552,7 +600,7 @@ function ProdutoSection() {
         </p>
 
         <div className="bg-[#FFFFFF] border border-[rgba(74,222,128,0.25)] rounded-2xl p-6 shadow-[0_4px_32px_rgba(0,0,0,0.05)]">
-           <div className="inline-block px-3 py-1 bg-[rgba(74,222,128,0.1)] border border-[rgba(74,222,128,0.2)] text-[#4ADE80] font-bold text-xs uppercase tracking-wide rounded-full mb-4">
+           <div className="inline-block px-3 py-1 bg-[rgba(21,128,61,0.12)] border border-[rgba(21,128,61,0.2)] text-[#166534] font-bold text-xs uppercase tracking-wide rounded-full mb-4">
              O PROTOCOLO LUCRO OCULTO
            </div>
            <p className="text-[#4A5244] text-[0.9375rem] leading-[1.7]">
@@ -574,7 +622,7 @@ function ConsultoresSection() {
   ];
 
   return (
-    <section className="section-dark bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
+    <section className="section-dark deferred-section bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="blob-container blob-green"></div>
       <div className="content-relative max-w-[480px] mx-auto">
         
@@ -584,17 +632,17 @@ function ConsultoresSection() {
         <h3 className="font-normal text-[1.05rem] text-[#A0A89A] leading-[1.6] mb-4 text-center">
           Você não precisa pensar. Os consultores fazem isso por você.
         </h3>
-        <p className="font-normal text-[0.9375rem] text-[#A0A89A] leading-[1.7] mb-10 text-center">
+        <p className="font-normal text-[0.9375rem] text-[#7F897A] leading-[1.7] mb-10 text-center">
           Dentro do protocolo, você tem acesso a um time de consultores treinados para clínica odontológica:
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {consultores.map((c, i) => (
             <div key={i} className="glass-card p-5 hover:border-[rgba(74,222,128,0.2)] flex flex-col gap-4 text-center">
-               <img src={c.image} alt={c.title} loading="lazy" className="w-20 h-20 rounded-full object-cover mx-auto shadow-[0_0_12px_rgba(0,255,100,0.3)] border border-[rgba(74,222,128,0.3)]" />
+               <LandingImage src={c.image} alt={c.title} className="w-20 h-20 rounded-full object-cover mx-auto shadow-[0_0_12px_rgba(0,255,100,0.3)] border border-[rgba(74,222,128,0.3)]" />
                <div>
                   <h4 className="font-bold text-[0.75rem] tracking-[0.06em] uppercase text-[#F8FAF8] mb-2">{c.title}</h4>
-                  <p className="font-normal text-[0.8125rem] text-[#A0A89A] leading-[1.55]">{c.desc}</p>
+                  <p className="font-normal text-[0.8125rem] text-[#7F897A] leading-[1.55]">{c.desc}</p>
                </div>
             </div>
           ))}
@@ -615,7 +663,7 @@ function BonusSection() {
   ];
 
   return (
-    <section className="bg-[#FFFFFF] w-full py-[clamp(3.5rem,7vw,6rem)] px-[clamp(1rem,5vw,1.5rem)]">
+    <section className="deferred-section bg-[#FFFFFF] w-full py-[clamp(3.5rem,7vw,6rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="max-w-[480px] mx-auto">
         <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#0A0F0B] mb-10 text-center">
           E para garantir que você tenha resultado ainda mais rápido… você também recebe isso:
@@ -624,7 +672,7 @@ function BonusSection() {
         <div className="flex flex-col gap-4">
            {bonus.map((b, i) => (
              <div key={i} className="bg-[#080C09] border border-[rgba(0,0,0,0.08)] rounded-2xl overflow-hidden shadow-md text-left">
-                <img src={b.image} alt={b.title} loading="lazy" className="w-full h-[200px] object-cover rounded-t-2xl" />
+                <LandingImage src={b.image} alt={b.title} className="w-full h-[200px] object-cover rounded-t-2xl" />
                 <div className="p-6">
                   <span className="inline-block bg-[rgba(74,222,128,0.1)] border border-[rgba(74,222,128,0.2)] text-[#4ADE80] font-semibold text-[0.65rem] tracking-[0.1em] uppercase px-2.5 py-1 rounded-full mb-3">
                     {b.num}
@@ -655,7 +703,7 @@ function StackValorSection() {
   ];
 
   return (
-    <section className="section-dark bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
+    <section className="section-dark deferred-section bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="blob-container blob-gold"></div>
       <div className="content-relative max-w-[480px] mx-auto">
         
@@ -678,8 +726,8 @@ function StackValorSection() {
               <tbody>
                 {stack.map((s, i) => (
                   <tr key={i} className="border-b border-[rgba(255,255,255,0.05)]">
-                    <td data-label="Item" className="p-3.5 px-4 font-normal text-[0.875rem] text-[#F8FAF8]">{s.item}</td>
-                    <td data-label="Valor" className="p-3.5 px-4 font-normal text-[0.875rem] text-[#A0A89A] line-through sm:text-right">{s.val}</td>
+                    <td data-label="Item" className="p-3.5 px-4 font-normal text-[0.875rem] text-[#A0A89A]">{s.item}</td>
+                    <td data-label="Valor" className="p-3.5 px-4 font-normal text-[0.875rem] text-[#7F897A] line-through sm:text-right">{s.val}</td>
                   </tr>
                 ))}
                 <tr className="bg-[rgba(212,168,67,0.08)] border-t border-[rgba(212,168,67,0.25)]">
@@ -692,15 +740,15 @@ function StackValorSection() {
         </div>
 
         <div className="text-center mb-10">
-          <p className="font-light italic text-[1.05rem] text-[#5A6354] mb-2">Mas você não vai pagar isso.</p>
+          <p className="font-light italic text-[1.05rem] text-[#7F897A] mb-2">"Mas você não vai pagar isso."</p>
           <div className="w-16 h-px bg-[rgba(74,222,128,0.3)] mx-auto my-3"></div>
-          <p className="font-light italic text-[1.05rem] text-[#5A6354] mb-8">Nem perto disso.</p>
+          <p className="font-light italic text-[1.05rem] text-[#7F897A] mb-8">"Nem perto disso."</p>
           
           <div className="mb-6">
             <span className="font-[800] text-[clamp(2.75rem,11vw,4rem)] leading-none tracking-[-0.035em] text-[#4ADE80] drop-shadow-[0_0_16px_rgba(74,222,128,0.45)]">
               R$597,00
             </span>
-            <div className="font-normal text-[0.9375rem] text-[#5A6354] mt-2">em até 12 vezes</div>
+            <div className="font-normal text-[0.9375rem] text-[#7F897A] mt-2">em até 12 vezes</div>
           </div>
           
           <p className="font-normal text-[0.9375rem] text-[#A0A89A] leading-[1.6]">
@@ -708,7 +756,7 @@ function StackValorSection() {
           </p>
         </div>
 
-        <CtaButton onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <CtaButton onClick={scrollToTop}>
           QUERO APROVEITAR O CUPOM DESCONTO ADICIONAL!
         </CtaButton>
 
@@ -719,11 +767,11 @@ function StackValorSection() {
 
 function GarantiaSection() {
   return (
-    <section className="section-dark bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
+    <section className="section-dark deferred-section bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="blob-container blob-green"></div>
       <div className="content-relative max-w-[480px] mx-auto text-center flex flex-col items-center">
         
-        <img src={img("/guarantee-seal.svg")} alt="Selo de Garantia 7 Dias" loading="lazy" className="w-[160px] h-[160px] mb-10" />
+        <LandingImage src={img("/guarantee-seal.svg")} alt="Selo de Garantia 7 Dias" className="w-[160px] h-[160px] mb-10" />
 
         <h2 className="font-bold text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.12] tracking-[-0.025em] text-[#F8FAF8] mb-8">
           Teste o Protocolo na sua clínica… sem risco nenhum
@@ -745,7 +793,7 @@ function GarantiaSection() {
 
 function UrgenciaFinalSection() {
   return (
-    <section className="section-dark bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
+    <section className="section-dark deferred-section bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="blob-container blob-teal"></div>
       <div className="content-relative max-w-[480px] mx-auto text-center">
         
@@ -757,7 +805,7 @@ function UrgenciaFinalSection() {
           Não é sobre comprar agora. É sobre pegar de volta o Lucro que já tá no seu consultório te esperando.
         </p>
 
-        <CtaButton onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <CtaButton onClick={scrollToTop}>
           GARANTIR MINHA VAGA AGORA!
         </CtaButton>
 
@@ -779,24 +827,15 @@ function FaqSection() {
   ];
 
   return (
-    <section className="bg-[#FFFFFF] w-full py-[clamp(3.5rem,7vw,6rem)] px-[clamp(1rem,5vw,1.5rem)]">
+    <section className="deferred-section bg-[#FFFFFF] w-full py-[clamp(3.5rem,7vw,6rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="max-w-[480px] mx-auto">
         <p className="font-normal text-[1.05rem] text-[#4A5244] leading-[1.7] mb-8 text-center">
           Se você ainda está com alguma dúvida, aqui estão as respostas mais diretas:
         </p>
 
-        <Accordion type="single" collapsible className="w-full space-y-4">
-          {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border border-[rgba(0,0,0,0.08)] rounded-lg px-4 bg-[#FAFAFA]">
-              <AccordionTrigger className="text-left font-semibold text-[0.9375rem] text-[#0A0F0B] hover:no-underline py-4 data-[state=open]:text-[#4ADE80] transition-colors">
-                {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="font-normal text-[0.9375rem] text-[#4A5244] leading-[1.65] pb-4">
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <div className="space-y-4">
+          {faqs.map((faq, i) => <FaqItem key={i} question={faq.q} answer={faq.a} />)}
+        </div>
       </div>
     </section>
   );
@@ -804,11 +843,11 @@ function FaqSection() {
 
 function DecisaoFinalSection() {
   return (
-    <section className="section-dark bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
+    <section className="section-dark deferred-section bg-[#080C09] w-full py-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="blob-container blob-green"></div>
       <div className="content-relative max-w-[480px] mx-auto">
         
-        <p className="font-normal text-[1.05rem] text-[#5A6354] leading-[1.7] mb-6 text-center">
+        <p className="font-normal text-[1.05rem] text-[#7F897A] leading-[1.7] mb-6 text-center">
           A decisão agora é simples.
         </p>
 
@@ -820,10 +859,10 @@ function DecisaoFinalSection() {
               <X className="w-5 h-5 text-[#F87171]" /> Fechar essa página
             </div>
             <ul className="p-0 m-0 list-none">
-              <li className="p-4 border-b border-[rgba(255,255,255,0.05)] text-[#5A6354] text-[0.875rem] leading-[1.6]">Continuar com a agenda cheia sem entender para onde o dinheiro está indo</li>
-              <li className="p-4 border-b border-[rgba(255,255,255,0.05)] text-[#5A6354] text-[0.875rem] leading-[1.6]">Seguir trabalhando o mês inteiro… e torcer para sobrar algo no final</li>
-              <li className="p-4 border-b border-[rgba(255,255,255,0.05)] text-[#5A6354] text-[0.875rem] leading-[1.6]">Acreditar que o problema é falta de paciente e continuar tentando resolver do jeito errado</li>
-              <li className="p-4 text-[#5A6354] text-[0.875rem] leading-[1.6]">E daqui a alguns meses… perceber que nada mudou</li>
+              <li className="p-4 border-b border-[rgba(255,255,255,0.05)] text-[#7F897A] text-[0.875rem] leading-[1.6]">Continuar com a agenda cheia sem entender para onde o dinheiro está indo</li>
+              <li className="p-4 border-b border-[rgba(255,255,255,0.05)] text-[#7F897A] text-[0.875rem] leading-[1.6]">Seguir trabalhando o mês inteiro… e torcer para sobrar algo no final</li>
+              <li className="p-4 border-b border-[rgba(255,255,255,0.05)] text-[#7F897A] text-[0.875rem] leading-[1.6]">Acreditar que o problema é falta de paciente e continuar tentando resolver do jeito errado</li>
+              <li className="p-4 text-[#7F897A] text-[0.875rem] leading-[1.6]">E daqui a alguns meses… perceber que nada mudou</li>
             </ul>
           </div>
 
@@ -845,7 +884,7 @@ function DecisaoFinalSection() {
           Você não precisa de mais pacientes. Precisa enxergar o número que decide o seu lucro.
         </p>
 
-        <CtaButton onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <CtaButton onClick={scrollToTop}>
           QUERO DOBRAR O LUCRO DA MINHA CLÍNICA EM 90 DIAS!
         </CtaButton>
 
@@ -858,7 +897,7 @@ function DecisaoFinalSection() {
 
 function LandingPage() {
   return (
-    <div className="bg-[#080C09] min-h-screen text-[#F8FAF8] font-sans selection:bg-[#4ADE80] selection:text-[#080C09] overflow-x-hidden">
+    <main id="main-content" className="bg-[#080C09] min-h-screen text-[#F8FAF8] font-sans selection:bg-[#4ADE80] selection:text-[#080C09] overflow-x-hidden">
       <HeroSection />
       <PosVslSection />
       <OQueVaiAcontecerSection />
@@ -873,35 +912,16 @@ function LandingPage() {
       <UrgenciaFinalSection />
       <FaqSection />
       <DecisaoFinalSection />
-      
       <StickyFooter />
-    </div>
+    </main>
   );
 }
 
 
 // --- App Setup ---
 
-function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={LandingPage} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
-
 function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <Router />
-        </WouterRouter>
-        <Toaster />
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
+  return <LandingPage />;
 }
 
 export default App;
