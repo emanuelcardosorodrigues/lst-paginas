@@ -1,31 +1,51 @@
-# Cloudflare cache headers
+# Cloudflare cache headers - Optimized for 100 Performance
 
 # ── dpl-pv01 ─────────────────────────────────────────────
-# Hashed assets (JS/CSS/fonts with content hash) — immutable 1 year
+# Hashed assets (JS/CSS with content hash) — immutable 1 year
 /dpl-pv01/assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Images — 30 days
+# Images — 1 year with stale-while-revalidate
 /dpl-pv01/images/*
-  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, stale-while-revalidate=86400
 
-# HTML — no cache (always fresh for ad tracking pixels)
+# Fonts — 1 year with stale-while-revalidate
+/dpl-pv01/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/dpl-pv01/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML — short cache for tracking pixels
 /dpl-pv01/
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=300, s-maxage=600, stale-while-revalidate=60
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
 
+# robots.txt
+/dpl-pv01/robots.txt
+  Cache-Control: public, max-age=86400, s-maxage=86400, stale-while-revalidate=3600
+
 # ── plo-pv01 ─────────────────────────────────────────────
-# Hashed assets (JS/CSS/fonts with content hash) — immutable 1 year
+# Hashed assets (JS/CSS with content hash) — immutable 1 year
 /plo-pv01/assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Images — 30 days
+# Images — 1 year with stale-while-revalidate
 /plo-pv01/images/*
-  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, stale-while-revalidate=86400
 
-# HTML — no cache (always fresh for ad tracking pixels)
+# Fonts — 1 year with stale-while-revalidate
+/plo-pv01/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/plo-pv01/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML — short cache for tracking pixels
 /plo-pv01/
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=300, s-maxage=600, stale-while-revalidate=60
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
+
+# robots.txt
+/plo-pv01/robots.txt
+  Cache-Control: public, max-age=86400, s-maxage=86400, stale-while-revalidate=3600

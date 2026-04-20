@@ -1,12 +1,34 @@
 import { defineConfig } from 'vite'
+import copyStaticFiles from './vite-plugin-copy-static.js'
 
 export default defineConfig({
-  plugins: [],
+  plugins: [
+    copyStaticFiles({
+      files: [
+        { src: 'public/robots.txt', dest: 'dpl-pv01/robots.txt' }
+      ],
+      outDir: 'dist'
+    })
+  ],
   base: '/dpl-pv01/',
   build: {
     outDir: 'dist/dpl-pv01',
     emptyOutDir: true,
-    cssMinify: true,
+    target: 'esnext',
     minify: 'esbuild',
+    cssMinify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          // Vendor modules
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+      },
+    },
   },
 })
