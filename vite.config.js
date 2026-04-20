@@ -17,7 +17,11 @@ export default defineConfig({
     target: 'esnext',
     minify: 'esbuild',
     cssMinify: true,
+    cssCodeSplit: true,
     rollupOptions: {
+      input: {
+        main: './src/main-entry.js',
+      },
       output: {
         manualChunks: (id) => {
           // Vendor modules
