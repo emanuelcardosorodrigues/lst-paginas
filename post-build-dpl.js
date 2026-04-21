@@ -58,3 +58,35 @@ fs.writeFileSync(htmlPath, html, 'utf-8')
 
 console.log('✅ HTML otimizado com async CSS loading!')
 console.log(`📁 Arquivo: ${htmlPath}`)
+
+// Copiar script de third-party
+const thirdPartyScript = path.join(process.cwd(), 'public', 'dpl-pv01', 'third-party.js')
+const destThirdParty = path.join(process.cwd(), 'dist', 'dpl-pv01', 'third-party.js')
+
+if (fs.existsSync(thirdPartyScript)) {
+  fs.copyFileSync(thirdPartyScript, destThirdParty)
+  console.log('✓ Copiado third-party.js para dist/dpl-pv01/')
+} else {
+  console.log('⚠️  Arquivo third-party.js não encontrado em public/dpl-pv01/')
+}
+
+// Copiar imagens otimizadas
+const optimizedImagesDir = path.join(process.cwd(), 'public', 'images', 'optimized')
+const destOptimizedDir = path.join(process.cwd(), 'dist', 'dpl-pv01', 'images', 'optimized')
+
+if (fs.existsSync(optimizedImagesDir)) {
+  if (!fs.existsSync(destOptimizedDir)) {
+    fs.mkdirSync(destOptimizedDir, { recursive: true })
+  }
+
+  const files = fs.readdirSync(optimizedImagesDir)
+  files.forEach(file => {
+    fs.copyFileSync(
+      path.join(optimizedImagesDir, file),
+      path.join(destOptimizedDir, file)
+    )
+  })
+  console.log(`✓ Copiadas ${files.length} imagens otimizadas`)
+} else {
+  console.log('⚠️  Diretório de imagens otimizadas não encontrado em public/images/optimized/')
+}

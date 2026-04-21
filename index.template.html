@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Google Tag Manager - TOP PRIORITY FOR AD PERFORMANCE -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://ts.leandrostecca.com.br/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MCZKSV8N');</script>
-  <!-- End Google Tag Manager -->
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#061a3d" />
@@ -34,22 +26,35 @@
   <meta name="twitter:description" content="A calculadora que mostra - em minutos - quanto pagar ao dentista parceiro — e sair do mocho." />
   <meta name="twitter:image" content="https://cf.leandrostecca.com.br/dpl-pv01/images/hero-bundle.webp" />
 
-  <!-- Preload LCP image with fetchpriority -->
-  <link rel="preload" as="image" href="/dpl-pv01/images/hero-bundle.webp" fetchpriority="high" />
-
-  <!-- DNS prefetch and preconnect for performance -->
+  <!-- Preconnect para origens de terceiros -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <link rel="preconnect" href="https://connect.facebook.net">
+  <link rel="preconnect" href="https://www.facebook.com">
+  <link rel="preconnect" href="https://www.clarity.ms">
+  <link rel="preconnect" href="https://c.clarity.ms">
   <link rel="dns-prefetch" href="https://pay.hotmart.com" />
-  <link rel="dns-prefetch" href="https://ts.leandrostecca.com.br" />
   <link rel="preconnect" href="https://ts.leandrostecca.com.br" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
-  <link rel="preconnect" href="https://www.facebook.com" crossorigin />
+
+  <!-- Preload LCP image with fetchpriority -->
+  <link rel="preload" as="image" href="/dpl-pv01/images/optimized/hero-bundle-desktop.webp" fetchpriority="high" />
 
   <!-- Non-blocking Google Fonts -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" /></noscript>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.onload=null;this.media='all'"
+  >
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    >
+  </noscript>
 
   <link rel="icon" type="image/webp" href="/dpl-pv01/images/logo-ls.webp" />
 
@@ -62,13 +67,14 @@
 
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://ts.leandrostecca.com.br/ns.html?id=GTM-MCZKSV8N"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
   <!-- CONTENT_PLACEHOLDER -->
-  
+
   <script type="module" src="/src/main-entry.js"></script>
+
+  <!-- Scripts de terceiros (carregamento lazy) -->
+  <script src="/dpl-pv01/third-party.js" defer></script>
+
+  <!-- Cloudflare Analytics (mantido pois não bloqueia) -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" data-cfasync="false"></script>
 </body>
 </html>

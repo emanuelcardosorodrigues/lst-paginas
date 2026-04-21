@@ -1,31 +1,28 @@
-# Cloudflare cache headers - Optimized for 100 Performance
+# Cache headers para DPL-PV01
 
-# ── dpl-pv01 ─────────────────────────────────────────────
-# Hashed assets (JS/CSS with content hash) — immutable 1 year
+# HTML - curto cache para permitir atualizações rápidas
+/dpl-pv01/
+  Cache-Control: public, max-age=0, must-revalidate, s-maxage=60
+  X-Content-Type-Options: nosniff
+
+# Recursos estáticos - cache longo imutável
+/dpl-pv01/images/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
 /dpl-pv01/assets/*
   Cache-Control: public, max-age=31536000, immutable
-
-# Images — 1 year with stale-while-revalidate
-/dpl-pv01/images/*
-  Cache-Control: public, max-age=31536000, stale-while-revalidate=86400
-
-# Fonts — 1 year with stale-while-revalidate
-/dpl-pv01/*.woff2
-  Cache-Control: public, max-age=31536000, immutable
-/dpl-pv01/*.woff
-  Cache-Control: public, max-age=31536000, immutable
-
-# HTML — short cache for tracking pixels
-/dpl-pv01/
-  Cache-Control: public, max-age=300, s-maxage=600, stale-while-revalidate=60
   X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
 
-# robots.txt
-/dpl-pv01/robots.txt
-  Cache-Control: public, max-age=86400, s-maxage=86400, stale-while-revalidate=3600
+/dpl-pv01/third-party.js
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+  X-Content-Type-Options: nosniff
 
-# ── plo-pv01 ─────────────────────────────────────────────
+# Fonts - cache longo
+/dpl-pv01/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ── plo-pv01 (mantido para compatibilidade) ─────────────────
 # Hashed assets (JS/CSS with content hash) — immutable 1 year
 /plo-pv01/assets/*
   Cache-Control: public, max-age=31536000, immutable
@@ -33,12 +30,6 @@
 # Images — 1 year with stale-while-revalidate
 /plo-pv01/images/*
   Cache-Control: public, max-age=31536000, stale-while-revalidate=86400
-
-# Fonts — 1 year with stale-while-revalidate
-/plo-pv01/*.woff2
-  Cache-Control: public, max-age=31536000, immutable
-/plo-pv01/*.woff
-  Cache-Control: public, max-age=31536000, immutable
 
 # HTML — short cache for tracking pixels
 /plo-pv01/

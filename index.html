@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Google Tag Manager - TOP PRIORITY FOR AD PERFORMANCE -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://ts.leandrostecca.com.br/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MCZKSV8N');</script>
-  <!-- End Google Tag Manager -->
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#061a3d" />
@@ -34,19 +26,35 @@
   <meta name="twitter:description" content="A calculadora que mostra - em minutos - quanto pagar ao dentista parceiro — e sair do mocho." />
   <meta name="twitter:image" content="https://cf.leandrostecca.com.br/dpl-pv01/images/hero-bundle.webp" />
 
-  <!-- Preload LCP image with fetchpriority -->
-  <link rel="preload" as="image" href="/dpl-pv01/images/hero-bundle.webp" fetchpriority="high" />
-
-  <!-- DNS prefetch and preconnect for performance - limited to critical resources -->
+  <!-- Preconnect para origens de terceiros -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <link rel="preconnect" href="https://connect.facebook.net">
+  <link rel="preconnect" href="https://www.facebook.com">
+  <link rel="preconnect" href="https://www.clarity.ms">
+  <link rel="preconnect" href="https://c.clarity.ms">
   <link rel="dns-prefetch" href="https://pay.hotmart.com" />
-  <link rel="dns-prefetch" href="https://ts.leandrostecca.com.br" />
+  <link rel="preconnect" href="https://ts.leandrostecca.com.br" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
+  <!-- Preload LCP image with fetchpriority -->
+  <link rel="preload" as="image" href="/dpl-pv01/images/optimized/hero-bundle-desktop.webp" fetchpriority="high" />
+
   <!-- Non-blocking Google Fonts with font-display:swap for CLS -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" /></noscript>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.onload=null;this.media='all'"
+  >
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    >
+  </noscript>
 
   <link rel="icon" type="image/webp" href="/dpl-pv01/images/logo-ls.webp" />
 
@@ -59,10 +67,6 @@
 
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://ts.leandrostecca.com.br/ns.html?id=GTM-MCZKSV8N"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
   <!-- ============================================================
        1. HERO
@@ -78,7 +82,23 @@
         Descubra muito mais do que o preço certo. Aplique a estratégia de remuneração lucrativa — para os dois — e se proteja judicialmente.
       </p>
       <div class="hero__bundle">
-        <img src="/dpl-pv01/images/hero-bundle.webp" alt="Protocolo do Dentista Parceiro Lucrativo — todos os materiais incluídos" loading="eager" fetchpriority="high" width="860" height="520" />
+        <picture>
+          <source
+            srcset="/dpl-pv01/images/optimized/hero-bundle-mobile.webp 665w,
+                    /dpl-pv01/images/optimized/hero-bundle-desktop.webp 860w,
+                    /dpl-pv01/images/optimized/hero-bundle-large.webp 1200w"
+            sizes="(max-width: 665px) 100vw, (max-width: 860px) 100vw, 860px"
+            type="image/webp"
+          >
+          <img
+            src="/dpl-pv01/images/optimized/hero-bundle-desktop.webp"
+            alt="Protocolo do Dentista Parceiro Lucrativo — todos os materiais incluídos"
+            loading="eager"
+            fetchpriority="high"
+            width="860"
+            height="520"
+          >
+        </picture>
       </div>
     </div>
   </section>
@@ -93,7 +113,23 @@
 
         <div class="testimonial-card">
           <a href="https://drive.google.com/file/d/1NGViICuVNWAaITTey1Jdl6x4HAS-6iRu/view" target="_blank" rel="noopener" class="video-thumb" aria-label="Assistir depoimento da Dra. Maria Midori">
-            <img src="/dpl-pv01/images/proof-midori.webp" alt="Dra. Maria Midori" loading="lazy" class="video-thumb__img" width="800" height="448" />
+            <picture>
+              <source
+                srcset="/dpl-pv01/images/optimized/proof-midori-mobile.webp 200w,
+                        /dpl-pv01/images/optimized/proof-midori-desktop.webp 400w"
+                sizes="(max-width: 400px) 50vw, 400px"
+                type="image/webp"
+              >
+              <img
+                src="/dpl-pv01/images/optimized/proof-midori-desktop.webp"
+                alt="Dra. Maria Midori"
+                loading="lazy"
+                class="video-thumb__img"
+                width="400"
+                height="400"
+                decoding="async"
+              >
+            </picture>
             <div class="video-thumb__overlay">
               <div class="play-btn" aria-hidden="true">&#9654;</div>
             </div>
@@ -106,7 +142,23 @@
 
         <div class="testimonial-card">
           <a href="https://drive.google.com/file/d/1XmOxo0_tv-63kKyCc7fGIfYFWCWz4U2M/view" target="_blank" rel="noopener" class="video-thumb" aria-label="Assistir depoimento do Dr. Otávio Fartes">
-            <img src="/dpl-pv01/images/proof-otavio.webp" alt="Dr. Otávio Fartes" loading="lazy" class="video-thumb__img" width="800" height="448" />
+            <picture>
+              <source
+                srcset="/dpl-pv01/images/optimized/proof-otavio-mobile.webp 200w,
+                        /dpl-pv01/images/optimized/proof-otavio-desktop.webp 400w"
+                sizes="(max-width: 400px) 50vw, 400px"
+                type="image/webp"
+              >
+              <img
+                src="/dpl-pv01/images/optimized/proof-otavio-desktop.webp"
+                alt="Dr. Otávio Fartes"
+                loading="lazy"
+                class="video-thumb__img"
+                width="400"
+                height="400"
+                decoding="async"
+              >
+            </picture>
             <div class="video-thumb__overlay">
               <div class="play-btn" aria-hidden="true">&#9654;</div>
             </div>
@@ -133,15 +185,63 @@
         <h3 class="showroom__group-title">O Básico bem estruturado</h3>
         <div class="mockup-grid">
           <div class="mockup-card">
-            <img src="/dpl-pv01/images/showroom-g1-1.webp" alt="Custo real por procedimento" loading="lazy" class="mockup-card__img" width="529" height="302" />
+            <picture>
+              <source
+                srcset="/dpl-pv01/images/optimized/showroom-g1-1-mobile.webp 320w,
+                        /dpl-pv01/images/optimized/showroom-g1-1-desktop.webp 620w"
+                sizes="(max-width: 620px) 100vw, 620px"
+                type="image/webp"
+              >
+              <img
+                src="/dpl-pv01/images/optimized/showroom-g1-1-desktop.webp"
+                alt="Custo real por procedimento"
+                loading="lazy"
+                class="mockup-card__img"
+                width="620"
+                height="354"
+                decoding="async"
+              >
+            </picture>
             <p class="mockup-card__label"><strong>Custo real por procedimento</strong> — ZERO surpresas ao fim do mês!</p>
           </div>
           <div class="mockup-card">
-            <img src="/dpl-pv01/images/showroom-g1-2.webp" alt="Lucro ou Prejuízo do parceiro" loading="lazy" class="mockup-card__img" width="620" height="354" />
+            <picture>
+              <source
+                srcset="/dpl-pv01/images/optimized/showroom-g1-2-mobile.webp 320w,
+                        /dpl-pv01/images/optimized/showroom-g1-2-desktop.webp 620w"
+                sizes="(max-width: 620px) 100vw, 620px"
+                type="image/webp"
+              >
+              <img
+                src="/dpl-pv01/images/optimized/showroom-g1-2-desktop.webp"
+                alt="Lucro ou Prejuízo do parceiro"
+                loading="lazy"
+                class="mockup-card__img"
+                width="620"
+                height="354"
+                decoding="async"
+              >
+            </picture>
             <p class="mockup-card__label"><strong>Lucro ou Prejuízo daquele procedimento do Parceiro</strong> — Estruture tudo dentro da sua precificação</p>
           </div>
           <div class="mockup-card">
-            <img src="/dpl-pv01/images/showroom-g1-3.webp" alt="Valor da sua Hora Clínica" loading="lazy" class="mockup-card__img" width="605" height="364" />
+            <picture>
+              <source
+                srcset="/dpl-pv01/images/optimized/showroom-g1-3-mobile.webp 320w,
+                        /dpl-pv01/images/optimized/showroom-g1-3-desktop.webp 605w"
+                sizes="(max-width: 605px) 100vw, 605px"
+                type="image/webp"
+              >
+              <img
+                src="/dpl-pv01/images/optimized/showroom-g1-3-desktop.webp"
+                alt="Valor da sua Hora Clínica"
+                loading="lazy"
+                class="mockup-card__img"
+                width="605"
+                height="364"
+                decoding="async"
+              >
+            </picture>
             <p class="mockup-card__label"><strong>Valor da sua Hora Clínica</strong> — O seu devido valor RESGUARDADO desde o preço.</p>
           </div>
         </div>
@@ -151,15 +251,63 @@
         <h3 class="showroom__group-title">Todos os Custos Mapeados</h3>
         <div class="mockup-grid">
           <div class="mockup-card">
-            <img src="/dpl-pv01/images/showroom-g2-1.webp" alt="Remuneração Correta sem Risco Jurídico" loading="lazy" class="mockup-card__img" width="225" height="364" />
+            <picture>
+              <source
+                srcset="/dpl-pv01/images/optimized/showroom-g2-1-mobile.webp 225w,
+                        /dpl-pv01/images/optimized/showroom-g2-1-desktop.webp 320w"
+                sizes="(max-width: 320px) 100vw, 320px"
+                type="image/webp"
+              >
+              <img
+                src="/dpl-pv01/images/optimized/showroom-g2-1-desktop.webp"
+                alt="Remuneração Correta sem Risco Jurídico"
+                loading="lazy"
+                class="mockup-card__img"
+                width="320"
+                height="517"
+                decoding="async"
+              >
+            </picture>
             <p class="mockup-card__label"><strong>Remuneração Correta sem Risco Jurídico</strong> — Tudo organizado para você pagar só o que precisa.</p>
           </div>
           <div class="mockup-card">
-            <img src="/dpl-pv01/images/showroom-g2-2.webp" alt="Margem de Negociação Lucrativa" loading="lazy" class="mockup-card__img" width="620" height="354" />
+            <picture>
+              <source
+                srcset="/dpl-pv01/images/optimized/showroom-g2-2-mobile.webp 320w,
+                        /dpl-pv01/images/optimized/showroom-g2-2-desktop.webp 620w"
+                sizes="(max-width: 620px) 100vw, 620px"
+                type="image/webp"
+              >
+              <img
+                src="/dpl-pv01/images/optimized/showroom-g2-2-desktop.webp"
+                alt="Margem de Negociação Lucrativa"
+                loading="lazy"
+                class="mockup-card__img"
+                width="620"
+                height="354"
+                decoding="async"
+              >
+            </picture>
             <p class="mockup-card__label"><strong>Margem de negociação Lucrativa</strong> — O valor máximo de desconto para você ter lucro de verdade e ainda fazer o cliente feliz.</p>
           </div>
           <div class="mockup-card">
-            <img src="/dpl-pv01/images/showroom-g2-3.webp" alt="Reinvestimento" loading="lazy" class="mockup-card__img" width="620" height="354" />
+            <picture>
+              <source
+                srcset="/dpl-pv01/images/optimized/showroom-g2-3-mobile.webp 320w,
+                        /dpl-pv01/images/optimized/showroom-g2-3-desktop.webp 620w"
+                sizes="(max-width: 620px) 100vw, 620px"
+                type="image/webp"
+              >
+              <img
+                src="/dpl-pv01/images/optimized/showroom-g2-3-desktop.webp"
+                alt="Reinvestimento"
+                loading="lazy"
+                class="mockup-card__img"
+                width="620"
+                height="354"
+                decoding="async"
+              >
+            </picture>
             <p class="mockup-card__label"><strong>Reinvestimento</strong> — O crescimento do seu consultório estruturado desde a precificação</p>
           </div>
         </div>
@@ -169,11 +317,43 @@
         <h3 class="showroom__group-title">Os Valores Certos Para Você Lucrar!</h3>
         <div class="mockup-grid">
           <div class="mockup-card">
-            <img src="/dpl-pv01/images/showroom-g3-1.webp" alt="Projeção de Lucro" loading="lazy" class="mockup-card__img" width="529" height="364" />
+            <picture>
+              <source
+                srcset="/dpl-pv01/images/optimized/showroom-g3-1-mobile.webp 529w,
+                        /dpl-pv01/images/optimized/showroom-g3-1-desktop.webp 620w"
+                sizes="(max-width: 620px) 100vw, 620px"
+                type="image/webp"
+              >
+              <img
+                src="/dpl-pv01/images/optimized/showroom-g3-1-desktop.webp"
+                alt="Projeção de Lucro"
+                loading="lazy"
+                class="mockup-card__img"
+                width="620"
+                height="427"
+                decoding="async"
+              >
+            </picture>
             <p class="mockup-card__label"><strong>Projeção de Lucro</strong> — Seu lucro protegido e projetado para garantir máxima liberdade</p>
           </div>
           <div class="mockup-card">
-            <img src="/dpl-pv01/images/showroom-g3-2.webp" alt="Valor Mínimo" loading="lazy" class="mockup-card__img" width="204" height="364" />
+            <picture>
+              <source
+                srcset="/dpl-pv01/images/optimized/showroom-g3-2-mobile.webp 204w,
+                        /dpl-pv01/images/optimized/showroom-g3-2-desktop.webp 320w"
+                sizes="(max-width: 320px) 100vw, 320px"
+                type="image/webp"
+              >
+              <img
+                src="/dpl-pv01/images/optimized/showroom-g3-2-desktop.webp"
+                alt="Valor Mínimo"
+                loading="lazy"
+                class="mockup-card__img"
+                width="320"
+                height="571"
+                decoding="async"
+              >
+            </picture>
             <p class="mockup-card__label"><strong>Valor Mínimo</strong> — Qual o valor mínimo a ser cobrado para ainda ter lucro</p>
           </div>
           <div class="mockup-card">
@@ -946,5 +1126,11 @@
   </footer>
 
   <script type="module" src="/src/main.js"></script>
+
+  <!-- Scripts de terceiros (carregamento lazy) -->
+  <script src="/dpl-pv01/third-party.js" defer></script>
+
+  <!-- Cloudflare Analytics (mantido pois não bloqueia) -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" data-cfasync="false"></script>
 </body>
 </html>

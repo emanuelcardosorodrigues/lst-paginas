@@ -7,10 +7,22 @@
     "build": "vite build && node post-build-dpl.js && npm run build:plo && cp public/_headers dist/_headers",
     "build:dpl": "vite build && node post-build-dpl.js",
     "build:plo": "npm install --prefix plo-pv01 && npm run build --prefix plo-pv01",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:performance": "node scripts/pre-commit-check.js",
+    "monitor:third-party": "node scripts/monitor-third-party.js",
+    "monitor:wpt": "node scripts/webpagetest-monitor.js",
+    "warm:cache": "node scripts/warm-cache.js",
+    "test:lighthouse": "lhci autorun --collect.url=https://cf.leandrostecca.com.br/dpl-pv01/",
+    "deploy:warm": "npm run build && wrangler pages deploy dist --project-name=protocolo-dpl && sleep 30 && npm run warm:cache"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.15.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "node-fetch": "^3.3.2",
+    "sharp": "^0.34.5",
     "vite": "^6.4.2",
+    "webpagetest": "^0.7.6",
     "wrangler": "^4.83.0"
   }
 }
