@@ -22,15 +22,6 @@ export const Pricing = () => {
           transition={{ duration: 0.8 }}
           className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl backdrop-blur-sm relative"
         >
-          {/* Bundle image */}
-          <div className="flex justify-center mb-10">
-            <img
-              src={img("pricing-bundle.webp")}
-              alt="Tudo que você recebe"
-              className="w-full max-w-[560px] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
-            />
-          </div>
-
           <div className="space-y-4 mb-8">
             {[
               { name: "Calculadora do Dentista Parceiro Lucrativo", price: "R$ 197,00" },
@@ -61,7 +52,15 @@ export const Pricing = () => {
           {/* Premium Pricing Card */}
           <div className="bg-[#0A1428] rounded-2xl border border-[#00A88E]/50 p-8 shadow-[0_0_50px_rgba(0,168,142,0.15)] text-center relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00A88E] to-transparent"></div>
-            
+
+            <div className="flex justify-center mb-8 -mx-8 -mt-8">
+              <img
+                src={img("pricing-bundle.webp")}
+                alt="Tudo que você recebe"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
             <div className="text-[#64748B] font-medium mb-2 line-through">De R$ 935,00</div>
             <div className="text-[clamp(2.5rem,5vw,3.5rem)] font-[800] text-white tracking-tighter leading-none mb-3">
               <span className="text-2xl text-[#00A88E] font-bold tracking-normal align-top mr-2">Por: 9x de</span>
