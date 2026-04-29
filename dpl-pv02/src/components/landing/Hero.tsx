@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import heroBundle from "@assets/hero-bundle_(2)_1777342976622.webp";
+import { img } from "@/lib/imgPath";
 
 export const Hero = () => {
   return (
@@ -7,52 +6,23 @@ export const Hero = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-[radial-gradient(circle_at_center,rgba(0,168,142,0.08)_0%,transparent_60%)] -z-10" />
 
       <div className="container mx-auto px-6 max-w-[980px] relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col items-center text-center"
-        >
+        <div className="flex flex-col items-center text-center">
           <h1 className="text-[clamp(2rem,5vw,3.75rem)] leading-[1.1] font-[800] tracking-[-0.02em] text-[#0F172A] mb-10 max-w-[920px]">
             A Calculadora simples para ter <span className="text-[#00A88E]">Lucro</span> com dentista parceiro — em <span className="text-[#00A88E]">10 minutos</span>
           </h1>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mb-12"
-        >
+        <div className="relative mb-12">
           <img
-            src={heroBundle}
+            src={img("hero-bundle.webp")}
             alt="Bundle do Protocolo Dentista Parceiro Lucrativo: calculadora, masterclass, vídeos e bônus"
             className="w-full h-auto object-contain max-w-[900px] mx-auto"
             width="900"
             height="444"
             fetchpriority="high"
-            decoding="async"
+            decoding="sync"
           />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col items-center"
-        >
-          <a
-            href="https://pay.hotmart.com/V103826709U?off=vju7un99&checkoutMode=10&offDiscount=ESPECIALDPL&split=11"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-gtm-id="cta-hero"
-            data-gtm-label="GARANTIR MEU ACESSO - Hero"
-            className="bg-[#00A88E] hover:bg-[#00967F] text-white font-bold px-[36px] py-[18px] rounded-full transition-all duration-300 hover:-translate-y-[2px] shadow-[0_10px_25px_rgba(0,168,142,0.25)] hover:shadow-[0_15px_30px_rgba(0,168,142,0.4)] inline-block text-center"
-          >
-            <span className="block text-lg font-[800]">GARANTIR MEU ACESSO AGORA →</span>
-            <span className="block text-sm font-medium opacity-80 mt-0.5">11x de R$ 7,44 · ou R$ 67,04 à vista</span>
-          </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
