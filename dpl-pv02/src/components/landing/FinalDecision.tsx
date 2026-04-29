@@ -96,6 +96,8 @@ export const FinalDecision = () => {
             href="https://pay.hotmart.com/V103826709U?off=vju7un99&checkoutMode=10&offDiscount=ESPECIALDPL&split=11"
             target="_blank"
             rel="noopener noreferrer"
+            data-gtm-id="cta-final-decision"
+            data-gtm-label="GARANTIR MEU ACESSO - FinalDecision"
             className="w-full md:w-auto bg-[#00A88E] hover:bg-[#00967F] text-white font-[800] px-12 py-6 rounded-full transition-all duration-300 hover:-translate-y-1 shadow-[0_10px_30px_rgba(0,168,142,0.3)] text-xl md:text-[1.5rem] tracking-tight inline-block text-center"
           >
             GARANTIR MEU ACESSO AGORA →

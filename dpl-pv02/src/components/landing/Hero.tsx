@@ -49,6 +49,8 @@ export const Hero = () => {
             href="https://pay.hotmart.com/V103826709U?off=vju7un99&checkoutMode=10&offDiscount=ESPECIALDPL&split=11"
             target="_blank"
             rel="noopener noreferrer"
+            data-gtm-id="cta-hero"
+            data-gtm-label="GARANTIR MEU ACESSO - Hero"
             className="bg-[#00A88E] hover:bg-[#00967F] text-white font-bold px-[36px] py-[18px] rounded-full transition-all duration-300 hover:-translate-y-[2px] shadow-[0_10px_25px_rgba(0,168,142,0.25)] hover:shadow-[0_15px_30px_rgba(0,168,142,0.4)] mb-6 inline-block"
           >
             GARANTIR MEU ACESSO AGORA →

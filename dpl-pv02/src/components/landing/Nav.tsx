@@ -27,6 +27,8 @@ export const Nav = () => {
           href="https://pay.hotmart.com/V103826709U?off=vju7un99&checkoutMode=10&offDiscount=ESPECIALDPL&split=11"
           target="_blank"
           rel="noopener noreferrer"
+          data-gtm-id="cta-nav"
+          data-gtm-label="Garantir meu acesso - Nav"
           className="bg-[#00A88E] hover:bg-[#00967F] text-white font-bold px-[24px] py-[12px] text-sm rounded-full transition-all duration-300 hover:-translate-y-[1px] shadow-[0_10px_25px_rgba(0,168,142,0.25)] hover:shadow-[0_15px_30px_rgba(0,168,142,0.4)]"
         >
           Garantir meu acesso

@@ -72,6 +72,8 @@ export const Pricing = () => {
               href="https://pay.hotmart.com/V103826709U?off=vju7un99&checkoutMode=10&offDiscount=ESPECIALDPL&split=11"
               target="_blank"
               rel="noopener noreferrer"
+              data-gtm-id="cta-pricing"
+              data-gtm-label="GARANTIR MEU ACESSO - Pricing"
               className="w-full bg-[#00A88E] hover:bg-[#00967F] text-white font-bold px-8 py-5 rounded-full transition-all duration-300 hover:-translate-y-1 shadow-[0_10px_25px_rgba(0,168,142,0.3)] text-lg mb-6 flex items-center justify-center gap-2"
             >
               GARANTIR MEU ACESSO AGORA →
