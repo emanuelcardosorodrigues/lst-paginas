@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import { img } from "@/lib/imgPath";
 
 export const RealityCheck = () => {
   return (
@@ -88,9 +89,9 @@ export const RealityCheck = () => {
           </div>
           <div className="grid grid-cols-3 gap-4 mb-8">
             {[
-              { src: "/images/agit-agenda.webp", label: "Agenda lotada" },
-              { src: "/images/agit-trabalho.webp", label: "Trabalho pesado" },
-              { src: "/images/agit-lucro.webp", label: "Lucro? Mixaria" },
+              { src: img("agit-agenda.webp"), label: "Agenda lotada" },
+              { src: img("agit-trabalho.webp"), label: "Trabalho pesado" },
+              { src: img("agit-lucro.webp"), label: "Lucro? Mixaria" },
             ].map((item) => (
               <div key={item.label} className="flex flex-col items-center gap-3">
                 <img

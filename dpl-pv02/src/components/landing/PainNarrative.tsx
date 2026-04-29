@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, XCircle } from "lucide-react";
+import { img } from "@/lib/imgPath";
 
 export const PainNarrative = () => {
   return (
@@ -115,7 +116,7 @@ export const PainNarrative = () => {
             </div>
             <div className="md:w-[280px] shrink-0">
               <img
-                src="/images/agit-errado.webp"
+                src={img("agit-errado.webp")}
                 alt="Documentos de gestão financeira"
                 className="w-full h-auto rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.4)]"
               />
@@ -153,12 +154,12 @@ export const PainNarrative = () => {
 
             <div className="grid grid-cols-2 gap-4 mb-10">
               <img
-                src="/images/rev-porque.webp"
+                src={img("rev-porque.webp")}
                 alt="Cadeira odontológica"
                 className="w-full h-auto rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.4)]"
               />
               <img
-                src="/images/rev-estrategia.webp"
+                src={img("rev-estrategia.webp")}
                 alt="Papel amassado com percentuais"
                 className="w-full h-auto rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.4)]"
               />

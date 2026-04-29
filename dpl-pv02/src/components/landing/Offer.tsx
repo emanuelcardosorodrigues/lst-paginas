@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Check, ShieldCheck } from "lucide-react";
+import { img } from "@/lib/imgPath";
 
 export const Offer = () => {
   return (
@@ -25,7 +26,7 @@ export const Offer = () => {
           className="max-w-[480px] mx-auto mb-10"
         >
           <img
-            src="/images/bundle-860.webp"
+            src={img("bundle-860.webp")}
             alt="Bundle Protocolo DPL"
             className="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,168,142,0.2)]"
           />

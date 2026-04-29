@@ -1,24 +1,25 @@
 import { motion } from "framer-motion";
+import { img } from "@/lib/imgPath";
 
 export const WhatsInside = () => {
   const features = [
     {
-      img: "/images/stack-calculadora.webp",
+      img: img("stack-calculadora.webp"),
       title: "Calculadora do Dentista Parceiro Lucrativo",
       desc: "Insira custos e veja, em segundos, o repasse correto e a margem real."
     },
     {
-      img: "/images/stack-consultor.webp",
+      img: img("stack-consultor.webp"),
       title: "Consultor de Precificação com IA",
       desc: "Recomendações de preço baseadas no seu perfil de clínica."
     },
     {
-      img: "/images/stack-masterclass.webp",
+      img: img("stack-masterclass.webp"),
       title: "Masterclass: Custos Ocultos e Como Lucrar",
       desc: "Aula objetiva sobre os 12 custos invisíveis que comem seu lucro."
     },
     {
-      img: "/images/stack-dobrar.webp",
+      img: img("stack-dobrar.webp"),
       title: "Bônus: Como Dobrar Seu Lucro em 6 Meses",
       desc: "Plano de execução enxuto para reorganizar a clínica."
     }

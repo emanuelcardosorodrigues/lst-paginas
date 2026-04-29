@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { img } from "@/lib/imgPath";
 
 export const PainHook = () => {
   return (
@@ -24,7 +25,7 @@ export const PainHook = () => {
 
           <div className="max-w-[480px] mx-auto">
             <img
-              src="/images/pain-percentual.webp"
+              src={img("pain-percentual.webp")}
               alt="Papel amassado com percentuais de repasse"
               className="w-full h-auto rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.4)]"
             />
