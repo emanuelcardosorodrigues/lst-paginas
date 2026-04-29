@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Protocolo Lucro Oculto"
+version = "1.0.0"
+id = "artifacts/protocolo-lucro-oculto"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24944
+
+[services.development]
+run = "pnpm --filter @workspace/protocolo-lucro-oculto run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/protocolo-lucro-oculto", "run", "build" ]
+publicDir = "artifacts/protocolo-lucro-oculto/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24944"
+BASE_PATH = "/"
