@@ -86,6 +86,10 @@ const Card = ({ image, title, body }: CardData) => (
         src={image}
         alt={title}
         className="max-h-full max-w-full object-contain drop-shadow-[0_15px_25px_rgba(15,23,42,0.18)]"
+        width="620"
+        height="354"
+        loading="lazy"
+        decoding="async"
       />
     </div>
     <div className="bg-white p-8 rounded-b-3xl border border-t-0 border-[#00A88E]/15 flex-grow shadow-[0_10px_30px_rgba(0,0,0,0.03)]">

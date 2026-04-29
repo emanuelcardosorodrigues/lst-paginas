@@ -98,6 +98,10 @@ export const RealityCheck = () => {
                   src={item.src}
                   alt={item.label}
                   className="w-full h-auto rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.4)]"
+                  width="300"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <span className="text-sm font-semibold text-white/70 tracking-wide">{item.label}</span>
               </div>

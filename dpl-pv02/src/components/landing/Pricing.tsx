@@ -58,6 +58,10 @@ export const Pricing = () => {
                 src={img("pricing-bundle.webp")}
                 alt="Tudo que você recebe"
                 className="w-full h-auto object-contain"
+                width="640"
+                height="400"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 

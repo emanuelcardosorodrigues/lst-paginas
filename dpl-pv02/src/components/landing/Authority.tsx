@@ -16,10 +16,14 @@ export const Authority = () => {
           >
             <div className="bg-[#F8F9FA] p-4 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-black/[0.03]">
               <div className="rounded-2xl overflow-hidden aspect-[3/4] relative bg-slate-200">
-                <img 
+                <img
                   src={img("leandro.webp")}
                   alt="Leandro Stecca"
                   className="w-full h-full object-cover"
+                  width="480"
+                  height="640"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>

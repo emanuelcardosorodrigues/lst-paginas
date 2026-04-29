@@ -81,6 +81,10 @@ export const TruthAndSteps = () => {
                   src={step01}
                   alt="Passo 01 — Despesas Fixas e Variáveis"
                   className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
+                  width="600"
+                  height="380"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </motion.div>
@@ -122,6 +126,10 @@ export const TruthAndSteps = () => {
                   src={step02}
                   alt="Passo 02 — Custo Específico do Procedimento"
                   className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
+                  width="600"
+                  height="380"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </motion.div>
@@ -149,6 +157,10 @@ export const TruthAndSteps = () => {
                   src={step03}
                   alt="Passo 03 — Resultados consolidados da Calculadora"
                   className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
+                  width="600"
+                  height="380"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </motion.div>

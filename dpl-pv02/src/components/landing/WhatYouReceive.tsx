@@ -87,6 +87,10 @@ export const WhatYouReceive = () => {
                   src={img(item.image)}
                   alt={item.title}
                   className="w-full h-auto object-contain max-h-[280px] p-4"
+                  width="400"
+                  height="280"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </motion.div>

@@ -119,6 +119,10 @@ export const PainNarrative = () => {
                 src={img("agit-errado.webp")}
                 alt="Documentos de gestão financeira"
                 className="w-full h-auto rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.4)]"
+                width="280"
+                height="350"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -157,11 +161,19 @@ export const PainNarrative = () => {
                 src={img("rev-porque.webp")}
                 alt="Cadeira odontológica"
                 className="w-full h-auto rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.4)]"
+                width="320"
+                height="240"
+                loading="lazy"
+                decoding="async"
               />
               <img
                 src={img("rev-estrategia.webp")}
                 alt="Papel amassado com percentuais"
                 className="w-full h-auto rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.4)]"
+                width="320"
+                height="240"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 
