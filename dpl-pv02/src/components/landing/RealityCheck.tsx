@@ -86,6 +86,23 @@ export const RealityCheck = () => {
           <div className="text-2xl font-bold text-white mb-8 bg-white/5 py-4 px-8 rounded-xl inline-block border border-white/10">
             Isso tá certo?
           </div>
+          <div className="grid grid-cols-3 gap-4 mb-8">
+            {[
+              { src: "/images/agit-agenda.webp", label: "Agenda lotada" },
+              { src: "/images/agit-trabalho.webp", label: "Trabalho pesado" },
+              { src: "/images/agit-lucro.webp", label: "Lucro? Mixaria" },
+            ].map((item) => (
+              <div key={item.label} className="flex flex-col items-center gap-3">
+                <img
+                  src={item.src}
+                  alt={item.label}
+                  className="w-full h-auto rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.4)]"
+                />
+                <span className="text-sm font-semibold text-white/70 tracking-wide">{item.label}</span>
+              </div>
+            ))}
+          </div>
+
           <p className="text-lg text-[#64748B] leading-relaxed">
             E aí você faz isso 5, 10, 15 vezes no mês... Agenda lotada. Trabalho pesado. Lucro? Mixaria.
           </p>

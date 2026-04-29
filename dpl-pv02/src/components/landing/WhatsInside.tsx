@@ -1,25 +1,24 @@
 import { motion } from "framer-motion";
-import { Calculator, Sparkles, Video, FileText } from "lucide-react";
 
 export const WhatsInside = () => {
   const features = [
     {
-      icon: <Calculator size={28} strokeWidth={1.5} />,
+      img: "/images/stack-calculadora.webp",
       title: "Calculadora do Dentista Parceiro Lucrativo",
       desc: "Insira custos e veja, em segundos, o repasse correto e a margem real."
     },
     {
-      icon: <Sparkles size={28} strokeWidth={1.5} />,
+      img: "/images/stack-consultor.webp",
       title: "Consultor de Precificação com IA",
       desc: "Recomendações de preço baseadas no seu perfil de clínica."
     },
     {
-      icon: <Video size={28} strokeWidth={1.5} />,
+      img: "/images/stack-masterclass.webp",
       title: "Masterclass: Custos Ocultos e Como Lucrar",
       desc: "Aula objetiva sobre os 12 custos invisíveis que comem seu lucro."
     },
     {
-      icon: <FileText size={28} strokeWidth={1.5} />,
+      img: "/images/stack-dobrar.webp",
       title: "Bônus: Como Dobrar Seu Lucro em 6 Meses",
       desc: "Plano de execução enxuto para reorganizar a clínica."
     }
@@ -44,8 +43,8 @@ export const WhatsInside = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="bg-[#F8F9FA] rounded-[24px] p-8 flex gap-6 hover:bg-[#F1F5F9] transition-colors border border-black/[0.03]"
             >
-              <div className="w-14 h-14 rounded-xl bg-white shadow-sm flex items-center justify-center shrink-0 text-[#0F172A]">
-                {item.icon}
+              <div className="w-20 h-20 rounded-xl overflow-hidden shrink-0 shadow-sm">
+                <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-[#0F172A] mb-2">{item.title}</h3>

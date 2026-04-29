@@ -13,11 +13,25 @@ export const Offer = () => {
         <h2 className="text-white text-[clamp(2rem,4vw,3rem)] font-[800] leading-[1.2] tracking-tight mb-6">
           Retome o lucro da sua clínica agora.
         </h2>
-        <p className="text-[#F8F9FA]/80 text-[1.125rem] mb-16">
+        <p className="text-[#F8F9FA]/80 text-[1.125rem] mb-10">
           O bundle completo do Protocolo DPL com acesso imediato.
         </p>
 
-        <motion.div 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-[480px] mx-auto mb-10"
+        >
+          <img
+            src="/images/bundle-860.webp"
+            alt="Bundle Protocolo DPL"
+            className="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,168,142,0.2)]"
+          />
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

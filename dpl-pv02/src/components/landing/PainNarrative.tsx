@@ -106,10 +106,21 @@ export const PainNarrative = () => {
           transition={{ duration: 0.8 }}
           className="max-w-[700px] mx-auto"
         >
-          <h3 className="text-2xl font-bold text-white mb-6">E o pior de tudo…</h3>
-          <p className="text-[#64748B] text-lg leading-relaxed mb-8">
-            Você sabe que tem algo ERRADO. Você sente que tá bancando uma estrutura cada vez maior pra ganhar quase o mesmo de antes. Mas quando você tenta entender onde tá o problema…
-          </p>
+          <div className="grid md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-start mb-8">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-6">E o pior de tudo…</h3>
+              <p className="text-[#64748B] text-lg leading-relaxed">
+                Você sabe que tem algo ERRADO. Você sente que tá bancando uma estrutura cada vez maior pra ganhar quase o mesmo de antes. Mas quando você tenta entender onde tá o problema…
+              </p>
+            </div>
+            <div className="md:w-[280px] shrink-0">
+              <img
+                src="/images/agit-errado.webp"
+                alt="Documentos de gestão financeira"
+                className="w-full h-auto rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.4)]"
+              />
+            </div>
+          </div>
 
           <div className="space-y-3 mb-10">
             {[
@@ -133,11 +144,24 @@ export const PainNarrative = () => {
           <div className="bg-[#0A1428] rounded-3xl p-8 md:p-12 border border-white/5 text-center">
             <h3 className="text-2xl font-bold text-white mb-6">Sabe por que isso acontece?</h3>
             <p className="text-white/70 mb-6">Não é porque você:</p>
-            <div className="flex flex-wrap justify-center gap-3 mb-10">
+            <div className="flex flex-wrap justify-center gap-3 mb-8">
               <span className="bg-white/5 px-4 py-2 rounded-lg text-white/80 text-sm">Escolheu o parceiro errado</span>
               <span className="bg-white/5 px-4 py-2 rounded-lg text-white/80 text-sm">Não sabe liderar uma equipe</span>
               <span className="bg-white/5 px-4 py-2 rounded-lg text-white/80 text-sm">Está numa cidade difícil</span>
               <span className="bg-white/5 px-4 py-2 rounded-lg text-white/80 text-sm">Não tem pacientes suficientes</span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 mb-10">
+              <img
+                src="/images/rev-porque.webp"
+                alt="Cadeira odontológica"
+                className="w-full h-auto rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.4)]"
+              />
+              <img
+                src="/images/rev-estrategia.webp"
+                alt="Papel amassado com percentuais"
+                className="w-full h-auto rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.4)]"
+              />
             </div>
 
             <div className="bg-[#050B18] border border-[#00A88E]/50 rounded-2xl p-6 md:p-8 shadow-[0_0_30px_rgba(0,168,142,0.15)]">

@@ -18,9 +18,17 @@ export const PainHook = () => {
             ...e está ganhando <span className="text-[#EF4444]">MENOS</span> que antes?
           </h2>
           
-          <p className="text-[#F8F9FA]/80 text-[1.125rem] leading-[1.7] max-w-[600px] mx-auto">
+          <p className="text-[#F8F9FA]/80 text-[1.125rem] leading-[1.7] max-w-[600px] mx-auto mb-10">
             Faturamento subiu. Folha subiu. Imposto subiu. Lucro sumiu. O problema quase sempre é o modelo de remuneração errado.
           </p>
+
+          <div className="max-w-[480px] mx-auto">
+            <img
+              src="/images/pain-percentual.webp"
+              alt="Papel amassado com percentuais de repasse"
+              className="w-full h-auto rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.4)]"
+            />
+          </div>
         </motion.div>
       </div>
     </section>
