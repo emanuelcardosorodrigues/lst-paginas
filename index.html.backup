@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#061a3d" />
+
+  <title>Protocolo do Dentista Parceiro Lucrativo — Dr. Leandro Stecca</title>
+  <meta name="description" content="A calculadora que mostra - em minutos - quanto pagar ao dentista parceiro — e sair do mocho." />
+  <link rel="canonical" href="https://cf.leandrostecca.com.br/dpl-pv01/" />
+
+  <!-- Open Graph / Facebook / Meta Ads -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cf.leandrostecca.com.br/dpl-pv01/" />
+  <meta property="og:title" content="Protocolo do Dentista Parceiro Lucrativo — Dr. Leandro Stecca" />
+  <meta property="og:description" content="A calculadora que mostra - em minutos - quanto pagar ao dentista parceiro — e sair do mocho." />
+  <meta property="og:image" content="https://cf.leandrostecca.com.br/dpl-pv01/images/hero-bundle.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Leandro Stecca" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Protocolo do Dentista Parceiro Lucrativo" />
+  <meta name="twitter:description" content="A calculadora que mostra - em minutos - quanto pagar ao dentista parceiro — e sair do mocho." />
+  <meta name="twitter:image" content="https://cf.leandrostecca.com.br/dpl-pv01/images/hero-bundle.webp" />
+
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="/images/hero-bundle.webp" fetchpriority="high" />
+
+  <!-- DNS prefetch for third-party origins -->
+  <link rel="dns-prefetch" href="https://pay.hotmart.com" />
+  <link rel="dns-prefetch" href="https://ts.leandrostecca.com.br" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Non-blocking Google Fonts -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" /></noscript>
+
+  <link rel="icon" type="image/webp" href="/images/logo-ls.webp" />
+  <link rel="stylesheet" href="/src/style.css" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://ts.leandrostecca.com.br/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MCZKSV8N');</script>
+  <!-- End Google Tag Manager -->
+
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://ts.leandrostecca.com.br/ns.html?id=GTM-MCZKSV8N"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- ============================================================
+       1. HERO
+  ============================================================ -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="eyebrow">Tem dentista parceiro na sua clínica? Então isso é pra você.</p>
+      <h1 class="hero__headline">
+        A calculadora que mostra&nbsp;—&nbsp;em minutos&nbsp;— quanto pagar ao dentista parceiro
+        <span class="accent">e sair do mocho</span>.
+      </h1>
+      <p class="hero__sub">
+        Descubra muito mais do que o preço certo. Aplique a estratégia de remuneração lucrativa — para os dois — e se proteja judicialmente.
+      </p>
+      <div class="hero__bundle">
+        <img src="/images/hero-bundle.webp" alt="Protocolo do Dentista Parceiro Lucrativo — todos os materiais incluídos" loading="eager" fetchpriority="high" width="860" height="520" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2. SOCIAL PROOF — Depoimentos
+  ============================================================ -->
+  <section class="section proof">
+    <div class="container">
+      <h2 class="section__title">Veja o que Mudou para quem já aplica o<br>Protocolo Dentista Parceiro Lucrativo</h2>
+      <div class="proof__grid">
+
+        <div class="testimonial-card">
+          <a href="https://drive.google.com/file/d/1NGViICuVNWAaITTey1Jdl6x4HAS-6iRu/view" target="_blank" rel="noopener" class="video-thumb" aria-label="Assistir depoimento da Dra. Maria Midori">
+            <img src="/images/proof-midori.webp" alt="Dra. Maria Midori" loading="lazy" class="video-thumb__img" />
+            <div class="video-thumb__overlay">
+              <div class="play-btn" aria-hidden="true">&#9654;</div>
+            </div>
+          </a>
+          <blockquote class="testimonial-card__quote">
+            "Finalmente entendi o real valor da minha hora clínica. Isso mudou completamente como eu precificado meus serviços."
+          </blockquote>
+          <p class="testimonial-card__author"><strong>Dra. Maria Midori</strong> — São João del-Rei/MG</p>
+        </div>
+
+        <div class="testimonial-card">
+          <a href="https://drive.google.com/file/d/1XmOxo0_tv-63kKyCc7fGIfYFWCWz4U2M/view" target="_blank" rel="noopener" class="video-thumb" aria-label="Assistir depoimento do Dr. Otávio Fartes">
+            <img src="/images/proof-otavio.webp" alt="Dr. Otávio Fartes" loading="lazy" class="video-thumb__img" />
+            <div class="video-thumb__overlay">
+              <div class="play-btn" aria-hidden="true">&#9654;</div>
+            </div>
+          </a>
+          <blockquote class="testimonial-card__quote">
+            "É para que as pessoas tenham acesso a algo que pode salvar a carreira delas."
+          </blockquote>
+          <p class="testimonial-card__author"><strong>Dr. Otávio Fartes</strong> — Instituto Odontológico</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. SHOWROOM — Como o DPL Funciona
+  ============================================================ -->
+  <section class="section showroom">
+    <div class="container">
+      <h2 class="section__title">Como o <span class="accent">DPL</span> Funciona</h2>
+      <p class="section__sub">Tudo que você precisa para colocar a parceria no lugar certo — em um só lugar.</p>
+
+      <div class="showroom__group">
+        <h3 class="showroom__group-title">O Básico bem estruturado</h3>
+        <div class="mockup-grid">
+          <div class="mockup-card">
+            <img src="/images/showroom-g1-1.webp" alt="Custo real por procedimento" loading="lazy" class="mockup-card__img" />
+            <p class="mockup-card__label"><strong>Custo real por procedimento</strong> — ZERO surpresas ao fim do mês!</p>
+          </div>
+          <div class="mockup-card">
+            <img src="/images/showroom-g1-2.webp" alt="Lucro ou Prejuízo do parceiro" loading="lazy" class="mockup-card__img" />
+            <p class="mockup-card__label"><strong>Lucro ou Prejuízo daquele procedimento do Parceiro</strong> — Estruture tudo dentro da sua precificação</p>
+          </div>
+          <div class="mockup-card">
+            <img src="/images/showroom-g1-3.webp" alt="Valor da sua Hora Clínica" loading="lazy" class="mockup-card__img" />
+            <p class="mockup-card__label"><strong>Valor da sua Hora Clínica</strong> — O seu devido valor RESGUARDADO desde o preço.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="showroom__group">
+        <h3 class="showroom__group-title">Todos os Custos Mapeados</h3>
+        <div class="mockup-grid">
+          <div class="mockup-card">
+            <img src="/images/showroom-g2-1.webp" alt="Remuneração Correta sem Risco Jurídico" loading="lazy" class="mockup-card__img" />
+            <p class="mockup-card__label"><strong>Remuneração Correta sem Risco Jurídico</strong> — Tudo organizado para você pagar só o que precisa.</p>
+          </div>
+          <div class="mockup-card">
+            <img src="/images/showroom-g2-2.webp" alt="Margem de Negociação Lucrativa" loading="lazy" class="mockup-card__img" />
+            <p class="mockup-card__label"><strong>Margem de negociação Lucrativa</strong> — O valor máximo de desconto para você ter lucro de verdade e ainda fazer o cliente feliz.</p>
+          </div>
+          <div class="mockup-card">
+            <img src="/images/showroom-g2-3.webp" alt="Reinvestimento" loading="lazy" class="mockup-card__img" />
+            <p class="mockup-card__label"><strong>Reinvestimento</strong> — O crescimento do seu consultório estruturado desde a precificação</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="showroom__group">
+        <h3 class="showroom__group-title">Os Valores Certos Para Você Lucrar!</h3>
+        <div class="mockup-grid">
+          <div class="mockup-card">
+            <img src="/images/showroom-g3-1.webp" alt="Projeção de Lucro" loading="lazy" class="mockup-card__img" />
+            <p class="mockup-card__label"><strong>Projeção de Lucro</strong> — Seu lucro protegido e projetado para garantir máxima liberdade</p>
+          </div>
+          <div class="mockup-card">
+            <img src="/images/showroom-g3-2.webp" alt="Valor Mínimo" loading="lazy" class="mockup-card__img" />
+            <p class="mockup-card__label"><strong>Valor Mínimo</strong> — Qual o valor mínimo a ser cobrado para ainda ter lucro</p>
+          </div>
+          <div class="mockup-card">
+            <img src="/images/showroom-g3-3.webp" alt="Quanto cobrar" loading="lazy" class="mockup-card__img" />
+            <p class="mockup-card__label"><strong>Quanto cobrar</strong> — O valor ideal para cobrar para cada procedimento</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. DOR — Identificação com o Avatar
+  ============================================================ -->
+  <section class="section pain">
+    <div class="container">
+      <h2 class="pain__headline">
+        "Você contratou um dentista parceiro pra finalmente sair do mocho.<br>
+        Mas o lucro — e o tempo — que deviam sobrar... <span class="accent">sumiram."</span>
+      </h2>
+      <p class="pain__lead">Deixa eu adivinhar...</p>
+
+      <div class="pain__split">
+        <div class="pain__split-img">
+          <img src="/images/pain-percentual.webp" alt="Dentista sem saber se está lucrando com o parceiro" loading="lazy" />
+        </div>
+        <div class="pain__split-content">
+          <div class="pain__box">
+            <div class="checklist checklist--yes">
+              <ul>
+                <li><span class="check yes">✓</span> Parceiro atendendo na sua clínica</li>
+                <li><span class="check yes">✓</span> Agenda com dois profissionais trabalhando</li>
+                <li><span class="check yes">✓</span> Mais especialidades oferecidas aos pacientes</li>
+                <li><span class="check yes">✓</span> Faturamento cresceu: R$30 mil, R$50 mil, R$80 mil por mês...</li>
+                <li><span class="check yes">✓</span> Você até conseguiu sair mais cedo alguns dias</li>
+              </ul>
+            </div>
+            <div class="checklist checklist--no">
+              <p class="checklist__but">MAS...</p>
+              <ul>
+                <li><span class="check no">✗</span> No fim do mês, depois de pagar todo mundo, sobra menos do que antes</li>
+                <li><span class="check no">✗</span> Você trabalha mais do que quando estava sozinho</li>
+                <li><span class="check no">✗</span> Não sabe se a estratégia de pagamento do parceiro está certa</li>
+                <li><span class="check no">✗</span> Tem medo de mudar — e perder o profissional</li>
+                <li><span class="check no">✗</span> Se ele sair amanhã, a clínica sente na hora</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-box highlight-box--centered">
+        <p>E aí você olha pro extrato e pensa:</p>
+        <p class="highlight-box__quote">"Eu trouxe esse cara pra me ajudar a crescer.<br>Como que eu tô ganhando <span class="accent">menos do que antes?</span>"</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. AGITAÇÃO
+  ============================================================ -->
+  <section class="section agitation">
+    <div class="container">
+      <h2 class="section__title">E o pior de tudo...</h2>
+
+      <div class="agit__split">
+        <div class="agit__content">
+          <div class="highlight-box">
+            <p>Você sabe que tem algo <span class="accent"><strong>ERRADO</strong></span>.<br>
+            Você sente que tá bancando uma estrutura cada vez maior pra ganhar quase o mesmo de antes.</p>
+          </div>
+          <p class="body-lg">Mas quando você tenta entender onde tá o problema...</p>
+          <ul class="bullet-list">
+            <li>Não sabe se o percentual que você paga ao parceiro faz sentido</li>
+            <li>Contador só fala de imposto</li>
+            <li>Tem medo de mudar o modelo e perder o profissional</li>
+            <li>O parceiro fala que ganha pouco. Você acha que paga demais. E ninguém consegue provar nada.</li>
+          </ul>
+          <div class="quote-block">
+            <p>O "mentor" só fala em trazer mais paciente — mas a agenda já tá cheia e o lucro não aparece</p>
+          </div>
+        </div>
+        <div class="agit__img">
+          <img src="/images/agit-errado.webp" alt="Dentista percebe que algo está errado nas contas" loading="lazy" />
+        </div>
+      </div>
+
+      <p class="body-lg body-lg--center">
+        Aí você continua na mesma.<br>
+        Gerenciando. Pagando. Cansado.<br>
+        <strong class="accent">E o dinheiro? Continua indo embora — só que agora com parceiro dentro de casa.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. REVELAÇÃO — Por que isso acontece?
+  ============================================================ -->
+  <section class="section revelation">
+    <div class="container">
+      <h2 class="section__title">Sabe por que isso acontece?</h2>
+
+      <div class="rev__split">
+        <div class="rev__img">
+          <img src="/images/rev-porque.webp" alt="Clínica vazia — o problema não é a falta de pacientes" loading="lazy" />
+        </div>
+        <div class="rev__content">
+          <p class="body-lg">Não é porque você:</p>
+          <ul class="bullet-list bullet-list--no">
+            <li>Escolheu o parceiro errado</li>
+            <li>Não sabe liderar uma equipe</li>
+            <li>Está numa cidade difícil</li>
+            <li>Não tem pacientes suficientes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="revelation__answer">
+        <div class="revelation__answer-img">
+          <img src="/images/rev-estrategia.webp" alt="Estratégia de remuneração errada" loading="lazy" />
+        </div>
+        <div class="revelation__answer-text">
+          <p class="revelation__lead">É porque:</p>
+          <p class="revelation__big">Você está usando a estratégia de remuneração <span class="accent">ERRADA</span>.</p>
+          <p class="revelation__sub">Simples assim.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. LENTE DA REALIDADE — Tabela comparativa
+  ============================================================ -->
+  <section class="section reality">
+    <div class="container">
+      <h2 class="section__title">A Lente da Realidade</h2>
+      <p class="section__sub">Você acha que está lucrando. Veja o que realmente acontece.</p>
+
+      <div class="reality__table-wrap">
+        <table class="reality-table">
+          <thead>
+            <tr>
+              <th class="reality-table__col-yes">VOCÊ ACHA QUE:</th>
+              <th class="reality-table__col-no">A REALIDADE:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="reality-table__col-yes" rowspan="7">
+                <p>Implante com parceiro</p>
+                <p class="reality-table__price">R$ 1.100</p>
+                <p class="reality-table__label-yes">= Parceria lucrativa ✓</p>
+              </td>
+              <td>Implante (valor cobrado): <strong>R$ 1.100</strong></td>
+            </tr>
+            <tr><td class="reality-table__cost">— Material: <strong>-R$ 240</strong></td></tr>
+            <tr><td class="reality-table__cost">— Imposto: <strong>-R$ 121</strong></td></tr>
+            <tr><td class="reality-table__cost">— Hora clínica: <strong>-R$ 352</strong></td></tr>
+            <tr><td class="reality-table__cost">— Repasse ao dentista parceiro: <strong>-R$ 400</strong></td></tr>
+            <tr><td class="reality-table__divider"><hr/></td></tr>
+            <tr><td class="reality-table__result">= LUCRO: <span class="accent-red"><strong>-R$ 13</strong></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="reality__text">
+        <p>Seu dentista parceiro fez a cirurgia...<br>
+        Você bancou a estrutura, captou o paciente, assumiu o risco jurídico...<br>
+        E ainda saiu no vermelho.</p>
+        <p class="highlight-box__quote">Isso tá certo?</p>
+      </div>
+
+      <p class="body-lg body-lg--center">E aí você faz isso 5, 10, 15 vezes no mês...</p>
+
+      <div class="reality__trio">
+        <div class="reality__trio-item">
+          <img src="/images/agit-agenda.webp" alt="Agenda lotada" loading="lazy" />
+          <p>Agenda lotada.</p>
+        </div>
+        <div class="reality__trio-item">
+          <img src="/images/agit-trabalho.webp" alt="Trabalho pesado" loading="lazy" />
+          <p>Trabalho pesado.</p>
+        </div>
+        <div class="reality__trio-item">
+          <img src="/images/agit-lucro.webp" alt="Lucro quase nada" loading="lazy" />
+          <p><strong class="accent">Lucro? Mixaria.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. A VERDADE
+  ============================================================ -->
+  <section class="section truth">
+    <div class="container">
+      <h2 class="section__title">A verdade é esta:</h2>
+
+      <div class="truth__hero-row">
+        <div class="truth__hero-img">
+          <img src="/images/truth-parceiro.webp" alt="Dentista calculando o valor correto da parceria" loading="lazy" />
+        </div>
+        <div class="truth__block">
+          <p>Não adianta lotar a agenda do parceiro.</p>
+          <p>Não adianta aumentar o faturamento.</p>
+          <p>Se a estratégia de remuneração estiver errada, você vai continuar no prejuízo — sem saber por quê.</p>
+        </div>
+      </div>
+      <div class="truth__mantra">
+        <p>Faturamento é <strong>VAIDADE</strong>.</p>
+        <p>Lucro é <strong class="accent">SANIDADE</strong>.</p>
+      </div>
+      <div class="truth__good-news">
+        <p class="good-news__label">E a boa notícia?</p>
+        <ul class="truth__list">
+          <li>✓ Você <strong>não precisa demitir o parceiro</strong>.</li>
+          <li>✓ Você <strong>não precisa aumentar o preço do paciente</strong>.</li>
+          <li>✓ Você <strong>só precisa usar a estratégia certa</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       9. SOLUÇÃO — 3 passos
+  ============================================================ -->
+  <section class="section solution">
+    <div class="container">
+      <h2 class="section__title">E é exatamente isso que o<br><span class="accent">Protocolo do Dentista Parceiro Lucrativo</span> faz por você —</h2>
+      <p class="section__sub">É mais simples do que você imagina. Olha só:</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-card__num">01</div>
+          <h3 class="step-card__title">Você define a estratégia de remuneração correta</h3>
+          <p>Aqui, você coloca a remuneração mais lucrativa para a parceria.</p>
+          <img src="/images/step-01.webp" alt="Passo 01 — Definir estratégia de remuneração" loading="lazy" class="step-card__img" />
+        </div>
+        <div class="step-card">
+          <div class="step-card__num">02</div>
+          <h3 class="step-card__title">A calculadora faz a conta pra você</h3>
+          <p>Ela cruza TUDO e mostra: lucro ou prejuízo / quanto você perde por procedimento hoje / qual o valor correto de repasse. <strong>Automático. Sem dor de cabeça.</strong></p>
+          <img src="/images/step-02.webp" alt="Passo 02 — Calculadora faz a conta" loading="lazy" class="step-card__img" />
+        </div>
+        <div class="step-card">
+          <div class="step-card__num">03</div>
+          <h3 class="step-card__title">Você aplica e coloca a parceria no lugar certo</h3>
+          <p>Ajusta o modelo. Apresenta os números pro parceiro com segurança — sem conflito, sem perder o profissional. E o lucro aparece.</p>
+          <img src="/images/step-03.webp" alt="Passo 03 — Aplicar e lucrar" loading="lazy" class="step-card__img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       10. ISSO É PRA VOCÊ?
+  ============================================================ -->
+  <section class="section foryou">
+    <div class="container">
+      <h2 class="section__title">ISSO É PRA VOCÊ?</h2>
+      <div class="foryou__grid">
+        <div class="foryou__col foryou__col--yes">
+          <h3 class="foryou__col-title foryou__col-title--yes">✓ SIM, se você:</h3>
+          <ul>
+            <li>Tem dentista parceiro e não sabe se está lucrando com ele</li>
+            <li>Paga por percentual — e desconfia que está no vermelho</li>
+            <li>Quer a clínica lucrando mesmo sem você no mocho</li>
+            <li>O faturamento cresceu. O lucro, não.</li>
+          </ul>
+        </div>
+        <div class="foryou__col foryou__col--no">
+          <h3 class="foryou__col-title foryou__col-title--no">✗ NÃO, se você:</h3>
+          <ul>
+            <li>Não tem parceiro e não quer ter</li>
+            <li>Quer resultado sem mudar nada</li>
+            <li>Acha que 50% pro parceiro é justo — e não quer questionar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       11. STACK — O que você vai receber
+  ============================================================ -->
+  <section class="section stack">
+    <div class="container">
+      <h2 class="section__title">O que você vai receber:</h2>
+
+      <div class="stack-item stack-item--text-left">
+        <div class="stack-item__text">
+          <p class="stack-item__tag">CALCULADORA PRINCIPAL</p>
+          <h3 class="stack-item__title">Calculadora do Dentista Parceiro Lucrativo</h3>
+          <p>Precifique a Parceria do jeito certo e lucre mais ainda hoje</p>
+        </div>
+        <div class="stack-item__media">
+          <img src="/images/stack-calculadora.webp" alt="Calculadora DPL" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="stack-item stack-item--media-left">
+        <div class="stack-item__media">
+          <img src="/images/stack-video.webp" alt="Vídeo Passo a Passo" loading="lazy" />
+        </div>
+        <div class="stack-item__text">
+          <p class="stack-item__tag">BÔNUS INCLUÍDO</p>
+          <h3 class="stack-item__title">Vídeo Passo a Passo (7min)</h3>
+          <p>Como usar na prática mesmo se você não entende nada de tecnologia. Passo a passo filmado na tela. Aperte play e vá junto. <strong>ZERO curva de aprendizado.</strong></p>
+        </div>
+      </div>
+
+      <div class="stack-item stack-item--text-left">
+        <div class="stack-item__text">
+          <p class="stack-item__tag">BÔNUS INCLUÍDO</p>
+          <h3 class="stack-item__title">Masterclass sobre os custos ocultos e como lucrar com eles (estudo de caso)</h3>
+          <p>Entenda por que você trabalha tanto e sobra pouco ou quase nada.</p>
+        </div>
+        <div class="stack-item__media">
+          <img src="/images/stack-masterclass.webp" alt="Masterclass custos ocultos" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="stack-item stack-item--media-left">
+        <div class="stack-item__media">
+          <img src="/images/stack-consultor.webp" alt="Consultor de Precificação com IA" loading="lazy" />
+        </div>
+        <div class="stack-item__text">
+          <p class="stack-item__tag">BÔNUS INCLUÍDO</p>
+          <h3 class="stack-item__title">Consultor de Precificação com IA</h3>
+          <p>Descreve o procedimento. A IA calcula o preço estratégico considerando o parceiro e sua margem.</p>
+        </div>
+      </div>
+
+      <div class="stack-item stack-item--text-left">
+        <div class="stack-item__text">
+          <p class="stack-item__tag">BÔNUS INCLUÍDO</p>
+          <h3 class="stack-item__title">Como Dobrar Seu Lucro em 6 Meses</h3>
+          <p>As 3 principais alavancas que fazem clínicas dobrarem o lucro delas em 6 meses (ou menos)</p>
+        </div>
+        <div class="stack-item__media">
+          <img src="/images/stack-dobrar.webp" alt="Como Dobrar Seu Lucro em 6 Meses" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="stack-item stack-item--media-left">
+        <div class="stack-item__media">
+          <img src="/images/stack-reforma.webp" alt="Os 5 Perigos da Nova Reforma Tributária" loading="lazy" />
+        </div>
+        <div class="stack-item__text">
+          <p class="stack-item__tag">BÔNUS INCLUÍDO</p>
+          <h3 class="stack-item__title">Os 5 Perigos da Nova Reforma Tributária</h3>
+          <p>O que muda e o que você precisa ficar atento.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       12. PRICING
+  ============================================================ -->
+  <section class="section pricing" id="pricing">
+    <div class="container">
+      <h2 class="section__title">Quanto é tudo isso?</h2>
+      <div class="pricing__table-wrap">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Calculadora do Dentista Parceiro Lucrativo</td>
+              <td>R$ 197,00</td>
+            </tr>
+            <tr>
+              <td>Consultor de Precificação com IA</td>
+              <td>R$ 147,00</td>
+            </tr>
+            <tr>
+              <td>Masterclass sobre os custos ocultos e como lucrar com eles (com estudo de caso)</td>
+              <td>R$ 197,00</td>
+            </tr>
+            <tr>
+              <td>Aula completa Como Dobrar Seu Lucro em 6 Meses</td>
+              <td>R$ 197,00</td>
+            </tr>
+            <tr>
+              <td>Os 5 Perigos da Nova Reforma</td>
+              <td>R$ 197,00</td>
+            </tr>
+            <tr class="pricing-table__total">
+              <td><strong>Total</strong></td>
+              <td><strong>R$ 935,00</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="pricing__context">No total, isso tudo deveria custar <strong>R$ 935,00</strong>.</p>
+      <p class="pricing__context">Mas aqui, nessa página, você garante o valor especial:</p>
+      <div class="pricing__bundle-img">
+        <img src="/images/pricing-bundle.webp" alt="Tudo que está incluído no Protocolo DPL" loading="lazy" />
+      </div>
+      <div class="pricing__offer">
+        <p class="pricing__crossed"><s>R$ 935,00</s></p>
+        <p class="pricing__installments">11x de <span class="pricing__inst-val">R$ 7,44</span></p>
+        <p class="pricing__or">ou à vista com desconto por</p>
+        <p class="pricing__price">R$ 67,04</p>
+      </div>
+      <a href="https://pay.hotmart.com/V103826709U?off=vju7un99&checkoutMode=10&split=11&offDiscount=ESPECIALDPL&bid=1775611955624" target="_blank" rel="noopener" class="btn-cta btn-cta--xl">GARANTIR MEU ACESSO AGORA</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       13. BENEFÍCIOS
+  ============================================================ -->
+  <section class="section benefits">
+    <div class="container">
+      <h2 class="section__title">Você está a um clique de finalmente<br><span class="accent">LUCRAR com a sua parceria</span> e sair do mocho!</h2>
+      <p class="section__sub">O que muda quando você aplica o Protocolo:</p>
+      <div class="benefits__grid">
+        <div class="benefit-card">
+          <div class="benefit-card__icon">🎯</div>
+          <h3 class="benefit-card__title">Clareza</h3>
+          <p>Saiba exatamente se seu parceiro está te dando lucro ou prejuízo</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">🎛️</div>
+          <h3 class="benefit-card__title">Controle</h3>
+          <p>Defina o repasse certo — sem achismo, sem pressão do parceiro</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">😌</div>
+          <h3 class="benefit-card__title">Paz</h3>
+          <p>Durma tranquilo sabendo que a parceria fecha no azul</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">📈</div>
+          <h3 class="benefit-card__title">Previsibilidade</h3>
+          <p>Planeje a clínica com números reais — não com esperança</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">💼</div>
+          <h3 class="benefit-card__title">Agenda cheia que VALE A PENA</h3>
+          <p>A clínica funciona e lucra mesmo quando você não está no mocho</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card__icon">💬</div>
+          <h3 class="benefit-card__title">Confiança</h3>
+          <p>Negocie o modelo de remuneração com o parceiro sem gaguejar</p>
+        </div>
+      </div>
+      <a href="https://pay.hotmart.com/V103826709U?off=vju7un99&checkoutMode=10&split=11&offDiscount=ESPECIALDPL&bid=1775611955624" target="_blank" rel="noopener" class="btn-cta btn-cta--xl">GARANTIR MEU ACESSO AGORA</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       14. GARANTIA
+  ============================================================ -->
+  <section class="section guarantee">
+    <div class="container">
+      <div class="guarantee__box">
+        <div class="guarantee__seal">
+          <img src="/images/garantia.webp" alt="Garantia incondicional de 7 dias" loading="lazy" />
+        </div>
+        <div class="guarantee__text">
+          <h2 class="guarantee__title">Aplique o protocolo Dentista Parceiro Lucrativo.<br>Veja seus números reais.<br>Lucre mais, de imediato. <span class="accent">Ou seu Investimento de volta!</span></h2>
+          <p>Se por QUALQUER motivo você achar que não valeu a pena...</p>
+          <p><strong>É só pedir reembolso em até 7 dias.</strong></p>
+          <p>Sem perguntas. Sem burocracia.<br>100% do seu dinheiro de volta.</p>
+          <p class="guarantee__closing">O risco é todo meu.<br><strong>A clareza é toda sua.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       15. BIO — Leandro Stecca
+  ============================================================ -->
+  <section class="section bio">
+    <div class="container">
+      <div class="bio__inner">
+        <div class="bio__photo">
+          <img src="/images/leandro.webp" alt="Dr. Leandro Stecca" loading="lazy" />
+        </div>
+        <div class="bio__text">
+          <h2 class="bio__name">Leandro Stecca</h2>
+          <p>Leandro Stecca é dentista há quase 30 anos.</p>
+          <p>E já viveu exatamente o que você vive hoje.</p>
+          <p>Agenda lotada. Faturamento alto. E no fim do mês, sobra nada.</p>
+          <p>Doze horas por dia. Cansado. Sem entender para onde o dinheiro ia.</p>
+          <p>Não era falta de paciente. Não era crise. Era preço errado.</p>
+          <p><strong>Matemática básica que ninguém ensina na faculdade.</strong></p>
+          <p>Quando aprendeu a precificar certo, tudo mudou.</p>
+          <p>Mesma agenda. Mesmo faturamento. <strong class="accent">Lucro triplicado.</strong></p>
+          <p>E o melhor: tempo para viver.</p>
+          <p>Hoje, Leandro ajuda dentistas a saírem dessa armadilha.</p>
+          <p>Sem promessa idiota de "fature 300 mil".</p>
+          <p>Com a verdade: dá para viver bem da odontologia sem ficar preso ao mocho e aos custos altos.</p>
+          <p class="bio__mantra"><em>"Faturamento é vaidade. Lucro é sanidade."</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       16. RE-ENGAJAMENTO
+  ============================================================ -->
+  <section class="section reengagement">
+    <div class="container">
+      <div class="reengagement__inner">
+        <h2 class="section__title">Vou te fazer uma pergunta 👇</h2>
+        <p class="reengagement__question">Quantos procedimentos seu dentista parceiro fez esse mês?<br>5? 10? 15?</p>
+        <p class="reengagement__question-2">Agora outra — e essa dói:</p>
+        <div class="highlight-box">
+          <p class="highlight-box__quote"><strong>Quanto REALMENTE sobrou no seu bolso?</strong></p>
+        </div>
+        <p class="body-lg">Bem menos do que você imaginava, né?</p>
+        <p class="body-lg">
+          Você abre o extrato.<br>
+          Vê um faturamento bonito.<br>
+          Aí vem a realidade:
+        </p>
+        <ul class="bullet-list bullet-list--no">
+          <li>repasse do parceiro</li>
+          <li>imposto</li>
+          <li>folha de pagamento</li>
+          <li>aluguel</li>
+          <li>material</li>
+        </ul>
+        <p class="body-lg body-lg--center"><strong>E no final... sobra mixaria.</strong></p>
+        <div class="quote-block">
+          <p>A verdade é simples e dura:<br>
+          Você trouxe o parceiro pra crescer.<br>
+          Mas só está crescendo a conta dele.</p>
+        </div>
+        <p class="body-lg">E sabe por quê? Porque a estratégia de remuneração está errada.</p>
+        <ul class="bullet-list bullet-list--plain">
+          <li>Não é falta de paciente.</li>
+          <li>Não é marketing.</li>
+          <li>Não é a economia.</li>
+        </ul>
+        <p class="body-lg body-lg--center"><strong class="accent">É a estratégia.</strong></p>
+
+        <div class="bundle-wrap">
+          <img src="/images/bundle.webp" alt="Protocolo DPL — tudo incluso" loading="lazy" class="bundle-img" />
+        </div>
+
+        <p class="body-lg">É exatamente por isso que o <strong>Protocolo do Dentista Parceiro Lucrativo</strong> existe. Pra resolver isso em minutos.</p>
+        <p class="body-lg body-lg--center">⏱ <strong>10 minutos.</strong><br>
+        Você coloca seus custos e o repasse atual. O protocolo mostra se você está no lucro ou no prejuízo. E qual o modelo correto pra corrigir agora.</p>
+        <p class="body-lg body-lg--center"><strong>Pronto.</strong></p>
+        <p class="body-lg body-lg--center"><strong>Agora a decisão é sua:</strong></p>
+
+        <div class="choice-grid">
+          <div class="choice-card choice-card--bad">
+            <h3>✗ Continuar...</h3>
+            <ul>
+              <li>Continuar bancando parceiro sem saber se lucra</li>
+              <li>Continuar no modelo de remuneração errado</li>
+            </ul>
+          </div>
+          <div class="choice-card choice-card--good">
+            <h3>✓ Ou...</h3>
+            <ul>
+              <li>Investir um valor ridiculamente baixo</li>
+              <li>Corrigir e voltar a lucrar hoje ainda!</li>
+            </ul>
+          </div>
+        </div>
+
+        <a href="https://pay.hotmart.com/V103826709U?off=vju7un99&checkoutMode=10&split=11&offDiscount=ESPECIALDPL&bid=1775611955624" target="_blank" rel="noopener" class="btn-cta btn-cta--xl">GARANTIR MEU ACESSO AGORA</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       17. FAQ
+  ============================================================ -->
+  <section class="section faq">
+    <div class="container">
+      <h2 class="section__title">Perguntas Frequentes</h2>
+      <div class="accordion" id="faq-accordion">
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"Eu não entendo nada de Excel. Consigo usar?"</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>Sim. É plug and play. Você digita os números nos campos. A calculadora faz a conta. Se sabe digitar um número, consegue usar.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"Minha cidade é diferente. Vai funcionar pra mim?"</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>A calculadora usa seus custos reais. São Paulo ou interior — você coloca os valores da sua realidade e ela mostra o resultado.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"Meu parceiro vai embora se eu mudar o modelo."</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>Todos os dentistas do nosso programa disseram isso. Nenhum parceiro foi embora. Sabe por quê? O Protocolo te ensina a apresentar os números — não a impor uma decisão. Parceiro que entende a conta, aceita. Parceiro que não aceita... não era o parceiro certo.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"Já tentei outros cursos e não funcionou."</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>Porque te venderam teoria ou promessa de faturamento. Isso aqui é diferente. É uma calculadora que mostra em minutos se você está no lucro ou no prejuízo com seu parceiro. Não é curso de 40 horas. É: abrir → digitar → ver o resultado. E se não funcionar? Reembolso em 7 dias.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"Não tenho tempo pra aprender mais uma coisa."</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>São 10 minutos. Você gasta mais tempo tentando entender por que o dinheiro não sobra. 10 minutos pra descobrir se seu parceiro tá te dando lucro ou prejuízo. Vale ou não vale?</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"Meu parceiro é meu amigo. Não consigo falar de dinheiro com ele."</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>Essa é a objeção mais comum — e a mais cara. O Protocolo te dá exatamente o que falta nessa situação: os números na mesa. Não é você contra ele. É a conta mostrando o que é justo pra ambos. Quando você chega com dados — não com opinião — a conversa muda. E o parceiro entende.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"Meu contador já cuida disso."</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>Seu contador cuida de imposto e conformidade. Ele não calcula se o repasse que você paga ao parceiro está te dando lucro ou prejuízo. O Protocolo faz isso.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"E se eu não souber meus custos exatos?"</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>A calculadora tem todos os campos prontos. Aluguel, funcionário, material, imposto, hora clínica... Você pega os boletos e coloca. Se não souber algum, a calculadora orienta com referências.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"Preciso de suporte?"</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>O Protocolo é autoexplicativo. Vem com vídeo tutorial. Se quiser acompanhamento completo pra implementar tudo, o caminho é o Programa de Aceleração. O Protocolo é o primeiro passo.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"Quanto tempo até ver resultado?"</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>Imediato. Você descobre hoje se está no prejuízo. Ajusta o modelo hoje. Na próxima negociação com o parceiro, já entra com o número certo.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"E se eu não gostar?"</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>7 dias de garantia incondicional. Não gostou? Pede reembolso. 100% do dinheiro de volta. Sem perguntas. Sem burocracia. O risco é zero.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"Funciona pra qualquer especialidade de parceiro?"</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>Sim. Implantodontista, ortodontista, endodontista, harmonizador... A lógica é a mesma: custo real + repasse correto = lucro de verdade.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"Consigo aplicar sozinho?"</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>Sim. A calculadora mostra o número. Você leva pro parceiro. Se quiser ir além — montar o time completo, escalar a clínica — o Programa de Aceleração é o próximo passo.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false">
+            <span>"Quando recebo o acesso?"</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel">
+            <p>Na hora. Compra agora, acesso no email em até 5 minutos. Pode começar hoje mesmo.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       18. FECHAMENTO
+  ============================================================ -->
+  <section class="section closing">
+    <div class="container">
+      <h2 class="section__title">Agora é com você.</h2>
+      <div class="closing__grid">
+        <div class="closing__col closing__col--bad">
+          <h3 class="closing__col-title">OPÇÃO 1: CONTINUAR COMO ESTÁ</h3>
+          <p>Amanhã você acorda. Parceiro atende. Você paga todo mundo. Olha o que sobrou. Quase nada. Daqui 6 meses, você está no mesmo lugar. Mesma dúvida. Mesmo cansaço. Mesma sensação de que o peso da clínica cresce — mas o lucro não.</p>
+        </div>
+        <div class="closing__col closing__col--good">
+          <h3 class="closing__col-title">OPÇÃO 2: DESCOBRIR O PREÇO CERTO HOJE</h3>
+          <p>Você investe um valor ridículo. Descobre em 10 minutos se seu parceiro está te dando lucro ou prejuízo. Aplica a estratégia correta de remuneração. Negocia com segurança. E finalmente sobra dinheiro de verdade. Daqui 6 meses, você pensa: <strong>"Por que demorei tanto?"</strong></p>
+        </div>
+      </div>
+      <div class="closing__cta-wrap">
+        <p class="closing__choice">A ESCOLHA É SUA:</p>
+        <p class="closing__path"><strong>Caminho 1:</strong> Continuar trabalhando de graça.</p>
+        <p class="closing__path"><strong>Caminho 2:</strong> Aplicar a estratégia certa e lucrar.</p>
+        <a href="https://pay.hotmart.com/V103826709U?off=vju7un99&checkoutMode=10&split=11&offDiscount=ESPECIALDPL&bid=1775611955624" target="_blank" rel="noopener" class="btn-cta btn-cta--xl btn-cta--final">GARANTIR MEU ACESSO AGORA</a>
+        <p class="closing__reassurance">✓ Acesso imediato &nbsp;·&nbsp; ✓ 7 dias de garantia &nbsp;·&nbsp; ✓ Risco zero</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       19. RODAPÉ
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__links">
+        <a href="#">Política de Privacidade</a> &nbsp;|&nbsp; <a href="#">Termos de Uso</a>
+      </p>
+      <p class="footer__disclaimer">
+        Este site não é afiliado ao Facebook, Meta, Google ou qualquer rede social ou recursos de marketing. A compra desse material não garante nenhum tipo de resultado. Fazemos todos os esforços para indicar claramente e mostrar todas as provas do produto e usamos resultados reais de alunos.
+      </p>
+      <p class="footer__copy">© 2025 Leandro Stecca. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,44 +1,38 @@
 import { defineConfig } from 'vite'
-import { readFileSync, writeFileSync, existsSync, rmSync } from 'fs'
-import { resolve } from 'path'
-
-function inlineCss() {
-  return {
-    name: 'inline-css',
-    enforce: 'post',
-    apply: 'build',
-    writeBundle() {
-      const htmlPath = resolve('dist/dpl-pv01/index.html')
-      if (!existsSync(htmlPath)) return
-
-      let html = readFileSync(htmlPath, 'utf-8')
-      const cssLinkRegex = /<link rel="stylesheet"[^>]*href="([^"]+)"[^>]*>/g
-      let match
-
-      while ((match = cssLinkRegex.exec(html)) !== null) {
-        if (match[0].includes('media="print"')) continue
-        const cssHref = match[1]
-        const cssFile = cssHref.replace(/^\/p\/dpl-pv01\//, 'dist/dpl-pv01/')
-        const cssFilePath = resolve(cssFile)
-        if (existsSync(cssFilePath)) {
-          const cssContent = readFileSync(cssFilePath, 'utf-8')
-          html = html.replace(match[0], `<style>${cssContent}</style>`)
-          rmSync(cssFilePath)
-        }
-      }
-
-      writeFileSync(htmlPath, html)
-    },
-  }
-}
+import copyStaticFiles from './vite-plugin-copy-static.js'
 
 export default defineConfig({
-  plugins: [inlineCss()],
-  base: '/p/dpl-pv01/',
+  plugins: [
+    copyStaticFiles({
+      files: [
+        { src: 'public/robots.txt', dest: 'dpl-pv01/robots.txt' }
+      ],
+      outDir: 'dist'
+    })
+  ],
+  base: '/dpl-pv01/',
   build: {
     outDir: 'dist/dpl-pv01',
     emptyOutDir: true,
-    cssMinify: true,
+    target: 'esnext',
     minify: 'esbuild',
+    cssMinify: true,
+    cssCodeSplit: true,
+    rollupOptions: {
+      input: {
+        main: './src/main-entry.js',
+      },
+      output: {
+        manualChunks: (id) => {
+          // Vendor modules
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+      },
+    },
   },
 })

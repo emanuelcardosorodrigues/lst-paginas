@@ -1,50 +1,42 @@
-# Cloudflare cache headers
+# Cache headers para DPL-PV01
 
-/robots.txt
-  Content-Type: text/plain; charset=utf-8
-  Cache-Control: public, max-age=86400
+# HTML - curto cache para permitir atualizações rápidas
+/dpl-pv01/
+  Cache-Control: public, max-age=0, must-revalidate, s-maxage=60
+  X-Content-Type-Options: nosniff
 
-/sitemap.xml
-  Content-Type: application/xml; charset=utf-8
-  Cache-Control: public, max-age=86400
+# Recursos estáticos - cache longo imutável
+/dpl-pv01/images/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
 
-
-# ── dpl-pv01 ─────────────────────────────────────────────
-# Hashed assets (JS/CSS with content hash) — immutable 1 year
 /dpl-pv01/assets/*
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
 
-# Fonts — immutable 1 year
+/dpl-pv01/third-party.js
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+  X-Content-Type-Options: nosniff
+
+# Fonts - cache longo
 /dpl-pv01/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Images — 30 days
-/dpl-pv01/images/*
-  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
-
-# HTML — no cache (always fresh for ad tracking pixels)
-/dpl-pv01/
-  Cache-Control: no-cache, no-store, must-revalidate
-  CDN-Cache-Control: no-store
-  Cloudflare-CDN-Cache-Control: no-store
-  Surrogate-Control: no-store
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
-
-# ── plo-pv01 ─────────────────────────────────────────────
-# Hashed assets (JS/CSS/fonts with content hash) — immutable 1 year
+# ── plo-pv01 (mantido para compatibilidade) ─────────────────
+# Hashed assets (JS/CSS with content hash) — immutable 1 year
 /plo-pv01/assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Images — 30 days
+# Images — 1 year with stale-while-revalidate
 /plo-pv01/images/*
-  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, stale-while-revalidate=86400
 
-# HTML — no cache (always fresh for ad tracking pixels)
+# HTML — short cache for tracking pixels
 /plo-pv01/
-  Cache-Control: no-cache, no-store, must-revalidate
-  CDN-Cache-Control: no-store
-  Cloudflare-CDN-Cache-Control: no-store
-  Surrogate-Control: no-store
+  Cache-Control: public, max-age=300, s-maxage=600, stale-while-revalidate=60
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
+
+# robots.txt
+/plo-pv01/robots.txt
+  Cache-Control: public, max-age=86400, s-maxage=86400, stale-while-revalidate=3600

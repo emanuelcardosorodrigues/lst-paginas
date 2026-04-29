@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts",
-    "build": "vite build --config vite.config.ts",
+    "build": "vite build --config vite.config.ts && node post-build.js",
     "preview": "vite preview --config vite.config.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
@@ -72,6 +72,7 @@
     "zod": "^3.24.2"
   },
   "dependencies": {
-    "@fontsource/inter": "^5.2.8"
+    "@fontsource/inter": "^5.2.8",
+    "preact": "^10.29.1"
   }
 }

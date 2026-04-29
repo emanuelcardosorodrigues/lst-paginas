@@ -1,0 +1,21 @@
+name = "protocolo-dpl"
+main = "dist/dpl-pv01/index.html"
+compatibility_date = "2024-04-05"
+
+[vars]
+ENVIRONMENT = "production"
+
+[build]
+command = ""
+
+[build.upload]
+format = "directory"
+main = "./dist/dpl-pv01"
+
+[build.build]
+cwd = "./"
+command = ""
+watch = ""
+
+[build.upload.format]
+directory = ""
