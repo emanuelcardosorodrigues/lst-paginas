@@ -3,8 +3,9 @@ export default {
     const url = new URL(request.url);
 
     if (url.pathname.startsWith("/p/")) {
-      // Ensure trailing slash so ASSETS doesn't redirect to a path without /p/
-      if (!url.pathname.endsWith("/")) {
+      // Only redirect /p/slug (no trailing slash, no sub-path) → /p/slug/
+      // This avoids redirecting asset paths like /p/slug/assets/file.js
+      if (/^\/p\/[^/]+$/.test(url.pathname)) {
         return Response.redirect(url.toString() + "/", 301);
       }
 
