@@ -1,4 +1,3 @@
-import { Nav } from "@/components/landing/Nav";
 import { Hero } from "@/components/landing/Hero";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { HowItWorks } from "@/components/landing/HowItWorks";
@@ -19,7 +18,6 @@ import { Footer } from "@/components/landing/Footer";
 export default function LandingPage() {
   return (
     <main className="min-h-screen font-sans selection:bg-[#00A88E] selection:text-white">
-      <Nav />
       <Hero />
       <Testimonials />
       <HowItWorks />
