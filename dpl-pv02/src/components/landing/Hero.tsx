@@ -7,9 +7,13 @@ export const Hero = () => {
 
       <div className="container mx-auto px-6 max-w-[980px] relative z-10">
         <div className="flex flex-col items-center text-center">
-          <h1 className="text-[clamp(2rem,5vw,3.75rem)] leading-[1.1] font-[800] tracking-[-0.02em] text-[#0F172A] mb-10 max-w-[920px]">
+          <h1 className="text-[clamp(2rem,5vw,3.75rem)] leading-[1.1] font-[800] tracking-[-0.02em] text-[#0F172A] mb-6 max-w-[920px]">
             A Calculadora simples para ter <span className="text-[#00A88E]">Lucro</span> com dentista parceiro — em <span className="text-[#00A88E]">10 minutos</span>
           </h1>
+
+          <p className="text-[#64748B] text-[1.125rem] leading-[1.7] mb-10 max-w-[640px]">
+            Descubra muito mais do que o preço certo. Aplique a estratégia de remuneração lucrativa — para os dois — e se proteja judicialmente.
+          </p>
         </div>
 
         <div className="relative mb-12">
