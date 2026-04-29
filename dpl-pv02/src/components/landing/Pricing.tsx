@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
+import { img } from "@/lib/imgPath";
 
 export const Pricing = () => {
   return (
@@ -21,6 +22,15 @@ export const Pricing = () => {
           transition={{ duration: 0.8 }}
           className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl backdrop-blur-sm relative"
         >
+          {/* Bundle image */}
+          <div className="flex justify-center mb-10">
+            <img
+              src={img("pricing-bundle.webp")}
+              alt="Tudo que você recebe"
+              className="w-full max-w-[560px] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            />
+          </div>
+
           <div className="space-y-4 mb-8">
             {[
               { name: "Calculadora do Dentista Parceiro Lucrativo", price: "R$ 197,00" },
