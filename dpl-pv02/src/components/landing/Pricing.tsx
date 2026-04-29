@@ -63,14 +63,19 @@ export const Pricing = () => {
 
             <div className="text-[#64748B] font-medium mb-2 line-through">De R$ 935,00</div>
             <div className="text-[clamp(2.5rem,5vw,3.5rem)] font-[800] text-white tracking-tighter leading-none mb-3">
-              <span className="text-2xl text-[#00A88E] font-bold tracking-normal align-top mr-2">Por: 9x de</span>
-              R$ 8,80
+              <span className="text-2xl text-[#00A88E] font-bold tracking-normal align-top mr-2">Por: 11x de</span>
+              R$ 7,44
             </div>
-            <div className="text-[#00A88E] font-medium mb-10">ou à vista com desconto por R$ 67</div>
+            <div className="text-[#00A88E] font-medium mb-10">ou à vista com desconto por R$ 67,04</div>
 
-            <button className="w-full bg-[#00A88E] hover:bg-[#00967F] text-white font-bold px-8 py-5 rounded-full transition-all duration-300 hover:-translate-y-1 shadow-[0_10px_25px_rgba(0,168,142,0.3)] text-lg mb-6 flex items-center justify-center gap-2">
+            <a
+              href="https://pay.hotmart.com/V103826709U?off=vju7un99&checkoutMode=10&offDiscount=ESPECIALDPL&split=11"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-[#00A88E] hover:bg-[#00967F] text-white font-bold px-8 py-5 rounded-full transition-all duration-300 hover:-translate-y-1 shadow-[0_10px_25px_rgba(0,168,142,0.3)] text-lg mb-6 flex items-center justify-center gap-2"
+            >
               GARANTIR MEU ACESSO AGORA →
-            </button>
+            </a>
 
             <div className="flex justify-center items-center gap-2 text-white/50 text-sm font-medium">
               <ShieldCheck size={16} className="text-[#00A88E]" />

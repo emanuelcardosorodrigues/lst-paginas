@@ -67,15 +67,20 @@ export const Offer = () => {
               <span className="text-[#64748B] font-medium text-lg line-through">R$ 935,00</span>
             </div>
             <div className="flex items-baseline justify-center gap-2">
-              <span className="text-5xl md:text-7xl font-[800] text-white tracking-tighter">R$ 67</span>
+              <span className="text-5xl md:text-7xl font-[800] text-white tracking-tighter">R$ 67,04</span>
               <span className="text-white/60 font-medium">à vista</span>
             </div>
             <div className="text-[#00A88E] font-medium mt-2">ou 12x de R$ 6,68</div>
           </div>
 
-          <button className="w-full sm:w-auto min-w-[300px] bg-[#00A88E] hover:bg-[#00967F] text-white font-bold px-[36px] py-[22px] text-lg rounded-full transition-all duration-300 hover:-translate-y-[2px] shadow-[0_10px_25px_rgba(0,168,142,0.25)] hover:shadow-[0_15px_30px_rgba(0,168,142,0.4)] mb-6">
+          <a
+            href="https://pay.hotmart.com/V103826709U?off=vju7un99&checkoutMode=10&offDiscount=ESPECIALDPL&split=11"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto min-w-[300px] bg-[#00A88E] hover:bg-[#00967F] text-white font-bold px-[36px] py-[22px] text-lg rounded-full transition-all duration-300 hover:-translate-y-[2px] shadow-[0_10px_25px_rgba(0,168,142,0.25)] hover:shadow-[0_15px_30px_rgba(0,168,142,0.4)] mb-6 inline-block text-center"
+          >
             GARANTIR MEU ACESSO AGORA →
-          </button>
+          </a>
 
           <div className="flex items-center justify-center gap-2 text-white/50 text-sm font-medium">
             <ShieldCheck size={16} />
