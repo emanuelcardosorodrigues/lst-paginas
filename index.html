@@ -26,21 +26,23 @@
   <meta name="twitter:description" content="A calculadora que mostra - em minutos - quanto pagar ao dentista parceiro — e sair do mocho." />
   <meta name="twitter:image" content="https://cf.leandrostecca.com.br/dpl-pv01/images/hero-bundle.webp" />
 
-  <!-- Preload LCP image -->
-  <link rel="preload" as="image" href="/images/hero-bundle.webp" fetchpriority="high" />
+  <!-- Preload LCP image (proof-midori is actual LCP on mobile) -->
+  <link rel="preload" as="image" href="/p/dpl-pv01/images/proof-midori-680.webp"
+        imagesrcset="/p/dpl-pv01/images/proof-midori-680.webp 680w, /dpl-pv01/images/proof-midori.webp 800w"
+        imagesizes="(max-width: 639px) calc(100vw - 40px), 420px"
+        fetchpriority="high" />
 
-  <!-- DNS prefetch for third-party origins -->
+  <!-- Resource hints -->
+  <link rel="preconnect" href="https://ts.leandrostecca.com.br" />
+  <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
   <link rel="dns-prefetch" href="https://pay.hotmart.com" />
-  <link rel="dns-prefetch" href="https://ts.leandrostecca.com.br" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Non-blocking Google Fonts -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" /></noscript>
+  <!-- Self-hosted Inter: async, after LCP paint (font-display:optional = no CLS) -->
+  <link rel="preload" as="style" href="/p/dpl-pv01/fonts/fonts.css" />
+  <link rel="stylesheet" href="/p/dpl-pv01/fonts/fonts.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="/p/dpl-pv01/fonts/fonts.css" /></noscript>
 
-  <link rel="icon" type="image/webp" href="/images/logo-ls.webp" />
+  <link rel="icon" type="image/webp" href="/p/dpl-pv01/images/logo-ls.webp" />
   <link rel="stylesheet" href="/src/style.css" />
 
   <!-- Google Tag Manager -->
@@ -58,6 +60,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+  <main>
   <!-- ============================================================
        1. HERO
   ============================================================ -->
@@ -72,7 +75,11 @@
         Descubra muito mais do que o preço certo. Aplique a estratégia de remuneração lucrativa — para os dois — e se proteja judicialmente.
       </p>
       <div class="hero__bundle">
-        <img src="/images/hero-bundle.webp" alt="Protocolo do Dentista Parceiro Lucrativo — todos os materiais incluídos" loading="eager" fetchpriority="high" width="860" height="520" />
+        <img src="/p/dpl-pv01/images/hero-bundle-1040.webp"
+             srcset="/p/dpl-pv01/images/hero-bundle-680.webp 680w, /p/dpl-pv01/images/hero-bundle-1040.webp 1040w, /p/dpl-pv01/images/hero-bundle-1440.webp 1440w"
+             sizes="(max-width: 767px) calc(100vw - 40px), 680px"
+             alt="Protocolo do Dentista Parceiro Lucrativo — todos os materiais incluídos"
+             loading="eager" fetchpriority="high" width="860" height="520" />
       </div>
     </div>
   </section>
@@ -87,7 +94,11 @@
 
         <div class="testimonial-card">
           <a href="https://drive.google.com/file/d/1NGViICuVNWAaITTey1Jdl6x4HAS-6iRu/view" target="_blank" rel="noopener" class="video-thumb" aria-label="Assistir depoimento da Dra. Maria Midori">
-            <img src="/images/proof-midori.webp" alt="Dra. Maria Midori" loading="lazy" class="video-thumb__img" />
+            <img src="/p/dpl-pv01/images/proof-midori-680.webp"
+                 srcset="/p/dpl-pv01/images/proof-midori-680.webp 680w, /p/dpl-pv01/images/proof-midori.webp 800w"
+                 sizes="(max-width: 639px) calc(100vw - 40px), 420px"
+                 alt="Dra. Maria Midori" loading="eager" fetchpriority="high" decoding="async"
+                 width="800" height="448" class="video-thumb__img" />
             <div class="video-thumb__overlay">
               <div class="play-btn" aria-hidden="true">&#9654;</div>
             </div>
@@ -100,7 +111,11 @@
 
         <div class="testimonial-card">
           <a href="https://drive.google.com/file/d/1XmOxo0_tv-63kKyCc7fGIfYFWCWz4U2M/view" target="_blank" rel="noopener" class="video-thumb" aria-label="Assistir depoimento do Dr. Otávio Fartes">
-            <img src="/images/proof-otavio.webp" alt="Dr. Otávio Fartes" loading="lazy" class="video-thumb__img" />
+            <img src="/p/dpl-pv01/images/proof-otavio-680.webp"
+                 srcset="/p/dpl-pv01/images/proof-otavio-680.webp 680w, /p/dpl-pv01/images/proof-otavio.webp 800w"
+                 sizes="(max-width: 639px) calc(100vw - 40px), 420px"
+                 alt="Dr. Otávio Fartes" loading="lazy" decoding="async"
+                 width="800" height="448" class="video-thumb__img" />
             <div class="video-thumb__overlay">
               <div class="play-btn" aria-hidden="true">&#9654;</div>
             </div>
@@ -127,15 +142,27 @@
         <h3 class="showroom__group-title">O Básico bem estruturado</h3>
         <div class="mockup-grid">
           <div class="mockup-card">
-            <img src="/images/showroom-g1-1.webp" alt="Custo real por procedimento" loading="lazy" class="mockup-card__img" />
+            <img src="/p/dpl-pv01/images/showroom-g1-1-640.webp"
+                 srcset="/p/dpl-pv01/images/showroom-g1-1-640.webp 640w, /p/dpl-pv01/images/showroom-g1-1-680.webp 680w, /p/dpl-pv01/images/showroom-g1-1-960.webp 960w, /p/dpl-pv01/images/showroom-g1-1.webp 1536w"
+                 sizes="(max-width: 720px) 370px, 260px"
+                 alt="Custo real por procedimento" loading="lazy" decoding="async"
+                 width="1536" height="877" class="mockup-card__img" />
             <p class="mockup-card__label"><strong>Custo real por procedimento</strong> — ZERO surpresas ao fim do mês!</p>
           </div>
           <div class="mockup-card">
-            <img src="/images/showroom-g1-2.webp" alt="Lucro ou Prejuízo do parceiro" loading="lazy" class="mockup-card__img" />
+            <img src="/p/dpl-pv01/images/showroom-g1-2-640.webp"
+                 srcset="/p/dpl-pv01/images/showroom-g1-2-640.webp 640w, /p/dpl-pv01/images/showroom-g1-2-680.webp 680w, /p/dpl-pv01/images/showroom-g1-2-960.webp 960w, /p/dpl-pv01/images/showroom-g1-2.webp 1536w"
+                 sizes="(max-width: 720px) 370px, 260px"
+                 alt="Lucro ou Prejuízo do parceiro" loading="lazy" decoding="async"
+                 width="1536" height="877" class="mockup-card__img" />
             <p class="mockup-card__label"><strong>Lucro ou Prejuízo daquele procedimento do Parceiro</strong> — Estruture tudo dentro da sua precificação</p>
           </div>
           <div class="mockup-card">
-            <img src="/images/showroom-g1-3.webp" alt="Valor da sua Hora Clínica" loading="lazy" class="mockup-card__img" />
+            <img src="/p/dpl-pv01/images/showroom-g1-3-640.webp"
+                 srcset="/p/dpl-pv01/images/showroom-g1-3-640.webp 640w, /p/dpl-pv01/images/showroom-g1-3-960.webp 960w, /p/dpl-pv01/images/showroom-g1-3.webp 1536w"
+                 sizes="(max-width: 720px) 365px, 260px"
+                 alt="Valor da sua Hora Clínica" loading="lazy" decoding="async"
+                 width="1536" height="924" class="mockup-card__img" />
             <p class="mockup-card__label"><strong>Valor da sua Hora Clínica</strong> — O seu devido valor RESGUARDADO desde o preço.</p>
           </div>
         </div>
@@ -145,15 +172,27 @@
         <h3 class="showroom__group-title">Todos os Custos Mapeados</h3>
         <div class="mockup-grid">
           <div class="mockup-card">
-            <img src="/images/showroom-g2-1.webp" alt="Remuneração Correta sem Risco Jurídico" loading="lazy" class="mockup-card__img" />
+            <img src="/p/dpl-pv01/images/showroom-g2-1-240.webp"
+                 srcset="/p/dpl-pv01/images/showroom-g2-1-240.webp 240w, /p/dpl-pv01/images/showroom-g2-1-360.webp 360w, /p/dpl-pv01/images/showroom-g2-1.webp 754w"
+                 sizes="136px"
+                 alt="Remuneração Correta sem Risco Jurídico" loading="lazy" decoding="async"
+                 width="754" height="1218" class="mockup-card__img" />
             <p class="mockup-card__label"><strong>Remuneração Correta sem Risco Jurídico</strong> — Tudo organizado para você pagar só o que precisa.</p>
           </div>
           <div class="mockup-card">
-            <img src="/images/showroom-g2-2.webp" alt="Margem de Negociação Lucrativa" loading="lazy" class="mockup-card__img" />
+            <img src="/p/dpl-pv01/images/showroom-g2-2-640.webp"
+                 srcset="/p/dpl-pv01/images/showroom-g2-2-640.webp 640w, /p/dpl-pv01/images/showroom-g2-2-680.webp 680w, /p/dpl-pv01/images/showroom-g2-2-960.webp 960w, /p/dpl-pv01/images/showroom-g2-2.webp 1536w"
+                 sizes="(max-width: 720px) 370px, 260px"
+                 alt="Margem de Negociação Lucrativa" loading="lazy" decoding="async"
+                 width="1536" height="877" class="mockup-card__img" />
             <p class="mockup-card__label"><strong>Margem de negociação Lucrativa</strong> — O valor máximo de desconto para você ter lucro de verdade e ainda fazer o cliente feliz.</p>
           </div>
           <div class="mockup-card">
-            <img src="/images/showroom-g2-3.webp" alt="Reinvestimento" loading="lazy" class="mockup-card__img" />
+            <img src="/p/dpl-pv01/images/showroom-g2-3-640.webp"
+                 srcset="/p/dpl-pv01/images/showroom-g2-3-640.webp 640w, /p/dpl-pv01/images/showroom-g2-3-680.webp 680w, /p/dpl-pv01/images/showroom-g2-3-960.webp 960w, /p/dpl-pv01/images/showroom-g2-3.webp 1536w"
+                 sizes="(max-width: 720px) 370px, 260px"
+                 alt="Reinvestimento" loading="lazy" decoding="async"
+                 width="1536" height="877" class="mockup-card__img" />
             <p class="mockup-card__label"><strong>Reinvestimento</strong> — O crescimento do seu consultório estruturado desde a precificação</p>
           </div>
         </div>
@@ -163,15 +202,27 @@
         <h3 class="showroom__group-title">Os Valores Certos Para Você Lucrar!</h3>
         <div class="mockup-grid">
           <div class="mockup-card">
-            <img src="/images/showroom-g3-1.webp" alt="Projeção de Lucro" loading="lazy" class="mockup-card__img" />
+            <img src="/p/dpl-pv01/images/showroom-g3-1-640.webp"
+                 srcset="/p/dpl-pv01/images/showroom-g3-1-640.webp 640w, /p/dpl-pv01/images/showroom-g3-1-960.webp 960w, /p/dpl-pv01/images/showroom-g3-1.webp 1352w"
+                 sizes="(max-width: 720px) 320px, 260px"
+                 alt="Projeção de Lucro" loading="lazy" decoding="async"
+                 width="1352" height="930" class="mockup-card__img" />
             <p class="mockup-card__label"><strong>Projeção de Lucro</strong> — Seu lucro protegido e projetado para garantir máxima liberdade</p>
           </div>
           <div class="mockup-card">
-            <img src="/images/showroom-g3-2.webp" alt="Valor Mínimo" loading="lazy" class="mockup-card__img" />
+            <img src="/p/dpl-pv01/images/showroom-g3-2-240.webp"
+                 srcset="/p/dpl-pv01/images/showroom-g3-2-240.webp 240w, /p/dpl-pv01/images/showroom-g3-2-360.webp 360w, /p/dpl-pv01/images/showroom-g3-2.webp 754w"
+                 sizes="124px"
+                 alt="Valor Mínimo" loading="lazy" decoding="async"
+                 width="754" height="1346" class="mockup-card__img" />
             <p class="mockup-card__label"><strong>Valor Mínimo</strong> — Qual o valor mínimo a ser cobrado para ainda ter lucro</p>
           </div>
           <div class="mockup-card">
-            <img src="/images/showroom-g3-3.webp" alt="Quanto cobrar" loading="lazy" class="mockup-card__img" />
+            <img src="/p/dpl-pv01/images/showroom-g3-3-640.webp"
+                 srcset="/p/dpl-pv01/images/showroom-g3-3-640.webp 640w, /p/dpl-pv01/images/showroom-g3-3-680.webp 680w, /p/dpl-pv01/images/showroom-g3-3-960.webp 960w, /p/dpl-pv01/images/showroom-g3-3.webp 1536w"
+                 sizes="(max-width: 720px) 370px, 260px"
+                 alt="Quanto cobrar" loading="lazy" decoding="async"
+                 width="1536" height="877" class="mockup-card__img" />
             <p class="mockup-card__label"><strong>Quanto cobrar</strong> — O valor ideal para cobrar para cada procedimento</p>
           </div>
         </div>
@@ -193,27 +244,27 @@
 
       <div class="pain__split">
         <div class="pain__split-img">
-          <img src="/images/pain-percentual.webp" alt="Dentista sem saber se está lucrando com o parceiro" loading="lazy" />
+          <img src="/p/dpl-pv01/images/pain-percentual.webp" alt="Dentista sem saber se está lucrando com o parceiro" loading="lazy" decoding="async" width="481" height="379" />
         </div>
         <div class="pain__split-content">
           <div class="pain__box">
             <div class="checklist checklist--yes">
               <ul>
-                <li><span class="check yes">✓</span> Parceiro atendendo na sua clínica</li>
-                <li><span class="check yes">✓</span> Agenda com dois profissionais trabalhando</li>
-                <li><span class="check yes">✓</span> Mais especialidades oferecidas aos pacientes</li>
-                <li><span class="check yes">✓</span> Faturamento cresceu: R$30 mil, R$50 mil, R$80 mil por mês...</li>
-                <li><span class="check yes">✓</span> Você até conseguiu sair mais cedo alguns dias</li>
+                <li><span class="check yes" aria-hidden="true">✓</span> Parceiro atendendo na sua clínica</li>
+                <li><span class="check yes" aria-hidden="true">✓</span> Agenda com dois profissionais trabalhando</li>
+                <li><span class="check yes" aria-hidden="true">✓</span> Mais especialidades oferecidas aos pacientes</li>
+                <li><span class="check yes" aria-hidden="true">✓</span> Faturamento cresceu: R$30 mil, R$50 mil, R$80 mil por mês...</li>
+                <li><span class="check yes" aria-hidden="true">✓</span> Você até conseguiu sair mais cedo alguns dias</li>
               </ul>
             </div>
             <div class="checklist checklist--no">
               <p class="checklist__but">MAS...</p>
               <ul>
-                <li><span class="check no">✗</span> No fim do mês, depois de pagar todo mundo, sobra menos do que antes</li>
-                <li><span class="check no">✗</span> Você trabalha mais do que quando estava sozinho</li>
-                <li><span class="check no">✗</span> Não sabe se a estratégia de pagamento do parceiro está certa</li>
-                <li><span class="check no">✗</span> Tem medo de mudar — e perder o profissional</li>
-                <li><span class="check no">✗</span> Se ele sair amanhã, a clínica sente na hora</li>
+                <li><span class="check no" aria-hidden="true">✗</span> No fim do mês, depois de pagar todo mundo, sobra menos do que antes</li>
+                <li><span class="check no" aria-hidden="true">✗</span> Você trabalha mais do que quando estava sozinho</li>
+                <li><span class="check no" aria-hidden="true">✗</span> Não sabe se a estratégia de pagamento do parceiro está certa</li>
+                <li><span class="check no" aria-hidden="true">✗</span> Tem medo de mudar — e perder o profissional</li>
+                <li><span class="check no" aria-hidden="true">✗</span> Se ele sair amanhã, a clínica sente na hora</li>
               </ul>
             </div>
           </div>
@@ -252,7 +303,7 @@
           </div>
         </div>
         <div class="agit__img">
-          <img src="/images/agit-errado.webp" alt="Dentista percebe que algo está errado nas contas" loading="lazy" />
+          <img src="/p/dpl-pv01/images/agit-errado.webp" alt="Dentista percebe que algo está errado nas contas" loading="lazy" decoding="async" width="481" height="386" />
         </div>
       </div>
 
@@ -273,7 +324,7 @@
 
       <div class="rev__split">
         <div class="rev__img">
-          <img src="/images/rev-porque.webp" alt="Clínica vazia — o problema não é a falta de pacientes" loading="lazy" />
+          <img src="/p/dpl-pv01/images/rev-porque.webp" alt="Clínica vazia — o problema não é a falta de pacientes" loading="lazy" decoding="async" width="414" height="296" />
         </div>
         <div class="rev__content">
           <p class="body-lg">Não é porque você:</p>
@@ -288,7 +339,7 @@
 
       <div class="revelation__answer">
         <div class="revelation__answer-img">
-          <img src="/images/rev-estrategia.webp" alt="Estratégia de remuneração errada" loading="lazy" />
+          <img src="/p/dpl-pv01/images/rev-estrategia.webp" alt="Estratégia de remuneração errada" loading="lazy" decoding="async" width="380" height="251" />
         </div>
         <div class="revelation__answer-text">
           <p class="revelation__lead">É porque:</p>
@@ -311,8 +362,8 @@
         <table class="reality-table">
           <thead>
             <tr>
-              <th class="reality-table__col-yes">VOCÊ ACHA QUE:</th>
-              <th class="reality-table__col-no">A REALIDADE:</th>
+              <th scope="col" class="reality-table__col-yes">VOCÊ ACHA QUE:</th>
+              <th scope="col" class="reality-table__col-no">A REALIDADE:</th>
             </tr>
           </thead>
           <tbody>
@@ -345,15 +396,15 @@
 
       <div class="reality__trio">
         <div class="reality__trio-item">
-          <img src="/images/agit-agenda.webp" alt="Agenda lotada" loading="lazy" />
+          <img src="/p/dpl-pv01/images/agit-agenda.webp" alt="Agenda lotada" loading="lazy" decoding="async" width="1024" height="1024" />
           <p>Agenda lotada.</p>
         </div>
         <div class="reality__trio-item">
-          <img src="/images/agit-trabalho.webp" alt="Trabalho pesado" loading="lazy" />
+          <img src="/p/dpl-pv01/images/agit-trabalho.webp" alt="Trabalho pesado" loading="lazy" decoding="async" width="1024" height="1024" />
           <p>Trabalho pesado.</p>
         </div>
         <div class="reality__trio-item">
-          <img src="/images/agit-lucro.webp" alt="Lucro quase nada" loading="lazy" />
+          <img src="/p/dpl-pv01/images/agit-lucro.webp" alt="Lucro quase nada" loading="lazy" decoding="async" width="1024" height="1024" />
           <p><strong class="accent">Lucro? Mixaria.</strong></p>
         </div>
       </div>
@@ -369,7 +420,7 @@
 
       <div class="truth__hero-row">
         <div class="truth__hero-img">
-          <img src="/images/truth-parceiro.webp" alt="Dentista calculando o valor correto da parceria" loading="lazy" />
+          <img src="/p/dpl-pv01/images/truth-parceiro.webp" alt="Dentista calculando o valor correto da parceria" loading="lazy" decoding="async" width="619" height="548" />
         </div>
         <div class="truth__block">
           <p>Não adianta lotar a agenda do parceiro.</p>
@@ -401,22 +452,22 @@
       <p class="section__sub">É mais simples do que você imagina. Olha só:</p>
       <div class="steps-grid">
         <div class="step-card">
-          <div class="step-card__num">01</div>
+          <div class="step-card__num" aria-hidden="true">01</div>
           <h3 class="step-card__title">Você define a estratégia de remuneração correta</h3>
           <p>Aqui, você coloca a remuneração mais lucrativa para a parceria.</p>
-          <img src="/images/step-01.webp" alt="Passo 01 — Definir estratégia de remuneração" loading="lazy" class="step-card__img" />
+          <img src="/p/dpl-pv01/images/step-01.webp" alt="Passo 01 — Definir estratégia de remuneração" loading="lazy" decoding="async" width="367" height="446" class="step-card__img" />
         </div>
         <div class="step-card">
-          <div class="step-card__num">02</div>
+          <div class="step-card__num" aria-hidden="true">02</div>
           <h3 class="step-card__title">A calculadora faz a conta pra você</h3>
           <p>Ela cruza TUDO e mostra: lucro ou prejuízo / quanto você perde por procedimento hoje / qual o valor correto de repasse. <strong>Automático. Sem dor de cabeça.</strong></p>
-          <img src="/images/step-02.webp" alt="Passo 02 — Calculadora faz a conta" loading="lazy" class="step-card__img" />
+          <img src="/p/dpl-pv01/images/step-02.webp" alt="Passo 02 — Calculadora faz a conta" loading="lazy" decoding="async" width="367" height="446" class="step-card__img" />
         </div>
         <div class="step-card">
-          <div class="step-card__num">03</div>
+          <div class="step-card__num" aria-hidden="true">03</div>
           <h3 class="step-card__title">Você aplica e coloca a parceria no lugar certo</h3>
           <p>Ajusta o modelo. Apresenta os números pro parceiro com segurança — sem conflito, sem perder o profissional. E o lucro aparece.</p>
-          <img src="/images/step-03.webp" alt="Passo 03 — Aplicar e lucrar" loading="lazy" class="step-card__img" />
+          <img src="/p/dpl-pv01/images/step-03.webp" alt="Passo 03 — Aplicar e lucrar" loading="lazy" decoding="async" width="367" height="446" class="step-card__img" />
         </div>
       </div>
     </div>
@@ -464,13 +515,13 @@
           <p>Precifique a Parceria do jeito certo e lucre mais ainda hoje</p>
         </div>
         <div class="stack-item__media">
-          <img src="/images/stack-calculadora.webp" alt="Calculadora DPL" loading="lazy" />
+          <img src="/p/dpl-pv01/images/stack-calculadora.webp" alt="Calculadora DPL" loading="lazy" decoding="async" width="1024" height="704" />
         </div>
       </div>
 
       <div class="stack-item stack-item--media-left">
         <div class="stack-item__media">
-          <img src="/images/stack-video.webp" alt="Vídeo Passo a Passo" loading="lazy" />
+          <img src="/p/dpl-pv01/images/stack-video.webp" alt="Vídeo Passo a Passo" loading="lazy" decoding="async" width="1024" height="704" />
         </div>
         <div class="stack-item__text">
           <p class="stack-item__tag">BÔNUS INCLUÍDO</p>
@@ -486,13 +537,13 @@
           <p>Entenda por que você trabalha tanto e sobra pouco ou quase nada.</p>
         </div>
         <div class="stack-item__media">
-          <img src="/images/stack-masterclass.webp" alt="Masterclass custos ocultos" loading="lazy" />
+          <img src="/p/dpl-pv01/images/stack-masterclass.webp" alt="Masterclass custos ocultos" loading="lazy" decoding="async" width="1024" height="704" />
         </div>
       </div>
 
       <div class="stack-item stack-item--media-left">
         <div class="stack-item__media">
-          <img src="/images/stack-consultor.webp" alt="Consultor de Precificação com IA" loading="lazy" />
+          <img src="/p/dpl-pv01/images/stack-consultor.webp" alt="Consultor de Precificação com IA" loading="lazy" decoding="async" width="1536" height="2752" />
         </div>
         <div class="stack-item__text">
           <p class="stack-item__tag">BÔNUS INCLUÍDO</p>
@@ -508,13 +559,13 @@
           <p>As 3 principais alavancas que fazem clínicas dobrarem o lucro delas em 6 meses (ou menos)</p>
         </div>
         <div class="stack-item__media">
-          <img src="/images/stack-dobrar.webp" alt="Como Dobrar Seu Lucro em 6 Meses" loading="lazy" />
+          <img src="/p/dpl-pv01/images/stack-dobrar.webp" alt="Como Dobrar Seu Lucro em 6 Meses" loading="lazy" decoding="async" width="541" height="1024" />
         </div>
       </div>
 
       <div class="stack-item stack-item--media-left">
         <div class="stack-item__media">
-          <img src="/images/stack-reforma.webp" alt="Os 5 Perigos da Nova Reforma Tributária" loading="lazy" />
+          <img src="/p/dpl-pv01/images/stack-reforma.webp" alt="Os 5 Perigos da Nova Reforma Tributária" loading="lazy" decoding="async" width="1024" height="704" />
         </div>
         <div class="stack-item__text">
           <p class="stack-item__tag">BÔNUS INCLUÍDO</p>
@@ -536,8 +587,8 @@
         <table class="pricing-table">
           <thead>
             <tr>
-              <th>Item</th>
-              <th>Valor</th>
+              <th scope="col">Item</th>
+              <th scope="col">Valor</th>
             </tr>
           </thead>
           <tbody>
@@ -571,7 +622,7 @@
       <p class="pricing__context">No total, isso tudo deveria custar <strong>R$ 935,00</strong>.</p>
       <p class="pricing__context">Mas aqui, nessa página, você garante o valor especial:</p>
       <div class="pricing__bundle-img">
-        <img src="/images/pricing-bundle.webp" alt="Tudo que está incluído no Protocolo DPL" loading="lazy" />
+        <img src="/p/dpl-pv01/images/pricing-bundle.webp" alt="Tudo que está incluído no Protocolo DPL" loading="lazy" decoding="async" width="1024" height="473" />
       </div>
       <div class="pricing__offer">
         <p class="pricing__crossed"><s>R$ 935,00</s></p>
@@ -592,32 +643,32 @@
       <p class="section__sub">O que muda quando você aplica o Protocolo:</p>
       <div class="benefits__grid">
         <div class="benefit-card">
-          <div class="benefit-card__icon">🎯</div>
+          <div class="benefit-card__icon" aria-hidden="true">🎯</div>
           <h3 class="benefit-card__title">Clareza</h3>
           <p>Saiba exatamente se seu parceiro está te dando lucro ou prejuízo</p>
         </div>
         <div class="benefit-card">
-          <div class="benefit-card__icon">🎛️</div>
+          <div class="benefit-card__icon" aria-hidden="true">🎛️</div>
           <h3 class="benefit-card__title">Controle</h3>
           <p>Defina o repasse certo — sem achismo, sem pressão do parceiro</p>
         </div>
         <div class="benefit-card">
-          <div class="benefit-card__icon">😌</div>
+          <div class="benefit-card__icon" aria-hidden="true">😌</div>
           <h3 class="benefit-card__title">Paz</h3>
           <p>Durma tranquilo sabendo que a parceria fecha no azul</p>
         </div>
         <div class="benefit-card">
-          <div class="benefit-card__icon">📈</div>
+          <div class="benefit-card__icon" aria-hidden="true">📈</div>
           <h3 class="benefit-card__title">Previsibilidade</h3>
           <p>Planeje a clínica com números reais — não com esperança</p>
         </div>
         <div class="benefit-card">
-          <div class="benefit-card__icon">💼</div>
+          <div class="benefit-card__icon" aria-hidden="true">💼</div>
           <h3 class="benefit-card__title">Agenda cheia que VALE A PENA</h3>
           <p>A clínica funciona e lucra mesmo quando você não está no mocho</p>
         </div>
         <div class="benefit-card">
-          <div class="benefit-card__icon">💬</div>
+          <div class="benefit-card__icon" aria-hidden="true">💬</div>
           <h3 class="benefit-card__title">Confiança</h3>
           <p>Negocie o modelo de remuneração com o parceiro sem gaguejar</p>
         </div>
@@ -633,7 +684,7 @@
     <div class="container">
       <div class="guarantee__box">
         <div class="guarantee__seal">
-          <img src="/images/garantia.webp" alt="Garantia incondicional de 7 dias" loading="lazy" />
+          <img src="/p/dpl-pv01/images/garantia.webp" alt="Garantia incondicional de 7 dias" loading="lazy" decoding="async" width="415" height="417" />
         </div>
         <div class="guarantee__text">
           <h2 class="guarantee__title">Aplique o protocolo Dentista Parceiro Lucrativo.<br>Veja seus números reais.<br>Lucre mais, de imediato. <span class="accent">Ou seu Investimento de volta!</span></h2>
@@ -653,7 +704,7 @@
     <div class="container">
       <div class="bio__inner">
         <div class="bio__photo">
-          <img src="/images/leandro.webp" alt="Dr. Leandro Stecca" loading="lazy" />
+          <img src="/p/dpl-pv01/images/leandro.webp" alt="Dr. Leandro Stecca" loading="lazy" decoding="async" width="866" height="1180" />
         </div>
         <div class="bio__text">
           <h2 class="bio__name">Leandro Stecca</h2>
@@ -715,7 +766,11 @@
         <p class="body-lg body-lg--center"><strong class="accent">É a estratégia.</strong></p>
 
         <div class="bundle-wrap">
-          <img src="/images/bundle.webp" alt="Protocolo DPL — tudo incluso" loading="lazy" class="bundle-img" />
+          <img src="/p/dpl-pv01/images/bundle-860.webp"
+               srcset="/p/dpl-pv01/images/bundle-860.webp 860w, /p/dpl-pv01/images/bundle.webp 2219w"
+               sizes="(max-width: 900px) calc(100vw - 40px), 860px"
+               alt="Protocolo DPL — tudo incluso" loading="lazy" decoding="async"
+               width="2219" height="1024" class="bundle-img" />
         </div>
 
         <p class="body-lg">É exatamente por isso que o <strong>Protocolo do Dentista Parceiro Lucrativo</strong> existe. Pra resolver isso em minutos.</p>
@@ -924,6 +979,7 @@
     </div>
   </section>
 
+  </main>
   <!-- ============================================================
        19. RODAPÉ
   ============================================================ -->

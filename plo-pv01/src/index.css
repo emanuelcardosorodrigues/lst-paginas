@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -143,15 +142,15 @@
   }
 }
 
-@keyframes ctaGlow {
-  0%, 100% { box-shadow: 0 0 20px rgba(74,222,128,0.25); }
-  50% { box-shadow: 0 0 36px rgba(74,222,128,0.5); }
+@keyframes ctaGlowOpacity {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
 }
 
 @keyframes livePulse {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(248,113,113,0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(248,113,113,0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(248,113,113,0); }
+  0% { transform: scale(0.95); opacity: 0.7; }
+  70% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.7; }
 }
 
 @keyframes ringPulse {
@@ -165,12 +164,28 @@
 }
 
 .animate-cta-glow {
-  animation: ctaGlow 3s ease-in-out infinite;
+  position: relative;
+  box-shadow: 0 0 20px rgba(74,222,128,0.25);
+}
+
+.animate-cta-glow::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(74,222,128,0.45) 0%, transparent 70%);
+  z-index: -1;
+  animation: ctaGlowOpacity 3s ease-in-out infinite;
+  will-change: opacity;
 }
 
 .animate-cta-glow:hover, .animate-cta-glow:focus {
-  animation: none;
   box-shadow: 0 0 32px rgba(74,222,128,0.45);
+}
+
+.animate-cta-glow:hover::after, .animate-cta-glow:focus::after {
+  animation: none;
+  opacity: 1;
 }
 
 .animate-live-pulse {

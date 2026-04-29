@@ -30,10 +30,16 @@
     <meta name="twitter:description" content="Dobre o lucro do seu consultório em 90 dias — sem gastar com tráfego, sem ter mais pacientes." />
     <meta name="twitter:image" content="https://cf.leandrostecca.com.br/plo-pv01/opengraph.webp" />
 
-    <!-- DNS prefetch -->
+    <!-- Resource hints -->
+    <link rel="preconnect" href="https://ts.leandrostecca.com.br" />
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
     <link rel="dns-prefetch" href="https://pay.hotmart.com" />
-    <link rel="dns-prefetch" href="https://ts.leandrostecca.com.br" />
     <link rel="icon" type="image/svg+xml" href="/plo-pv01/favicon.svg" />
+
+    <!-- Self-hosted Inter: async, font-display:optional = no CLS, no blocking -->
+    <link rel="preload" as="style" href="/p/plo-pv01/fonts/fonts.css" />
+    <link rel="stylesheet" href="/p/plo-pv01/fonts/fonts.css" media="print" onload="this.media='all'" />
+    <noscript><style>@font-face{font-family:'Inter';font-style:normal;font-display:optional;font-weight:400;src:url('/p/plo-pv01/fonts/inter-400.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-display:optional;font-weight:500;src:url('/p/plo-pv01/fonts/inter-500.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-display:optional;font-weight:600;src:url('/p/plo-pv01/fonts/inter-600.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-display:optional;font-weight:700;src:url('/p/plo-pv01/fonts/inter-700.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-display:optional;font-weight:800;src:url('/p/plo-pv01/fonts/inter-800.woff2') format('woff2')}</style></noscript>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

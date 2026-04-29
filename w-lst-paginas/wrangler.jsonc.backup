@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "protocolo-dpl",
+  "compatibility_date": "2026-04-08",
+  "assets": {
+    "directory": "./dist"
+  },
+  "compatibility_flags": ["nodejs_compat"]
+}

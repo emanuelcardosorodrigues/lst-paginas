@@ -1,0 +1,12 @@
+{
+  "name": "w-lst-paginas",
+  "version": "1.0.0",
+  "description": "Worker para servir páginas LST",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.83.0"
+  }
+}

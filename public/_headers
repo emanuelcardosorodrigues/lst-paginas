@@ -1,8 +1,21 @@
 # Cloudflare cache headers
 
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=86400
+
+
 # ── dpl-pv01 ─────────────────────────────────────────────
-# Hashed assets (JS/CSS/fonts with content hash) — immutable 1 year
+# Hashed assets (JS/CSS with content hash) — immutable 1 year
 /dpl-pv01/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fonts — immutable 1 year
+/dpl-pv01/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
 # Images — 30 days
@@ -12,6 +25,9 @@
 # HTML — no cache (always fresh for ad tracking pixels)
 /dpl-pv01/
   Cache-Control: no-cache, no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Surrogate-Control: no-store
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
 
@@ -27,5 +43,8 @@
 # HTML — no cache (always fresh for ad tracking pixels)
 /plo-pv01/
   Cache-Control: no-cache, no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Surrogate-Control: no-store
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN

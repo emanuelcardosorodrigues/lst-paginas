@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "w-lst-paginas",
+  "main": "src/index.js",
+  "compatibility_date": "2026-04-22",
+  "account_id": "21e4875f53338100ee74196613471f21",
+  "assets": {
+    "directory": "../dist",
+    "binding": "ASSETS"
+  },
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "routes": [
+    "leandrostecca.com.br/p/*",
+    "www.leandrostecca.com.br/p/*"
+  ]
+}
