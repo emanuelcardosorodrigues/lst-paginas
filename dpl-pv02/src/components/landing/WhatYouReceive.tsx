@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import { img } from "@/lib/imgPath";
+import { FadeIn } from "@/lib/FadeIn";
 
 const items = [
   {
@@ -58,15 +58,11 @@ export const WhatYouReceive = () => {
 
         <div className="space-y-6">
           {items.map((item, i) => (
-            <motion.div
+            <FadeIn
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
+              delay={i * 50}
               className="bg-[#F8F9FA] rounded-3xl border border-black/[0.05] overflow-hidden flex flex-col md:flex-row min-h-[220px]"
             >
-              {/* Text side */}
               <div
                 className={`p-8 md:p-10 md:w-1/2 flex flex-col justify-center ${item.imageRight ? "md:order-1" : "md:order-2"}`}
               >
@@ -79,7 +75,6 @@ export const WhatYouReceive = () => {
                 <p className="text-[#64748B] leading-relaxed">{item.desc}</p>
               </div>
 
-              {/* Image side */}
               <div
                 className={`md:w-1/2 overflow-hidden flex items-center justify-center bg-[#EEF2F7] min-h-[200px] ${item.imageRight ? "md:order-2" : "md:order-1"}`}
               >
@@ -93,7 +88,7 @@ export const WhatYouReceive = () => {
                   decoding="async"
                 />
               </div>
-            </motion.div>
+            </FadeIn>
           ))}
         </div>
       </div>

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export const Nav = () => {
@@ -13,7 +12,7 @@ export const Nav = () => {
   }, []);
 
   return (
-    <motion.nav 
+    <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#050B18]/90 backdrop-blur-md py-4 shadow-sm" : "bg-transparent py-6"}`}
     >
       <div className="container mx-auto px-6 max-w-[1200px] flex items-center justify-between">
@@ -22,7 +21,7 @@ export const Nav = () => {
             DPL<span className="text-[#00A88E]">.</span>
           </span>
         </div>
-        
+
         <a
           href="https://pay.hotmart.com/V103826709U?off=vju7un99&checkoutMode=10&offDiscount=ESPECIALDPL&split=11"
           target="_blank"
@@ -34,6 +33,6 @@ export const Nav = () => {
           Garantir meu acesso
         </a>
       </div>
-    </motion.nav>
+    </nav>
   );
 };

@@ -1,16 +1,7 @@
-import { motion } from "framer-motion";
 import { Eye, Sliders, Moon, LineChart, CalendarCheck, MessageSquare } from "lucide-react";
+import { FadeIn } from "@/lib/FadeIn";
 
 export const Benefits = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
-  };
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  };
-
   const benefits = [
     { icon: Eye, title: "Clareza", body: "Saiba exatamente se seu parceiro está te dando lucro ou prejuízo" },
     { icon: Sliders, title: "Controle", body: "Defina o repasse certo — sem achismo, sem pressão do parceiro" },
@@ -32,23 +23,17 @@ export const Benefits = () => {
           </h2>
         </div>
 
-        <motion.div 
-          className="grid md:grid-cols-3 gap-6 md:gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {benefits.map((b, i) => (
-            <motion.div key={i} variants={itemVariants} className="bg-white rounded-3xl p-8 border border-black/[0.03] shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col items-center text-center group hover:-translate-y-1 transition-transform duration-300">
+            <FadeIn key={i} delay={i * 80} className="bg-white rounded-3xl p-8 border border-black/[0.03] shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col items-center text-center group hover:-translate-y-1 transition-transform duration-300">
               <div className="w-16 h-16 rounded-2xl bg-[#00A88E]/10 flex items-center justify-center text-[#00A88E] mb-6 group-hover:scale-110 transition-transform duration-300">
                 <b.icon size={32} strokeWidth={1.5} />
               </div>
               <h3 className="text-xl font-bold text-[#0F172A] mb-3">{b.title}</h3>
               <p className="text-[#64748B] leading-relaxed">{b.body}</p>
-            </motion.div>
+            </FadeIn>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

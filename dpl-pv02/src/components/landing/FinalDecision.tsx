@@ -1,11 +1,11 @@
-import { motion } from "framer-motion";
 import { CheckCircle2, XCircle } from "lucide-react";
+import { FadeIn } from "@/lib/FadeIn";
 
 export const FinalDecision = () => {
   return (
     <section className="bg-[#050B18] py-[clamp(100px,12vw,160px)] px-6 overflow-hidden relative">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(0,168,142,0.1)_0%,transparent_60%)] -z-10" />
-      
+
       <div className="container mx-auto max-w-[1000px]">
         <div className="text-center mb-16">
           <h2 className="text-white text-[clamp(2rem,4vw,3rem)] font-[800] leading-[1.2] tracking-tight">
@@ -14,20 +14,13 @@ export const FinalDecision = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-20">
-          
-          {/* Opção 1 */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 md:p-10"
-          >
+
+          <FadeIn className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 md:p-10">
             <div className="flex items-center gap-3 mb-8">
               <XCircle className="text-[#EF4444] opacity-70" size={28} />
               <h3 className="text-xl font-bold text-white/70">OPÇÃO 1: CONTINUAR COMO ESTÁ</h3>
             </div>
-            
+
             <div className="space-y-3 text-[#64748B] text-lg leading-relaxed">
               <p>Amanhã você acorda.</p>
               <p>Parceiro atende.</p>
@@ -39,23 +32,16 @@ export const FinalDecision = () => {
               <p>Mesma dúvida. Mesmo cansaço.</p>
               <p>Mesma sensação de que o peso da clínica cresce — mas o lucro não.</p>
             </div>
-          </motion.div>
+          </FadeIn>
 
-          {/* Opção 2 */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-[#0A1428] border border-[#00A88E]/40 rounded-3xl p-8 md:p-10 shadow-[0_0_50px_rgba(0,168,142,0.15)] relative overflow-hidden"
-          >
+          <FadeIn delay={200} className="bg-[#0A1428] border border-[#00A88E]/40 rounded-3xl p-8 md:p-10 shadow-[0_0_50px_rgba(0,168,142,0.15)] relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#00A88E] to-transparent"></div>
-            
+
             <div className="flex items-center gap-3 mb-8">
               <CheckCircle2 className="text-[#00A88E]" size={28} />
               <h3 className="text-xl font-bold text-white">OPÇÃO 2: DESCOBRIR O PREÇO CERTO HOJE</h3>
             </div>
-            
+
             <div className="space-y-3 text-[#F8F9FA]/90 text-lg leading-relaxed">
               <p>Você investe um valor ridículo.</p>
               <p>Descobre em 10 minutos se seu parceiro está te dando lucro ou prejuízo.</p>
@@ -66,21 +52,15 @@ export const FinalDecision = () => {
               <p>Daqui 6 meses, você pensa:</p>
               <p className="font-serif italic text-white text-xl">"Por que demorei tanto?"</p>
             </div>
-          </motion.div>
+          </FadeIn>
 
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-[800px] mx-auto"
-        >
+        <FadeIn scale className="text-center max-w-[800px] mx-auto">
           <div className="text-[#64748B] text-sm font-bold tracking-widest uppercase mb-8">
             A ESCOLHA É SUA:
           </div>
-          
+
           <div className="space-y-4 mb-12">
             <div className="flex items-center justify-center gap-3 text-white/50 text-xl">
               <XCircle size={24} />
@@ -102,7 +82,7 @@ export const FinalDecision = () => {
           >
             GARANTIR MEU ACESSO AGORA →
           </a>
-        </motion.div>
+        </FadeIn>
 
       </div>
     </section>

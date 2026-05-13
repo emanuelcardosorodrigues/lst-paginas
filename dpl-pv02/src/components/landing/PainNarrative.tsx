@@ -1,40 +1,26 @@
-import { motion } from "framer-motion";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { img } from "@/lib/imgPath";
+import { FadeIn } from "@/lib/FadeIn";
 
 export const PainNarrative = () => {
   return (
     <section className="bg-[#050B18] py-[clamp(100px,12vw,160px)] px-6 relative overflow-hidden">
-      {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[600px] bg-[radial-gradient(ellipse_at_top,rgba(0,168,142,0.15)_0%,transparent_70%)] -z-10" />
 
       <div className="container mx-auto max-w-[900px]">
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+
+        <FadeIn className="text-center mb-16">
           <h2 className="text-white text-[clamp(1.75rem,4vw,2.5rem)] font-[800] leading-[1.3] tracking-tight mb-8">
             "Você contratou um dentista parceiro pra finalmente sair do mocho. Mas o lucro — e o tempo — que deviam sobrar… sumiram."
           </h2>
           <div className="text-[#00A88E] text-xl font-medium">
             Deixa eu adivinhar...
           </div>
-        </motion.div>
+        </FadeIn>
 
         <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 md:gap-12 items-center mb-20">
-          
-          {/* Left Column */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-4"
-          >
+
+          <FadeIn direction="left" delay={200} className="space-y-4">
             {[
               "Parceiro atendendo na sua clínica",
               "Agenda com dois profissionais trabalhando",
@@ -47,9 +33,8 @@ export const PainNarrative = () => {
                 <span className="text-white/90 text-lg leading-snug">{text}</span>
               </div>
             ))}
-          </motion.div>
+          </FadeIn>
 
-          {/* Divider */}
           <div className="hidden md:flex flex-col items-center gap-4 py-8">
             <div className="w-px h-24 bg-gradient-to-b from-transparent to-white/20"></div>
             <div className="text-white/40 font-bold tracking-widest text-sm uppercase">MAS…</div>
@@ -61,14 +46,7 @@ export const PainNarrative = () => {
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-white/20"></div>
           </div>
 
-          {/* Right Column */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-4"
-          >
+          <FadeIn direction="right" delay={400} className="space-y-4">
             {[
               "No fim do mês, depois de pagar todo mundo, sobra menos do que antes",
               "Você trabalha mais do que quando estava sozinho",
@@ -81,32 +59,20 @@ export const PainNarrative = () => {
                 <span className="text-white/80 text-lg leading-snug">{text}</span>
               </div>
             ))}
-          </motion.div>
+          </FadeIn>
 
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
+        <FadeIn scale className="text-center mb-20">
           <div className="inline-block bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-12 relative">
             <div className="absolute top-4 left-6 text-6xl text-white/10 font-serif leading-none">"</div>
             <p className="text-[clamp(1.25rem,3vw,1.75rem)] text-white/90 font-serif italic relative z-10">
               Eu trouxe esse cara pra me ajudar a crescer. Como que eu tô ganhando menos do que antes?
             </p>
           </div>
-        </motion.div>
+        </FadeIn>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-[700px] mx-auto"
-        >
+        <FadeIn className="max-w-[700px] mx-auto">
           <div className="grid md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-start mb-8">
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">E o pior de tudo…</h3>
@@ -184,8 +150,7 @@ export const PainNarrative = () => {
               </p>
             </div>
           </div>
-
-        </motion.div>
+        </FadeIn>
 
       </div>
     </section>

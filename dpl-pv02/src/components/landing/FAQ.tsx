@@ -1,10 +1,3 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
 export const FAQ = () => {
   const faqs = [
     { q: "Eu não entendo nada de Excel. Consigo usar?", a: "Sim. É plug and play. Você digita os números nos campos. A calculadora faz a conta. Se sabe digitar um número, consegue usar." },
@@ -35,18 +28,33 @@ export const FAQ = () => {
           </h2>
         </div>
 
-        <Accordion type="single" collapsible className="w-full space-y-4">
+        <div className="w-full space-y-4">
           {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="bg-white border border-black/[0.05] rounded-2xl px-6 py-2 data-[state=open]:shadow-sm transition-all shadow-[0_5px_15px_rgba(0,0,0,0.02)]">
-              <AccordionTrigger className="text-left font-bold text-[#0F172A] text-lg hover:no-underline">
+            <details
+              key={i}
+              className="group bg-white border border-black/[0.05] rounded-2xl px-6 shadow-[0_5px_15px_rgba(0,0,0,0.02)] open:shadow-sm"
+            >
+              <summary className="flex items-center justify-between py-4 cursor-pointer list-none font-bold text-[#0F172A] text-lg select-none">
                 {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-[#64748B] text-base leading-relaxed pb-4">
+                <svg
+                  className="h-4 w-4 shrink-0 text-[#64748B] transition-transform duration-200 group-open:rotate-180 ml-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </summary>
+              <div className="text-[#64748B] text-base leading-relaxed pb-4">
                 {faq.a}
-              </AccordionContent>
-            </AccordionItem>
+              </div>
+            </details>
           ))}
-        </Accordion>
+        </div>
       </div>
     </section>
   );

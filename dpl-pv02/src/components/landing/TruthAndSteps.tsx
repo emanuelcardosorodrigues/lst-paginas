@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { FadeIn } from "@/lib/FadeIn";
 import step01 from "@assets/step-01_1777343233008.webp";
 import step02 from "@assets/step-02_1777343233007.webp";
 import step03 from "@assets/step-03_1777343233003.webp";
@@ -7,19 +7,12 @@ export const TruthAndSteps = () => {
   return (
     <section className="bg-[#0A1428] py-[clamp(100px,12vw,160px)] px-6 overflow-hidden">
       <div className="container mx-auto max-w-[1000px]">
-        
-        {/* The Truth Block */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-24"
-        >
+
+        <FadeIn className="text-center mb-24">
           <div className="text-[#00A88E] text-sm font-bold tracking-widest uppercase mb-8">
             A verdade é esta:
           </div>
-          
+
           <div className="space-y-6 mb-16 text-xl md:text-2xl font-medium text-white/90">
             <p>Não adianta lotar a agenda do parceiro.</p>
             <div className="w-12 h-px bg-white/10 mx-auto"></div>
@@ -46,26 +39,17 @@ export const TruthAndSteps = () => {
               E é exatamente isso que o Protocolo do Dentista Parceiro Lucrativo faz por você ↓
             </p>
           </div>
-        </motion.div>
+        </FadeIn>
 
-        {/* Steps Block */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-white text-center mb-16">
             É mais simples do que você imagina. Olha só:
           </h3>
 
           <div className="space-y-12 relative">
-            {/* Connecting line */}
             <div className="absolute top-0 bottom-0 left-[27px] md:left-1/2 w-px bg-gradient-to-b from-[#00A88E]/0 via-[#00A88E]/30 to-[#00A88E]/0 hidden md:block"></div>
 
-            {/* Step 1 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="flex flex-col md:flex-row items-center gap-8 md:gap-16 relative"
-            >
+            <FadeIn className="flex flex-col md:flex-row items-center gap-8 md:gap-16 relative">
               <div className="w-full md:w-1/2 text-left md:text-right order-2 md:order-1">
                 <div className="text-[#00A88E] font-bold tracking-widest text-sm mb-2">PASSO 01</div>
                 <h4 className="text-2xl font-bold text-white mb-4">Você coloca seus custos reais</h4>
@@ -87,16 +71,9 @@ export const TruthAndSteps = () => {
                   decoding="async"
                 />
               </div>
-            </motion.div>
+            </FadeIn>
 
-            {/* Step 2 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-col md:flex-row items-center gap-8 md:gap-16 relative"
-            >
+            <FadeIn delay={200} className="flex flex-col md:flex-row items-center gap-8 md:gap-16 relative">
               <div className="w-full md:w-1/2 order-2 md:order-2 text-left">
                 <div className="text-[#00A88E] font-bold tracking-widest text-sm mb-2">PASSO 02</div>
                 <h4 className="text-2xl font-bold text-white mb-4">A calculadora faz a conta pra você</h4>
@@ -132,16 +109,9 @@ export const TruthAndSteps = () => {
                   decoding="async"
                 />
               </div>
-            </motion.div>
+            </FadeIn>
 
-            {/* Step 3 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col md:flex-row items-center gap-8 md:gap-16 relative"
-            >
+            <FadeIn delay={400} className="flex flex-col md:flex-row items-center gap-8 md:gap-16 relative">
               <div className="w-full md:w-1/2 text-left md:text-right order-2 md:order-1">
                 <div className="text-[#00A88E] font-bold tracking-widest text-sm mb-2">PASSO 03</div>
                 <h4 className="text-2xl font-bold text-white mb-4">Você aplica e coloca a parceria no lugar certo</h4>
@@ -163,7 +133,7 @@ export const TruthAndSteps = () => {
                   decoding="async"
                 />
               </div>
-            </motion.div>
+            </FadeIn>
 
           </div>
         </div>

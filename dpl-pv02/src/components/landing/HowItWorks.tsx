@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { FadeIn } from "@/lib/FadeIn";
 import g11 from "@assets/showroom-g1-1_(1)_1777343134187.webp";
 import g12 from "@assets/showroom-g1-2_(1)_1777343134187.webp";
 import g13 from "@assets/showroom-g1-3_(1)_1777343134187.webp";
@@ -16,71 +16,25 @@ type CardData = {
 };
 
 const grid1: CardData[] = [
-  {
-    image: g11,
-    title: "Custo real por procedimento",
-    body: "ZERO surpresas ao fim do mês!",
-  },
-  {
-    image: g12,
-    title: "Lucro ou Prejuízo daquele procedimento do Parceiro",
-    body: "Estruture tudo dentro da sua precificação",
-  },
-  {
-    image: g13,
-    title: "Valor da sua Hora Clínica",
-    body: "O seu devido valor RESGUARDADO desde o preço.",
-  },
+  { image: g11, title: "Custo real por procedimento", body: "ZERO surpresas ao fim do mês!" },
+  { image: g12, title: "Lucro ou Prejuízo daquele procedimento do Parceiro", body: "Estruture tudo dentro da sua precificação" },
+  { image: g13, title: "Valor da sua Hora Clínica", body: "O seu devido valor RESGUARDADO desde o preço." },
 ];
 
 const grid2: CardData[] = [
-  {
-    image: g21,
-    title: "Remuneração Correta sem Risco Jurídico",
-    body: "Tudo organizado para você pagar só o que precisa.",
-  },
-  {
-    image: g22,
-    title: "Margem de negociação Lucrativa",
-    body: "O valor máximo de desconto para você ter lucro de verdade e ainda fazer o cliente feliz.",
-  },
-  {
-    image: g23,
-    title: "Reinvestimento",
-    body: "O crescimento do seu consultório estruturado desde a precificação",
-  },
+  { image: g21, title: "Remuneração Correta sem Risco Jurídico", body: "Tudo organizado para você pagar só o que precisa." },
+  { image: g22, title: "Margem de negociação Lucrativa", body: "O valor máximo de desconto para você ter lucro de verdade e ainda fazer o cliente feliz." },
+  { image: g23, title: "Reinvestimento", body: "O crescimento do seu consultório estruturado desde a precificação" },
 ];
 
 const grid3: CardData[] = [
-  {
-    image: g31,
-    title: "Projeção de Lucro",
-    body: "Seu lucro protegido e projetado para garantir máxima liberdade",
-  },
-  {
-    image: g32,
-    title: "Valor Mínimo",
-    body: "Qual o valor mínimo a ser cobrado para ainda ter lucro",
-  },
-  {
-    image: g33,
-    title: "Quanto cobrar",
-    body: "O valor ideal para cobrar para cada procedimento",
-  },
+  { image: g31, title: "Projeção de Lucro", body: "Seu lucro protegido e projetado para garantir máxima liberdade" },
+  { image: g32, title: "Valor Mínimo", body: "Qual o valor mínimo a ser cobrado para ainda ter lucro" },
+  { image: g33, title: "Quanto cobrar", body: "O valor ideal para cobrar para cada procedimento" },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
-const Card = ({ image, title, body }: CardData) => (
-  <motion.div variants={itemVariants} className="flex flex-col">
+const Card = ({ image, title, body, delay }: CardData & { delay: number }) => (
+  <FadeIn delay={delay} className="flex flex-col">
     <div className="h-[240px] bg-gradient-to-br from-[#F8FAFC] to-[#EEF2F7] rounded-t-3xl border border-b-0 border-[#00A88E]/15 p-6 flex items-center justify-center overflow-hidden">
       <img
         src={image}
@@ -96,21 +50,15 @@ const Card = ({ image, title, body }: CardData) => (
       <h3 className="text-xl font-bold text-[#0F172A] mb-3">{title}</h3>
       <p className="text-[#64748B] leading-relaxed">{body}</p>
     </div>
-  </motion.div>
+  </FadeIn>
 );
 
 const Grid = ({ cards }: { cards: CardData[] }) => (
-  <motion.div
-    className="grid md:grid-cols-3 gap-8"
-    variants={containerVariants}
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-100px" }}
-  >
-    {cards.map((c) => (
-      <Card key={c.title} {...c} />
+  <div className="grid md:grid-cols-3 gap-8">
+    {cards.map((c, i) => (
+      <Card key={c.title} {...c} delay={i * 100} />
     ))}
-  </motion.div>
+  </div>
 );
 
 export const HowItWorks = () => {

@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
 import { img } from "@/lib/imgPath";
+import { FadeIn } from "@/lib/FadeIn";
 
 export const Pricing = () => {
   return (
@@ -15,13 +15,7 @@ export const Pricing = () => {
           </h2>
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl backdrop-blur-sm relative"
-        >
+        <FadeIn className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl backdrop-blur-sm relative">
           <div className="space-y-4 mb-8">
             {[
               { name: "Calculadora do Dentista Parceiro Lucrativo", price: "R$ 197,00" },
@@ -49,7 +43,6 @@ export const Pricing = () => {
             <p className="text-white font-medium text-lg">Mas aqui, nessa página, você garante o valor especial:</p>
           </div>
 
-          {/* Premium Pricing Card */}
           <div className="bg-[#0A1428] rounded-2xl border border-[#00A88E]/50 p-8 shadow-[0_0_50px_rgba(0,168,142,0.15)] text-center relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00A88E] to-transparent"></div>
 
@@ -88,7 +81,7 @@ export const Pricing = () => {
               Pagamento 100% seguro · Garantia de 7 dias
             </div>
           </div>
-        </motion.div>
+        </FadeIn>
       </div>
     </section>
   );

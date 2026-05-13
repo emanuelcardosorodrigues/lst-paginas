@@ -13,9 +13,16 @@
     <title>DPL — A Calculadora do Dentista Parceiro Lucrativo</title>
     <meta name="description" content="A calculadora que mostra — em minutos — quanto pagar ao parceiro e sair do mocho." />
     <link rel="icon" type="image/svg+xml" href="/p/dpl-pv02/favicon.svg" />
-    <link rel="preload" href="/p/dpl-pv02/images/hero-bundle.webp" as="image" type="image/webp">
+    <!-- LCP image: preload with high priority so browser fetches immediately -->
+    <link rel="preload" href="/p/dpl-pv02/images/hero-bundle.webp" as="image" type="image/webp" fetchpriority="high">
+    <!-- Establish early connections to critical third-party origins -->
+    <link rel="preconnect" href="https://ts.leandrostecca.com.br">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- DNS prefetch for pixel/analytics origins (cheaper than preconnect) -->
+    <link rel="dns-prefetch" href="https://connect.facebook.net">
+    <link rel="dns-prefetch" href="https://scripts.clarity.ms">
+    <!-- Fonts: async non-blocking with display=swap already in URL -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"></noscript>
   </head>
@@ -24,7 +31,7 @@
     <noscript><iframe src="https://ts.leandrostecca.com.br/ns.html?id=GTM-MCZKSV8N"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div id="root"></div>
+    <div id="root"><main class="min-h-screen font-sans selection:bg-[#00A88E] selection:text-white"><section class="relative pt-[clamp(100px,12vw,160px)] pb-[clamp(60px,8vw,100px)] bg-white overflow-hidden"><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-[radial-gradient(circle_at_center,rgba(0,168,142,0.08)_0%,transparent_60%)] -z-10"></div><div class="container mx-auto px-6 max-w-[980px] relative z-10"><div class="flex flex-col items-center text-center"><h1 class="text-[clamp(2rem,5vw,3.75rem)] leading-[1.1] font-[800] tracking-[-0.02em] text-[#0F172A] mb-6 max-w-[920px]">A Calculadora simples para ter <span class="text-[#00A88E]">Lucro</span> com dentista parceiro — em <span class="text-[#00A88E]">10 minutos</span></h1><p class="text-[#64748B] text-[1.125rem] leading-[1.7] mb-10 max-w-[640px]">Descubra muito mais do que o preço certo. Aplique a estratégia de remuneração lucrativa — para os dois — e se proteja judicialmente.</p></div><div class="relative mb-12"><img src="/p/dpl-pv02/images/hero-bundle.webp" alt="Bundle do Protocolo Dentista Parceiro Lucrativo: calculadora, masterclass, vídeos e bônus" class="w-full h-auto object-contain max-w-[900px] mx-auto" width="900" height="444" fetchpriority="high" decoding="sync"></div></div></section></main></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

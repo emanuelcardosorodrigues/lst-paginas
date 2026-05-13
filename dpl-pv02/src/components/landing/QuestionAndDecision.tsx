@@ -1,25 +1,19 @@
-import { motion } from "framer-motion";
 import { CheckCircle2, XCircle } from "lucide-react";
+import { FadeIn } from "@/lib/FadeIn";
 
 export const QuestionAndDecision = () => {
   return (
     <section className="bg-[#050B18] py-[clamp(100px,12vw,160px)] px-6 overflow-hidden">
       <div className="container mx-auto max-w-[900px]">
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+
+        <FadeIn className="text-center mb-16">
           <div className="text-[#EF4444] text-sm font-bold tracking-widest uppercase mb-4">
             VOU TE FAZER UMA PERGUNTA
           </div>
           <h2 className="text-white text-[clamp(2rem,4vw,3.5rem)] font-[800] leading-[1.1] tracking-tight mb-8">
             Quantos procedimentos seu dentista parceiro fez esse mês?
           </h2>
-          
+
           <div className="flex justify-center gap-4 mb-16">
             <span className="bg-white/5 border border-white/10 text-white font-mono text-xl md:text-2xl px-6 py-3 rounded-xl">5?</span>
             <span className="bg-white/5 border border-white/10 text-white font-mono text-xl md:text-2xl px-6 py-3 rounded-xl">10?</span>
@@ -33,16 +27,10 @@ export const QuestionAndDecision = () => {
             Quanto REALMENTE sobrou no seu bolso?
           </h3>
           <p className="text-white/50 italic">Bem menos do que você imaginava, né?</p>
-        </motion.div>
+        </FadeIn>
 
         <div className="max-w-[700px] mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-4 text-[#F8F9FA]/80 text-lg leading-relaxed mb-12"
-          >
+          <FadeIn className="space-y-4 text-[#F8F9FA]/80 text-lg leading-relaxed mb-12">
             <p>Você abre o extrato. Vê um faturamento bonito.</p>
             <p>Aí vem a realidade:</p>
             <ul className="space-y-2 pl-4 py-2">
@@ -53,41 +41,23 @@ export const QuestionAndDecision = () => {
               <li className="flex items-center gap-2"><span className="text-[#00A88E] font-bold">—</span> material</li>
             </ul>
             <p>E no final… sobra mixaria.</p>
-          </motion.div>
+          </FadeIn>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="bg-white/5 border-l-4 border-[#EF4444] p-6 md:p-8 rounded-r-2xl mb-12"
-          >
+          <FadeIn delay={100} className="bg-white/5 border-l-4 border-[#EF4444] p-6 md:p-8 rounded-r-2xl mb-12">
             <p className="text-white font-bold mb-2">A verdade é simples e dura:</p>
             <p className="text-white/90 text-xl md:text-2xl font-medium leading-snug">
               Você trouxe o parceiro pra crescer. Mas só está crescendo a conta dele.
             </p>
-          </motion.div>
+          </FadeIn>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-4 text-white/80 text-lg mb-16 text-center"
-          >
+          <FadeIn delay={200} className="space-y-4 text-white/80 text-lg mb-16 text-center">
             <p>E sabe por quê?</p>
             <p className="text-white font-bold text-xl">Porque a estratégia de remuneração está errada.</p>
             <p>Só isso. Não é falta de paciente. Não é marketing. Não é a economia.</p>
             <p className="text-[#00A88E] font-bold text-xl">É a estratégia.</p>
-          </motion.div>
+          </FadeIn>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-gradient-to-b from-[#0A1428] to-[#050B18] border border-[#00A88E]/30 rounded-3xl p-8 md:p-12 shadow-[0_0_40px_rgba(0,168,142,0.1)] text-center mb-24"
-          >
+          <FadeIn scale className="bg-gradient-to-b from-[#0A1428] to-[#050B18] border border-[#00A88E]/30 rounded-3xl p-8 md:p-12 shadow-[0_0_40px_rgba(0,168,142,0.1)] text-center mb-24">
             <div className="inline-block bg-[#00A88E]/20 text-[#00A88E] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-6">
               BUNDLE DE PRODUTOS
             </div>
@@ -101,7 +71,7 @@ export const QuestionAndDecision = () => {
               Você coloca seus custos e o repasse atual. O protocolo mostra se você está no lucro ou no prejuízo. E qual o modelo correto pra corrigir agora.
             </p>
             <p className="text-white font-bold text-xl">Pronto.</p>
-          </motion.div>
+          </FadeIn>
 
           <div className="text-center mb-12">
             <h3 className="text-2xl font-bold text-white mb-8">Agora a decisão é sua:</h3>

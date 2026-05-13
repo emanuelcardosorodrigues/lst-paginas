@@ -1,19 +1,19 @@
-import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { img } from "@/lib/imgPath";
+import { FadeIn } from "@/lib/FadeIn";
 
 const testimonials = [
   {
     quote: "Finalmente entendi o real valor da minha hora clínica. Isso mudou completamente como eu precificava meus serviços.",
     name: "Dra. Maria Midori",
     location: "São João del-Rei/MG",
-    photo: "testimonial-maria.png",
+    photo: "testimonial-maria.webp",
   },
   {
     quote: "É para que as pessoas tenham acesso a algo que pode salvar a carreira delas.",
     name: "Dr. Otávio Fartes",
     location: "Instituto Odontológico",
-    photo: "testimonial-otavio.png",
+    photo: "testimonial-otavio.webp",
   },
 ];
 
@@ -33,12 +33,9 @@ export const Testimonials = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {testimonials.map((t, i) => (
-            <motion.div
+            <FadeIn
               key={t.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              delay={i * 100}
               className="bg-white p-8 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-black/[0.03] relative flex flex-col transition-shadow duration-300 hover:shadow-[0_24px_60px_rgba(0,0,0,0.09)]"
             >
               <div className="absolute top-6 right-8 text-6xl text-[#00A88E]/20 font-serif leading-none">"</div>
@@ -68,7 +65,7 @@ export const Testimonials = () => {
                   <div className="text-sm text-[#64748B] mt-0.5">{t.location}</div>
                 </div>
               </div>
-            </motion.div>
+            </FadeIn>
           ))}
         </div>
 
