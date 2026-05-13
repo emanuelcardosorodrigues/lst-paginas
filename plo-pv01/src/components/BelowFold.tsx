@@ -88,17 +88,17 @@ function SocialProofCard({ data }: any) {
       />
       <div>
         <h3 className="font-bold text-[1.1rem] text-[#F8FAF8] tracking-[-0.01em]">{data.name}</h3>
-        <span className="font-medium text-[0.65rem] uppercase tracking-[0.12em] text-[#5A6354] block mt-1">{data.clinic}</span>
+        <span className="font-medium text-[0.65rem] uppercase tracking-[0.12em] text-[#F8FAF8] block mt-1">{data.clinic}</span>
         <div className="flex items-center mt-2">
           <MapPin className="w-3 h-3 text-[#4ADE80] mr-1.5" />
-          <span className="font-normal text-[0.75rem] text-[#A0A89A]">{data.location}</span>
+          <span className="font-normal text-[0.75rem] text-[#F8FAF8]">{data.location}</span>
         </div>
       </div>
 
       <div className="mt-2">
-        <span className="font-medium text-[0.6rem] tracking-[0.12em] uppercase text-[#5A6354] block mb-1">Faturamento</span>
+        <span className="font-medium text-[0.6rem] tracking-[0.12em] uppercase text-[#F8FAF8] block mb-1">Faturamento</span>
         <div className="flex items-center gap-2">
-          <span className="font-normal text-[0.875rem] line-through text-[#5A6354]">{data.revenueBefore}</span>
+          <span className="font-normal text-[0.875rem] line-through text-[#F8FAF8]">{data.revenueBefore}</span>
           <ArrowRight className="w-4 h-4 text-[#4ADE80]" />
           <span className="font-bold text-[1.5rem] tracking-[-0.02em] text-[#F8FAF8]">{data.revenueAfter}</span>
         </div>
