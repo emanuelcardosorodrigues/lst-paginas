@@ -1,9 +1,8 @@
-import React, { useEffect, useState, lazy, Suspense } from "react";
+import React, { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Play } from "lucide-react";
 import NotFound from "@/pages/not-found";
 import { CtaButton, img, imgSet } from "@/lib/landing-utils";
 
@@ -11,43 +10,109 @@ const BelowFold = lazy(() => import("@/components/BelowFold"));
 
 const queryClient = new QueryClient();
 
-function HeroSection() {
-  const today = new Date();
-  const diasSemana = ["domingo","segunda","terça","quarta","quinta","sexta","sábado"];
-  const meses = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
-  const diaSemana = diasSemana[today.getDay()];
-  const dia = today.getDate();
-  const mes = meses[today.getMonth()];
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "vturb-smartplayer": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { id?: string };
+    }
+  }
+}
 
+function VturbPlayer({ revealSeconds }: { revealSeconds?: number }) {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const s = document.createElement("script");
+    s.src = "https://scripts.converteai.net/37201b92-a048-47c6-8ba2-e601346d2802/players/6a04bdf5f18251980df2bb48/v4/player.js";
+    s.async = true;
+    document.head.appendChild(s);
+
+    if (!revealSeconds || !ref.current) return;
+    const player = ref.current as unknown as {
+      addEventListener: (e: string, fn: () => void) => void;
+      removeEventListener: (e: string, fn: () => void) => void;
+      displayHiddenElements?: (sec: number, selectors: string[], opts: { persist: boolean }) => void;
+    };
+    const handler = () => {
+      player.displayHiddenElements?.(revealSeconds, [".esconder"], { persist: true });
+    };
+    player.addEventListener("player:ready", handler);
+    return () => player.removeEventListener("player:ready", handler);
+  }, [revealSeconds]);
   return (
-    <section className="section-dark bg-[#080C09] w-full pt-[clamp(4rem,8vw,7rem)] pb-[clamp(4rem,8vw,7rem)] px-[clamp(1rem,5vw,1.5rem)]">
+    <vturb-smartplayer
+      ref={ref as React.Ref<HTMLElement>}
+      id="vid-6a04bdf5f18251980df2bb48"
+      style={{ display: "block", margin: "0 auto", width: "100%", maxWidth: "min(400px, calc((100dvh - 280px) * 0.5625))" }}
+    />
+  );
+}
+
+function CountdownBar() {
+  const [now, setNow] = useState(() => new Date());
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const dateLabel = `${String(now.getDate()).padStart(2, "0")}/${String(now.getMonth() + 1).padStart(2, "0")}`;
+  const end = new Date(now);
+  end.setHours(23, 59, 59, 999);
+  const totalMin = Math.max(0, Math.floor((end.getTime() - now.getTime()) / 60000));
+  const timeLabel = `${String(Math.floor(totalMin / 60)).padStart(2, "0")}:${String(totalMin % 60).padStart(2, "0")}`;
+  return (
+    <div className="w-full bg-[#DC2626] text-white py-3.5 px-4 text-center text-[0.9375rem] sm:text-[1.0625rem] font-bold leading-[1.35]">
+      <span className="mr-1.5">⚠️</span>
+      <strong>ESSA AULA PODE SAIR DO AR HOJE, {dateLabel}, às 23:59.</strong>{" "}
+      VOCÊ TEM MENOS DE <span className="underline">{timeLabel}</span> PARA APROVEITAR ESSA OPORTUNIDADE
+    </div>
+  );
+}
+
+function HeroSection() {
+  return (
+    <section className="section-dark bg-[#080C09] w-full pt-[clamp(1rem,3vw,2rem)] pb-[clamp(2rem,5vw,4rem)] px-[clamp(1rem,5vw,1.5rem)]">
       <div className="blob-container blob-green"></div>
       <div className="content-relative max-w-[480px] mx-auto flex flex-col items-center">
 
-        <div className="mb-6 flex items-center justify-center bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] rounded-full px-3 py-1.5">
-          <span className="inline-block w-[7px] h-[7px] rounded-full bg-[#F87171] shadow-[0_0_6px_rgba(248,113,113,0.7)] animate-live-pulse mr-2 align-middle"></span>
-          <span className="text-sm font-normal italic text-[#A0A89A]">Essa aula sai do ar hoje, {diaSemana}, {dia}/{mes}</span>
-        </div>
-
-        <h1 className="font-[800] text-[clamp(2.25rem,9vw,3.25rem)] leading-[1.08] tracking-[-0.03em] text-[#F8FAF8] text-center mb-8">
-          Dobre o Lucro do Seu Consultório em <span className="text-[#4ADE80]">90 Dias</span>
+        <h1 className="text-[1.25rem] sm:text-[1.5rem] text-[#F8FAF8] text-center leading-[1.45] mb-4">
+          Nos próximos minutos, o <strong className="text-white font-extrabold whitespace-nowrap">Dr. Leandro Stecca</strong> mostra como dentistas estão saindo de <strong className="text-[#EF4444]">R$4 mil</strong> para <strong className="text-[#4ADE80]">R$22 mil de lucro</strong> sem trazer um único paciente novo.
         </h1>
 
-        <div className="w-full aspect-video bg-[rgba(255,255,255,0.02)] rounded-[0.875rem] border border-[rgba(74,222,128,0.2)] shadow-[0_8px_64px_rgba(0,0,0,0.6)] overflow-hidden relative flex items-center justify-center cursor-pointer group mb-8">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,rgba(34,197,94,0.08)_0%,transparent_70%)]"></div>
-
-          <div className="absolute w-[5rem] h-[5rem] rounded-full border border-[rgba(74,222,128,0.3)] animate-ring-pulse"></div>
-          <Play className="w-14 h-14 text-[#4ADE80] drop-shadow-[0_0_12px_rgba(74,222,128,0.5)] relative z-10 group-hover:scale-110 transition-transform duration-300" fill="currentColor" />
-
-          <div className="absolute bottom-[1.25rem] font-semibold text-[0.7rem] tracking-[0.12em] uppercase text-[#4ADE80] opacity-80">
-            ▶ ASSISTIR AULA GRATUITA
-          </div>
-        </div>
-
-        <p className="text-[0.8125rem] font-normal text-[#A0A89A] text-center leading-[1.5] -mt-4">
+        <p className="text-[0.8125rem] font-normal text-[#A0A89A] text-center leading-[1.5] mb-3">
           Toque abaixo e veja a aula antes que ela saia do ar
         </p>
 
+        <div className="w-full">
+          <VturbPlayer revealSeconds={1255} />
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+function BioSection() {
+  return (
+    <section className="bg-[#080C09] w-full py-[clamp(2.5rem,6vw,4rem)] px-[clamp(1rem,5vw,1.5rem)] border-t border-[rgba(74,222,128,0.08)]">
+      <div className="max-w-[680px] mx-auto flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:gap-8">
+        <img
+          src={img("/images/leandro-bio.webp")}
+          alt="Dr. Leandro Stecca"
+          width="320"
+          height="480"
+          loading="lazy"
+          className="w-full max-w-[320px] sm:w-[260px] sm:max-w-[260px] sm:flex-shrink-0 aspect-[2/3] object-cover rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+        />
+        <div className="flex-1 min-w-0">
+          <h3 className="text-[1.5rem] font-bold text-[#4ADE80] mb-4 text-center sm:text-left">
+            Dr. Leandro Stecca
+          </h3>
+          <div className="space-y-3.5 text-[0.9375rem] leading-[1.6] text-[#F8FAF8]">
+            <p>Dr. Leandro Stecca é dentista há quase 30 anos e também já viveu a realidade de ter uma clínica com agenda cheia… e pouco dinheiro sobrando no fim do mês.</p>
+            <p>Depois de analisar centenas de consultórios, percebeu que o problema da maioria dos dentistas não estava na falta de pacientes — mas em vazamentos invisíveis que consumiam o lucro da clínica todos os meses.</p>
+            <p>Hoje, é conhecido por mostrar os "buracos ocultos" que fazem o dinheiro desaparecer antes de chegar no bolso do dentista.</p>
+            <p>E foi justamente essa descoberta que fez clínicas saírem de R$4 mil para R$22 mil de lucro sem aumentar a quantidade de pacientes.</p>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -101,12 +166,16 @@ function StickyFooter() {
 function LandingPage() {
   return (
     <div className="bg-[#080C09] min-h-screen text-[#F8FAF8] font-sans selection:bg-[#4ADE80] selection:text-[#080C09] overflow-x-hidden">
+      <CountdownBar />
       <HeroSection />
-      <PosVslSection />
-      <Suspense fallback={<div className="bg-[#080C09] min-h-[200px]" />}>
-        <BelowFold />
-      </Suspense>
-      <StickyFooter />
+      <BioSection />
+      <div className="esconder">
+        <PosVslSection />
+        <Suspense fallback={<div className="bg-[#080C09] min-h-[200px]" />}>
+          <BelowFold />
+        </Suspense>
+        <StickyFooter />
+      </div>
     </div>
   );
 }

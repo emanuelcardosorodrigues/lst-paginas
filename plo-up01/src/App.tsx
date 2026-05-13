@@ -1,5 +1,42 @@
-import { useEffect } from "react";
-import { Play, Check } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { Check } from "lucide-react";
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "vturb-smartplayer": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { id?: string };
+    }
+  }
+}
+
+function VturbPlayer({ revealSeconds }: { revealSeconds?: number }) {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const s = document.createElement("script");
+    s.src = "https://scripts.converteai.net/37201b92-a048-47c6-8ba2-e601346d2802/players/6a0481544d614cad1bb99805/v4/player.js";
+    s.async = true;
+    document.head.appendChild(s);
+
+    if (!revealSeconds || !ref.current) return;
+    const player = ref.current as unknown as {
+      addEventListener: (e: string, fn: () => void) => void;
+      removeEventListener: (e: string, fn: () => void) => void;
+      displayHiddenElements?: (sec: number, selectors: string[], opts: { persist: boolean }) => void;
+    };
+    const handler = () => {
+      player.displayHiddenElements?.(revealSeconds, [".esconder"], { persist: true });
+    };
+    player.addEventListener("player:ready", handler);
+    return () => player.removeEventListener("player:ready", handler);
+  }, [revealSeconds]);
+  return (
+    <vturb-smartplayer
+      ref={ref as React.Ref<HTMLElement>}
+      id="vid-6a0481544d614cad1bb99805"
+      style={{ display: "block", margin: "0 auto", width: "100%", maxWidth: "400px" }}
+    />
+  );
+}
 
 function HotmartSalesFunnel() {
   useEffect(() => {
@@ -56,18 +93,13 @@ function HeroSection() {
           <span className="text-[#F8FAF8] font-semibold">Toque no play e assista agora!</span>
         </p>
 
-        <div className="mx-auto w-[min(280px,33.75vh)] aspect-[9/16] bg-[rgba(255,255,255,0.02)] rounded-[0.875rem] border border-[rgba(74,222,128,0.2)] shadow-[0_8px_64px_rgba(0,0,0,0.6)] overflow-hidden relative flex items-center justify-center cursor-pointer group mb-6">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,rgba(34,197,94,0.08)_0%,transparent_70%)]"></div>
-
-          <div className="absolute w-[5rem] h-[5rem] rounded-full border border-[rgba(74,222,128,0.3)] animate-ring-pulse"></div>
-          <Play className="w-14 h-14 text-[#4ADE80] drop-shadow-[0_0_12px_rgba(74,222,128,0.5)] relative z-10 group-hover:scale-110 transition-transform duration-300" fill="currentColor" />
-
-          <div className="absolute bottom-[1.25rem] font-semibold text-[0.7rem] tracking-[0.12em] uppercase text-[#4ADE80] opacity-80">
-            ▶ ASSISTIR AULA GRATUITA
-          </div>
+        <div className="w-full mb-6">
+          <VturbPlayer revealSeconds={942} />
         </div>
 
-        <HotmartSalesFunnel />
+        <div className="esconder w-full">
+          <HotmartSalesFunnel />
+        </div>
 
         <p className="text-[0.95rem] text-[#A0A89A] text-center mb-6">
           Veja AGORA e Descubra

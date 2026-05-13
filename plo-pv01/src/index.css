@@ -255,8 +255,10 @@
     display: block; 
     font-size: 0.6rem; 
     letter-spacing: 0.1em; 
-    text-transform: uppercase; 
-    color: #5A6354; 
-    margin-bottom: 0.25rem; 
+    text-transform: uppercase;
+    color: #5A6354;
+    margin-bottom: 0.25rem;
   }
 }
+
+.esconder { display: none; }

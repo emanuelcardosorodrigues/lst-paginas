@@ -69,17 +69,20 @@ function pushGtmClick(label: string, isPrimary: boolean) {
 }
 
 export function CtaButton({ children, primary = true, className = "", ...props }: any) {
-  const { onClick, href = checkoutUrl, ...rest } = props;
+  const { onClick, ...rest } = props;
+  delete (rest as any).href;
   const label = typeof children === "string" ? children : "CTA";
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
     pushGtmClick(label, primary);
-    if (onClick) onClick();
+    if (onClick) onClick(e);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   if (primary) {
     return (
-      <a
-        href={href}
+      <button
+        type="button"
         onClick={handleClick}
         data-gtm-click="cta-primary"
         data-gtm-label={label}
@@ -88,12 +91,12 @@ export function CtaButton({ children, primary = true, className = "", ...props }
         {...rest}
       >
         {children}
-      </a>
+      </button>
     );
   }
   return (
-    <a
-      href={href}
+    <button
+      type="button"
       onClick={handleClick}
       data-gtm-click="cta-secondary"
       data-gtm-label={label}
@@ -102,7 +105,7 @@ export function CtaButton({ children, primary = true, className = "", ...props }
       {...rest}
     >
       {children}
-    </a>
+    </button>
   );
 }
 
