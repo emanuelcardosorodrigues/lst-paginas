@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-rich-black: #0A1628;
+  --color-ice-blue: #EAEFF5;
+  --color-card-grey: #F4F5F7;
+  --color-pure-white: #FFFFFF;
+  --color-gold: #C8952E;
+  --color-trust-green: #1B6B4A;
+  --color-danger-red: #C0392B;
+
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "DM Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-ice-blue text-rich-black font-body antialiased selection:bg-gold selection:text-rich-black;
+  }
+}
+
+@layer utilities {
+  .display-light {
+    font-family: var(--font-body);
+    font-weight: 300;
+  }
+
+  .display-bold {
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+
+  .display-accent {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-gold);
+  }
+}
