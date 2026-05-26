@@ -5,8 +5,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import { CtaButton } from "@/lib/landing-utils";
-import { useEsconderRevealed } from "@/lib/useEsconderRevealed";
-import BioSection from "@/components/BioSection";
 
 const BelowFold = lazy(() => import("@/components/BelowFold"));
 
@@ -111,12 +109,10 @@ function StickyFooter() {
 }
 
 function LandingPage() {
-  const revealed = useEsconderRevealed();
   return (
     <div className="bg-[#080C09] min-h-screen text-[#F8FAF8] font-sans selection:bg-[#4ADE80] selection:text-[#080C09] overflow-x-hidden">
       <CountdownBar />
       <HeroSection />
-      {!revealed && <BioSection />}
       <div className="esconder">
         <PosVslSection />
         <Suspense fallback={<div className="bg-[#080C09] min-h-[200px]" />}>
