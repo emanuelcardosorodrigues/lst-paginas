@@ -1,4 +1,4 @@
-export const CHECKOUT_URL = "https://leandrostecca.com.br/r/check/col-tck02-2005";
+export const CHECKOUT_URL = "https://leandrostecca.com.br/r/check/col-tck-0406-kit-vs-padrao";
 
 export function goToCheckout() {
   // Propaga todos os params da URL atual (sck, cookiePageSlug, xcod, utm_*, pv, ck, ob)
