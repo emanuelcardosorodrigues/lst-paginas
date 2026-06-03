@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Preconnect: max 4 críticos (GTM/server + Meta Pixel + vTurb player + vTurb stream) -->
+    <!-- Preconnect = SÓ o caminho crítico do Pixel/eventos: GTM/server + Meta Pixel + web container -->
+    <!-- www.googletagmanager SEM crossorigin: gtag/gtm.js é <script> no-cors; com crossorigin o socket não seria reusado -->
     <link rel="preconnect" href="https://ts.leandrostecca.com.br" crossorigin>
     <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
-    <link rel="preconnect" href="https://scripts.converteai.net" crossorigin>
-    <link rel="preconnect" href="https://cdn.converteai.net" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
 
     <!-- DNS prefetch: ainda úteis mas não bloqueiam o critical path -->
     <link rel="dns-prefetch" href="https://www.facebook.com">
@@ -16,7 +16,12 @@
     <link rel="dns-prefetch" href="https://scripts.clarity.ms">
     <link rel="dns-prefetch" href="https://www.clarity.ms">
     <link rel="dns-prefetch" href="https://r.clarity.ms">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://region1.google-analytics.com">
     <link rel="dns-prefetch" href="https://capi-automation.s3.us-east-2.amazonaws.com">
+    <!-- vTurb rebaixado preconnect→dns-prefetch p/ liberar slot ao trio GTM/Pixel; os <link rel=preload> abaixo já abrem a conexão -->
+    <link rel="dns-prefetch" href="https://scripts.converteai.net">
+    <link rel="dns-prefetch" href="https://cdn.converteai.net">
     <link rel="dns-prefetch" href="https://images.converteai.net">
     <link rel="dns-prefetch" href="https://license.vturb.com">
     <link rel="dns-prefetch" href="https://vt-h-1.b-cdn.net">
@@ -37,6 +42,8 @@
 
     <title>Calculadora OdontoLucro | A Precificação Correta para Dentistas</title>
     <meta name="description" content="Descubra em 10 minutos quanto você deveria cobrar para lucrar de verdade. A calculadora que cruza custos reais e mostra o preço exato por procedimento." />
+    <meta name="author" content="Dr. Leandro Stecca" />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://leandrostecca.com.br/p/col-pvia01/" />
 
     <meta property="og:type" content="website" />
@@ -44,6 +51,9 @@
     <meta property="og:title" content="Calculadora OdontoLucro | A Precificação Correta para Dentistas" />
     <meta property="og:description" content="Descubra em 10 minutos quanto você deveria cobrar para lucrar de verdade." />
     <meta property="og:image" content="https://leandrostecca.com.br/p/col-pvia01/mockup.webp" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Dr. Leandro Stecca" />
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Calculadora OdontoLucro | A Precificação Correta para Dentistas" />
     <meta name="twitter:description" content="Descubra em 10 minutos quanto você deveria cobrar para lucrar de verdade." />
