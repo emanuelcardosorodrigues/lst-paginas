@@ -40,3 +40,19 @@
 # robots.txt
 /plo-pv01/robots.txt
   Cache-Control: public, max-age=86400, s-maxage=86400, stale-while-revalidate=3600
+
+# ── lps-pv01 (Imersão Lucro Clínico) — servida em /lps-pv01/ ─
+/lps-pv01/
+  Cache-Control: public, max-age=0, must-revalidate, s-maxage=60
+  X-Content-Type-Options: nosniff
+  # Preload por header: o browser começa a baixar a imagem do LCP ao ler o cabeçalho,
+  # sem esperar parsear o HTML. Com Early Hints ligado na zona, o Cloudflare promove
+  # estes Link a uma resposta 103 e o download começa antes até do TTFB do 200.
+  # Os mesmos preloads existem no <head>; o browser deduplica por URL.
+  Link: </p/lps-pv01/assets/img/bg-03-2-2-740.webp>; rel=preload; as=image; imagesrcset="/p/lps-pv01/assets/img/bg-03-2-2-412.webp 412w, /p/lps-pv01/assets/img/bg-03-2-2-620.webp 620w, /p/lps-pv01/assets/img/bg-03-2-2-740.webp 740w, /p/lps-pv01/assets/img/bg-03-2-2-800.webp 800w"; imagesizes="100vw"; media="(max-width: 767px)"; fetchpriority="high"
+  Link: </p/lps-pv01/assets/img/bg-03-1-2-1280.webp>; rel=preload; as=image; imagesrcset="/p/lps-pv01/assets/img/bg-03-1-2-1280.webp 1280w, /p/lps-pv01/assets/img/bg-03-1-2-1920.webp 1920w"; imagesizes="100vw"; media="(min-width: 768px)"; fetchpriority="high"
+  Link: </p/lps-pv01/assets/fonts/Sora-Regular-v2.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin, <https://connect.facebook.net>; rel=preconnect, <https://connect.facebook.net/en_US/fbevents.js>; rel=preload; as=script
+
+/lps-pv01/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
