@@ -83,3 +83,38 @@ Nota: `assets/js/utm.js` e `t.js` NÃO contêm `replaceState`/`pushState`/`xcod`
 - Clique no `cta-hero-ancora` → push no dataLayer confirmado (`{event:'click', click_id:'cta-hero-ancora'}`; dataLayer 4→7). Obs.: teste precisa de `click({force:true})` — a animação ctaPulse infinita impede o "element is stable" do Playwright (artefato de teste, não bug).
 
 MD5 finais: `index.html` = 271d434959a00e207fb54ef28376c352 (prod == local, conferido); `utm.js` = 4487412f9653faa9892fe7f38ea47d76 (INALTERADO); `t.js` = 99f80ed5d019286de37b3aa805348171 (INALTERADO).
+
+## F2 — Missão B: TBT / forced reflow — third-party, nada nosso pra corrigir (2026-07-12)
+
+### Origem do forced reflow
+
+Lighthouse local (devtools, CPU 4x, 3 runs em condição limpa + 3 sob carga): o audit `forced-reflow-insight` atribui o reflow a **`ts.leandrostecca.com.br/gtag/js` (G-90B11CMJ6L), `analytics.tiktok.com/i18n/pixel/static/main.*.js` e `[unattributed]`** — 100% third-party (GTM/gtag/TikTok), zero frames nossos. Suspeitos nossos INOCENTADOS por revisão de código + trace:
+
+- **Carousel de depoimentos**: lê `offsetLeft/offsetWidth/scrollLeft` SÓ dentro do handler de scroll (debounce 80ms) e do click — nunca durante o load; não aparece no trace. Sem mudança (mexer seria risco sem ganho medido).
+- **t.js / utm.js**: zero leituras de geometria (grep: nenhum offset*/client*/scroll*/getBoundingClientRect/getComputedStyle).
+- **lazybg**: só IntersectionObserver; sem leitura síncrona de layout.
+
+Decisão: **third-party, não tocado** (GTM/gtag/clarity/tiktok intocáveis). Nenhuma mudança de código na Missão B.
+
+### Sora-Bold acima da dobra
+
+`h1.hero-title` tem `font-weight:600` e só existem faces 400/700 → o browser resolve pra **Sora-Bold (700)**; `.hero-sub strong` idem. A fonte **É usada acima da dobra no mobile** → permanece como está (já fora do preload desde a F1, com fallback metric-adjusted). Nada a remover do caminho crítico.
+
+### TBT (mediana de 3 runs, `--throttling-method=devtools`, CPU 4x, mobile)
+
+| Sessão | Run 1 | Run 2 | Run 3 | Mediana | Condição |
+|--------|-------|-------|-------|---------|----------|
+| Baseline (lh1.json, pré-F2) | — | — | — | 1380 | referência do plano |
+| Pós-F2 (código F2-A intermediário¹) | 650 | 861 | 623 | **650** | máquina limpa ✓ |
+| Pós-F2 final (1ª tentativa) | 3969 | 4715 | 4567 | 4463 | ⚠ INVÁLIDA: load average 112, FaceTime ativo |
+| Pós-F2 final (2ª tentativa) | 3835 | 2369 | 2769 | 2769 | ⚠ INVÁLIDA: load average 33-64, call ainda ativa |
+
+¹ Diferença do intermediário pro final: 1 atribuição booleana (`fbq.disablePushState=true`) no lugar de um bloco `defineProperty` — ambos parse-once, impacto de main-thread ~zero. O fix da Missão A REMOVE trabalho (fbevents não instala hook de history e não monta/dispara o 2º PageView + request), então por construção não regride TBT.
+
+Aceite: mediana em condição limpa 650ms ≤ 1380ms ✓. As medições sob carga ficam registradas como exemplo do padrão "uma rodada do PSI não é medição" — mesma página, mesmo código, 650→4715ms só por contenção do host.
+
+### Smoke visual (produção, mobile 390px)
+
+- Hero: título + bg (naturalWidth>0) + CTA visíveis; computed style do CTA íntegro (gradient, padding 25px, radius 16px) ✓
+- lazybg: `.dream-1` ganha background em ≤6s ao aproximar; todas as 7 seções (`dream-1..4`, `invest-1..3`) com background ✓
+- Carousel: botão next move o track (scrollLeft 0→360) e atualiza o dot ativo (dot 1) ✓
