@@ -1,10 +1,18 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface BaseProps {
   children: ReactNode;
   variant?: "primary" | "secondary";
   className?: string;
 }
+
+// Polimórfico: com `href` vira <a> de verdade (necessário pro interceptor de
+// checkout do GTM, que age em closest('a')); sem `href`, continua <button>.
+type ButtonProps = BaseProps &
+  (
+    | ({ href: string } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href">)
+    | ({ href?: undefined } & ButtonHTMLAttributes<HTMLButtonElement>)
+  );
 
 export function Button({ children, variant = "primary", className = "", ...props }: ButtonProps) {
   const baseStyles =
@@ -17,8 +25,19 @@ export function Button({ children, variant = "primary", className = "", ...props
       "bg-transparent text-rich-black border-[1.5px] border-rich-black font-medium px-7 py-3.5",
   };
 
+  const cls = `${baseStyles} ${variants[variant]} ${className}`;
+
+  if (typeof props.href === "string") {
+    const { href, ...rest } = props as { href: string } & AnchorHTMLAttributes<HTMLAnchorElement>;
+    return (
+      <a href={href} className={cls} {...rest}>
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <button className={`${baseStyles} ${variants[variant]} ${className}`} {...props}>
+    <button className={cls} {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}>
       {children}
     </button>
   );

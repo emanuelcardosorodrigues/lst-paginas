@@ -1,6 +1,6 @@
 import { Button } from "./ui/Button";
 import { TrustIndicators } from "./ui/TrustIndicators";
-import { goToCheckout } from "../lib/checkout";
+import { CHECKOUT_URL } from "../lib/checkout";
 
 export function FinalCTA() {
   return (
@@ -16,9 +16,9 @@ export function FinalCTA() {
         </p>
 
         <Button
+          href={CHECKOUT_URL}
           className="w-full sm:w-auto sm:min-w-[320px] !py-4.5 !text-lg mb-8 shadow-2xl shadow-gold/20"
           data-gtm-id="cta-final"
-          onClick={goToCheckout}
         >
           Quero Lucrar de Verdade &rarr;
         </Button>

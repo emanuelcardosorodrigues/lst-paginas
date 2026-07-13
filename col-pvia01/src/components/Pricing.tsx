@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Button } from "./ui/Button";
 import { ShieldCheck } from "lucide-react";
-import { goToCheckout } from "../lib/checkout";
+import { CHECKOUT_URL } from "../lib/checkout";
 
 export function Pricing() {
   return (
@@ -20,8 +20,8 @@ export function Pricing() {
           <img
             src="/p/col-pvia01/mockup.webp"
             alt="Calculadora OdontoLucro: Masterclass + Calculadora + Aulas"
-            width={1100}
-            height={508}
+            width={900}
+            height={416}
             loading="lazy"
             decoding="async"
             className="w-full max-w-[360px] h-auto mx-auto mb-6 object-contain"
@@ -39,9 +39,9 @@ export function Pricing() {
           </div>
 
           <Button
+            href={CHECKOUT_URL}
             className="w-full !py-4 !text-lg mb-6"
             data-gtm-id="cta-pricing"
-            onClick={goToCheckout}
           >
             Quero Lucrar de Verdade &rarr;
           </Button>
