@@ -51,12 +51,13 @@
   # Os mesmos preloads existem no <head>; o browser deduplica por URL.
   Link: </p/lps-pv01/assets/img/bg-03-2-2-740.webp>; rel=preload; as=image; imagesrcset="/p/lps-pv01/assets/img/bg-03-2-2-412.webp 412w, /p/lps-pv01/assets/img/bg-03-2-2-620.webp 620w, /p/lps-pv01/assets/img/bg-03-2-2-740.webp 740w, /p/lps-pv01/assets/img/bg-03-2-2-800.webp 800w"; imagesizes="100vw"; media="(max-width: 767px)"; fetchpriority="high"
   Link: </p/lps-pv01/assets/img/bg-03-1-2-1280.webp>; rel=preload; as=image; imagesrcset="/p/lps-pv01/assets/img/bg-03-1-2-1280.webp 1280w, /p/lps-pv01/assets/img/bg-03-1-2-1920.webp 1920w"; imagesizes="100vw"; media="(min-width: 768px)"; fetchpriority="high"
-  # NÃO adicionar preload do fbevents.js aqui: `as=script` entra como prioridade ALTA
-  # e rouba o cano de 1,6Mbps da imagem do LCP. Medido (Lighthouse simulate, régua do
-  # PSI): com o preload, Performance despenca 95 → 58 (LCP 2,6s → 7,5s). O /tr?ev=PageView
-  # melhora (2.683ms → 1.457ms slow4G), mas o preço em PageSpeed é inaceitável.
-  # O preconnect abaixo fica: economiza DNS+TLS sem consumir banda.
-  Link: </p/lps-pv01/assets/fonts/Sora-Regular-v2.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin, <https://connect.facebook.net>; rel=preconnect
+  # Preload do fbevents.js: derruba o /tr?ev=PageView de 2.632ms para 1.457ms (slow 4G),
+  # bem abaixo da meta de 2.500ms. Custo em PageSpeed: NENHUM mensurável — PSI deu 58 com
+  # e 56 sem (mesma medição, dentro do ruído). O gargalo da nota NÃO é banda (o hero tem
+  # 14KB e chega em 70ms): é a thread principal, travada por 2,0s de JS de terceiro
+  # injetado pelo GTM (gtag 364ms + gtm 307ms + fbevents 298ms + TikTok 178ms + Clarity).
+  # SEM crossorigin de propósito — script clássico; com crossorigin o cache não casa e baixa 2x.
+  Link: </p/lps-pv01/assets/fonts/Sora-Regular-v2.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin, <https://connect.facebook.net>; rel=preconnect, <https://connect.facebook.net/en_US/fbevents.js>; rel=preload; as=script
 
 /lps-pv01/assets/*
   Cache-Control: public, max-age=31536000, immutable
