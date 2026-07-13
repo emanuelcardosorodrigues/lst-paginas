@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { Check } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import Footer from "@/components/Footer";
 
 declare global {
   namespace JSX {
@@ -9,33 +9,35 @@ declare global {
   }
 }
 
-function VturbPlayer({ revealSeconds }: { revealSeconds?: number }) {
-  const ref = useRef<HTMLElement>(null);
+function VturbPlayer() {
   useEffect(() => {
     const s = document.createElement("script");
     s.src = "https://scripts.converteai.net/37201b92-a048-47c6-8ba2-e601346d2802/players/6a0481544d614cad1bb99805/v4/player.js";
     s.async = true;
     document.head.appendChild(s);
-
-    if (!revealSeconds || !ref.current) return;
-    const player = ref.current as unknown as {
-      addEventListener: (e: string, fn: () => void) => void;
-      removeEventListener: (e: string, fn: () => void) => void;
-      displayHiddenElements?: (sec: number, selectors: string[], opts: { persist: boolean }) => void;
-    };
-    const handler = () => {
-      player.displayHiddenElements?.(revealSeconds, [".esconder"], { persist: true });
-    };
-    player.addEventListener("player:ready", handler);
-    return () => player.removeEventListener("player:ready", handler);
-  }, [revealSeconds]);
+  }, []);
   return (
     <vturb-smartplayer
-      ref={ref as React.Ref<HTMLElement>}
       id="vid-6a0481544d614cad1bb99805"
       style={{ display: "block", margin: "0 auto", width: "100%", maxWidth: "400px" }}
     />
   );
+}
+
+function useEsconderRevealed(ref: React.RefObject<HTMLDivElement | null>) {
+  const [revealed, setRevealed] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const check = () => {
+      if (window.getComputedStyle(el).display !== "none") setRevealed(true);
+    };
+    check();
+    const observer = new MutationObserver(check);
+    observer.observe(el, { attributes: true, attributeFilter: ["style", "class"] });
+    return () => observer.disconnect();
+  }, [ref]);
+  return revealed;
 }
 
 function HotmartSalesFunnel() {
@@ -60,6 +62,8 @@ function HotmartSalesFunnel() {
 }
 
 function HeroSection() {
+  const esconderRef = useRef<HTMLDivElement>(null);
+  useEsconderRevealed(esconderRef);
   return (
     <section className="section-dark bg-[#080C09] w-full pb-[clamp(4rem,8vw,7rem)]">
       <div className="blob-container blob-green"></div>
@@ -80,45 +84,22 @@ function HeroSection() {
           </div>
         </div>
 
-        <p className="text-[0.7rem] sm:text-xs font-semibold text-[#A0A89A] text-center mb-2 uppercase tracking-wide">
-          ACESSO LIBERADO: A aula mais <span className="text-[#B91C1C] font-bold">URGENTE</span> do Protocolo Lucro Oculto! 🎁
-        </p>
-
-        <h1 className="font-[800] text-[clamp(1.125rem,4.2vw,1.875rem)] leading-[1.15] tracking-[-0.02em] text-[#F8FAF8] text-center mb-3">
-          O ERRO QUE FAZ DENTISTAS <span className="text-[#4ADE80]">FATURAREM R$100 MIL</span>… E TERMINAREM O MÊS<br />COM <span className="text-[#F87171]">R$4 MIL</span> DE LUCRO
+        <h1 className="font-[800] text-[clamp(1.25rem,4.5vw,1.875rem)] leading-[1.2] tracking-[-0.01em] text-[#F8FAF8] text-center mb-3 uppercase">
+          ACESSO LIBERADO: A aula mais <span className="text-[#B91C1C]">URGENTE</span> do Protocolo Lucro Oculto! 🎁
         </h1>
 
         <p className="text-[0.875rem] text-[#F8FAF8] text-center mb-3 leading-snug">
-          Essa aula <strong className="text-[#4ADE80] underline">só existe aqui</strong>. E ela desaparece ao sair ou fechar a página…<br />
+          Essa aula <strong className="text-[#4ADE80] underline">só existe aqui</strong>. Assista <strong className="font-bold">até o final</strong>, pois ela desaparece ao sair ou fechar a página…<br />
           <span className="text-[#F8FAF8] font-semibold">Toque no play e assista agora!</span>
         </p>
 
         <div className="w-full mb-6">
-          <VturbPlayer revealSeconds={942} />
+          <VturbPlayer />
         </div>
 
-        <div className="esconder w-full">
+        <div ref={esconderRef} className="esconder w-full">
           <HotmartSalesFunnel />
         </div>
-
-        <p className="text-[0.95rem] text-[#A0A89A] text-center mb-6">
-          Veja AGORA e Descubra
-        </p>
-
-        <ul className="w-full flex flex-col gap-2">
-          <li className="flex items-start gap-2">
-            <Check className="w-5 h-5 text-[#4ADE80] flex-shrink-0 mt-0.5" />
-            <span className="text-[#F8FAF8] text-sm">Como acabar com as 3 armadilhas silenciosas que destroem seu lucro</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <Check className="w-5 h-5 text-[#4ADE80] flex-shrink-0 mt-0.5" />
-            <span className="text-[#F8FAF8] text-sm">Como alguns dentistas aumentaram o lucro sem trazer pacientes novos</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <Check className="w-5 h-5 text-[#4ADE80] flex-shrink-0 mt-0.5" />
-            <span className="text-[#F8FAF8] text-sm">Como dobrar o lucro muito ANTES dos 90 Dias</span>
-          </li>
-        </ul>
 
       </div>
     </section>
@@ -129,6 +110,7 @@ export default function App() {
   return (
     <div className="bg-[#080C09] min-h-screen text-[#F8FAF8] font-sans selection:bg-[#4ADE80] selection:text-[#080C09] overflow-x-hidden">
       <HeroSection />
+      <Footer />
     </div>
   );
 }

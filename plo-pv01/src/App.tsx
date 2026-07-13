@@ -7,6 +7,7 @@ import NotFound from "@/pages/not-found";
 import { CtaButton } from "@/lib/landing-utils";
 
 const BelowFold = lazy(() => import("@/components/BelowFold"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 const queryClient = new QueryClient();
 
@@ -120,6 +121,9 @@ function LandingPage() {
         </Suspense>
         <StickyFooter />
       </div>
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

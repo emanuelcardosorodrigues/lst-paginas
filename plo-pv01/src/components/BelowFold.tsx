@@ -2,6 +2,8 @@ import React from "react";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { MapPin, AlertCircle, Calendar, BarChart3, User, X, Check, ArrowRight } from "lucide-react";
 import { CtaButton, SectionLabel, img, imgSet, useIntersectionObserver, useCountUp } from "@/lib/landing-utils";
+import { useEsconderRevealed } from "@/lib/useEsconderRevealed";
+import BioSection from "@/components/BioSection";
 
 function OQueVaiAcontecerSection() {
   const cards = [
@@ -655,6 +657,7 @@ function DecisaoFinalSection() {
 }
 
 export default function BelowFold() {
+  const revealed = useEsconderRevealed();
   return (
     <>
       <OQueVaiAcontecerSection />
@@ -665,6 +668,7 @@ export default function BelowFold() {
       <ConsultoresSection />
       <BonusSection />
       <StackValorSection />
+      {revealed && <BioSection />}
       <GarantiaSection />
       <UrgenciaFinalSection />
       <FaqSection />

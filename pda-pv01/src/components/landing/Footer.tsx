@@ -2,8 +2,6 @@ import { FadeIn } from "@/lib/FadeIn";
 import { img } from "@/lib/imgPath";
 
 export default function Footer() {
-  const year = new Date().getFullYear();
-
   return (
     <footer style={{ background: "#1A1A1A", padding: "clamp(48px,6vw,72px) 0 clamp(32px,4vw,48px)" }}>
       <FadeIn>
@@ -48,37 +46,51 @@ export default function Footer() {
             {/* Divider */}
             <div style={{ width: 48, height: 1, background: "rgba(255,255,255,0.1)" }} />
 
-            {/* Links */}
-            <div style={{ display: "flex", gap: 24, flexWrap: "wrap", justifyContent: "center" }}>
-              {[
-                { label: "Política de Privacidade", href: "#" },
-                { label: "Termos de Uso", href: "#" },
-              ].map(({ label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.875rem",
-                    color: "#B0ADA8",
-                    textDecoration: "none",
-                    transition: "color 0.2s ease",
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.color = "#D4B96A"; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = "#B0ADA8"; }}
-                >
-                  {label}
-                </a>
-              ))}
-            </div>
+            {/* Copyright + Links */}
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.875rem", color: "rgba(255,255,255,0.28)", margin: 0 }}>
+              Dr. Leandro Stecca © 2026. Todos os direitos reservados.
+            </p>
 
-            {/* Legal */}
+            <nav style={{ display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
+              <a
+                href="https://leandrostecca.com.br/termos-de-uso"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "0.875rem",
+                  color: "rgba(255,255,255,0.32)",
+                  textDecoration: "none",
+                  transition: "color 0.2s ease",
+                }}
+                onMouseEnter={e => { e.currentTarget.style.color = "rgba(212,185,106,0.7)"; }}
+                onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,0.32)"; }}
+              >
+                Termos de Uso
+              </a>
+              <span style={{ color: "rgba(255,255,255,0.15)" }} aria-hidden="true">|</span>
+              <a
+                href="https://leandrostecca.com.br/politica-de-privacidade"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "0.875rem",
+                  color: "rgba(255,255,255,0.32)",
+                  textDecoration: "none",
+                  transition: "color 0.2s ease",
+                }}
+                onMouseEnter={e => { e.currentTarget.style.color = "rgba(212,185,106,0.7)"; }}
+                onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,0.32)"; }}
+              >
+                Política de privacidade
+              </a>
+            </nav>
+
+            {/* Disclaimer Meta (opaco) */}
             <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 24, width: "100%", marginTop: 8 }}>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.8125rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.6, maxWidth: 680, margin: "0 auto 8px" }}>
-                © {year} Dr. Leandro Stecca · Programa Águia · Todos os direitos reservados
-              </p>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", color: "rgba(255,255,255,0.25)", maxWidth: 680, margin: "0 auto", lineHeight: 1.6 }}>
-                Este produto não garante resultados específicos. Os resultados apresentados são de alunos reais e podem variar conforme a realidade de cada clínica e a implementação das estratégias ensinadas.
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6875rem", color: "rgba(255,255,255,0.10)", lineHeight: 1.6, maxWidth: 620, margin: "0 auto" }}>
+                Este site não é afiliado, patrocinado ou endossado pela Meta®, Facebook® ou Instagram®. As marcas citadas pertencem aos seus respectivos proprietários. Resultados podem variar de acordo com a dedicação e realidade de cada pessoa.
               </p>
             </div>
           </div>

@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check } from "lucide-react";
+import Footer from "@/components/Footer";
 
 declare global {
   namespace JSX {
@@ -9,33 +10,35 @@ declare global {
   }
 }
 
-function VturbPlayer({ revealSeconds }: { revealSeconds?: number }) {
-  const ref = useRef<HTMLElement>(null);
+function VturbPlayer() {
   useEffect(() => {
     const s = document.createElement("script");
     s.src = "https://scripts.converteai.net/37201b92-a048-47c6-8ba2-e601346d2802/players/6a0481179ca1e0db9a6c1415/v4/player.js";
     s.async = true;
     document.head.appendChild(s);
-
-    if (!revealSeconds || !ref.current) return;
-    const player = ref.current as unknown as {
-      addEventListener: (e: string, fn: () => void) => void;
-      removeEventListener: (e: string, fn: () => void) => void;
-      displayHiddenElements?: (sec: number, selectors: string[], opts: { persist: boolean }) => void;
-    };
-    const handler = () => {
-      player.displayHiddenElements?.(revealSeconds, [".esconder"], { persist: true });
-    };
-    player.addEventListener("player:ready", handler);
-    return () => player.removeEventListener("player:ready", handler);
-  }, [revealSeconds]);
+  }, []);
   return (
     <vturb-smartplayer
-      ref={ref as React.Ref<HTMLElement>}
       id="vid-6a0481179ca1e0db9a6c1415"
       style={{ display: "block", margin: "0 auto", width: "100%", maxWidth: "400px" }}
     />
   );
+}
+
+function useEsconderRevealed(ref: React.RefObject<HTMLDivElement | null>) {
+  const [revealed, setRevealed] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const check = () => {
+      if (window.getComputedStyle(el).display !== "none") setRevealed(true);
+    };
+    check();
+    const observer = new MutationObserver(check);
+    observer.observe(el, { attributes: true, attributeFilter: ["style", "class"] });
+    return () => observer.disconnect();
+  }, [ref]);
+  return revealed;
 }
 
 function HotmartSalesFunnel() {
@@ -60,6 +63,8 @@ function HotmartSalesFunnel() {
 }
 
 function HeroSection() {
+  const esconderRef = useRef<HTMLDivElement>(null);
+  const revealed = useEsconderRevealed(esconderRef);
   return (
     <section className="section-dark bg-[#080C09] w-full pb-[clamp(4rem,8vw,7rem)]">
       <div className="blob-container blob-green"></div>
@@ -89,31 +94,35 @@ function HeroSection() {
         </p>
 
         <div className="w-full mb-6">
-          <VturbPlayer revealSeconds={203} />
+          <VturbPlayer />
         </div>
 
-        <div className="esconder w-full">
+        <div ref={esconderRef} className="esconder w-full">
           <HotmartSalesFunnel />
         </div>
 
-        <p className="text-[0.95rem] text-[#A0A89A] text-center mb-6">
-          Eu preparei uma condição que:
-        </p>
+        {!revealed && (
+          <>
+            <p className="text-[0.95rem] text-[#A0A89A] text-center mb-6">
+              Eu preparei uma condição que:
+            </p>
 
-        <ul className="w-full flex flex-col gap-2">
-          <li className="flex items-start gap-2">
-            <Check className="w-5 h-5 text-[#4ADE80] flex-shrink-0 mt-0.5" />
-            <span className="text-[#F8FAF8] text-sm">Você terá a minha equipe fazendo por você</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <Check className="w-5 h-5 text-[#4ADE80] flex-shrink-0 mt-0.5" />
-            <span className="text-[#F8FAF8] text-sm">Vai acelerar o seu resultado</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <Check className="w-5 h-5 text-[#4ADE80] flex-shrink-0 mt-0.5" />
-            <span className="text-[#F8FAF8] text-sm">Investimento muito MENOR e estratégico</span>
-          </li>
-        </ul>
+            <ul className="w-full flex flex-col gap-2">
+              <li className="flex items-start gap-2">
+                <Check className="w-5 h-5 text-[#4ADE80] flex-shrink-0 mt-0.5" />
+                <span className="text-[#F8FAF8] text-sm">Você terá a minha equipe fazendo por você</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="w-5 h-5 text-[#4ADE80] flex-shrink-0 mt-0.5" />
+                <span className="text-[#F8FAF8] text-sm">Vai acelerar o seu resultado</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="w-5 h-5 text-[#4ADE80] flex-shrink-0 mt-0.5" />
+                <span className="text-[#F8FAF8] text-sm">Investimento muito MENOR e estratégico</span>
+              </li>
+            </ul>
+          </>
+        )}
 
       </div>
     </section>
@@ -124,6 +133,7 @@ export default function App() {
   return (
     <div className="bg-[#080C09] min-h-screen text-[#F8FAF8] font-sans selection:bg-[#4ADE80] selection:text-[#080C09] overflow-x-hidden">
       <HeroSection />
+      <Footer />
     </div>
   );
 }
