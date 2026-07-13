@@ -26,6 +26,14 @@
     <link rel="dns-prefetch" href="https://license.vturb.com">
     <link rel="dns-prefetch" href="https://vt-h-1.b-cdn.net">
 
+    <!-- Atribuição + captura de clique pré-hidratação (connect rate) -->
+    <script>
+      window.__pageSlug = "col-pvia01";
+      window.__cfg = { consentBypass: true, workerRedirectPrefix: "/r/", externalCheckoutHosts: ["pay.hotmart.com"] };
+      window.__pending = window.__pending || [];
+      window.__pendingPush = function (p) { try { window.__pending.push(p); } catch (e) {} };
+    </script>
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -34,11 +42,8 @@
     })(window,document,'script','dataLayer','GTM-MCZKSV8N');</script>
     <!-- End Google Tag Manager -->
 
-    <!-- vTurb performance bootstrap -->
+    <!-- vTurb performance bootstrap (player carregado on-demand na viewport, não no head — libera banda p/ o Pixel) -->
     <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-    <link rel="preload" href="https://scripts.converteai.net/37201b92-a048-47c6-8ba2-e601346d2802/players/6a14d534b28e4eb31f823863/v4/player.js" as="script">
-    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-    <link rel="preload" href="https://cdn.converteai.net/37201b92-a048-47c6-8ba2-e601346d2802/6a14d4f07bc2268dcbb4caa1/main.m3u8" as="fetch">
 
     <title>Calculadora OdontoLucro | A Precificação Correta para Dentistas</title>
     <meta name="description" content="Descubra em 10 minutos quanto você deveria cobrar para lucrar de verdade. A calculadora que cruza custos reais e mostra o preço exato por procedimento." />
@@ -77,6 +82,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="root"></div>
+    <script defer src="/p/col-pvia01/t.js"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
