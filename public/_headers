@@ -62,3 +62,52 @@
 /lps-pv01/assets/*
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
+
+# ── lps-pvia02 (Imersão Lucro Clínico) — servida em /lps-pvia02/ ─
+# Mesmo bloco do lps-pv01: a página é a mesma estrutura, sob outro slug, e até então
+# não tinha bloco nenhum — os assets saíam com o default (max-age=0, must-revalidate),
+# ou seja, revalidação a cada visita numa página que só serve tráfego pago.
+/lps-pvia02/
+  Cache-Control: public, max-age=0, must-revalidate, s-maxage=60
+  X-Content-Type-Options: nosniff
+  # Preload por header: o browser começa a baixar a imagem do LCP ao ler o cabeçalho,
+  # sem esperar parsear o HTML. Com Early Hints ligado na zona, o Cloudflare promove
+  # estes Link a uma resposta 103 e o download começa antes até do TTFB do 200.
+  # Os mesmos preloads existem no <head>; o browser deduplica por URL.
+  Link: </p/lps-pvia02/assets/img/bg-03-2-2-740.webp>; rel=preload; as=image; imagesrcset="/p/lps-pvia02/assets/img/bg-03-2-2-412.webp 412w, /p/lps-pvia02/assets/img/bg-03-2-2-620.webp 620w, /p/lps-pvia02/assets/img/bg-03-2-2-740.webp 740w, /p/lps-pvia02/assets/img/bg-03-2-2-800.webp 800w"; imagesizes="100vw"; media="(max-width: 767px)"; fetchpriority="high"
+  Link: </p/lps-pvia02/assets/img/bg-03-1-2-1280.webp>; rel=preload; as=image; imagesrcset="/p/lps-pvia02/assets/img/bg-03-1-2-1280.webp 1280w, /p/lps-pvia02/assets/img/bg-03-1-2-1920.webp 1920w"; imagesizes="100vw"; media="(min-width: 768px)"; fetchpriority="high"
+  # Preload do fbevents: derruba o /tr?ev=PageView de 2.632ms para 1.457ms (slow 4G).
+  # SEM crossorigin de proposito - script classico; com crossorigin o cache nao casa e baixa 2x.
+  Link: </p/lps-pvia02/assets/fonts/Sora-Regular-v2.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin, </p/lps-pvia02/assets/fonts/Sora-Bold-v2.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin, <https://connect.facebook.net>; rel=preconnect, <https://connect.facebook.net/en_US/fbevents.js>; rel=preload; as=script
+
+/lps-pvia02/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+# ── lps-pvia05 (Imersão Lucro Clínico — versão "5 dias") ────
+# Réplica estática da lps-pv05 (WordPress/Elementor) no Worker, SEM rastreamento.
+/lps-pvia05/
+  Cache-Control: public, max-age=0, must-revalidate, s-maxage=60
+  X-Content-Type-Options: nosniff
+  Link: </p/lps-pvia05/assets/img/hero-m-740.webp>; rel=preload; as=image; imagesrcset="/p/lps-pvia05/assets/img/hero-m-412.webp 412w, /p/lps-pvia05/assets/img/hero-m-620.webp 620w, /p/lps-pvia05/assets/img/hero-m-740.webp 740w, /p/lps-pvia05/assets/img/hero-m-800.webp 800w"; imagesizes="100vw"; media="(max-width: 767px)"; fetchpriority="high"
+  Link: </p/lps-pvia05/assets/img/hero-d-1280.webp>; rel=preload; as=image; imagesrcset="/p/lps-pvia05/assets/img/hero-d-1280.webp 1280w, /p/lps-pvia05/assets/img/hero-d-1920.webp 1920w"; imagesizes="100vw"; media="(min-width: 768px)"; fetchpriority="high"
+  Link: </p/lps-pvia05/assets/fonts/Sora-Regular-v2.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin, </p/lps-pvia05/assets/fonts/Sora-Bold-v2.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin, <https://connect.facebook.net>; rel=preconnect, <https://connect.facebook.net/en_US/fbevents.js>; rel=preload; as=script
+
+/lps-pvia05/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+
+# ── lps-pvia06 (variante de UX da pvia05 — CTAs no percurso; pvia05 é o controle) ────
+/lps-pvia06/
+  Cache-Control: public, max-age=0, must-revalidate, s-maxage=60
+  X-Content-Type-Options: nosniff
+  Link: </p/lps-pvia06/assets/img/hero-m-740.webp>; rel=preload; as=image; imagesrcset="/p/lps-pvia06/assets/img/hero-m-412.webp 412w, /p/lps-pvia06/assets/img/hero-m-620.webp 620w, /p/lps-pvia06/assets/img/hero-m-740.webp 740w, /p/lps-pvia06/assets/img/hero-m-800.webp 800w"; imagesizes="100vw"; media="(max-width: 767px)"; fetchpriority="high"
+  Link: </p/lps-pvia06/assets/img/hero-d-1280.webp>; rel=preload; as=image; imagesrcset="/p/lps-pvia06/assets/img/hero-d-1280.webp 1280w, /p/lps-pvia06/assets/img/hero-d-1920.webp 1920w"; imagesizes="100vw"; media="(min-width: 768px)"; fetchpriority="high"
+  # Preload do fbevents: ACELERA o Pixel, não adia. Sem crossorigin de propósito —
+  # script clássico; com crossorigin o cache não casa e baixa 2x.
+  Link: </p/lps-pvia06/assets/fonts/Sora-Regular-v2.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin, </p/lps-pvia06/assets/fonts/Sora-Bold-v2.woff2>; rel=preload; as=font; type="font/woff2"; crossorigin, <https://connect.facebook.net>; rel=preconnect, <https://connect.facebook.net/en_US/fbevents.js>; rel=preload; as=script
+
+/lps-pvia06/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff

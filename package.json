@@ -4,7 +4,7 @@
   "description": "Página de vendas — Protocolo do Dentista Parceiro Lucrativo",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node post-build-dpl.js && npm run build:plo && npm run build:plo-up && npm run build:plo-dw && npm run build:pda && npm run build:calc && npm run build:col && npm run build:col-web && npm run build:lps && cp public/_headers dist/_headers",
+    "build": "vite build && node post-build-dpl.js && npm run build:plo && npm run build:plo-up && npm run build:plo-dw && npm run build:pda && npm run build:calc && npm run build:col && npm run build:col-web && npm run build:lps && npm run build:pvia02 && npm run build:pvia05 && npm run build:pvia06 && cp public/_headers dist/_headers",
     "build:lps": "rm -rf dist/lps-pv01 && cp -R lps-pv01 dist/lps-pv01",
     "build:dpl": "vite build && node post-build-dpl.js",
     "build:plo": "npm install --prefix plo-pv01 && npm run build --prefix plo-pv01",
@@ -20,7 +20,10 @@
     "monitor:wpt": "node scripts/webpagetest-monitor.js",
     "warm:cache": "node scripts/warm-cache.js",
     "test:lighthouse": "lhci autorun --collect.url=https://cf.leandrostecca.com.br/dpl-pv01/",
-    "deploy:warm": "npm run build && wrangler pages deploy dist --project-name=protocolo-dpl && sleep 30 && npm run warm:cache"
+    "deploy:warm": "npm run build && wrangler pages deploy dist --project-name=protocolo-dpl && sleep 30 && npm run warm:cache",
+    "build:pvia02": "rm -rf dist/lps-pvia02 && cp -R lps-pvia02 dist/lps-pvia02",
+    "build:pvia05": "rm -rf dist/lps-pvia05 && cp -R lps-pvia05 dist/lps-pvia05",
+    "build:pvia06": "rm -rf dist/lps-pvia06 && cp -R lps-pvia06 dist/lps-pvia06"
   },
   "devDependencies": {
     "@lhci/cli": "^0.15.1",
