@@ -6,6 +6,10 @@
 <title>Imersão Lucro Clínico | 01 &#8211; 77 &#8211; Leandro Stecca</title>
 <meta name="description" content="Imersão Lucro Clínico: 1 semana para reestruturar a sua clínica e dobrar o LUCRO nos próximos meses. Ao vivo de 27/07 a 02/08, com o Dr. Leandro Stecca.">
 <meta name="robots" content="noindex, nofollow">
+<!-- O Worker serve esta página tanto em /p/lps-pv01 (URL do anúncio, sem barra)
+     quanto em /p/lps-pv01/ — sem redirect entre elas, pra não custar um RTT no
+     clique pago. O canonical declara qual das duas é a forma boa. -->
+<link rel="canonical" href="https://leandrostecca.com.br/p/lps-pv01/">
 <link rel="icon" href="data:,">
 
 <!-- Preconnect (before GTM) -->
@@ -82,7 +86,14 @@ window.dataLayer.push({ event: 'pv_event_id', pv_event_id: window.__pvEventID })
 <!-- Clarity fora do caminho crítico.
      O GTM injeta clarity.ms via document.createElement('script'). Seguramos só esse src
      e soltamos depois do load, num script novo (um <script> que já entrou no DOM sem src
-     fica marcado como "already started" e ignora um src atribuído depois). -->
+     fica marcado como "already started" e ignora um src atribuído depois).
+
+     ⚠️ NÃO adicione `analytics.tiktok.com` a esta lista: foi testado em 14/07/2026 e o ganho
+     é ZERO (score 71→69, TBT 1.617→2.233 — tudo dentro do ruído; n=5, dispersão 4). O motivo:
+     o fbevents já termina aos ~230ms por causa do preload no Early Hints, então o TikTok nunca
+     disputou banda com ele. O pixel TikTok CGCXMX É inválido ("[TikTok Pixel] - Invalid pixel ID"
+     no console) e queima 151KB + 386ms rastreando nada — mas adiar só empurra o desperdício pra
+     depois do load. O conserto de verdade é APAGAR a tag no container GTM. -->
 <script>
 (function () {
   var RX = /clarity\.ms/;
@@ -959,7 +970,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="lote-from"><em>de R$<del>1.591,00</del></em></p>
       <p class="lote-por">Por: <span>R$49,90</span></p>
       <p class="lote-parc"><em>ou 8x de R$7,26</em></p>
-      <a class="btn" href="https://pay.hotmart.com/A103868609U?off=ofru8leg&amp;checkoutMode=10&amp;bid=1782687675029&amp;split=12&amp;offDiscount=OLOTEESPECIAL" data-gtm-id="cta-lote-checkout" aria-label="Comprar ingresso da Imersão Lucro Clínico no checkout">Quero garantir meu ingresso</a>
+      <a class="btn" href="https://leandrostecca.com.br/r/check/lps-tck-padrao" data-gtm-id="cta-lote-checkout" aria-label="Comprar ingresso da Imersão Lucro Clínico no checkout">Quero garantir meu ingresso</a>
     </div>
   </div>
 </section>
@@ -1061,7 +1072,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p><strong>Se em 7 dias você achar que não valeu a pena?</strong><br><strong>Manda um e-mail. A gente devolve cada centavo.</strong></p>
           <p><strong>Sem perguntas. Sem burocracia. Sem enrolação.</strong></p>
         </div>
-        <a class="btn" href="https://pay.hotmart.com/A103868609U?off=ofru8leg&amp;checkoutMode=10&amp;bid=1782687675029&amp;split=12&amp;offDiscount=OLOTEESPECIAL" data-gtm-id="cta-garantia-checkout" aria-label="Comprar ingresso da Imersão Lucro Clínico no checkout">Quero garantir meu ingresso</a>
+        <a class="btn" href="https://leandrostecca.com.br/r/check/lps-tck-padrao" data-gtm-id="cta-garantia-checkout" aria-label="Comprar ingresso da Imersão Lucro Clínico no checkout">Quero garantir meu ingresso</a>
       </div>
     </div>
   </div>
@@ -1084,7 +1095,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <details><summary data-gtm-id="faq-item-9">E se eu tiver uma dúvida muito específica da minha clínica?</summary><div class="faq-a"><p>Você vai ter 30 dias de suporte no grupo de implementação. Lá você manda sua dúvida específica. A gente responde. Não é chatbot. Não é assistente virtual. É gente de verdade que entende de gestão odontológica te ajudando.</p></div></details>
         <details><summary data-gtm-id="faq-item-10">Posso parcelar?</summary><div class="faq-a"><p>Sim. Até 10x no cartão.</p><p>Menos que uma pizza.</p><p>Menos que um combo no McDonald’s.</p><p>Menos que o prejuízo de UM procedimento mal precificado.</p></div></details>
       </div>
-      <div class="btn-wrap"><a class="btn" href="https://pay.hotmart.com/A103868609U?off=ofru8leg&amp;checkoutMode=10&amp;bid=1782687675029&amp;split=12&amp;offDiscount=OLOTEESPECIAL" data-gtm-id="cta-faq-checkout" aria-label="Comprar ingresso da Imersão Lucro Clínico no checkout">Quero garantir meu ingresso</a></div>
+      <div class="btn-wrap"><a class="btn" href="https://leandrostecca.com.br/r/check/lps-tck-padrao" data-gtm-id="cta-faq-checkout" aria-label="Comprar ingresso da Imersão Lucro Clínico no checkout">Quero garantir meu ingresso</a></div>
     </div>
   </div>
 </section>
@@ -1122,7 +1133,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <p class="choice-after">A ESCOLHA É SUA.</p>
     <p class="choice-sub">Mas só uma delas te dá o que você realmente quer:<br>Dinheiro no bolso. Tempo com quem você ama. Paz.</p>
-    <div class="btn-wrap"><a class="btn" href="https://pay.hotmart.com/A103868609U?off=ofru8leg&amp;checkoutMode=10&amp;bid=1782687675029&amp;split=12&amp;offDiscount=OLOTEESPECIAL" data-gtm-id="cta-escolha-checkout">Estou decidido! Vou reestruturar meu LUCRO!</a></div>
+    <div class="btn-wrap"><a class="btn" href="https://leandrostecca.com.br/r/check/lps-tck-padrao" data-gtm-id="cta-escolha-checkout">Estou decidido! Vou reestruturar meu LUCRO!</a></div>
   </div>
 </section>
 
