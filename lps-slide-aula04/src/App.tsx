@@ -9,7 +9,7 @@ import { IS_PRESENTER, useDeck, useStageScale } from "@/lib/useDeck";
 const LETTERBOX: Record<string, string> = { light: "#FAF9F7", dark: "#1A1A1A" };
 
 export default function App() {
-  const { index, next, total } = useDeck(SLIDES.length);
+  const { index, next, total, videoPaused } = useDeck(SLIDES.length);
   const scale = useStageScale();
   const active = SLIDES[index];
 
@@ -44,7 +44,7 @@ export default function App() {
         ))}
       </div>
 
-      {IS_PRESENTER ? <PresenterHUD slide={active} index={index} total={total} /> : null}
+      {IS_PRESENTER ? <PresenterHUD slide={active} index={index} total={total} videoPaused={videoPaused} /> : null}
     </div>
   );
 }

@@ -8,6 +8,18 @@ import { useCallback, useEffect, useState } from "react";
 export const IS_PRESENTER =
   typeof window !== "undefined" && new URLSearchParams(window.location.search).get("presenter") === "1";
 
+/**
+ * Vídeo do slide que está no ar.
+ *
+ * Buscado no DOM em vez de passado por ref/contexto: o handler de teclado
+ * vive no useDeck e o <video> nasce lá embaixo no AssetSlot. Uma query no
+ * momento da tecla é mais simples e não amarra a árvore inteira num
+ * registro de refs. Só existe um slide com aria-hidden="false".
+ */
+function activeVideo(): HTMLVideoElement | null {
+  return document.querySelector<HTMLVideoElement>('.slide[aria-hidden="false"] video');
+}
+
 function hashIndex(total: number): number {
   if (typeof window === "undefined") return 0;
   const m = window.location.hash.match(/^#s(\d+)$/);
@@ -23,6 +35,8 @@ function hashIndex(total: number): number {
  */
 export function useDeck(total: number) {
   const [index, setIndex] = useState(() => hashIndex(total));
+  /* Só pra HUD do apresentador saber dizer que ele mesmo pausou. */
+  const [videoPaused, setVideoPaused] = useState(false);
 
   const goTo = useCallback(
     (n: number) => setIndex(() => Math.min(Math.max(n, 0), total - 1)),
@@ -30,6 +44,10 @@ export function useDeck(total: number) {
   );
   const next = useCallback(() => setIndex((i) => Math.min(i + 1, total - 1)), [total]);
   const prev = useCallback(() => setIndex((i) => Math.max(i - 1, 0)), []);
+
+  /* Trocar de slide zera o indicador: o AssetSlot dá play de novo no vídeo
+     do slide que entra. */
+  useEffect(() => setVideoPaused(false), [index]);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -57,6 +75,24 @@ export function useDeck(total: number) {
         e.preventDefault();
         if (document.fullscreenElement) void document.exitFullscreen();
         else void document.documentElement.requestFullscreen().catch(() => {});
+      } else if (e.key === "p" || e.key === "P") {
+        e.preventDefault();
+        const v = activeVideo();
+        if (!v) return;
+        /* Lê a intenção ANTES de agir: pause() já deixa v.paused === true
+           na mesma linha, e play() é assíncrono e ainda deixa true por um
+           instante. Ler depois inverteria o indicador nos dois casos. */
+        const estavaPausado = v.paused;
+        if (estavaPausado) void v.play().catch(() => {});
+        else v.pause();
+        setVideoPaused(!estavaPausado);
+      } else if (e.key === "r" || e.key === "R") {
+        e.preventDefault();
+        const v = activeVideo();
+        if (!v) return;
+        v.currentTime = 0;
+        void v.play().catch(() => {});
+        setVideoPaused(false);
       }
     }
 
@@ -83,7 +119,7 @@ export function useDeck(total: number) {
     return () => window.removeEventListener("hashchange", onHash);
   }, [goTo, total]);
 
-  return { index, next, prev, goTo, total };
+  return { index, next, prev, goTo, total, videoPaused };
 }
 
 /**

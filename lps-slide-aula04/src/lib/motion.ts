@@ -56,13 +56,7 @@ export function useSlideVariants(stagger = 0.09, delayChildren = 0.06) {
       show: { opacity: 1, scaleX: 1, transition: { duration: reduce ? 0 : 0.6, ease: EASE } },
     };
 
-    /* Degrau / barra que cresce da base. */
-    const grow: Variants = {
-      hide: { opacity: 0, scaleY: reduce ? 1 : 0 },
-      show: { opacity: 1, scaleY: 1, transition: reduce ? FADE : SPRING_SOFT },
-    };
-
-    return { container, item, rule, grow, reduce };
+    return { container, item, rule, reduce };
   }, [reduce, stagger, delayChildren]);
 }
 

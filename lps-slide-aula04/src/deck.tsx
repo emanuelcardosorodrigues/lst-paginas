@@ -107,6 +107,9 @@ export const SLIDES: Slide[] = [
     scene: "Escada de 4 degraus: Precificação ✓, Imposto ✓, Dentista parceiro, Captação errada",
     media: "Diagrama (motion simples)",
     theme: "light",
+    /* Um degrau por vez. Em 0.09 (o padrão) os quatro subiam praticamente
+       juntos e não lia como animação. */
+    stagger: 0.5,
     node: (
       <Ladder
         steps={[
@@ -622,6 +625,7 @@ export const SLIDES: Slide[] = [
     scene: "Recap dos 4 furos resolvidos",
     media: "Diagrama, ícones marcados",
     theme: "dark",
+    stagger: 0.5,
     node: (
       <Ladder
         steps={[

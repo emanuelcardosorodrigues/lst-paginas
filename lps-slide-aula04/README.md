@@ -15,6 +15,8 @@ deploy. Só ele e a produção acessam.
 | `←` `↑` `PageUp` `Backspace` | volta |
 | `Home` / `End` | primeiro / último slide |
 | `F` | tela cheia |
+| `P` | pausa / retoma o vídeo do slide |
+| `R` | reinicia o vídeo do slide |
 | clique em qualquer ponto | avança (clicker e mouse) |
 
 A URL guarda o slide na âncora (`#s23`), então recarregar no meio do ensaio

@@ -10,12 +10,23 @@ import type { Slide } from "@/deck";
  * pointer-events fica desligado no CSS, então o clique pra avançar
  * atravessa a HUD normalmente.
  */
-export function PresenterHUD({ slide, index, total }: { slide: Slide; index: number; total: number }) {
+export function PresenterHUD({
+  slide,
+  index,
+  total,
+  videoPaused,
+}: {
+  slide: Slide;
+  index: number;
+  total: number;
+  videoPaused: boolean;
+}) {
   return (
     <>
       <div className="hud hud--scene">
         <span className="hud__label">
           {slide.block} · mídia: {slide.media}
+          {videoPaused ? <span style={{ color: "#E8A0A0" }}> · vídeo pausado (P retoma)</span> : null}
         </span>
         {slide.scene}
       </div>

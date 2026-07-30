@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, type Variants } from "motion/react";
 import type { ReactNode } from "react";
 import {
   AirplaneTakeoff,
@@ -13,7 +13,7 @@ import {
   WhatsappLogo,
   type Icon,
 } from "@phosphor-icons/react";
-import { EASE, FADE, SPRING_SOFT, brl, useSlideVariants } from "@/lib/motion";
+import { EASE, FADE, SPRING_POP, SPRING_SOFT, brl, useSlideVariants } from "@/lib/motion";
 import { useCountUp } from "@/lib/useCountUp";
 import { Item, MarkFoot, Rule } from "@/components/pieces";
 import { useSlideActive } from "@/components/SlideFrame";
@@ -39,8 +39,33 @@ export function Ladder({
   steps: { label: string; done: boolean }[];
   payoff?: ReactNode;
 }) {
-  const { item, grow } = useSlideVariants();
+  const { item, reduce } = useSlideVariants();
   const H = 460;
+
+  /* O degrau sobe da base com leve overshoot, e o check cai DEPOIS dele
+     assentar: são duas batidas por degrau, e é isso que faz a escada ler
+     como animação de longe em vez de quatro blocos que só apareceram.
+
+     O `delayChildren` vive aqui, na barra, e não como `delay` fixo no
+     check. O check é NETO da coluna, e o stagger do slide só indexa os
+     filhos diretos: com delay fixo, os checks disparavam todos juntos em
+     ~800ms, antes das barras 2, 3 e 4 existirem. Pendurado no
+     delayChildren da própria barra, cada check espera a barra DELE. */
+  const barra: Variants = {
+    hide: { opacity: 0, scaleY: reduce ? 1 : 0 },
+    show: {
+      opacity: 1,
+      scaleY: 1,
+      transition: reduce
+        ? { duration: 0 }
+        : { type: "spring", stiffness: 120, damping: 14, delayChildren: 0.34 },
+    },
+  };
+
+  const check: Variants = {
+    hide: { opacity: 0, scale: reduce ? 1 : 0.5 },
+    show: { opacity: 1, scale: 1, transition: reduce ? { duration: 0 } : SPRING_POP },
+  };
 
   return (
     <>
@@ -55,7 +80,7 @@ export function Ladder({
                 style={{ flex: 1, display: "flex", flexDirection: "column", gap: 24, minWidth: 0 }}
               >
                 <motion.div
-                  variants={grow}
+                  variants={barra}
                   style={{
                     height: h,
                     /* Degrau estreito e centrado na coluna. Na largura cheia
@@ -73,7 +98,11 @@ export function Ladder({
                   }}
                 >
                   {/* Charcoal sobre ouro, nunca branco. */}
-                  {s.done ? <Check size={52} weight="bold" color="#1A1A1A" aria-hidden /> : null}
+                  {s.done ? (
+                    <motion.span variants={check} style={{ display: "flex" }}>
+                      <Check size={52} weight="bold" color="#1A1A1A" aria-hidden />
+                    </motion.span>
+                  ) : null}
                 </motion.div>
                 <span
                   className="d-s"
