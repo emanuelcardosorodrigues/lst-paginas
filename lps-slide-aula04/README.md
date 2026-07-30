@@ -58,7 +58,7 @@ nenhum componente de slide muda.
 |---|---|---|
 | 3 | `calculadora-precificacao` | Calculadora OdontoLucro limpa (print) |
 | 4 | `calculadora-resultado` | Calculadora preenchida com exemplo (print) |
-| 7 | `mensagens-reativacao` | painel de resultados da campanha, com blur de teaser |
+| 7 | `mensagens-reativacao` | painel de resultados da campanha, legível (sem blur) |
 | 10 | `corrida-dos-ratos` | recorte de 20s do clipe, sem áudio |
 | 14 | `leandro-vela` + `leandro-consultorio` | as duas fotos da época |
 | 18 | `movimento-1-disc-proposta` | vídeo de tela, 10s (resultado do DISC) |
@@ -90,10 +90,12 @@ nenhum componente de slide muda.
    de Precificação da Central (`/app/consultor/precificacao`: botão "Nova
    precificação" → formulário → "Resultado").
 2. **O print do slide 7 é o painel de resultados**, não as mensagens
-   prontas: contém "R$ 297.524,00" e "88,2% de fechamento". O blur de teaser
-   revela só a faixa do título e borra os números de propósito. Se quiser o
-   número legível, é tirar o `blur` no slide 7 de `deck.tsx` — e aí ele
-   passa a ser um claim financeiro exposto, que pede ressalva na tela.
+   prontas, e entra **legível por decisão do Leandro**: "R$ 297.524,00" e
+   "88,2% de fechamento" ficam à vista na projeção. O roteiro pedia "blur
+   parcial"; a capacidade de blur continua no `AssetSlot` (prop `blur`) se
+   ele quiser de volta. É o número da clínica dele, não de aluno, e hoje
+   está sem ressalva na tela — diferente do slide 32, que leva a nota de
+   resultado individual.
 
 ## Buraco de conteúdo que sobrou
 

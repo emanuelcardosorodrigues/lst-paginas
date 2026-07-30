@@ -193,18 +193,19 @@ export const SLIDES: Slide[] = [
   {
     n: 7,
     block: "Bloco 4 (~27:00)",
-    scene: "Preview borrado/teaser das mensagens prontas",
-    media: "Print com blur parcial",
+    scene: "Painel de resultados da campanha de reativação, legível",
+    media: "Print",
     theme: "light",
     bleed: true,
     node: (
       <Screen
         id="mensagens-reativacao"
-        label="Mensagens de reativação prontas"
+        /* Sem blur, por decisão do Leandro: o painel entra legível, com o
+           R$ 297.524,00 e os 88,2% à vista. O roteiro pedia "blur parcial";
+           a capacidade continua no AssetSlot se ele quiser de volta. */
+        label="Painel da campanha de reativação"
         kind="print"
         fit="contain"
-        blur
-        note="Print das mensagens prontas. O blur parcial é aplicado no componente."
       />
     ),
   },
