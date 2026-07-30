@@ -250,9 +250,10 @@ export const SLIDES: Slide[] = [
     diz: "Escreve TÁ PAGO. Se tiver dúvida, escreve DÚVIDA, eu quero ver",
     tom: "direto, sem pressão",
     proximo: "Chat enchendo",
-    /* Só "TÁ PAGO": o Leandro tirou o "DÚVIDA" da tela. O convite pra
-       dúvida segue na fala dele (campo DIZ), não projetado. */
-    node: <Isolada texto="TÁ PAGO" tamanho="d-xl" pulsa />,
+    /* Só "TÁ PAGO?": o Leandro tirou o "DÚVIDA" da tela e pediu a
+       interrogação. Fica igual ao slide 17 no texto, mas com pulso de
+       CHAT (3,2s contra 7,5s), que é o sinal de "estou esperando você". */
+    node: <Isolada texto="TÁ PAGO?" tamanho="d-xl" pulsa />,
   },
   {
     n: 19,
