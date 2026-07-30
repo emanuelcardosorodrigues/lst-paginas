@@ -1,6 +1,6 @@
 # Slides ao vivo · Aula 5 · Imersão Lucro Clínico
 
-Deck de 30 slides que o Leandro projeta na Aula 5, às 7h. Não é landing
+Deck de 29 slides que o Leandro projeta na Aula 5, às 7h. Não é landing
 page: sem tracking, sem pixel, sem SEO, `noindex` desde o primeiro deploy.
 
 O deck tem duas funções, nesta ordem: **guiar o Leandro pelo roteiro** (ele
@@ -91,7 +91,7 @@ npx wrangler deploy
 
 ```
 src/
-  deck.tsx              os 30 slides: texto público + diz/tom/próximo
+  deck.tsx              os 29 slides: texto público + diz/tom/próximo
   App.tsx               palco, letterbox, barra de progresso, grão
   lib/
     sync.ts             BroadcastChannel e o protocolo de 3 mensagens
@@ -103,12 +103,12 @@ src/
     pieces.tsx          Respira, Flutua, IconeGrande, Regua
   slides/
     basicos.tsx         Titulo, Isolada, Sozinho, IconeRecap, Grade4,
-                        Chat, DuasPalavras, Particulas, TresLinhas, CTA
+                        Chat, Particulas, TresLinhas, CTA
     conta.tsx           Base, SomaAcumulada, Total, Ancoragem
     racional.tsx        ObjecaoRespondida, LogicaVazamento, BonusTravado
 ```
 
-Sete tipos de slide cobrem os 30. Os quatro furos são **uma** lista que
+Sete tipos de slide cobrem os 29. O slide 18 do roteiro foi cortado (repetia o texto do 17), então o campo `n` pula de 17 pra 19; o contador do presenter mostra a posição. Os quatro furos são **uma** lista que
 alimenta tanto os recaps (2 a 5) quanto a grade do slide 6, então o mapa
 nunca diverge do recap. A sequência da conta é **uma** lista: o recibo do
 slide 14 é literalmente os itens dos slides anteriores, não uma cópia
@@ -185,7 +185,7 @@ crossfade do conteúdo, em vez de uma lavada de temperatura por baixo dele.
 
 ## Verificado
 
-- 30/30 slides sem vazar a área segura a 1920x1080, zero erro de console
+- 29/29 slides sem vazar a área segura a 1920x1080, zero erro de console
 - Sincronia nas duas direções, incluindo reabrir o presenter no meio
 - Editor: digitar espaço e seta não navega, quebras de linha preservadas,
   persiste no reload, restaura, exporta, e o texto do presenter não

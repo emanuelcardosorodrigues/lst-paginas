@@ -84,6 +84,10 @@ const SOMA: ItemSoma[] = [
   { id: "reativacao", valor: "+ R$ 5.000", glyph: ArrowUUpLeft },
 ];
 
+/* `n` segue a numeração do roteiro, não a posição. O slide 18 foi
+   cortado (ele repetia o texto do 17), então há um buraco entre 17 e 19.
+   O contador do presenter mostra a POSIÇÃO (1..29), que é o que importa
+   ao vivo. */
 export const SLIDES: Slide[] = [
   {
     n: 1,
@@ -240,20 +244,8 @@ export const SLIDES: Slide[] = [
     tema: "warm",
     diz: "Valeu a pena essas manhãs de 7h? Ingresso baixo de propósito. Preciso saber se o retorno bateu",
     tom: "leve, conversa de bar",
-    proximo: "CHAT tá pago",
-    node: <Isolada texto="TÁ PAGO?" />,
-  },
-  {
-    n: 18,
-    secao: "CHAT",
-    tema: "warm",
-    diz: "Escreve TÁ PAGO. Se tiver dúvida, escreve DÚVIDA, eu quero ver",
-    tom: "direto, sem pressão",
     proximo: "Chat enchendo",
-    /* Só "TÁ PAGO?": o Leandro tirou o "DÚVIDA" da tela e pediu a
-       interrogação. Fica igual ao slide 17 no texto, mas com pulso de
-       CHAT (3,2s contra 7,5s), que é o sinal de "estou esperando você". */
-    node: <Isolada texto="TÁ PAGO?" tamanho="d-xl" pulsa />,
+    node: <Isolada texto="TÁ PAGO?" />,
   },
   {
     n: 19,

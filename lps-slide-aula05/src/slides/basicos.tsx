@@ -30,7 +30,6 @@ export function Isolada({
   px,
   cor,
   peso = false,
-  pulsa = false,
 }: {
   texto: string;
   tamanho?: "d-hero" | "d-xl" | "d-l";
@@ -38,13 +37,11 @@ export function Isolada({
   px?: number;
   cor?: string;
   peso?: boolean;
-  /** Slide de CHAT: pulso mais marcado, sinalizando "estou esperando". */
-  pulsa?: boolean;
 }) {
   const v = useSlideVariants();
   return (
     <motion.h2 variants={peso ? v.peso : v.item} className={tamanho} style={{ color: cor, fontSize: px }}>
-      <Respira escala={pulsa ? 0.03 : 0.008} segundos={pulsa ? 3.2 : 7.5}>
+      <Respira escala={0.008} segundos={7.5}>
         <span>{texto}</span>
       </Respira>
     </motion.h2>
@@ -172,37 +169,6 @@ export function Chat({ texto, glyph }: { texto: ReactNode; glyph: Icon }) {
       <motion.h2 variants={item} className="d-m" style={{ maxWidth: "18ch" }}>
         {texto}
       </motion.h2>
-    </div>
-  );
-}
-
-/* ═══ Duas palavras lado a lado (slide 18) ═════════════════════════
-   Não são botões e não devem parecer clicáveis: sem caixa, sem borda,
-   sem sombra. Só duas palavras separadas por um traço de ouro.
-   ═══════════════════════════════════════════════════════════════════ */
-export function DuasPalavras({ a, b }: { a: string; b: string }) {
-  const { item, reduce } = useSlideVariants();
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: 86 }}>
-      <motion.span variants={item} className="d-xl" style={{ fontSize: 128 }}>
-        <Respira escala={0.02} segundos={3.4}>
-          <span>{a}</span>
-        </Respira>
-      </motion.span>
-
-      <motion.span
-        aria-hidden
-        variants={item}
-        animate={reduce ? {} : { opacity: [0.4, 1, 0.4] }}
-        transition={reduce ? { duration: 0 } : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        style={{ width: 4, height: 108, background: "var(--accent-display)", borderRadius: 2, flex: "none" }}
-      />
-
-      <motion.span variants={item} className="d-xl" style={{ fontSize: 128, color: "var(--fg-3)" }}>
-        <Respira escala={0.02} segundos={4.1}>
-          <span>{b}</span>
-        </Respira>
-      </motion.span>
     </div>
   );
 }
