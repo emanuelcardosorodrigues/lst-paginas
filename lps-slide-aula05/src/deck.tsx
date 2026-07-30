@@ -273,9 +273,9 @@ export const SLIDES: Slide[] = [
     diz: "Ontem foi coração, os 6 movimentos, minha história. Hoje é frio e objetivo. Você merece o porquê lógico também",
     tom: "vira a chave, mais frio",
     proximo: "O que é o Águia",
-    /* 108px: a frase é longa e quebra em duas linhas equilibradas. Tem que
-       caber COM a respiração (1,008x), não sem ela. */
-    node: <Isolada texto="Agora, a jornada vai começar de verdade" tamanho="d-xl" px={108} />,
+    /* Quebra em duas linhas equilibradas; a 108px os glifos usavam só 49%
+       da largura da tela. */
+    node: <Isolada texto="Agora, a jornada vai começar de verdade" tamanho="d-xl" px={132} />,
   },
   {
     n: 21,
@@ -346,10 +346,7 @@ export const SLIDES: Slide[] = [
     diz: "O Águia é essa sequência na ordem, com alguém garantindo que você não destampa um furo abrindo outro. Não tem sorte, tem sequência",
     tom: "conclusão firme",
     proximo: "Ancoragem",
-    /* 134 e não 150: a 140px a frase media exatamente os 1640px da área
-       segura, e a respiração (1,008x) empurrava 13px pra fora. O tamanho
-       tem que caber COM o movimento, não sem ele. */
-    node: <Isolada texto="SEQUÊNCIA, NÃO SORTE." tamanho="d-xl" px={134} cor="var(--accent-display)" peso />,
+    node: <Isolada texto="SEQUÊNCIA, NÃO SORTE." tamanho="d-xl" cor="var(--accent-display)" peso />,
   },
   {
     n: 28,
