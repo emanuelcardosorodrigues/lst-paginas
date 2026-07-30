@@ -193,6 +193,9 @@
   letter-spacing: -0.03em;
 }
 
+/* A águia é bronze: sobre o tema frio ela some se não clarear. */
+[data-theme="cold"] .marca-aguia { filter: brightness(1.9) saturate(0.9); }
+
 /* ── Barra de progresso ───────────────────────────────────────────
    Fina, no rodapé, sem número: a plateia não precisa saber quanto
    falta, mas a barra dá noção de percurso.
@@ -254,7 +257,9 @@
   line-height: 1.22;
   letter-spacing: -0.015em;
   color: #FFFFFF;
-  text-wrap: balance;
+  /* pre-wrap porque a edição do roteiro é sobre QUEBRAR o texto do jeito
+     que ele lê: sem isso as quebras dele sumiriam na renderização. */
+  white-space: pre-wrap;
 }
 
 .pv__tom {
@@ -263,6 +268,55 @@
   font-weight: 500;
   line-height: 1.35;
   color: #D4B96A;
+  white-space: pre-wrap;
+}
+
+/* ── Editor do roteiro ─────────────────────────────────────────────
+   Só no presenter, e só com o modo de edição ligado. Herda a mesma
+   tipografia do texto lido: o que ele vê enquanto escreve é exatamente o
+   que vai ler ao vivo.
+   ──────────────────────────────────────────────────────────────── */
+
+.pv--editando { outline: 2px solid #D4B96A; outline-offset: -2px; }
+
+.pv__campo {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 185, 106, 0.4);
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  white-space: pre-wrap;
+  resize: none;
+  outline: none;
+}
+.pv__campo:focus { border-color: #D4B96A; background: rgba(255, 255, 255, 0.08); }
+
+.pv__botao {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: transparent;
+  color: #E4E7ED;
+  border-radius: var(--r-pill);
+  padding: 9px 18px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.pv__botao:hover { border-color: #D4B96A; color: #D4B96A; }
+.pv__botao:focus-visible { outline: 2px solid #D4B96A; outline-offset: 2px; }
+
+/* Marca de que o slide tem texto ajustado por ele, não o do roteiro. */
+.pv__editado {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #D4B96A;
+  margin-left: 10px;
+  vertical-align: middle;
 }
 
 .pv__rodape {

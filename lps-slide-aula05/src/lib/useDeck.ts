@@ -3,6 +3,38 @@ import { abrirCanal, mensagemValida } from "./sync";
 
 /* Modo apresentador: lido uma vez, no load. A plateia nunca pode ver o
    presenter aparecer por acidente no meio da aula. */
+/**
+ * O alvo do evento é um campo de texto?
+ *
+ * Sem esta guarda, digitar um espaço no editor do roteiro AVANÇARIA o
+ * slide, e um "r" zeraria o cronômetro. O handler de teclado é global,
+ * então ele precisa saber quando calar a boca.
+ */
+export function ehEditavel(alvo: EventTarget | null): boolean {
+  const el = alvo as HTMLElement | null;
+  if (!el || !el.tagName) return false;
+  return el.isContentEditable || /^(input|textarea|select)$/i.test(el.tagName);
+}
+
+/**
+ * Este clique deve avançar o slide?
+ *
+ * O clique-pra-avançar é o caminho do clicker e do mouse, mas ele estava
+ * engolindo TODO clique da janela: clicar dentro do campo do editor, ou
+ * num botão de restaurar, avançava o slide junto. Medido: entrar no campo
+ * pra editar pulava de 14 pra 15, e a projeção ia junto.
+ *
+ * Campo de texto, botão, link e qualquer coisa dentro do editor não
+ * navegam. Com o editor aberto, clique nenhum navega: ali ele está
+ * escrevendo, não apresentando.
+ */
+export function cliqueNavega(alvo: EventTarget | null): boolean {
+  const el = alvo as HTMLElement | null;
+  if (!el || typeof el.closest !== "function") return true;
+  if (ehEditavel(el)) return false;
+  return !el.closest("button, a, [data-nao-avanca], .pv--editando");
+}
+
 export const IS_PRESENTER =
   typeof window !== "undefined" && new URLSearchParams(window.location.search).get("presenter") === "1";
 
@@ -118,6 +150,7 @@ export function useDeck(total: number) {
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (ehEditavel(e.target)) return;
 
       const frente = ["ArrowRight", "ArrowDown", "PageDown", " ", "Spacebar", "Enter"];
       const tras = ["ArrowLeft", "ArrowUp", "PageUp", "Backspace"];

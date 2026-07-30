@@ -1,7 +1,18 @@
 import { AnimatePresence, motion } from "motion/react";
+import { useCallback, useEffect, useState } from "react";
 import type { Slide } from "@/deck";
 import { SlideAtivo } from "@/components/SlideFrame";
-import { mmss, useTique } from "@/lib/useDeck";
+import { ehEditavel, mmss, useTique } from "@/lib/useDeck";
+import {
+  carregar,
+  editar,
+  exportar,
+  quantasEdicoes,
+  restaurarSlide,
+  restaurarTudo,
+  type Campo,
+  type Edicoes,
+} from "@/lib/roteiro";
 
 /* ═══════════════════════════════════════════════════════════════════
    Presenter view. Só existe em ?presenter=1 e nunca aparece na URL
@@ -18,6 +29,10 @@ import { mmss, useTique } from "@/lib/useDeck";
 
    Fundo navy sólido, nunca creme: a aula é às 7h e tela clara na cara
    cansa e reflete em quem está em câmera.
+
+   O texto do roteiro é editável aqui (tecla E). As edições ficam em
+   localStorage e as quebras de linha são preservadas, porque o ponto de
+   editar é justamente quebrar o texto do jeito que ele lê.
    ═══════════════════════════════════════════════════════════════════ */
 
 export function PresenterView({
@@ -40,12 +55,68 @@ export function PresenterView({
   useTique(true);
   const agora = Date.now();
 
+  const [edicoes, setEdicoes] = useState<Edicoes>(() => carregar());
+  const [editando, setEditando] = useState(false);
+  const [aviso, setAviso] = useState("");
+
+  /* O texto lido é o dele quando existe, senão o do roteiro. */
+  const val = (campo: Campo) => edicoes[slide.n]?.[campo] ?? slide[campo];
+  const mexido = Boolean(edicoes[slide.n]);
+
+  const trocar = useCallback(
+    (campo: Campo, valor: string) => {
+      setEdicoes((e) => editar(e, slide.n, campo, valor, slide[campo]));
+    },
+    [slide]
+  );
+
+  /* `E` liga e desliga o editor, `Esc` sai. A guarda de campo de texto
+     está no handler global do useDeck; aqui ela se repete porque este
+     listener é outro. Sem isso, digitar um "e" no meio de uma palavra
+     fecharia o editor. */
+  useEffect(() => {
+    function onKey(ev: KeyboardEvent) {
+      if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+      if (ehEditavel(ev.target)) {
+        if (ev.key === "Escape") (ev.target as HTMLElement).blur();
+        return;
+      }
+      if (ev.key === "e" || ev.key === "E") {
+        ev.preventDefault();
+        setEditando((v) => !v);
+        setAviso("");
+      } else if (ev.key === "Escape") {
+        setEditando(false);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  async function copiarExport() {
+    const json = exportar(edicoes);
+    try {
+      await navigator.clipboard.writeText(json);
+      setAviso(`${quantasEdicoes(edicoes)} slide(s) copiados pra área de transferência`);
+    } catch {
+      /* Sem permissão de clipboard: joga no console, que dá pra copiar. */
+      console.log(json);
+      setAviso("clipboard bloqueado; o JSON saiu no console do navegador");
+    }
+  }
+
   return (
-    <div className="pv">
+    <div className={editando ? "pv pv--editando" : "pv"}>
       <div className="pv__topo">
         <div>
-          <span className="pv__rotulo">Aula 5 · Imersão Lucro Clínico</span>
-          <div style={{ marginTop: 10, fontSize: 20, fontWeight: 600, color: "#8B93A3" }}>{slide.secao}</div>
+          <span className="pv__rotulo">
+            Aula 5 · Imersão Lucro Clínico
+            {editando ? <span style={{ color: "#D4B96A" }}> · editando (E sai)</span> : null}
+          </span>
+          <div style={{ marginTop: 10, fontSize: 20, fontWeight: 600, color: "#8B93A3" }}>
+            {slide.secao}
+            {mexido ? <span className="pv__editado" title="texto ajustado por você" /> : null}
+          </div>
         </div>
 
         {/* Miniatura da projeção: o slide de verdade escalado, não uma
@@ -65,31 +136,84 @@ export function PresenterView({
         </div>
       </div>
 
-      {/* O DIZ troca com um corte curto: no meio da fala, transição longa
-          atrapalha mais do que ajuda. */}
-      <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", minHeight: 0 }}>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={slide.n}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
-          >
-            {/* Palavras-chave, não frase pronta: ler frase pronta na
-                câmera aparece pro público. */}
-            <div className="pv__diz">{slide.diz}</div>
-            <div className="pv__tom">{slide.tom}</div>
-          </motion.div>
-        </AnimatePresence>
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", minHeight: 0, gap: 16 }}>
+        {editando ? (
+          <>
+            <textarea
+              className="pv__campo pv__diz"
+              value={val("diz")}
+              onChange={(e) => trocar("diz", e.target.value)}
+              rows={5}
+              spellCheck={false}
+              aria-label="O que dizer neste slide"
+            />
+            <textarea
+              className="pv__campo pv__tom"
+              value={val("tom")}
+              onChange={(e) => trocar("tom", e.target.value)}
+              rows={2}
+              spellCheck={false}
+              style={{ marginTop: 0 }}
+              aria-label="Tom da entrega"
+            />
+            <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+              <button className="pv__botao" onClick={copiarExport}>
+                exportar edições
+              </button>
+              <button className="pv__botao" onClick={() => setEdicoes((e) => restaurarSlide(e, slide.n))}>
+                restaurar este slide
+              </button>
+              <button
+                className="pv__botao"
+                onClick={() => {
+                  setEdicoes(restaurarTudo());
+                  setAviso("tudo de volta ao roteiro original");
+                }}
+              >
+                restaurar tudo
+              </button>
+              <span style={{ fontSize: 14, color: "#8B93A3" }}>
+                {aviso || "Enter quebra linha. Salva sozinho, fica neste navegador."}
+              </span>
+            </div>
+          </>
+        ) : (
+          /* O DIZ troca com um corte curto: no meio da fala, transição
+             longa atrapalha mais do que ajuda. */
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={slide.n}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+            >
+              {/* Palavras-chave, não frase pronta: ler frase pronta na
+                  câmera aparece pro público. */}
+              <div className="pv__diz">{val("diz")}</div>
+              <div className="pv__tom">{val("tom")}</div>
+            </motion.div>
+          </AnimatePresence>
+        )}
       </div>
 
       <div className="pv__rodape">
         <div style={{ minWidth: 0 }}>
           <span className="pv__rotulo">a seguir</span>
-          <div className="pv__proximo" style={{ marginTop: 8 }}>
-            {proximoSlide ? slide.proximo : "fim"}
-          </div>
+          {editando ? (
+            <input
+              className="pv__campo pv__proximo"
+              value={val("proximo")}
+              onChange={(e) => trocar("proximo", e.target.value)}
+              spellCheck={false}
+              style={{ marginTop: 8 }}
+              aria-label="Próximo bloco"
+            />
+          ) : (
+            <div className="pv__proximo" style={{ marginTop: 8 }}>
+              {proximoSlide ? val("proximo") : "fim"}
+            </div>
+          )}
         </div>
 
         <div className="pv__relogios">

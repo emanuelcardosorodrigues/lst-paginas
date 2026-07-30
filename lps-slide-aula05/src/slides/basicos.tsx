@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import type { ReactNode } from "react";
 import type { Icon } from "@phosphor-icons/react";
 import { useSlideVariants } from "@/lib/motion";
-import { Flutua, IconeGrande, Item, Respira } from "@/components/pieces";
+import { Flutua, IconeGrande, Item, MarcaPrograma, Respira } from "@/components/pieces";
 import { useSlideActive } from "@/components/SlideFrame";
 
 /* ═══ Título com subtítulo (slide 1) ═══════════════════════════════ */
@@ -30,6 +30,7 @@ export function Isolada({
   px,
   cor,
   peso = false,
+  pulsa = false,
 }: {
   texto: string;
   tamanho?: "d-hero" | "d-xl" | "d-l";
@@ -37,11 +38,13 @@ export function Isolada({
   px?: number;
   cor?: string;
   peso?: boolean;
+  /** Slide de CHAT: pulso mais marcado, sinalizando "estou esperando". */
+  pulsa?: boolean;
 }) {
   const v = useSlideVariants();
   return (
     <motion.h2 variants={peso ? v.peso : v.item} className={tamanho} style={{ color: cor, fontSize: px }}>
-      <Respira escala={0.008} segundos={7.5}>
+      <Respira escala={pulsa ? 0.03 : 0.008} segundos={pulsa ? 3.2 : 7.5}>
         <span>{texto}</span>
       </Respira>
     </motion.h2>
@@ -255,10 +258,11 @@ export function Particulas({ glyph }: { glyph: Icon }) {
 }
 
 /* ═══ Três linhas em stagger (slide 21) ════════════════════════════ */
-export function TresLinhas({ linhas }: { linhas: string[] }) {
+export function TresLinhas({ linhas, marca }: { linhas: string[]; marca?: string }) {
   const { item } = useSlideVariants();
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
+      {marca ? <div style={{ marginBottom: 26 }}><MarcaPrograma nome={marca} /></div> : null}
       {linhas.map((l) => (
         <motion.span key={l} variants={item} className="d-l">
           {l}
@@ -272,12 +276,28 @@ export function TresLinhas({ linhas }: { linhas: string[] }) {
    Fica no ar até o fim da aula enquanto ele segue falando, então o
    bloco inteiro mantém um pulso muito suave.
    ═══════════════════════════════════════════════════════════════════ */
-export function CTA({ titulo, linha2, linha3 }: { titulo: string; linha2: string; linha3: string }) {
+export function CTA({
+  chamada,
+  titulo,
+  linha2,
+  linha3,
+}: {
+  /** Linha de ação acima do título. */
+  chamada?: string;
+  titulo: string;
+  linha2: string;
+  linha3: string;
+}) {
   const { item } = useSlideVariants();
   return (
     <Respira escala={0.01} segundos={5.5}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
-        <motion.h2 variants={item} className="d-xl" style={{ color: "var(--accent-display)" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 34 }}>
+        {chamada ? (
+          <motion.p variants={item} className="d-m" style={{ fontSize: 60 }}>
+            {chamada}
+          </motion.p>
+        ) : null}
+        <motion.h2 variants={item} className="d-xl" style={{ fontSize: 126, color: "var(--accent-display)" }}>
           {titulo}
         </motion.h2>
         <motion.p variants={item} className="d-m" style={{ fontSize: 62 }}>

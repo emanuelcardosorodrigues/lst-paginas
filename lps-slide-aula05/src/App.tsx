@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { SLIDES } from "@/deck";
 import { SlideFrame } from "@/components/SlideFrame";
 import { PresenterView } from "@/components/PresenterView";
-import { IS_PRESENTER, useDeck, useStageScale } from "@/lib/useDeck";
+import { IS_PRESENTER, cliqueNavega, useDeck, useStageScale } from "@/lib/useDeck";
 
 /* Cor de letterbox por temperatura. Em 16:9 ela é invisível; em 16:10
    (notebook) as faixas leem como matte de propósito. */
@@ -17,7 +17,11 @@ export default function App() {
      de qualquer uma move as duas. O presenter só troca o que desenha. */
   if (IS_PRESENTER) {
     return (
-      <div onClick={proximo} style={{ cursor: "none" }}>
+      <div
+        onClick={(e) => {
+          if (cliqueNavega(e.target)) proximo();
+        }}
+      >
         <PresenterView
           slide={atual}
           proximoSlide={SLIDES[index + 1]}
@@ -35,8 +39,10 @@ export default function App() {
       className="deck"
       style={{ background: LETTERBOX[atual.tema] }}
       /* Clique em qualquer ponto avança: é o caminho do clicker e do
-         mouse. O cursor some porque isto vai pro projetor. */
-      onClick={proximo}
+         mouse. */
+      onClick={(e) => {
+        if (cliqueNavega(e.target)) proximo();
+      }}
     >
       <div className="stage" style={{ transform: `translate(-50%, -50%) scale(${scale})` }}>
         {SLIDES.map((s, i) => (

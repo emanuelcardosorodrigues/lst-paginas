@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import type { ReactNode } from "react";
 import type { Icon } from "@phosphor-icons/react";
 import { useSlideVariants } from "@/lib/motion";
+import { BASE } from "@/lib/base";
 
 /* Peso único de ícone no deck. "light" some no projetor; "regular" segura
    o traço a 12 metros. */
@@ -138,5 +139,43 @@ export function IconeGrande({
       ) : null}
       <Glyph size={size} weight={PESO_ICONE} color="var(--accent-display)" aria-hidden style={{ position: "relative" }} />
     </div>
+  );
+}
+
+/**
+ * Lockup do programa: a águia e o nome.
+ *
+ * O PNG é bronze (#845C25). Sobre o tema frio ele vira um borrão, então
+ * leva um filtro de brilho. Sobre o quente vai como é.
+ */
+export function MarcaPrograma({ nome, size = 118 }: { nome: string; size?: number }) {
+  const { item } = useSlideVariants();
+  return (
+    <motion.div
+      variants={item}
+      style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}
+    >
+      <Respira escala={0.014} segundos={7}>
+        <img
+          className="marca-aguia"
+          src={`${BASE}images/eagle.png`}
+          alt=""
+          width={size}
+          height={size}
+          style={{ width: size, height: size, objectFit: "contain" }}
+        />
+      </Respira>
+      <span
+        style={{
+          fontFamily: "var(--font-serif)",
+          fontSize: 38,
+          fontWeight: 700,
+          color: "var(--accent)",
+          letterSpacing: "-0.01em",
+        }}
+      >
+        {nome}
+      </span>
+    </motion.div>
   );
 }

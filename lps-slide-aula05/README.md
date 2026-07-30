@@ -37,13 +37,43 @@ rede: recarregar qualquer uma das janelas volta no slide certo.
 | `←` `↑` `PageUp` `Backspace` | volta |
 | `R` | zera o cronômetro |
 | `F` | tela cheia |
+| `E` | abre/fecha o editor do roteiro (só no presenter) |
+| `Esc` | sai do editor |
 | clique em qualquer ponto | avança |
+
+Clique dentro de campo de texto, de botão, ou em qualquer lugar com o
+editor aberto **não** avança o slide.
 
 Sem timer automático em slide nenhum: as pausas de chat têm duração
 imprevisível ao vivo, então o avanço é sempre manual.
 
 `F` está fora da lista mínima do briefing. Ficou por consistência com o
 deck da Aula 2, onde ele já usa esse dedo pra projetar do notebook.
+
+## Editar o roteiro ao vivo
+
+Tecla `E` no presenter abre o editor dos três campos (DIZ, TOM, a seguir).
+As quebras de linha são preservadas: o ponto de editar é quebrar o texto
+do jeito que ele lê, e a tela renderiza com `white-space: pre-wrap`.
+
+Salva sozinho, em `localStorage`. Não existe backend: o deck é estático
+num Worker, e o texto fica no notebook onde o presenter roda, que é
+exatamente onde ele precisa estar. Um ponto dourado ao lado da seção
+marca os slides que ele ajustou.
+
+**O preço:** limpar o navegador leva as edições junto. Por isso existe o
+botão **exportar edições**, que copia um JSON assim:
+
+```json
+{ "5": { "diz": "Ontem,\nprocesso inteiro,\nscript pronto" } }
+```
+
+Esse JSON volta pro `deck.tsx` e vira código. localStorage é o rascunho;
+o código é o original. "restaurar este slide" e "restaurar tudo"
+descartam o rascunho.
+
+Só os campos do presenter são editáveis. **O texto público não**: ele é
+literal do roteiro, e mexer ali muda o que a plateia lê.
 
 ## Rodar e publicar
 
@@ -157,7 +187,10 @@ crossfade do conteúdo, em vez de uma lavada de temperatura por baixo dele.
 
 - 30/30 slides sem vazar a área segura a 1920x1080, zero erro de console
 - Sincronia nas duas direções, incluindo reabrir o presenter no meio
+- Editor: digitar espaço e seta não navega, quebras de linha preservadas,
+  persiste no reload, restaura, exporta, e o texto do presenter não
+  aparece na projeção
 - Virada de temperatura medida: creme até o 19, navy do 20 em diante
 - Build limpo (`npm run build:slide-aula05` na raiz)
 
-Nada disso foi publicado ainda: falta o `wrangler deploy`.
+

@@ -17,7 +17,6 @@ import type { Theme } from "@/components/SlideFrame";
 import {
   CTA,
   Chat,
-  DuasPalavras,
   Grade4,
   IconeRecap,
   Isolada,
@@ -251,7 +250,9 @@ export const SLIDES: Slide[] = [
     diz: "Escreve TÁ PAGO. Se tiver dúvida, escreve DÚVIDA, eu quero ver",
     tom: "direto, sem pressão",
     proximo: "Chat enchendo",
-    node: <DuasPalavras a="TÁ PAGO" b="DÚVIDA" />,
+    /* Só "TÁ PAGO": o Leandro tirou o "DÚVIDA" da tela. O convite pra
+       dúvida segue na fala dele (campo DIZ), não projetado. */
+    node: <Isolada texto="TÁ PAGO" tamanho="d-xl" pulsa />,
   },
   {
     n: 19,
@@ -259,7 +260,7 @@ export const SLIDES: Slide[] = [
     tema: "warm",
     diz: "Olha isso enchendo. Fico feliz de ver. E é por isso que eu não paro por aqui hoje",
     tom: "alegria real. Segura 15 a 20 segundos",
-    proximo: "O RACIONAL",
+    proximo: "A jornada de verdade",
     node: <Particulas glyph={ChatCircleDots} />,
   },
 
@@ -271,7 +272,9 @@ export const SLIDES: Slide[] = [
     diz: "Ontem foi coração, os 6 movimentos, minha história. Hoje é frio e objetivo. Você merece o porquê lógico também",
     tom: "vira a chave, mais frio",
     proximo: "O que é o Águia",
-    node: <Isolada texto="AGORA, O RACIONAL." tamanho="d-xl" />,
+    /* 108px: a frase é longa e quebra em duas linhas equilibradas. Tem que
+       caber COM a respiração (1,008x), não sem ela. */
+    node: <Isolada texto="Agora, a jornada vai começar de verdade" tamanho="d-xl" px={108} />,
   },
   {
     n: 21,
@@ -281,7 +284,12 @@ export const SLIDES: Slide[] = [
     diz: "6 meses comigo, grupo de até 10, ordem certa aplicada na sua realidade, com prazo, tarefa e revisão",
     tom: "seco, sem enfeite",
     proximo: "Objeção 1",
-    node: <TresLinhas linhas={["6 MESES.", "GRUPO DE ATÉ 10.", "ORDEM CERTA."]} />,
+    node: (
+      <TresLinhas
+        marca="Programa Águia de Aceleração de Clínicas"
+        linhas={["6 MESES.", "GRUPO DE ATÉ 10.", "ORDEM CERTA."]}
+      />
+    ),
   },
   {
     n: 22,
@@ -358,7 +366,7 @@ export const SLIDES: Slide[] = [
     diz: "Sementinha: domingo eu abro tudo, valor, condição, garantia, e revelo o bônus do Google Meu Negócio. Guarda essa palavra",
     tom: "curiosidade, não entrega nada",
     proximo: "CTA ficha",
-    node: <BonusTravado texto="GOOGLE MEU NEGÓCIO" selo="revelado domingo" glyph={LockKey} />,
+    node: <BonusTravado texto="Acelerador de Google Meu Negócio" selo="revelado domingo" glyph={LockKey} />,
   },
   {
     n: 30,
@@ -370,6 +378,7 @@ export const SLIDES: Slide[] = [
     proximo: "fim do bloco, entra Google e redes",
     node: (
       <CTA
+        chamada="Tome a primeira ação AGORA"
         titulo="FICHA DE INTERESSE"
         linha2="+100 inscritos, até 10 por turma"
         linha3="não te compromete a nada"
