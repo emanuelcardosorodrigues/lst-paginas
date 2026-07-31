@@ -4,9 +4,10 @@
   "description": "Página de vendas — Protocolo do Dentista Parceiro Lucrativo",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node post-build-dpl.js && npm run build:plo && npm run build:plo-up && npm run build:plo-dw && npm run build:pda && npm run build:calc && npm run build:col && npm run build:col-web && npm run build:lps && npm run build:pvia02 && npm run build:pvia05 && npm run build:pvia06 && npm run build:slide-aula04 && npm run build:slide-aula05 && cp public/_headers dist/_headers",
+    "build": "vite build && node post-build-dpl.js && npm run build:plo && npm run build:plo-up && npm run build:plo-dw && npm run build:pda && npm run build:calc && npm run build:col && npm run build:col-web && npm run build:lps && npm run build:pvia02 && npm run build:pvia05 && npm run build:pvia06 && npm run build:slide-aula04 && npm run build:slide-aula05 && npm run build:slide-aula06 && cp public/_headers dist/_headers",
     "build:slide-aula04": "npm install --prefix lps-slide-aula04 && npm run build --prefix lps-slide-aula04",
     "build:slide-aula05": "npm install --prefix lps-slide-aula05 && npm run build --prefix lps-slide-aula05",
+    "build:slide-aula06": "npm install --prefix lps-slide-aula06 && npm run build --prefix lps-slide-aula06",
     "build:lps": "rm -rf dist/lps-pv01 && cp -R lps-pv01 dist/lps-pv01",
     "build:dpl": "vite build && node post-build-dpl.js",
     "build:plo": "npm install --prefix plo-pv01 && npm run build --prefix plo-pv01",
