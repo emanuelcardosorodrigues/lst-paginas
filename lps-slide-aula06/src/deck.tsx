@@ -7,16 +7,18 @@ import {
   ChalkboardTeacher,
   Compass,
   FileText,
+  Globe,
   GraduationCap,
   Headset,
   PaperPlaneTilt,
   Receipt,
   Sparkle,
+  Timer,
   Users,
   UsersThree,
 } from "@phosphor-icons/react";
 import type { Theme } from "@/components/SlideFrame";
-import { Chat, Isolada, Sozinho } from "@/slides/basicos";
+import { Chat, Isolada } from "@/slides/basicos";
 import { SomaComThumb, TotalGancho, type ItemGancho } from "@/slides/gancho";
 import { CasoProva, MiniaturasCasos } from "@/slides/prova";
 import { ComFundo, MosaicoAulas, PaginasEsmaecidas, TiraFotos } from "@/slides/fundo";
@@ -24,6 +26,8 @@ import {
   BuildEtapas,
   GridChecklist,
   GradeInclusos,
+  PrecoDoPrograma,
+  SlideBonus,
   TresColunas,
   ValorComCondicao,
   type ItemOferta,
@@ -32,7 +36,6 @@ import {
   Comparacao,
   DuasLinhas,
   FraseComSimbolo,
-  FraseRiscada,
   GradeRiscada,
   MapaMovimentos,
   Midia,
@@ -40,7 +43,7 @@ import {
 } from "@/slides/aula6";
 
 /* ═══════════════════════════════════════════════════════════════════
-   Os 68 slides da Aula 6 da Imersão Lucro Clínico: o pitch final.
+   Os 69 slides da Aula 6 da Imersão Lucro Clínico: o pitch final.
 
    Duas camadas no mesmo registro:
    - o que a PLATEIA vê (`node`): um elemento central, muito respiro,
@@ -49,12 +52,16 @@ import {
      10 palavras, pra ler de relance sem tirar o olho da câmera.
 
    `passos` é o build DENTRO do slide. Os reveals de prova (14, 28, 29,
-   30), a soma do gancho (2) e a pilha do lucro mensal (50) usam o mesmo
+   30), a soma do gancho (2) e a pilha do lucro mensal (48) usam o mesmo
    gesto: a primeira tecla completa o slide, a seguinte troca de slide.
 
    Regra de mídia deste deck, mais agressiva que a dos anteriores:
    vídeo real > foto real > print real > ícone. Ícone só quando nenhum
-   asset existe ou quando o vazio é o argumento (slides 4, 53, 59).
+   asset existe ou quando o vazio é o argumento (slides 4 e 51).
+
+   O bloco "pra quem NÃO é" saiu: o Águia serve pro dentista de uma
+   cadeira e pro de várias, e um slide riscando "só quer mais paciente"
+   fecha porta que a oferta não fecha.
    ═══════════════════════════════════════════════════════════════════ */
 
 export type Slide = {
@@ -75,8 +82,8 @@ export type Slide = {
 };
 
 /* ── Temperatura ─────────────────────────────────────────────────────
-   1 a 31 quente (gancho, autoridade, problema, prova), 32 a 59 frio
-   (demonstração, ancoragem, preço, mecânica), 60 a 68 quente de novo
+   1 a 31 quente (gancho, autoridade, problema, prova), 32 a 57 frio
+   (demonstração, ancoragem, preço, mecânica), 58 a 69 quente de novo
    (bônus, resumo, fechamento). Duas viradas, ambas em fronteira de
    bloco do roteiro, ambas lavadas por baixo em 800ms.
    ─────────────────────────────────────────────────────────────────── */
@@ -95,7 +102,7 @@ const CONTA_DA_SEMANA: ItemGancho[] = [
 ];
 
 /* Os seis movimentos. A mesma lista alimenta o slide-mapa (40) e o
-   fundo neutro do Q&A (66). */
+   fundo neutro do Q&A (67). */
 const MOVIMENTOS = [
   { n: 1, label: "Decolagem", icon: AirplaneTakeoff },
   { n: 2, label: "GPS", icon: Compass },
@@ -111,30 +118,31 @@ const CASOS = [
   { nome: "José Ronaldo", foto: "caso-jose-ronaldo", antes: 4, depois: 22 },
 ];
 
-/* ── Resumo da oferta (slide 62) ────────────────────────────────────
+/* ── Resumo da oferta (slide 63) ────────────────────────────────────
    Dezesseis, não quinze: o roteiro fecha a lista com "6 meses de
    acompanhamento próximo", e ele não é mais um item — é o que segura
    os quinze de cima. Entra como card atravessado no rodapé do grid.
 
-   Onde existe tela real, a thumbnail do próprio slide de demonstração
-   vira o fundo do card: o entregável já foi visto rodando, aqui só se
-   lembra dele.
+   Sem thumbnail de fundo. Sete dos dezesseis apontavam pra um asset,
+   mas seis desses são .mp4 e não renderizam num <img>: só o print do
+   WhatsApp aparecia, e um card diferente dos outros quinze lê como
+   defeito. Ou todos têm tela real, ou nenhum tem.
    ────────────────────────────────────────────────────────────────── */
 const OFERTA: ItemOferta[] = [
-  { label: "Ficha de decolagem", icone: AirplaneTakeoff, thumb: "movimento-1-disc-proposta" },
-  { label: "Teste DISC", icone: Blueprint, thumb: "movimento-1-disc-proposta" },
-  { label: "Copiloto Águia", icone: Compass, thumb: "movimento-2-copiloto" },
+  { label: "Ficha de decolagem", icone: AirplaneTakeoff },
+  { label: "Teste DISC", icone: Blueprint },
+  { label: "Copiloto Águia", icone: Compass },
   { label: "Reunião de diagnóstico comigo", icone: CalendarCheck },
   { label: "Reunião de precificação comigo", icone: Receipt },
-  { label: "Central de Consultores", icone: Headset, thumb: "movimento-5b-central-consultores" },
-  { label: "Treinamento de secretárias", icone: ChalkboardTeacher, thumb: "movimento-5c-treinamento-secretaria" },
+  { label: "Central de Consultores", icone: Headset },
+  { label: "Treinamento de secretárias", icone: ChalkboardTeacher },
   { label: "Treinamento de secretárias ao vivo", icone: Users },
   { label: "Contrato para dentista parceiro", icone: FileText },
   { label: "Contrato para colaboradores", icone: FileText },
-  { label: "Consultoria tributária com a equipe", icone: Receipt, thumb: "movimento-4-tributario" },
+  { label: "Consultoria tributária com a equipe", icone: Receipt },
   { label: "Campanha de reativação pronta", icone: PaperPlaneTilt },
   { label: "Painel de reativação de pacientes", icone: Blueprint },
-  { label: "Grupo com até 10 dentistas", icone: UsersThree, thumb: "movimento-3-grupo-whatsapp" },
+  { label: "Grupo com até 10 dentistas", icone: UsersThree },
   { label: "Grupo de secretárias", icone: Users },
   { label: "6 meses de acompanhamento próximo", icone: Sparkle, destaque: true },
 ];
@@ -334,31 +342,23 @@ export const SLIDES: Slide[] = [
     node: <MapaMovimentos itens={MOVIMENTOS} /> },
 
   { n: 41, bloco: "Método", tema: "cold",
-    diz: "Dono de consultório ou clínica, cansado de trabalhar muito", tom: "direto", proximo: "Só quer mais paciente",
+    diz: "Dono de consultório ou clínica, cansado de trabalhar muito. Serve pros dois", tom: "direto, inclui — não exclui ninguém", proximo: "Especialização",
     node: <Isolada texto="DONO DE CONSULTÓRIO OU CLÍNICA" tamanho="d-xl" px={116} /> },
 
-  { n: 42, bloco: "Método", tema: "cold",
-    diz: "Só quer mais paciente? Não é pra você", tom: "claro, sem rodeio", proximo: "CHAT eu sou",
-    node: <FraseRiscada texto="SÓ QUER MAIS PACIENTE?" /> },
-
-  { n: 43, bloco: "Método", tema: "cold",
-    diz: "Se você se enxergou, escreve EU SOU", tom: "convite", proximo: "Especialização",
-    node: <Chat texto="EU SOU" glyph={ChatCircleDots} /> },
-
   /* ═══ Ancoragem ═══ */
-  { n: 44, bloco: "Ancoragem", tema: "cold",
+  { n: 42, bloco: "Ancoragem", tema: "cold",
     diz: "Especialização de trinta, quarenta, sessenta mil", tom: "vira a chave pro ancoragem", proximo: "Ortodontia",
     node: <Isolada texto="ESPECIALIZAÇÃO" tamanho="d-hero" px={186} /> },
 
-  { n: 45, bloco: "Ancoragem", tema: "cold",
+  { n: 43, bloco: "Ancoragem", tema: "cold",
     diz: "Ortodontia, dois mil duzentos e cinquenta por mês, trinta e seis meses", tom: "mostra o print", proximo: "Dentística",
     node: <Midia id="ancoragem-ortodontia" label="Especialização em Ortodontia · investimento" kind="print" /> },
 
-  { n: 46, bloco: "Ancoragem", tema: "cold",
+  { n: 44, bloco: "Ancoragem", tema: "cold",
     diz: "Mestrado em Dentística, matrícula mais vinte e cinco vezes", tom: "mostra o print", proximo: "Duas especializações",
     node: <Midia id="ancoragem-dentistica" label="Mestrado em Dentística · investimento" kind="print" /> },
 
-  { n: 47, bloco: "Ancoragem", tema: "cold",
+  { n: 45, bloco: "Ancoragem", tema: "cold",
     diz: "Duas especializações, mais de cento e trinta mil", tom: "pico da comparação", proximo: "Sem retorno",
     node: (
       <TotalGancho
@@ -371,47 +371,64 @@ export const SLIDES: Slide[] = [
       />
     ) },
 
-  { n: 48, bloco: "Ancoragem", tema: "cold",
-    diz: "E não trouxe retorno nenhum pro seu bolso", tom: "contraste, deixa pesar", proximo: "Vinte e cinco mil de novo",
-    node: <Sozinho texto="e não trouxe retorno nenhum" /> },
+  { n: 46, bloco: "Ancoragem", tema: "cold", stagger: 0.55,
+    /* Não é "não trouxe retorno": é retorno que não compensa o que
+       custou. Afirmação vira acusação ao esforço dele; pergunta devolve
+       a conta pra quem investiu. */
+    diz: "Não trouxe o retorno que faz sentido. Valeu a pena?", tom: "pergunta, não acusação — deixa pesar", proximo: "Vinte e cinco mil de novo",
+    node: <DuasLinhas linhas={["TANTO DINHEIRO, TEMPO E ESFORÇO.", "PRA SOBRAR TÃO POUCO?"]} /> },
 
-  { n: 49, bloco: "Ancoragem", tema: "cold",
-    diz: "Vinte e cinco mil, de novo. Prontos pra coletar", tom: "retomada", proximo: "Lucro mensal",
+  { n: 47, bloco: "Ancoragem", tema: "cold",
+    diz: "SÓ nessa imersão: mais de vinte e cinco mil. Prontos pra coletar", tom: "carrega o SÓ — é o que uma semana achou", proximo: "Lucro mensal",
     node: <Isolada texto="MAIS DE R$ 25.000,00" tamanho="d-hero" px={190} cor="var(--accent-display)" peso brilha /> },
 
-  { n: 50, bloco: "Ancoragem", tema: "cold", passos: 2, passoRotulo: ["+ R$ 7 mil", "+ R$ 8 mil"],
+  { n: 48, bloco: "Ancoragem", tema: "cold", passos: 2, passoRotulo: ["+ R$ 7 mil", "+ R$ 8 mil"],
     diz: "Seis, sete, oito mil de lucro todo santo mês pra trás", tom: "constrói a conta", proximo: "Três e seis meses",
     node: <PilhaPorPasso valores={["R$ 6 mil", "R$ 7 mil", "R$ 8 mil"]} /> },
 
-  { n: 51, bloco: "Ancoragem", tema: "cold", stagger: 0.8,
+  { n: 49, bloco: "Ancoragem", tema: "cold", stagger: 0.8,
     diz: "Em três meses, vinte e quatro. Em seis, quase cinquenta", tom: "ancoragem final do bloco", proximo: "CHAT quanto custa",
     node: (
       <BuildEtapas
         numerado={false}
         etapas={[
           { rotulo: "3 MESES = R$ 24 MIL", detalhe: "deixados pra trás" },
-          { rotulo: "6 MESES = QUASE R$ 50 MIL", detalhe: "deixados pra trás" },
+          { rotulo: "6 MESES = QUASE R$ 50 MIL", detalhe: "deixados pra trás", destaque: true },
         ]}
       />
     ) },
 
-  { n: 52, bloco: "Ancoragem", tema: "cold",
+  { n: 50, bloco: "Ancoragem", tema: "cold",
     diz: "Quanto isso tá te custando? Comenta aí", tom: "pede reação forte", proximo: "Doze mil",
     node: <Chat texto="QUANTO ISSO TÁ TE CUSTANDO?" glyph={ChatCircleDots} forte /> },
 
   /* ═══ Preço ═══ */
-  { n: 53, bloco: "Preço", tema: "cold",
+  { n: 51, bloco: "Preço", tema: "cold",
     diz: "No mercado, doze mil", tom: "referência neutra", proximo: "Seis mil",
     /* Sem brilho, sem acento: se este número competir com o 56, o 56
        deixa de ser o alívio que a estrutura inteira preparou. */
-    node: <Isolada texto="R$ 12.000,00" tamanho="d-hero" px={196} cor="var(--fg-3)" /> },
+    node: (
+      <PrecoDoPrograma
+        comMarca
+        valor="R$ 12.000,00"
+        condicao="Programa Águia de Aceleração de Clínicas"
+        nota="o valor real do programa"
+      />
+    ) },
 
-  { n: 54, bloco: "Preço", tema: "cold",
+  { n: 52, bloco: "Preço", tema: "cold",
     diz: "Pra quem tá na imersão, seis mil em doze vezes", tom: "reveal, sem pressa", proximo: "Nem três restaurações",
-    node: <ValorComCondicao valor="R$ 6.000,00" condicao="em até 12x no cartão" brilha /> },
+    node: (
+      <PrecoDoPrograma
+        brilha
+        valor="R$ 6.000,00"
+        condicao="em até 12x no cartão"
+        nota="valor especial de quem está na Imersão Lucro Clínico"
+      />
+    ) },
 
   /* ═══ Ancoragem para baixo ═══ */
-  { n: 55, bloco: "Preço", tema: "cold",
+  { n: 53, bloco: "Preço", tema: "cold",
     diz: "Isso no cartão nem dá três restaurações por mês", tom: "ancoragem pra baixo", proximo: "R$ 799",
     node: (
       <ComFundo id="restauracao-procedimento" opacidade={0.3} objectPosition="center 35%">
@@ -420,15 +437,15 @@ export const SLIDES: Slide[] = [
     ) },
 
   /* ═══ Como vai funcionar ═══ */
-  { n: 56, bloco: "Mecânica", tema: "cold",
+  { n: 54, bloco: "Mecânica", tema: "cold",
     diz: "Você não vai pagar doze, nem seis. Sim. Setecentos e noventa e nove", tom: "pausa antes do número, deixa ele pesar", proximo: "Trinta dias",
     node: <ValorComCondicao valor="R$ 799" brilha /> },
 
-  { n: 57, bloco: "Mecânica", tema: "cold",
+  { n: 55, bloco: "Mecânica", tema: "cold",
     diz: "Trinta dias de Águia, começando agora", tom: "seco", proximo: "Tudo incluso",
     node: <Isolada texto="30 DIAS DE ÁGUIA" tamanho="d-hero" px={182} /> },
 
-  { n: 58, bloco: "Mecânica", tema: "cold", stagger: 0.3,
+  { n: 56, bloco: "Mecânica", tema: "cold", stagger: 0.3,
     diz: "Reunião de duas horas, precificação, consultores. Tudo", tom: "orgulho de produto", proximo: "Não fez sentido",
     node: (
       <GradeInclusos
@@ -441,7 +458,7 @@ export const SLIDES: Slide[] = [
       />
     ) },
 
-  { n: 59, bloco: "Mecânica", tema: "cold", stagger: 0.55,
+  { n: 57, bloco: "Mecânica", tema: "cold", stagger: 0.55,
     /* Vazio proposital: sem mídia de fundo, sem brilho, sem acento. E
        sem uma palavra de reembolso — a mecânica é entrada não
        reembolsável, e a tela não pode sugerir devolução. */
@@ -449,29 +466,62 @@ export const SLIDES: Slide[] = [
     node: <DuasLinhas linhas={["NO DIA 31, VOCÊ ESCOLHE.", "continuar com a gente ou seguir sozinho"]} /> },
 
   /* ═══ Bônus · volta ao quente ═══ */
-  { n: 60, bloco: "Bônus", tema: "warm",
+  { n: 58, bloco: "Bônus", tema: "warm",
     diz: "Site pronto, no seu nome, aparecendo no Google", tom: "mostra o print", proximo: "Escada de bônus",
     node: <Midia id="bonus-site-google" label="Site entregue, posicionado no Google" kind="print" /> },
 
-  { n: 61, bloco: "Bônus", tema: "warm", stagger: 0.8,
-    diz: "Cinco primeiros, até oito, até vinte e três e cinquenta e nove de segunda", tom: "build, um de cada vez", proximo: "Resumo da oferta",
+  { n: 59, bloco: "Bônus", tema: "warm", stagger: 0.34,
+    diz: "Um dos cinco primeiros a se matricular leva o site pronto", tom: "escassez real, número pequeno de propósito", proximo: "Bônus 2",
+    node: (
+      <SlideBonus
+        ordem={1} total={3} glyph={Globe}
+        titulo="SITE PRONTO NO SEU DOMÍNIO"
+        detalhe="Minha equipe constrói, com a sua marca e a metodologia que acelera o seu Google Meu Negócio."
+        condicao="SÓ OS 5 PRIMEIROS"
+      />
+    ) },
+
+  { n: 60, bloco: "Bônus", tema: "warm", stagger: 0.34,
+    diz: "Até oito da manhã de segunda: prioridade na minha agenda", tom: "urgência de relógio, não de vaga", proximo: "Bônus 3",
+    node: (
+      <SlideBonus
+        ordem={2} total={3} glyph={Timer}
+        titulo="DIAGNÓSTICO ANTECIPADO"
+        detalhe="A primeira reunião comigo com prioridade na agenda. Você começa a coletar o lucro já nos próximos dias."
+        condicao="ATÉ 8H DE SEGUNDA"
+      />
+    ) },
+
+  { n: 61, bloco: "Bônus", tema: "warm", stagger: 0.34,
+    diz: "Até vinte e três e cinquenta e nove: a campanha implantada com você", tom: "último prazo, fecha a janela", proximo: "As três janelas",
+    node: (
+      <SlideBonus
+        ordem={3} total={3} glyph={PaperPlaneTilt}
+        titulo="REATIVAÇÃO IMPLANTADA COM VOCÊ"
+        detalhe="Eu e minha equipe escrevemos cada mensagem, treinamos a sua secretária e acompanhamos a campanha. Lucro a custo zero."
+        condicao="ATÉ 23H59 DE SEGUNDA"
+      />
+    ) },
+
+  { n: 62, bloco: "Bônus", tema: "warm", stagger: 0.8,
+    diz: "Três janelas, e cada uma fecha na hora marcada", tom: "recap, deixa o relógio pesar", proximo: "Resumo da oferta",
     node: (
       <BuildEtapas
         etapas={[
           { rotulo: "5 primeiros", detalhe: "site no seu domínio, com a sua marca" },
           { rotulo: "Até 8h de segunda", detalhe: "Diagnóstico Antecipado: prioridade na agenda" },
-          { rotulo: "Até 23h59 de segunda", detalhe: "campanha de reativação implantada com você" },
+          { rotulo: "Até 23h59 de segunda", detalhe: "campanha de reativação implantada com você", destaque: true },
         ]}
       />
     ) },
 
   /* ═══ Resumo da Oferta ═══ */
-  { n: 62, bloco: "Oferta", tema: "warm", stagger: 0.08,
+  { n: 63, bloco: "Oferta", tema: "warm", stagger: 0.08,
     diz: "Ficha, DISC, copiloto, consultores, tributário, reativação. Tudo incluso", tom: "orgulho, deixa o grid preencher", proximo: "Três caminhos",
     node: <GridChecklist itens={OFERTA} /> },
 
   /* ═══ 3 Caminhos ═══ */
-  { n: 63, bloco: "Oferta", tema: "warm", stagger: 0.6,
+  { n: 64, bloco: "Oferta", tema: "warm", stagger: 0.6,
     diz: "Continuar como está, tentar sozinho, ou ter alguém do lado", tom: "contraste, sem pressa no terceiro", proximo: "Sete horas",
     node: (
       <TresColunas
@@ -484,16 +534,16 @@ export const SLIDES: Slide[] = [
     ) },
 
   /* ═══ CTA para a ficha ═══ */
-  { n: 64, bloco: "CTA", tema: "warm",
+  { n: 65, bloco: "CTA", tema: "warm",
     diz: "Ficha de interesse, dez minutos de vantagem antes de todo mundo", tom: "urgência real", proximo: "Toque no link",
     node: <Comparacao a="7H" b="6H50" diferenca="10 min antes" /> },
 
-  { n: 65, bloco: "CTA", tema: "warm",
+  { n: 66, bloco: "CTA", tema: "warm",
     diz: "Toque no link, preenche a ficha", tom: "CTA direto", proximo: "Perguntas e respostas",
     node: <Isolada texto="TOQUE NO LINK" tamanho="d-hero" px={186} cor="var(--accent-display)" peso /> },
 
   /* ═══ Perguntas e Respostas ═══ */
-  { n: 66, bloco: "Q&A", tema: "warm", stagger: 0.1,
+  { n: 67, bloco: "Q&A", tema: "warm", stagger: 0.1,
     /* Fundo neutro de propósito: a tela não pode competir com a resposta
        real. O slide-mapa já é conhecido da sala, então não puxa leitura
        nova enquanto ele responde objeção por objeção. */
@@ -501,11 +551,11 @@ export const SLIDES: Slide[] = [
     node: <MapaMovimentos itens={MOVIMENTOS} /> },
 
   /* ═══ Fechamento ═══ */
-  { n: 67, bloco: "Fechamento", tema: "warm", stagger: 0.45,
+  { n: 68, bloco: "Fechamento", tema: "warm", stagger: 0.45,
     diz: "Hoje é ficha. Você garante os dez minutos", tom: "leve o peso da decisão", proximo: "Fechamento",
     node: <DuasLinhas linhas={["TOQUE NO LINK.", "PREENCHA A FICHA."]} /> },
 
-  { n: 68, bloco: "Fechamento", tema: "warm",
+  { n: 69, bloco: "Fechamento", tema: "warm",
     diz: "Você apareceu a semana inteira. Faturamento é vaidade, lucro é sanidade", tom: "emocional, fica parado no fim", proximo: "fim da aula",
     node: (
       <ComFundo id="leandro-retrato" opacidade={0.17} objectPosition="center 24%">

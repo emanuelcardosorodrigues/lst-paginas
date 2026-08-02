@@ -3,6 +3,7 @@ import type { Icon } from "@phosphor-icons/react";
 import { useSlideVariants } from "@/lib/motion";
 import { PESO_ICONE, Respira } from "@/components/pieces";
 import { assetUrl } from "@/components/AssetSlot";
+import { BASE } from "@/lib/base";
 
 /* ═══════════════════════════════════════════════════════════════════
    Oferta (slides 61 a 64).
@@ -192,7 +193,7 @@ export function BuildEtapas({
   etapas,
   numerado = true,
 }: {
-  etapas: { rotulo: string; detalhe?: string }[];
+  etapas: { rotulo: string; detalhe?: string; destaque?: boolean }[];
   numerado?: boolean;
 }) {
   const { item } = useSlideVariants();
@@ -207,10 +208,10 @@ export function BuildEtapas({
             display: "flex",
             alignItems: "center",
             gap: 44,
-            padding: "40px 54px",
+            padding: e.destaque ? "52px 54px" : "40px 54px",
             borderRadius: 18,
-            border: "1px solid var(--line)",
-            background: "var(--surface)",
+            border: `${e.destaque ? 2 : 1}px solid ${e.destaque ? "var(--accent)" : "var(--line)"}`,
+            background: e.destaque ? "var(--accent-soft)" : "var(--surface)",
             /* Cada degrau entra um pouco mais pra dentro: a escada sobe
                visualmente, não só na lista. */
             marginLeft: i * 62,
@@ -226,11 +227,21 @@ export function BuildEtapas({
             </span>
           ) : null}
           <div style={{ display: "flex", flexDirection: "column", gap: 10, minWidth: 0 }}>
-            <span className="d-m" style={{ fontSize: 56, lineHeight: 1.1 }}>
-              {e.rotulo}
-            </span>
+            {/* O degrau de destaque respira; os outros ficam parados. É a
+                diferença entre "mais um item" e "é ESTE o número". */}
+            <Respira escala={e.destaque ? 0.014 : 0} segundos={4.4}>
+              <span
+                className={e.destaque ? "num" : "d-m"}
+                style={{ fontSize: e.destaque ? 92 : 56, lineHeight: 1.05, display: "block" }}
+              >
+                {e.rotulo}
+              </span>
+            </Respira>
             {e.detalhe ? (
-              <span className="legenda" style={{ fontSize: 32, color: "var(--fg-3)" }}>
+              <span
+                className="legenda"
+                style={{ fontSize: e.destaque ? 36 : 32, color: e.destaque ? "var(--fg-2)" : "var(--fg-3)" }}
+              >
                 {e.detalhe}
               </span>
             ) : null}
@@ -296,6 +307,159 @@ export function GradeInclusos({
           </span>
         </Respira>
       </motion.div>
+    </div>
+  );
+}
+
+/**
+ * Um bônus por slide, com a condição que o trava.
+ *
+ * A escada de três degraus num slide só conta o que existe; ela não
+ * consegue dar tempo de tela pra cada prêmio. Aqui cada bônus fica
+ * sozinho no ar pelo tempo que ele leva pra explicar, e a condição
+ * ("SÓ OS 5 PRIMEIROS", "ATÉ 8H DE SEGUNDA") entra por último, em
+ * faixa própria, pulsando.
+ *
+ * O pulso é o único ponto do deck onde a animação contínua é
+ * declaradamente de urgência e não de vida: a faixa é um relógio
+ * correndo, e tem que incomodar um pouco.
+ */
+export function SlideBonus({
+  ordem,
+  total,
+  titulo,
+  detalhe,
+  condicao,
+  glyph,
+}: {
+  ordem: number;
+  total: number;
+  titulo: string;
+  detalhe: string;
+  /** O que trava o bônus. É o elemento de escassez, entra por último. */
+  condicao: string;
+  glyph: Icon;
+}) {
+  const { item, reduce } = useSlideVariants();
+  const G = glyph;
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 44, maxWidth: 1560 }}>
+      <motion.div variants={item} style={{ display: "flex", alignItems: "center", gap: 22 }}>
+        <G size={54} weight={PESO_ICONE} color="var(--accent-display)" aria-hidden />
+        <span className="kicker" style={{ fontSize: 26 }}>
+          Bônus {ordem} de {total}
+        </span>
+      </motion.div>
+
+      <motion.h2 variants={item} className="d-xl" style={{ fontSize: 116, lineHeight: 1.06 }}>
+        {titulo}
+      </motion.h2>
+
+      <motion.p
+        variants={item}
+        className="d-m"
+        style={{ fontSize: 46, color: "var(--fg-3)", fontWeight: 400, maxWidth: "30ch", lineHeight: 1.3 }}
+      >
+        {detalhe}
+      </motion.p>
+
+      <motion.div
+        variants={item}
+        animate={reduce ? {} : { scale: [1, 1.028, 1] }}
+        transition={reduce ? { duration: 0 } : { duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          marginTop: 14,
+          padding: "26px 56px",
+          borderRadius: "var(--r-pill)",
+          border: "2px solid var(--accent)",
+          background: "var(--accent-soft)",
+        }}
+      >
+        <span className="num" style={{ fontSize: 62, whiteSpace: "nowrap" }}>
+          {condicao}
+        </span>
+      </motion.div>
+    </div>
+  );
+}
+
+/**
+ * Preço com a marca do programa (slides 51 e 52).
+ *
+ * O número sozinho não diz de QUE programa é o preço. Com a águia em
+ * cima e o nome embaixo, os R$ 12.000 param de ser um número solto e
+ * viram o valor de uma coisa que a sala acabou de ver rodando por dez
+ * slides.
+ */
+export function PrecoDoPrograma({
+  valor,
+  condicao,
+  nota,
+  brilha = false,
+  comMarca = false,
+}: {
+  valor: string;
+  condicao?: string;
+  /** Linha pequena embaixo: o que ESTE número é. */
+  nota?: string;
+  brilha?: boolean;
+  comMarca?: boolean;
+}) {
+  const v = useSlideVariants();
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
+      {comMarca ? (
+        <motion.img
+          variants={v.item}
+          className="marca-aguia"
+          src={`${BASE}images/eagle.png`}
+          alt=""
+          width={156}
+          height={156}
+          style={{ width: 156, height: 156, objectFit: "contain", marginBottom: 4 }}
+        />
+      ) : null}
+
+      <motion.div variants={brilha ? v.peso : v.item}>
+        <Respira escala={brilha ? 0.018 : 0.006} segundos={brilha ? 4 : 7}>
+          <span
+            className="num"
+            style={{
+              fontSize: 232,
+              display: "block",
+              whiteSpace: "nowrap",
+              color: brilha ? undefined : "var(--fg-3)",
+            }}
+          >
+            {valor}
+          </span>
+        </Respira>
+      </motion.div>
+
+      {condicao ? (
+        <motion.span
+          variants={v.item}
+          className="d-m"
+          style={{ fontSize: 58, color: "var(--fg-2)", fontWeight: 400 }}
+        >
+          {condicao}
+        </motion.span>
+      ) : null}
+
+      {nota ? (
+        <motion.span
+          variants={v.item}
+          className="legenda"
+          /* 60ch e não 40: a 40 o nome do programa quebrava no meio
+             ("...de Aceleração de Clínicas · o valor / real do programa"),
+             e nome de marca partido ao meio lê como erro de layout. */
+          style={{ fontSize: 34, maxWidth: "60ch", lineHeight: 1.4, marginTop: 2 }}
+        >
+          {nota}
+        </motion.span>
+      ) : null}
     </div>
   );
 }

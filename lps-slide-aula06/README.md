@@ -1,6 +1,6 @@
 # Slides ao vivo · Aula 6 · Imersão Lucro Clínico
 
-Pitch final, domingo à noite. **68 slides.** Refeito por cima do deck de
+Pitch final, domingo à noite. **69 slides.** Refeito por cima do deck de
 57 do mesmo slug, a partir do roteiro revisado do Leandro. Terceiro deck
 desta família, depois de `lps-slide-aula04` (Aula 2 do Águia) e
 `lps-slide-aula05` (Aula 5 da Imersão), e herda a infra dos dois.
@@ -51,7 +51,7 @@ palco, é sempre a mesma tecla, e funciona igual do clicker.
 | 28 | 1 | R$ 13 mil (Ana Beatriz) |
 | 29 | 1 | R$ 16 mil (Maria Emília, de novo) |
 | 30 | 1 | R$ 22 mil (José Ronaldo) |
-| 50 | 2 | + R$ 7 mil, + R$ 8 mil |
+| 48 | 2 | + R$ 7 mil, + R$ 8 mil |
 
 O passo viaja pelo `BroadcastChannel` junto com o slide, então revelar no
 presenter revela na projeção. Com estado local de componente, as duas
@@ -81,8 +81,8 @@ roteiro do presenter · clique avança.
 ## Temperatura
 
 Três zonas, duas viradas: **1-31 quente** (gancho, autoridade, problema,
-prova), **32-59 frio** (demonstração, ancoragem, preço, mecânica),
-**60-68 quente** (bônus, resumo, fechamento). O fundo vive no `.deck` com
+prova), **32-57 frio** (demonstração, ancoragem, preço, mecânica),
+**58-69 quente** (bônus, resumo, fechamento). O fundo vive no `.deck` com
 `transition` de 800ms; na cor do slide seria um corte junto com o
 crossfade, em vez de lavada por baixo.
 
@@ -116,8 +116,9 @@ thumbnails do funil:
 | 68 | `leandro-retrato` | ID Visual |
 | 14, 28-31 | `caso-ana-beatriz`, `caso-maria-emilia`, `caso-jose-ronaldo` | página do Alex Barreira |
 
-**Faltam 2** (o placeholder segura o lugar e o slide navega):
-`ancoragem-ortodontia` (45) e `ancoragem-dentistica` (46).
+**Nenhum asset pendente.** Os dois prints de investimento
+(`ancoragem-ortodontia`, `ancoragem-dentistica`) entraram da pasta
+`Slides/Aula 06 : Pitch`.
 
 A terceira foto da tira do slide 12 é `leandro-viagem`, a mesma do slide
 9: a tira é começo → palco → a clínica rodando sem ele, e o eco fecha o
@@ -126,6 +127,31 @@ arco em vez de abrir um quarto assunto.
 Slides de mídia levam `data-bleed`: sangram até perto da borda de
 propósito, porque ali o quadro É o conteúdo. Camadas de fundo levam
 `data-decor` e ficam fora da medição.
+
+## Revisão de conteúdo (2ª rodada)
+
+- **Saiu o bloco "pra quem NÃO é"** (os antigos slides 42 e 43, "só quer
+  mais paciente?" e o CHAT "eu sou"). O Águia serve pro dentista de uma
+  cadeira e pro de várias, e riscar um perfil na tela fecha uma porta
+  que a oferta não fecha.
+- **Um slide por bônus** (59, 60, 61), cada um com a condição que o
+  trava em faixa própria, pulsando: `SÓ OS 5 PRIMEIROS`,
+  `ATÉ 8H DE SEGUNDA`, `ATÉ 23H59 DE SEGUNDA`. A escada de três degraus
+  num slide só conta o que existe; ela não dá tempo de tela pra cada
+  prêmio. O 62 fica como recap das três janelas.
+- **O slide 46 virou pergunta.** Era "e não trouxe retorno nenhum", que
+  é uma afirmação contra o esforço dele. Agora é "tanto dinheiro, tempo
+  e esforço. Pra sobrar tão pouco?" — devolve a conta pra quem investiu.
+- **R$ 12.000 leva a águia e o nome do programa.** Número solto não diz
+  de que programa é o preço. E os R$ 6.000 dizem na tela que são o valor
+  de quem está na imersão.
+- **Os 6 meses viraram o número do bloco** (slide 49): corpo maior, cor
+  de acento, moldura dourada e respiração — os outros degraus ficam
+  parados.
+- **O grid da oferta perdeu as thumbnails.** Sete dos dezesseis
+  apontavam pra um asset, mas seis são `.mp4` e não renderizam num
+  `<img>`: só o print do WhatsApp aparecia, e um card diferente dos
+  outros quinze lê como defeito.
 
 ## A conta da ancoragem (slides 45-47)
 
@@ -171,17 +197,17 @@ Novos nesta revisão:
 - `ComFundo` / `MosaicoAulas` / `TiraFotos` / `PaginasEsmaecidas`
   (`fundo.tsx`) — mídia atrás do texto
 - `GridChecklist` / `TresColunas` / `BuildEtapas` / `GradeInclusos` /
-  `ValorComCondicao` (`oferta.tsx`)
+  `ValorComCondicao` / `SlideBonus` / `PrecoDoPrograma` (`oferta.tsx`)
 - `GradeRiscada` (`aula6.tsx`)
 
 ## Verificado
 
-- 68/68 sem vazar a área segura a 1920x1080, zero erro de console
+- 69/69 sem vazar a área segura a 1920x1080, zero erro de console
 - Os 4 reveals de prova e a conta do gancho: revelam sem avançar, avançam
   na tecla seguinte, voltam completos
 - Passo sincronizado entre as janelas nas duas direções
 - Salto por âncora entra no passo 0
-- Presenter reaberto no meio da aula sincroniza no slide certo (`30/68`)
+- Presenter reaberto no meio da aula sincroniza no slide certo
 
 ## Decisões que valem saber
 
