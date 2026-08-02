@@ -199,3 +199,21 @@ export function CopyPending({ label, note }: { label: string; note?: string }) {
 export function assetStatus(id: string) {
   return BY_ID[id] ? "ok" : "pendente";
 }
+
+/**
+ * URL resolvida do asset, ou `null` se o arquivo ainda não chegou.
+ *
+ * Existe pros componentes que compõem a mídia dentro de um layout próprio
+ * (miniatura na pilha do gancho, foto do caso, fundo esmaecido) em vez de
+ * preencher um quadro inteiro. Quem chama trata o `null` com o próprio
+ * fallback: um placeholder de quadro cheio ali dentro quebraria o layout.
+ */
+export function assetUrl(id: string): string | null {
+  return BY_ID[id]?.url ?? null;
+}
+
+/** `true` quando o asset é vídeo, pra quem monta a tag na mão. */
+export function assetEhVideo(id: string) {
+  const f = BY_ID[id];
+  return f ? VIDEO_EXT.has(f.ext) : false;
+}

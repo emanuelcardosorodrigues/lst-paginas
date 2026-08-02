@@ -1,49 +1,46 @@
 import type { ReactNode } from "react";
 import {
   AirplaneTakeoff,
-  ArrowRight,
-  Calculator,
+  Blueprint,
+  CalendarCheck,
   ChatCircleDots,
+  ChalkboardTeacher,
   Compass,
-  Copy,
+  FileText,
   GraduationCap,
-  Hand,
   Headset,
-  PaintBucket,
   PaperPlaneTilt,
   Receipt,
-  Table,
-  Tooth,
-  UserPlus,
+  Sparkle,
+  Users,
   UsersThree,
 } from "@phosphor-icons/react";
 import type { Theme } from "@/components/SlideFrame";
 import { Chat, Isolada, Sozinho } from "@/slides/basicos";
-import { CardAntesDepois, NomeIncompleto } from "@/slides/reveal";
+import { SomaComThumb, TotalGancho, type ItemGancho } from "@/slides/gancho";
+import { CasoProva, MiniaturasCasos } from "@/slides/prova";
+import { ComFundo, MosaicoAulas, PaginasEsmaecidas, TiraFotos } from "@/slides/fundo";
 import {
-  BaldePingando,
+  BuildEtapas,
+  GridChecklist,
+  GradeInclusos,
+  TresColunas,
+  ValorComCondicao,
+  type ItemOferta,
+} from "@/slides/oferta";
+import {
   Comparacao,
-  ContrastePergunta,
   DuasLinhas,
-  Escada,
-  FaixaContada,
   FraseComSimbolo,
   FraseRiscada,
-  IconeComSeta,
-  IconeTremendo,
-  IconesEsmaecidos,
+  GradeRiscada,
   MapaMovimentos,
   Midia,
-  Multiplicacao,
-  NumeroComLinhas,
   PilhaPorPasso,
-  QuatroIcones,
-  TelaDeMarca,
-  TresEtapas,
 } from "@/slides/aula6";
 
 /* ═══════════════════════════════════════════════════════════════════
-   Os 57 slides da Aula 6 da Imersão Lucro Clínico: o pitch final.
+   Os 68 slides da Aula 6 da Imersão Lucro Clínico: o pitch final.
 
    Duas camadas no mesmo registro:
    - o que a PLATEIA vê (`node`): um elemento central, muito respiro,
@@ -51,9 +48,13 @@ import {
    - o que só o LEANDRO vê (`diz`/`tom`/`proximo`): batimento de fala, 4 a
      10 palavras, pra ler de relance sem tirar o olho da câmera.
 
-   `passos` é o build DENTRO do slide. Os reveals (3, 15, 24, 26) e a
-   pilha (40) usam o mesmo gesto de avançar: a primeira tecla completa o
-   slide, a seguinte troca de slide.
+   `passos` é o build DENTRO do slide. Os reveals de prova (14, 28, 29,
+   30), a soma do gancho (2) e a pilha do lucro mensal (50) usam o mesmo
+   gesto: a primeira tecla completa o slide, a seguinte troca de slide.
+
+   Regra de mídia deste deck, mais agressiva que a dos anteriores:
+   vídeo real > foto real > print real > ícone. Ícone só quando nenhum
+   asset existe ou quando o vazio é o argumento (slides 4, 53, 59).
    ═══════════════════════════════════════════════════════════════════ */
 
 export type Slide = {
@@ -65,6 +66,8 @@ export type Slide = {
   /** O que cada passo faz, mostrado no presenter pra ele não ser pego de surpresa. */
   passoRotulo?: string[];
   stagger?: number;
+  /** Troca instantânea, sem crossfade. Só o slide 4. */
+  corteSeco?: boolean;
   diz: string;
   tom: string;
   proximo: string;
@@ -72,15 +75,27 @@ export type Slide = {
 };
 
 /* ── Temperatura ─────────────────────────────────────────────────────
-   1 a 27 quente (conta emocional), 28 a 54 frio (demonstração e
-   oferta), 55 a 57 quente de novo (fechamento). Duas viradas, ambas em
-   fronteira de bloco do roteiro.
+   1 a 31 quente (gancho, autoridade, problema, prova), 32 a 59 frio
+   (demonstração, ancoragem, preço, mecânica), 60 a 68 quente de novo
+   (bônus, resumo, fechamento). Duas viradas, ambas em fronteira de
+   bloco do roteiro, ambas lavadas por baixo em 800ms.
    ─────────────────────────────────────────────────────────────────── */
 
-/* Os quatro furos da semana, na ordem em que foram entregues. */
-const FUROS = [Calculator, Receipt, UsersThree, PaperPlaneTilt];
+/* ── O gancho ───────────────────────────────────────────────────────
+   Os cinco números da semana, na ordem das aulas. Cada um carrega a
+   thumbnail da aula que o produziu: a conta não é afirmada, é
+   rastreável até a noite em que a pessoa assistiu.
+   ────────────────────────────────────────────────────────────────── */
+const CONTA_DA_SEMANA: ItemGancho[] = [
+  { id: "imposto", label: "Imposto", valor: "R$ 7.700", thumb: "aula-1" },
+  { id: "precificacao", label: "Precificação", valor: "R$ 2.500", thumb: "aula-2" },
+  { id: "parceiro", label: "Dentista parceiro", valor: "R$ 3.000", thumb: "aula-3" },
+  { id: "reativacao", label: "Reativação", valor: "R$ 8.000", thumb: "aula-4" },
+  { id: "redes", label: "Redes sociais", valor: "R$ 4.000", thumb: "aula-5" },
+];
 
-/* Os seis movimentos. Mesma lista alimenta os slides 36 e 55. */
+/* Os seis movimentos. A mesma lista alimenta o slide-mapa (40) e o
+   fundo neutro do Q&A (66). */
 const MOVIMENTOS = [
   { n: 1, label: "Decolagem", icon: AirplaneTakeoff },
   { n: 2, label: "GPS", icon: Compass },
@@ -90,250 +105,409 @@ const MOVIMENTOS = [
   { n: 6, label: "Consultores", icon: Headset },
 ];
 
+const CASOS = [
+  { nome: "Ana Beatriz", foto: "caso-ana-beatriz", antes: 7, depois: 13 },
+  { nome: "Maria Emília", foto: "caso-maria-emilia", antes: 6, depois: 16 },
+  { nome: "José Ronaldo", foto: "caso-jose-ronaldo", antes: 4, depois: 22 },
+];
+
+/* ── Resumo da oferta (slide 62) ────────────────────────────────────
+   Dezesseis, não quinze: o roteiro fecha a lista com "6 meses de
+   acompanhamento próximo", e ele não é mais um item — é o que segura
+   os quinze de cima. Entra como card atravessado no rodapé do grid.
+
+   Onde existe tela real, a thumbnail do próprio slide de demonstração
+   vira o fundo do card: o entregável já foi visto rodando, aqui só se
+   lembra dele.
+   ────────────────────────────────────────────────────────────────── */
+const OFERTA: ItemOferta[] = [
+  { label: "Ficha de decolagem", icone: AirplaneTakeoff, thumb: "movimento-1-disc-proposta" },
+  { label: "Teste DISC", icone: Blueprint, thumb: "movimento-1-disc-proposta" },
+  { label: "Copiloto Águia", icone: Compass, thumb: "movimento-2-copiloto" },
+  { label: "Reunião de diagnóstico comigo", icone: CalendarCheck },
+  { label: "Reunião de precificação comigo", icone: Receipt },
+  { label: "Central de Consultores", icone: Headset, thumb: "movimento-5b-central-consultores" },
+  { label: "Treinamento de secretárias", icone: ChalkboardTeacher, thumb: "movimento-5c-treinamento-secretaria" },
+  { label: "Treinamento de secretárias ao vivo", icone: Users },
+  { label: "Contrato para dentista parceiro", icone: FileText },
+  { label: "Contrato para colaboradores", icone: FileText },
+  { label: "Consultoria tributária com a equipe", icone: Receipt, thumb: "movimento-4-tributario" },
+  { label: "Campanha de reativação pronta", icone: PaperPlaneTilt },
+  { label: "Painel de reativação de pacientes", icone: Blueprint },
+  { label: "Grupo com até 10 dentistas", icone: UsersThree, thumb: "movimento-3-grupo-whatsapp" },
+  { label: "Grupo de secretárias", icone: Users },
+  { label: "6 meses de acompanhamento próximo", icone: Sparkle, destaque: true },
+];
+
 export const SLIDES: Slide[] = [
-  /* ═══ Bloco 1 ═══ */
-  { n: 1, bloco: "1", tema: "warm",
-    diz: "Cinco dias depois, hoje fecha o ciclo", tom: "fecha, não abre", proximo: "Promessa",
-    node: <Isolada texto="DOMINGO. CINCO DIAS DEPOIS." tamanho="d-xl" px={116} /> },
+  /* ═══ Gancho ═══ */
+  { n: 1, bloco: "Gancho", tema: "warm",
+    diz: "Domingo à noite, cinco dias depois", tom: "fecha, não abre", proximo: "Soma ao vivo",
+    node: (
+      <MosaicoAulas ids={["aula-1", "aula-2", "aula-3", "aula-4", "aula-5"]}>
+        <Isolada texto="DOMINGO. CINCO DIAS DEPOIS." tamanho="d-xl" px={122} />
+      </MosaicoAulas>
+    ) },
 
-  { n: 2, bloco: "1", tema: "warm",
-    diz: "O que fazer com tudo que já descobriu", tom: "direto", proximo: "José Ronaldo",
-    node: <Isolada texto="O que fazer com tudo que você já sabe" tamanho="d-l" px={96} /> },
+  { n: 2, bloco: "Gancho", tema: "warm", passos: 4,
+    passoRotulo: ["+ Precificação", "+ Dentista parceiro", "+ Reativação", "+ Redes sociais"],
+    diz: "Imposto, precificação, parceiro, reativação, redes", tom: "ritmo de conta, uma pausa por item", proximo: "Total",
+    node: <SomaComThumb itens={CONTA_DA_SEMANA} /> },
 
-  { n: 3, bloco: "1", tema: "warm", passos: 1, passoRotulo: ["completa a seta"],
-    diz: "José Ronaldo, cem mil e quatro de lucro. Guarda o nome", tom: "expectativa, sem contar ainda", proximo: "Balde furado",
-    node: <NomeIncompleto nome="José Ronaldo" /> },
+  { n: 3, bloco: "Gancho", tema: "warm",
+    diz: "Mais de vinte e cinco mil. Dentro da própria clínica", tom: "pico do gancho", proximo: "Tá pago?",
+    node: <TotalGancho itens={CONTA_DA_SEMANA} valor="R$ 25.200" legenda="dentro da sua clínica, essa semana" /> },
 
-  { n: 4, bloco: "1", tema: "warm",
-    diz: "Enquanto o problema for faturamento, o balde continua furado", tom: "retomando a semana", proximo: "Gancho do conteúdo",
-    node: <BaldePingando texto="BALDE FURADO" glyph={PaintBucket} /> },
+  { n: 4, bloco: "Gancho", tema: "warm", corteSeco: true,
+    diz: "O evento tá pago?", tom: "corte seco, silêncio depois", proximo: "CHAT",
+    node: <Isolada texto="O EVENTO TÁ PAGO?" tamanho="d-hero" px={176} /> },
 
-  { n: 5, bloco: "1", tema: "warm",
-    diz: "Tem mais, mas é lá na frente", tom: "segura a curiosidade", proximo: "CHAT furos",
-    node: <Sozinho texto="hoje tem mais" /> },
+  { n: 5, bloco: "Gancho", tema: "warm",
+    diz: "Comenta: pagou ou não pagou", tom: "espera reação", proximo: "Dinheiro mais fácil",
+    node: <Chat texto="pagou ou não pagou?" glyph={ChatCircleDots} /> },
 
-  { n: 6, bloco: "1", tema: "warm",
-    diz: "Qual furo mais doeu? Guarda a resposta", tom: "convite leve", proximo: "Segunda-feira 7h",
-    node: <Chat texto="Qual furo mais te doeu essa semana?" glyph={ChatCircleDots} /> },
+  /* ═══ Conexão + Autoridade ═══ */
+  { n: 6, bloco: "Autoridade", tema: "warm",
+    diz: "Esses vinte e cinco mil são o dinheiro mais fácil", tom: "ponte pro autoridade", proximo: "30 anos",
+    node: <Isolada texto="O DINHEIRO MAIS FÁCIL DA SUA CLÍNICA" tamanho="d-xl" px={116} /> },
 
-  /* ═══ Bloco 2 ═══ */
-  { n: 7, bloco: "2", tema: "warm",
-    diz: "Te levo de volta pra segunda, sete da manhã", tom: "recap, memória", proximo: "Recap furos",
-    node: <Isolada texto="SEGUNDA-FEIRA, 7H" tamanho="d-xl" /> },
+  { n: 7, bloco: "Autoridade", tema: "warm",
+    diz: "Descobrir isso me custou trinta anos", tom: "seco", proximo: "A vela",
+    node: <Isolada texto="30 ANOS" tamanho="d-hero" /> },
 
-  { n: 8, bloco: "2", tema: "warm", stagger: 0.15,
-    diz: "Furos, precificação, parceiro, reativação", tom: "ritmo rápido", proximo: "CHAT clique forte",
-    node: <QuatroIcones glyphs={FUROS} /> },
-
-  { n: 9, bloco: "2", tema: "warm",
-    diz: "Qual dia te fez o clique mais forte", tom: "convite", proximo: "Pergunta que importa",
-    node: <Chat texto="Qual dos 5 dias te fez o clique mais forte?" glyph={ChatCircleDots} /> },
-
-  { n: 10, bloco: "2", tema: "warm", stagger: 0.4,
-    diz: "Sozinho ou com alguém do lado?", tom: "pausa antes da pergunta", proximo: "Autoridade",
-    node: <ContrastePergunta fraco="SOZINHO OU" forte="COM ALGUÉM DO LADO?" /> },
-
-  /* ═══ Bloco 3 ═══ */
-  { n: 11, bloco: "3", tema: "warm",
-    diz: "Já sabe quem eu sou, hoje quero que saiba de onde eu falo", tom: "abertura pessoal", proximo: "Currículo seco",
-    node: <TelaDeMarca /> },
-
-  { n: 12, bloco: "3", tema: "warm",
-    diz: "Trinta anos, mas nada disso importa agora", tom: "seco, vira rápido", proximo: "A vela",
-    node: <NumeroComLinhas numero="30 ANOS" linhas={["clínica em mais de um estado", "aula em graduação e pós", "OdontoSummit"]} /> },
-
-  { n: 13, bloco: "3", tema: "warm",
-    diz: "Minha mãe fazia vela, eu vendia porta em porta", tom: "vulnerável, sem drama", proximo: "A mão que dói",
+  { n: 8, bloco: "Autoridade", tema: "warm",
+    diz: "Vendia vela de porta em porta", tom: "vulnerável, guarda a imagem", proximo: "A viagem",
     node: <Midia id="leandro-vela" label="Leandro na época das velas" kind="print" /> },
 
-  { n: 14, bloco: "3", tema: "warm",
-    diz: "A odontologia larga aos poucos, não abandona de uma vez", tom: "verdade incômoda, devagar", proximo: "Maria Emília",
-    node: <IconeTremendo glyph={Hand} /> },
+  { n: 9, bloco: "Autoridade", tema: "warm",
+    diz: "Viajando, com a clínica funcionando sem mim", tom: "orgulho contido", proximo: "R$ 25 mil é só o começo",
+    node: <Midia id="leandro-viagem" label="Leandro viajando, clínica rodando sem ele" kind="print" /> },
 
-  { n: 15, bloco: "3", tema: "warm", passos: 1, passoRotulo: ["revela R$ 16 mil"],
-    diz: "Raio-X da clínica, parceiro, base. Seis pra dezesseis", tom: "prova concreta, sem pressa", proximo: "Alguém do lado",
-    node: <CardAntesDepois nome="Maria Emília" antes={6} depois={16} /> },
+  { n: 10, bloco: "Autoridade", tema: "warm",
+    diz: "Vinte e cinco mil é só o começo", tom: "vira a chave", proximo: "Dobrar o que sobra",
+    node: <Isolada texto="R$ 25 MIL É SÓ O COMEÇO" tamanho="d-xl" px={132} /> },
 
-  { n: 16, bloco: "3", tema: "warm",
-    diz: "Curso não muda clínica, ter alguém do lado muda", tom: "firme, sem venda", proximo: "O que é o Águia",
-    node: <Isolada texto="ALGUÉM DO LADO" tamanho="d-xl" cor="var(--accent-display)" peso /> },
+  { n: 11, bloco: "Autoridade", tema: "warm",
+    diz: "Dobrar o que sobra, sem trabalhar mais", tom: "planta a promessa cedo", proximo: "Currículo",
+    node: <Isolada texto="DOBRAR O QUE SOBRA. SEM TRABALHAR MAIS." tamanho="d-xl" px={112} cor="var(--accent-display)" peso brilha /> },
 
-  /* ═══ Bloco 4.1 ═══ */
-  { n: 17, bloco: "4.1", tema: "warm",
-    diz: "O que eu queria ter tido quando era aquele dentista perdido", tom: "emocional, breve", proximo: "Definição objetiva",
-    node: <Sozinho texto="o que eu queria ter tido" /> },
+  { n: 12, bloco: "Autoridade", tema: "warm", stagger: 0.16,
+    diz: "Trinta anos, de novo. Clínica, palco, o começo", tom: "eco, seco de propósito", proximo: "A mão que dói",
+    node: (
+      <TiraFotos
+        numero="30 ANOS"
+        fotos={[
+          { id: "curriculo-inicio", label: "o começo, no consultório" },
+          { id: "curriculo-palco", label: "palco do OdontoSummit" },
+          { id: "curriculo-formatura", label: "formatura da pós" },
+        ]}
+      />
+    ) },
 
-  { n: 18, bloco: "4.1", tema: "warm",
-    diz: "Seis meses, a ordem certa, o lucro que já existe", tom: "seco, definição", proximo: "O grande problema",
-    node: <Isolada texto="6 MESES. A ORDEM CERTA." tamanho="d-xl" px={130} /> },
+  { n: 13, bloco: "Autoridade", tema: "warm",
+    diz: "Já fui o dentista do balde furado", tom: "verdade incômoda", proximo: "Maria Emília",
+    node: <Midia id="mao-atendimento" label="Mão em atendimento clínico" kind="print" /> },
 
-  /* ═══ Bloco 4.2 ═══ */
-  { n: 19, bloco: "4.2", tema: "warm",
-    diz: "Dentista e dono de clínica são duas profissões", tom: "firme", proximo: "Analogia da cárie",
-    node: <FraseComSimbolo antes="DENTISTA" simbolo="≠" depois="DONO DE CLÍNICA" /> },
+  { n: 14, bloco: "Autoridade", tema: "warm", passos: 1, passoRotulo: ["revela R$ 16 mil"],
+    diz: "Maria Emília, raio-X da clínica. Seis pra dezesseis", tom: "prova concreta", proximo: "Alguém do lado",
+    node: <CasoProva nome="Maria Emília" foto="caso-maria-emilia" antes={6} depois={16} nota="Sem atender um paciente a mais." /> },
 
-  { n: 20, bloco: "4.2", tema: "warm",
-    diz: "Cárie: trata a causa, não só a dor", tom: "didático", proximo: "O que já tentou",
-    node: <IconeComSeta glyph={Tooth} seta={ArrowRight} rotulo="causa" /> },
+  { n: 15, bloco: "Autoridade", tema: "warm",
+    diz: "Curso não muda clínica. Alguém do lado muda", tom: "firme, sem venda", proximo: "O mercado esqueceu",
+    node: <Isolada texto="ALGUÉM DO LADO" tamanho="d-hero" cor="var(--accent-display)" peso /> },
 
-  { n: 21, bloco: "4.2", tema: "warm", stagger: 0.2,
-    diz: "Planilha, copiar colega, contratar gente, curso técnico", tom: "reconhecimento, sem julgar", proximo: "O mecanismo único",
-    node: <IconesEsmaecidos glyphs={[Table, Copy, UserPlus, GraduationCap]} /> },
+  /* ═══ O Grande Problema ═══ */
+  { n: 16, bloco: "Problema", tema: "warm",
+    diz: "O mercado esqueceu que você é dentista", tom: "firme, abertura do bloco", proximo: "CHAT curso/mentoria",
+    node: <Isolada texto="O MERCADO ESQUECEU QUE VOCÊ É DENTISTA" tamanho="d-xl" px={112} /> },
 
-  /* ═══ Bloco 4.3 ═══ */
-  { n: 22, bloco: "4.3", tema: "warm",
-    diz: "Lucro Primeiro, a diferença do que eu construí", tom: "virada de bloco", proximo: "A ordem certa",
-    node: <Isolada texto="LUCRO PRIMEIRO" tamanho="d-xl" cor="var(--accent-display)" peso /> },
+  { n: 17, bloco: "Problema", tema: "warm", stagger: 0.22,
+    diz: "Curso, mentoria, protocolo, método. Comenta quem já tentou", tom: "convite", proximo: "Fatura vs lucra",
+    node: (
+      <PaginasEsmaecidas>
+        <GradeRiscada frases={["curso", "mentoria", "protocolo", "método"]} />
+      </PaginasEsmaecidas>
+    ) },
 
-  { n: 23, bloco: "4.3", tema: "warm", stagger: 0.8,
-    diz: "Tampa o vazamento, organiza, só depois constrói. Nessa ordem", tom: "devagar, deixa assentar", proximo: "José Ronaldo (prova)",
-    node: <TresEtapas etapas={["Vazamento", "Organização", "Construção"]} /> },
+  { n: 18, bloco: "Problema", tema: "warm",
+    diz: "É mais fácil aumentar o lucro que o faturamento", tom: "didático", proximo: "Fatura cem, lucra cem",
+    node: <FraseComSimbolo antes="AUMENTAR O LUCRO" simbolo=">" depois="AUMENTAR O FATURAMENTO" /> },
 
-  /* ═══ Bloco 4.4 ═══ */
-  { n: 24, bloco: "4.4", tema: "warm", passos: 1, passoRotulo: ["revela R$ 22 mil"],
-    diz: "Fecha a história do José Ronaldo. Quatro pra vinte e dois", tom: "fecha o loop do Bloco 1", proximo: "Maria Emília",
-    node: <CardAntesDepois nome="José Ronaldo" antes={4} depois={22} /> },
+  { n: 19, bloco: "Problema", tema: "warm", stagger: 0.5,
+    diz: "Fatura cem, paga pra faturar. Lucra cem, fica tudo", tom: "números, deixa assentar", proximo: "Apetite ao risco",
+    node: <DuasLinhas linhas={["FATURA 100 → CUSTA PRA FATURAR", "LUCRA 100 → VAI TODO PRO BOLSO"]} /> },
 
-  { n: 25, bloco: "4.4", tema: "warm",
-    diz: "Maria Emília de novo, seis pra dezesseis", tom: "reforço rápido", proximo: "Ana Beatriz",
-    node: <CardAntesDepois nome="Maria Emília" antes={6} depois={16} comReveal={false} /> },
+  { n: 20, bloco: "Problema", tema: "warm",
+    diz: "Risco de um combina com segurança de outro. Nunca é igual", tom: "virada de bloco", proximo: "Nunca priorizavam",
+    node: <FraseComSimbolo antes="APETITE AO RISCO" simbolo="≠" depois="SEGURANÇA" /> },
 
-  { n: 26, bloco: "4.4", tema: "warm", passos: 1, passoRotulo: ["revela R$ 13 mil"],
-    diz: "Ana Beatriz, sete pra treze. Nenhum atendeu mais gente", tom: "reforço", proximo: "CHAT qual caso",
-    node: <CardAntesDepois nome="Ana Beatriz" antes={7} depois={13} /> },
+  { n: 21, bloco: "Problema", tema: "warm", stagger: 0.5,
+    diz: "Nunca priorizaram lucro, nunca personalizaram. Foi por isso que criei o Águia", tom: "veredito, fecha o bloco", proximo: "O que é o Águia",
+    node: <DuasLinhas linhas={["NUNCA PRIORIZAVAM O LUCRO.", "NUNCA PERSONALIZAVAM."]} /> },
 
-  { n: 27, bloco: "4.4", tema: "warm",
+  /* ═══ O que é o Programa Águia ═══ */
+  { n: 22, bloco: "O Águia", tema: "warm",
+    diz: "Eu via colegas sendo enganados", tom: "emocional", proximo: "O que sobra no bolso",
+    /* Foto pura, como os slides 8, 9 e 13 — não fundo esmaecido. O
+       briefing pedia `fundoMidia` aqui, mas fundo a 22% sem texto por
+       cima é foto lavada sem motivo: o tratamento de fundo existe pra
+       dar contraste a um texto, e este slide não tem texto. */
+    node: <Midia id="leandro-reflexivo" label="Leandro, retrato reflexivo" kind="print" /> },
+
+  { n: 23, bloco: "O Águia", tema: "warm",
+    diz: "O foco é o que sobra no seu bolso", tom: "definição", proximo: "Personalizado",
+    node: <Isolada texto="O QUE SOBRA NO SEU BOLSO" tamanho="d-xl" cor="var(--accent-display)" peso /> },
+
+  { n: 24, bloco: "O Águia", tema: "warm",
+    diz: "Personalizado, exclusivo pra você", tom: "fecha definição", proximo: "De dentista pra dentista",
+    node: <Isolada texto="PERSONALIZADO. EXCLUSIVO PRA VOCÊ." tamanho="d-l" px={98} /> },
+
+  /* ═══ Mecanismo Único ═══ */
+  { n: 25, bloco: "Mecanismo", tema: "warm",
+    diz: "De dentista pra dentista", tom: "seco", proximo: "Sem tempo, sem dinheiro",
+    node: <Isolada texto="DE DENTISTA PRA DENTISTA" tamanho="d-xl" px={138} /> },
+
+  { n: 26, bloco: "Mecanismo", tema: "warm", stagger: 0.2,
+    diz: "Sem tempo, sem dinheiro, poucas cadeiras, sem parceiro. Nada disso impede", tom: "reconhecimento, sem julgar", proximo: "Impossível não ter resultado",
+    node: <GradeRiscada frases={["sem tempo", "sem dinheiro", "poucas cadeiras", "sem parceiro"]} /> },
+
+  { n: 27, bloco: "Mecanismo", tema: "warm",
+    diz: "Impossível não ter resultado", tom: "peso, sem exagero", proximo: "Ana Beatriz",
+    node: <Isolada texto="IMPOSSÍVEL NÃO TER RESULTADO" tamanho="d-xl" px={122} peso brilha /> },
+
+  /* ═══ Prova ═══ */
+  { n: 28, bloco: "Prova", tema: "warm", passos: 1, passoRotulo: ["revela R$ 13 mil"],
+    diz: "Ana Beatriz, guarda o antes", tom: "reveal chegando", proximo: "Maria Emília",
+    node: <CasoProva nome="Ana Beatriz" foto="caso-ana-beatriz" antes={7} depois={13} nota="Mesma agenda, mesma equipe." /> },
+
+  { n: 29, bloco: "Prova", tema: "warm", passos: 1, passoRotulo: ["revela R$ 16 mil"],
+    diz: "Maria Emília, o antes de novo", tom: "reveal chegando", proximo: "José Ronaldo",
+    node: <CasoProva nome="Maria Emília" foto="caso-maria-emilia" antes={6} depois={16} nota="Preço e parceiro, na ordem certa." /> },
+
+  { n: 30, bloco: "Prova", tema: "warm", passos: 1, passoRotulo: ["revela R$ 22 mil"],
+    diz: "José Ronaldo, guarda o antes", tom: "reveal chegando", proximo: "Qual parece com você",
+    node: <CasoProva nome="José Ronaldo" foto="caso-jose-ronaldo" antes={4} depois={22} nota="Faturava 100 e ganhava menos que a secretária." /> },
+
+  { n: 31, bloco: "Prova", tema: "warm", stagger: 0.16,
     diz: "Qual desses parece com sua clínica", tom: "convite", proximo: "Promessa do método",
-    node: <Chat texto="Qual desses casos parece com sua clínica?" glyph={ChatCircleDots} /> },
+    node: <MiniaturasCasos casos={CASOS} pergunta="QUAL DESSES PARECE COM SUA CLÍNICA?" /> },
 
-  /* ═══ Bloco 5 · aqui o fundo vira frio ═══ */
-  { n: 28, bloco: "5", tema: "cold",
-    diz: "Não faturar mais, dobrar o que sobra. Seis movimentos agora", tom: "vira a chave pra demonstração", proximo: "Movimento 1",
-    node: <Isolada texto="MAIS QUE DOBRAR O QUE SOBRA" tamanho="d-xl" px={118} /> },
+  /* ═══ Promessa + Método · aqui o fundo vira frio ═══ */
+  { n: 32, bloco: "Método", tema: "cold",
+    diz: "Esquece faturar mais, o alvo é dobrar o que sobra. Seis movimentos agora", tom: "vira a chave pra demonstração", proximo: "Movimento 1",
+    node: <Isolada texto="MAIS QUE DOBRAR O QUE SOBRA" tamanho="d-xl" px={126} /> },
 
-  { n: 29, bloco: "5", tema: "cold",
+  { n: 33, bloco: "Método", tema: "cold",
     diz: "Decolagem e DISC, o insumo das duas horas comigo", tom: "mostra a tela, sem pressa", proximo: "GPS",
     node: <Midia id="movimento-1-disc-proposta" label="Ficha de decolagem e teste DISC" kind="video" /> },
 
-  { n: 30, bloco: "5", tema: "cold",
+  { n: 34, bloco: "Método", tema: "cold",
     diz: "Seu GPS, espaço só seu", tom: "mostra a tela", proximo: "Grupo",
     node: <Midia id="movimento-2-copiloto" label="Navegação pelo GPS / Guia de Voo" kind="video" /> },
 
-  { n: 31, bloco: "5", tema: "cold",
+  { n: 35, bloco: "Método", tema: "cold",
     diz: "Grupo de no máximo dez, eu leio, eu respondo", tom: "mostra o print", proximo: "Tributário",
     node: <Midia id="movimento-3-grupo-whatsapp" label="Grupo de WhatsApp" kind="print" /> },
 
-  { n: 32, bloco: "5", tema: "cold",
-    diz: "Fator R, já vi pagar a parcela sozinho", tom: "mostra a tela", proximo: "Área didática",
+  { n: 36, bloco: "Método", tema: "cold",
+    diz: "Fator R, já vi pagar a parcela sozinha", tom: "mostra a tela", proximo: "Área didática",
     node: <Midia id="movimento-4-tributario" label="Consultor Tributário e Financeiro" kind="video" legenda="Fator R + equipe de contabilidade" /> },
 
-  { n: 33, bloco: "5", tema: "cold",
+  { n: 37, bloco: "Método", tema: "cold",
     diz: "Aula de dez minutos, não curso de dez horas", tom: "mostra a tela", proximo: "Central completa",
     node: <Midia id="movimento-5a-area-didatica" label="Lista de aulas da área didática" kind="video" /> },
 
-  { n: 34, bloco: "5", tema: "cold",
+  { n: 38, bloco: "Método", tema: "cold",
     diz: "Central inteira, sem limite, tudo já pronto", tom: "orgulho de produto, deixa rodar", proximo: "Secretária",
     node: <Midia id="movimento-5b-central-consultores" label="Grid dos 13 consultores" kind="video" /> },
 
-  { n: 35, bloco: "5", tema: "cold",
+  { n: 39, bloco: "Método", tema: "cold",
     diz: "Treino sua secretária, ao vivo e gravado", tom: "mostra o print", proximo: "Slide-mapa",
     node: <Midia id="movimento-5c-treinamento-secretaria" label="Treinamento da secretária" kind="video" /> },
 
-  { n: 36, bloco: "5", tema: "cold", stagger: 0.1,
+  { n: 40, bloco: "Método", tema: "cold", stagger: 0.1,
     diz: "Seis meses assim, do meu lado, não um PDF", tom: "fecha a demonstração", proximo: "Pra quem é",
     node: <MapaMovimentos itens={MOVIMENTOS} /> },
 
-  { n: 37, bloco: "5", tema: "cold",
-    diz: "Dono de consultório ou clínica, cansado de trabalhar muito", tom: "direto", proximo: "Pra quem não é",
-    node: <Isolada texto="DONO DE CONSULTÓRIO OU CLÍNICA" tamanho="d-xl" px={108} /> },
+  { n: 41, bloco: "Método", tema: "cold",
+    diz: "Dono de consultório ou clínica, cansado de trabalhar muito", tom: "direto", proximo: "Só quer mais paciente",
+    node: <Isolada texto="DONO DE CONSULTÓRIO OU CLÍNICA" tamanho="d-xl" px={116} /> },
 
-  { n: 38, bloco: "5", tema: "cold",
+  { n: 42, bloco: "Método", tema: "cold",
     diz: "Só quer mais paciente? Não é pra você", tom: "claro, sem rodeio", proximo: "CHAT eu sou",
     node: <FraseRiscada texto="SÓ QUER MAIS PACIENTE?" /> },
 
-  { n: 39, bloco: "5", tema: "cold",
-    diz: "Se você se enxergou, escreve EU SOU", tom: "convite", proximo: "Ancoragem das peças",
+  { n: 43, bloco: "Método", tema: "cold",
+    diz: "Se você se enxergou, escreve EU SOU", tom: "convite", proximo: "Especialização",
     node: <Chat texto="EU SOU" glyph={ChatCircleDots} /> },
 
-  /* ═══ Bloco 6 ═══ */
-  { n: 40, bloco: "6", tema: "cold", passos: 3,
-    passoRotulo: ["+ R$ 3 mil", "+ R$ 5 mil", "+ R$ 3 mil"],
-    diz: "Quanto isso custaria montado sozinho, peça por peça", tom: "constrói a conta", proximo: "Total das peças",
-    node: <PilhaPorPasso valores={["R$ 4 mil", "+ R$ 3 mil", "+ R$ 5 mil", "+ R$ 3 mil"]} /> },
+  /* ═══ Ancoragem ═══ */
+  { n: 44, bloco: "Ancoragem", tema: "cold",
+    diz: "Especialização de trinta, quarenta, sessenta mil", tom: "vira a chave pro ancoragem", proximo: "Ortodontia",
+    node: <Isolada texto="ESPECIALIZAÇÃO" tamanho="d-hero" px={186} /> },
 
-  { n: 41, bloco: "6", tema: "cold",
-    diz: "Passa dos quinze mil. Guarda esse número", tom: "pausa", proximo: "Retorno mensal",
-    node: <Isolada texto="R$ 15 MIL" tamanho="d-hero" cor="var(--fg-2)" /> },
+  { n: 45, bloco: "Ancoragem", tema: "cold",
+    diz: "Ortodontia, dois mil duzentos e cinquenta por mês, trinta e seis meses", tom: "mostra o print", proximo: "Dentística",
+    node: <Midia id="ancoragem-ortodontia" label="Especialização em Ortodontia · investimento" kind="print" /> },
 
-  { n: 42, bloco: "6", tema: "cold",
-    diz: "Só ajustando preço e parceiro, quatro a oito mil por mês", tom: "virada da conta", proximo: "Retorno em 6 meses",
-    node: <FaixaContada de={4} ate={8} sufixo="/ mês" /> },
+  { n: 46, bloco: "Ancoragem", tema: "cold",
+    diz: "Mestrado em Dentística, matrícula mais vinte e cinco vezes", tom: "mostra o print", proximo: "Duas especializações",
+    node: <Midia id="ancoragem-dentistica" label="Mestrado em Dentística · investimento" kind="print" /> },
 
-  { n: 43, bloco: "6", tema: "cold",
-    diz: "Vinte a quarenta mil limpos em seis meses", tom: "ancoragem forte", proximo: "Pergunta de temperatura",
-    node: <Multiplicacao de="R$ 4 a 8 mil / mês" fator="x6" para="R$ 20 a 40 mil" /> },
+  { n: 47, bloco: "Ancoragem", tema: "cold",
+    diz: "Duas especializações, mais de cento e trinta mil", tom: "pico da comparação", proximo: "Sem retorno",
+    node: (
+      <TotalGancho
+        itens={[
+          { id: "orto", label: "Ortodontia · 36x R$ 2.250", valor: "R$ 81.000", thumb: "ancoragem-ortodontia" },
+          { id: "dent", label: "Dentística · 26x R$ 1.997", valor: "R$ 51.922", thumb: "ancoragem-dentistica" },
+        ]}
+        valor="R$ 132.922"
+        legenda="em duas especializações"
+      />
+    ) },
 
-  { n: 44, bloco: "6", tema: "cold",
-    diz: "Sem olhar o investimento, quem entraria?", tom: "mede a sala antes de seguir", proximo: "Preço de mercado",
-    node: <Chat texto="SEM OLHAR O INVESTIMENTO, VOCÊ ENTRARIA?" glyph={ChatCircleDots} forte /> },
+  { n: 48, bloco: "Ancoragem", tema: "cold",
+    diz: "E não trouxe retorno nenhum pro seu bolso", tom: "contraste, deixa pesar", proximo: "Vinte e cinco mil de novo",
+    node: <Sozinho texto="e não trouxe retorno nenhum" /> },
 
-  /* ═══ Bloco 7 ═══ */
-  { n: 45, bloco: "7", tema: "cold",
-    diz: "No mercado, isso custa quinze a vinte mil", tom: "referência neutra", proximo: "Preço cheio",
-    node: <Isolada texto="R$ 15 a 20 mil" tamanho="d-xl" cor="var(--fg-3)" /> },
+  { n: 49, bloco: "Ancoragem", tema: "cold",
+    diz: "Vinte e cinco mil, de novo. Prontos pra coletar", tom: "retomada", proximo: "Lucro mensal",
+    node: <Isolada texto="MAIS DE R$ 25.000,00" tamanho="d-hero" px={190} cor="var(--accent-display)" peso brilha /> },
 
-  { n: 46, bloco: "7", tema: "cold",
-    diz: "Pra quem chega do zero, dez mil em doze vezes", tom: "neutro", proximo: "Condição da turma",
-    node: <Isolada texto="R$ 10 mil / 12x" tamanho="d-xl" cor="var(--fg-3)" /> },
+  { n: 50, bloco: "Ancoragem", tema: "cold", passos: 2, passoRotulo: ["+ R$ 7 mil", "+ R$ 8 mil"],
+    diz: "Seis, sete, oito mil de lucro todo santo mês pra trás", tom: "constrói a conta", proximo: "Três e seis meses",
+    node: <PilhaPorPasso valores={["R$ 6 mil", "R$ 7 mil", "R$ 8 mil"]} /> },
 
-  { n: 47, bloco: "7", tema: "cold",
-    diz: "Pra quem garante nessa turma: quinhentos e cinquenta ou seis mil", tom: "reveal, sem pressa", proximo: "Garantia",
-    /* 112 e não 122: este é o único slide com brilho forte (2,2% contra
-       0,8%), então precisa de mais folga que os outros pra caber COM o
-       movimento. Medido: a 122px os glifos passavam 7px da área segura. */
-    node: <Isolada texto="R$ 550/mês OU R$ 6 mil à vista" tamanho="d-xl" px={112} cor="var(--accent-display)" peso brilha /> },
+  { n: 51, bloco: "Ancoragem", tema: "cold", stagger: 0.8,
+    diz: "Em três meses, vinte e quatro. Em seis, quase cinquenta", tom: "ancoragem final do bloco", proximo: "CHAT quanto custa",
+    node: (
+      <BuildEtapas
+        numerado={false}
+        etapas={[
+          { rotulo: "3 MESES = R$ 24 MIL", detalhe: "deixados pra trás" },
+          { rotulo: "6 MESES = QUASE R$ 50 MIL", detalhe: "deixados pra trás" },
+        ]}
+      />
+    ) },
 
-  /* ═══ Bloco 8 ═══ */
-  { n: 48, bloco: "8", tema: "cold",
-    diz: "Trinta dias, incondicional. Use a garantia", tom: "tira o risco primeiro", proximo: "Reserva",
-    node: <Isolada texto="30 DIAS. INCONDICIONAL." tamanho="d-xl" px={128} /> },
+  { n: 52, bloco: "Ancoragem", tema: "cold",
+    diz: "Quanto isso tá te custando? Comenta aí", tom: "pede reação forte", proximo: "Doze mil",
+    node: <Chat texto="QUANTO ISSO TÁ TE CUSTANDO?" glyph={ChatCircleDots} forte /> },
 
-  { n: 49, bloco: "8", tema: "cold", stagger: 0.5,
-    diz: "Amanhã é reserva de mil, reembolsável em sete dias", tom: "devagar, é o ponto novo", proximo: "Bônus do site",
-    node: <NumeroComLinhas numero="RESERVA DE R$ 1.000" linhas={["100% reembolsável em 7 dias"]} /> },
+  /* ═══ Preço ═══ */
+  { n: 53, bloco: "Preço", tema: "cold",
+    diz: "No mercado, doze mil", tom: "referência neutra", proximo: "Seis mil",
+    /* Sem brilho, sem acento: se este número competir com o 56, o 56
+       deixa de ser o alívio que a estrutura inteira preparou. */
+    node: <Isolada texto="R$ 12.000,00" tamanho="d-hero" px={196} cor="var(--fg-3)" /> },
 
-  { n: 50, bloco: "8", tema: "cold",
+  { n: 54, bloco: "Preço", tema: "cold",
+    diz: "Pra quem tá na imersão, seis mil em doze vezes", tom: "reveal, sem pressa", proximo: "Nem três restaurações",
+    node: <ValorComCondicao valor="R$ 6.000,00" condicao="em até 12x no cartão" brilha /> },
+
+  /* ═══ Ancoragem para baixo ═══ */
+  { n: 55, bloco: "Preço", tema: "cold",
+    diz: "Isso no cartão nem dá três restaurações por mês", tom: "ancoragem pra baixo", proximo: "R$ 799",
+    node: (
+      <ComFundo id="restauracao-procedimento" opacidade={0.3} objectPosition="center 35%">
+        <Isolada texto="NEM 3 RESTAURAÇÕES POR MÊS" tamanho="d-xl" px={128} />
+      </ComFundo>
+    ) },
+
+  /* ═══ Como vai funcionar ═══ */
+  { n: 56, bloco: "Mecânica", tema: "cold",
+    diz: "Você não vai pagar doze, nem seis. Sim. Setecentos e noventa e nove", tom: "pausa antes do número, deixa ele pesar", proximo: "Trinta dias",
+    node: <ValorComCondicao valor="R$ 799" brilha /> },
+
+  { n: 57, bloco: "Mecânica", tema: "cold",
+    diz: "Trinta dias de Águia, começando agora", tom: "seco", proximo: "Tudo incluso",
+    node: <Isolada texto="30 DIAS DE ÁGUIA" tamanho="d-hero" px={182} /> },
+
+  { n: 58, bloco: "Mecânica", tema: "cold", stagger: 0.3,
+    diz: "Reunião de duas horas, precificação, consultores. Tudo", tom: "orgulho de produto", proximo: "Não fez sentido",
+    node: (
+      <GradeInclusos
+        fecho="TUDO"
+        itens={[
+          { label: "Reunião de 2h comigo", icone: CalendarCheck },
+          { label: "Reunião de precificação", icone: Receipt },
+          { label: "Acesso aos consultores", icone: Headset },
+        ]}
+      />
+    ) },
+
+  { n: 59, bloco: "Mecânica", tema: "cold", stagger: 0.55,
+    /* Vazio proposital: sem mídia de fundo, sem brilho, sem acento. E
+       sem uma palavra de reembolso — a mecânica é entrada não
+       reembolsável, e a tela não pode sugerir devolução. */
+    diz: "Não fez sentido depois de trinta dias? Você escolhe", tom: "neutro, sem prometer devolução", proximo: "Bônus do site",
+    node: <DuasLinhas linhas={["NO DIA 31, VOCÊ ESCOLHE.", "continuar com a gente ou seguir sozinho"]} /> },
+
+  /* ═══ Bônus · volta ao quente ═══ */
+  { n: 60, bloco: "Bônus", tema: "warm",
     diz: "Site pronto, no seu nome, aparecendo no Google", tom: "mostra o print", proximo: "Escada de bônus",
     node: <Midia id="bonus-site-google" label="Site entregue, posicionado no Google" kind="print" /> },
 
-  { n: 51, bloco: "8", tema: "cold", stagger: 0.8,
-    diz: "Cinco primeiros, até 8h, até 23h59 de segunda", tom: "build, um de cada vez", proximo: "Escassez",
-    node: <Escada degraus={["5 primeiros", "até 8h segunda", "até 23h59 segunda"]} /> },
+  { n: 61, bloco: "Bônus", tema: "warm", stagger: 0.8,
+    diz: "Cinco primeiros, até oito, até vinte e três e cinquenta e nove de segunda", tom: "build, um de cada vez", proximo: "Resumo da oferta",
+    node: (
+      <BuildEtapas
+        etapas={[
+          { rotulo: "5 primeiros", detalhe: "site no seu domínio, com a sua marca" },
+          { rotulo: "Até 8h de segunda", detalhe: "Diagnóstico Antecipado: prioridade na agenda" },
+          { rotulo: "Até 23h59 de segunda", detalhe: "campanha de reativação implantada com você" },
+        ]}
+      />
+    ) },
 
-  { n: 52, bloco: "8", tema: "cold",
-    diz: "Turma pequena de propósito", tom: "firme", proximo: "Os 2 grupos",
-    node: <Isolada texto="TURMA LIMITADA" tamanho="d-xl" /> },
+  /* ═══ Resumo da Oferta ═══ */
+  { n: 62, bloco: "Oferta", tema: "warm", stagger: 0.08,
+    diz: "Ficha, DISC, copiloto, consultores, tributário, reativação. Tudo incluso", tom: "orgulho, deixa o grid preencher", proximo: "Três caminhos",
+    node: <GridChecklist itens={OFERTA} /> },
 
-  { n: 53, bloco: "8", tema: "cold",
-    diz: "6h50 quem preencheu, 7h todo mundo. Dez minutos", tom: "urgência real", proximo: "Entrega do conteúdo",
-    node: <Comparacao a="6h50" b="7h00" diferenca="10 min" /> },
+  /* ═══ 3 Caminhos ═══ */
+  { n: 63, bloco: "Oferta", tema: "warm", stagger: 0.6,
+    diz: "Continuar como está, tentar sozinho, ou ter alguém do lado", tom: "contraste, sem pressa no terceiro", proximo: "Sete horas",
+    node: (
+      <TresColunas
+        colunas={[
+          { titulo: "Continuar como está", detalhe: "mais trabalho, menos lucro" },
+          { titulo: "Tentar sozinho", detalhe: "risco, patinar, quebrar a cara" },
+          { titulo: "Ter alguém do lado", detalhe: "quem já faz isso há anos, do seu lado", destaque: true },
+        ]}
+      />
+    ) },
 
-  { n: 54, bloco: "8", tema: "cold",
-    diz: "O material de hoje já está liberado, é seu de qualquer jeito", tom: "fecha o loop-mestre", proximo: "Objeções",
-    node: <Isolada texto="SEU MATERIAL JÁ ESTÁ LIBERADO" tamanho="d-xl" px={112} cor="var(--accent-display)" peso /> },
+  /* ═══ CTA para a ficha ═══ */
+  { n: 64, bloco: "CTA", tema: "warm",
+    diz: "Ficha de interesse, dez minutos de vantagem antes de todo mundo", tom: "urgência real", proximo: "Toque no link",
+    node: <Comparacao a="7H" b="6H50" diferenca="10 min antes" /> },
 
-  /* ═══ Blocos 9 e 10 · volta ao quente ═══ */
-  { n: 55, bloco: "9", tema: "warm", stagger: 0.1,
-    diz: "Objeção por objeção, sem repetir o produto", tom: "acolhedor, paciente", proximo: "O que fazer agora",
+  { n: 65, bloco: "CTA", tema: "warm",
+    diz: "Toque no link, preenche a ficha", tom: "CTA direto", proximo: "Perguntas e respostas",
+    node: <Isolada texto="TOQUE NO LINK" tamanho="d-hero" px={186} cor="var(--accent-display)" peso /> },
+
+  /* ═══ Perguntas e Respostas ═══ */
+  { n: 66, bloco: "Q&A", tema: "warm", stagger: 0.1,
+    /* Fundo neutro de propósito: a tela não pode competir com a resposta
+       real. O slide-mapa já é conhecido da sala, então não puxa leitura
+       nova enquanto ele responde objeção por objeção. */
+    diz: "Objeção por objeção, sem repetir o produto", tom: "acolhedor, paciente", proximo: "Toque no link de novo",
     node: <MapaMovimentos itens={MOVIMENTOS} /> },
 
-  { n: 56, bloco: "10", tema: "warm", stagger: 0.45,
-    diz: "Hoje é ficha, amanhã é reserva de mil", tom: "leve o peso da decisão", proximo: "Fechamento",
-    node: <DuasLinhas linhas={["HOJE: FICHA.", "AMANHÃ: RESERVA."]} /> },
+  /* ═══ Fechamento ═══ */
+  { n: 67, bloco: "Fechamento", tema: "warm", stagger: 0.45,
+    diz: "Hoje é ficha. Você garante os dez minutos", tom: "leve o peso da decisão", proximo: "Fechamento",
+    node: <DuasLinhas linhas={["TOQUE NO LINK.", "PREENCHA A FICHA."]} /> },
 
-  { n: 57, bloco: "10", tema: "warm",
+  { n: 68, bloco: "Fechamento", tema: "warm",
     diz: "Você apareceu a semana inteira. Faturamento é vaidade, lucro é sanidade", tom: "emocional, fica parado no fim", proximo: "fim da aula",
-    node: <Isolada texto="FATURAMENTO É VAIDADE. LUCRO É SANIDADE." tamanho="d-xl" px={104} cor="var(--accent-display)" peso /> },
+    node: (
+      <ComFundo id="leandro-retrato" opacidade={0.17} objectPosition="center 24%">
+        <Isolada texto="FATURAMENTO É VAIDADE. LUCRO É SANIDADE." tamanho="d-xl" px={108} cor="var(--accent-display)" peso />
+      </ComFundo>
+    ) },
 ];
 
 /** Passos por slide, na ordem. O useDeck precisa disso pra navegar. */

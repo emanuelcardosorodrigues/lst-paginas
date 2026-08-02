@@ -32,6 +32,7 @@ export function SlideFrame({
   near,
   passo = 0,
   stagger = 0.09,
+  corteSeco = false,
   children,
 }: {
   theme: Theme;
@@ -41,6 +42,15 @@ export function SlideFrame({
   /** Vizinho imediato do ativo: fica no DOM pra ter animação de saída. */
   near: boolean;
   stagger?: number;
+  /**
+   * Troca instantânea, sem crossfade.
+   *
+   * O crossfade é o certo em 67 dos 68 slides: ele suaviza a troca e o
+   * olho não é arrancado do palestrante. Na pergunta isolada ("o evento
+   * tá pago?") o efeito desejado é o oposto — a tela tem que MUDAR, de
+   * um quadro pro outro, pra que o silêncio depois pese.
+   */
+  corteSeco?: boolean;
   children: ReactNode;
 }) {
   const { container } = useSlideVariants(stagger);
@@ -66,7 +76,7 @@ export function SlideFrame({
       inert={!active ? true : undefined}
       initial={false}
       animate={{ opacity: active ? 1 : 0 }}
-      transition={active ? IN : OUT}
+      transition={corteSeco ? { duration: 0 } : active ? IN : OUT}
       style={{
         /* Fora da janela de vizinhos o slide sai do paint por completo:
            30 camadas empilhadas custariam composição a cada frame. */

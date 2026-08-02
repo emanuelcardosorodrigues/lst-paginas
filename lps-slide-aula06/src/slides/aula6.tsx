@@ -216,6 +216,52 @@ export function FraseRiscada({ texto }: { texto: string }) {
   );
 }
 
+/* ═══ Grade de objeções riscadas (slide 26) ════════════════════════
+   As quatro desculpas que o roteiro nomeia, cada uma riscada logo
+   depois de entrar. Riscar as quatro de uma vez transformaria em
+   piada; uma por vez, com o risco atrasado, cada linha é lida antes de
+   ser negada — que é o que ele faz falando.
+   ═══════════════════════════════════════════════════════════════════ */
+export function GradeRiscada({ frases }: { frases: string[] }) {
+  const { item, reduce } = useSlideVariants();
+  const active = useSlideActive();
+
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(2, auto)",
+        gap: "68px 130px",
+        placeItems: "center",
+      }}
+    >
+      {frases.map((f, i) => (
+        <motion.div key={f} variants={item} style={{ position: "relative", display: "inline-block" }}>
+          <span className="d-l" style={{ fontSize: 84, color: "var(--fg-3)" }}>
+            {f}
+          </span>
+          <motion.span
+            aria-hidden
+            initial={{ scaleX: 0 }}
+            animate={active && !reduce ? { scaleX: 1 } : { scaleX: 1 }}
+            transition={{ delay: 0.55 + i * 0.24, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              position: "absolute",
+              left: -10,
+              right: -10,
+              top: "52%",
+              height: 6,
+              background: "var(--accent-display)",
+              borderRadius: 4,
+              transformOrigin: "left center",
+            }}
+          />
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 /* ═══ Multiplicação visual (slide 43) ══════════════════════════════
    O número anterior vira este por multiplicação na tela: o "x6" acontece
    em vez de só aparecer o resultado.

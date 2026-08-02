@@ -54,6 +54,7 @@ export default function App() {
             near={Math.abs(i - index) <= 1}
             passo={passo}
             stagger={s.stagger}
+            corteSeco={s.corteSeco}
           >
             {s.node}
           </SlideFrame>
