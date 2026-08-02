@@ -199,7 +199,11 @@ export const SLIDES: Slide[] = [
         fotos={[
           { id: "curriculo-inicio", label: "o começo, no consultório" },
           { id: "curriculo-palco", label: "palco do OdontoSummit" },
-          { id: "curriculo-formatura", label: "formatura da pós" },
+          /* A mesma foto da viagem do slide 9, de propósito: a tira é
+             começo → palco → a clínica rodando sem ele, e o eco da
+             imagem que a sala viu três slides antes fecha o arco em vez
+             de introduzir um quarto assunto. */
+          { id: "leandro-viagem", label: "a clínica rodando sem ele" },
         ]}
       />
     ) },

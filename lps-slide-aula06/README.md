@@ -109,16 +109,19 @@ thumbnails do funil:
 |---|---|---|
 | 1, 2, 3 | `aula-1` … `aula-5` | thumbnails das 5 aulas |
 | 9 | `leandro-viagem` | ID Visual |
-| 12 | `curriculo-inicio`, `curriculo-palco` | ID Visual |
+| 12 | `curriculo-inicio`, `curriculo-palco`, `leandro-viagem` | ID Visual |
 | 13 | `mao-atendimento` | ID Visual |
 | 22 | `leandro-reflexivo` | ID Visual |
 | 55 | `restauracao-procedimento` | ID Visual |
 | 68 | `leandro-retrato` | ID Visual |
 | 14, 28-31 | `caso-ana-beatriz`, `caso-maria-emilia`, `caso-jose-ronaldo` | página do Alex Barreira |
 
-**Faltam 3** (o placeholder segura o lugar e o slide navega):
-`ancoragem-ortodontia` (45), `ancoragem-dentistica` (46) e
-`curriculo-formatura` (12).
+**Faltam 2** (o placeholder segura o lugar e o slide navega):
+`ancoragem-ortodontia` (45) e `ancoragem-dentistica` (46).
+
+A terceira foto da tira do slide 12 é `leandro-viagem`, a mesma do slide
+9: a tira é começo → palco → a clínica rodando sem ele, e o eco fecha o
+arco em vez de abrir um quarto assunto.
 
 Slides de mídia levam `data-bleed`: sangram até perto da borda de
 propósito, porque ali o quadro É o conteúdo. Camadas de fundo levam
@@ -211,6 +214,12 @@ Novos nesta revisão:
   `height: 100%` dentro de um grid de linha implícita `auto`, o 100% não
   resolve e a razão de aspecto do arquivo passa a ditar a altura: as
   fotos do slide 12 vinham 351px de altura numa moldura de 330.
+- **A chave do `localStorage` do roteiro carrega slug E versão.** Ela
+  nasceu copiada do deck da Aula 5 e ficou apontando pra `aula05`: o
+  presenter da Aula 6 lia e gravava as edições do outro deck. E as
+  edições são indexadas por número de slide, então refazer o deck faria
+  o texto salvo no slide 14 antigo aparecer no 14 novo, que é outro
+  assunto. Refez o deck, bumpa a versão.
 - **O card de prova foi medido, não estimado.** Com foto de 660 e o
   "depois" a 152px, a coluna direita pedia 1064px e tinha 780 — o número
   era cortado pelo `overflow: hidden` do card. Está em 540/128 com ~75px

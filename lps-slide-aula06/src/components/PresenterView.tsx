@@ -112,7 +112,7 @@ export function PresenterView({
       <div className="pv__topo">
         <div>
           <span className="pv__rotulo">
-            Aula 5 · Imersão Lucro Clínico
+            Aula 6 · Imersão Lucro Clínico · Pitch
             {editando ? <span style={{ color: "#D4B96A" }}> · editando (E sai)</span> : null}
           </span>
           <div style={{ marginTop: 10, fontSize: 20, fontWeight: 600, color: "#8B93A3" }}>
