@@ -12,6 +12,10 @@
   "workers_dev": true,
   "routes": [
     "leandrostecca.com.br/p/*",
-    "www.leandrostecca.com.br/p/*"
+    "www.leandrostecca.com.br/p/*",
+    "leandrostecca.com.br/ativos-d",
+    "leandrostecca.com.br/ativos-d/*",
+    "www.leandrostecca.com.br/ativos-d",
+    "www.leandrostecca.com.br/ativos-d/*"
   ]
 }
