@@ -1,0 +1,17 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "w-col-pvia06",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-15",
+  "account_id": "21e4875f53338100ee74196613471f21",
+  "assets": {
+    "directory": "../col-pvia06/dist",
+    "binding": "ASSETS"
+  },
+  "routes": [
+    "leandrostecca.com.br/p/col-pvia06*",
+    "www.leandrostecca.com.br/p/col-pvia06*",
+    "leandrostecca.com.br/p/col-pvia07*",
+    "www.leandrostecca.com.br/p/col-pvia07*"
+  ]
+}
