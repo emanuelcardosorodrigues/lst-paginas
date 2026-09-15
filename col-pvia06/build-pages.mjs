@@ -95,7 +95,7 @@ const pageStyles = `<style id="pvia06-custom-styles">
     .bonus-card { min-height: 340px; padding: 26px; display: flex; flex-direction: column; justify-content: center; text-align: center; }
     .bonus-card img { height: 180px; }
     body.pvia07 section:first-of-type { padding-top: 16px !important; padding-bottom: 30px !important; }
-    body.pvia07 section:first-of-type img { height: 220px !important; }
+    body.pvia07 section:first-of-type img { height: 280px !important; }
     body.pvia07 .hero-price-cta { width: 100%; min-width: 0; }
   }
 </style>`;
