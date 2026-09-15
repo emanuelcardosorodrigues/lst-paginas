@@ -4,7 +4,8 @@ import path from "node:path";
 const projectDir = path.resolve(import.meta.dirname);
 const referencePath = path.join(projectDir, "reference-pvia05.html");
 const publicDir = path.join(projectDir, "public");
-const outputDir = path.join(projectDir, "dist");
+// w-lst-paginas serves the repository-level dist directory.
+const outputDir = path.resolve(projectDir, "../dist");
 const source = fs.readFileSync(referencePath, "utf8");
 
 function topLevelSections(html) {
