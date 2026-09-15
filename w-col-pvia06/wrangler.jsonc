@@ -8,10 +8,5 @@
     "directory": "../col-pvia06/dist",
     "binding": "ASSETS"
   },
-  "routes": [
-    "leandrostecca.com.br/p/col-pvia06*",
-    "www.leandrostecca.com.br/p/col-pvia06*",
-    "leandrostecca.com.br/p/col-pvia07*",
-    "www.leandrostecca.com.br/p/col-pvia07*"
-  ]
+  "workers_dev": true
 }
