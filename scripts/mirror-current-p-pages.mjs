@@ -7,17 +7,29 @@ const roots = [
   "dpl-pv01",
   "dpl-pv02",
   "kal-pv01",
+  "kal-pv02",
+  "kal-pv03",
+  "kal-pv04",
+  "kal-pv05",
+  "kal-pv06",
+  "kal-pv07",
   "lps-pv01",
   "lps-pvia02",
   "lps-pvia05",
   "lps-pvia06",
   "plo-pv01",
+  "plo-pv02",
+  "plo-pv03",
+  "plo-pv04",
   "plo-up01",
   "plo-dw01",
   "plo-teste",
   "plo-testeup",
   "pda-pv01",
   "col-pvia01",
+  "col-pvia02",
+  "col-pvia03",
+  "col-pvia04",
   "col-pvia05",
   "col-web01",
   "col-cap01-web01",
@@ -63,6 +75,21 @@ function discoverUrls(baseUrl, text) {
   }
 }
 
+async function fetchWithRetry(url) {
+  let lastError;
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      const response = await fetch(url, { redirect: "follow" });
+      if (response.ok || response.status === 404) return response;
+      throw new Error(`HTTP ${response.status}`);
+    } catch (error) {
+      lastError = error;
+      if (attempt < 3) await new Promise((resolve) => setTimeout(resolve, 250 * attempt));
+    }
+  }
+  throw lastError;
+}
+
 for (const root of roots) enqueue(new URL(`/p/${root}/`, origin));
 fs.rmSync(outputDir, { recursive: true, force: true });
 fs.mkdirSync(outputDir, { recursive: true });
@@ -72,7 +99,7 @@ while (queue.length > 0) {
   queued.delete(filePath);
   if (fetched.has(filePath)) continue;
 
-  const response = await fetch(url, { redirect: "follow" });
+  const response = await fetchWithRetry(url);
   if (!response.ok) {
     // Keep the deployment faithful to production: some old HTML files still
     // reference optional assets that no longer exist on the live Worker.
