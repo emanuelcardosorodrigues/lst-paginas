@@ -13,7 +13,7 @@
     "build:pda": "npm install --prefix pda-pv01 && npm run build --prefix pda-pv01",
     "build:calc": "npm install --prefix calc-odl && npm run build --prefix calc-odl",
     "build:col": "npm install --prefix col-pvia01 && npm run build --prefix col-pvia01",
-    "sync:current-pages": "node scripts/mirror-current-p-pages.mjs && node col-pvia06/build-pages.mjs",
+    "sync:current-pages": "node scripts/mirror-current-p-pages.mjs && node scripts/clone-col-pvia07-ck-hba.mjs",
     "deploy:pages": "npm run sync:current-pages && npx wrangler deploy --config w-lst-paginas/wrangler.publish.jsonc",
     "build:col-web": "npm install --prefix col-web01 && npm run build --prefix col-web01",
     "preview": "vite preview",

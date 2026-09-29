@@ -31,6 +31,7 @@ const roots = [
   "col-pvia03",
   "col-pvia04",
   "col-pvia05",
+  "col-pvia07",
   "col-web01",
   "col-cap01-web01",
 ];
