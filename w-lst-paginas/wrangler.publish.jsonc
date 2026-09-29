@@ -5,7 +5,9 @@
   "compatibility_date": "2026-04-22",
   "account_id": "21e4875f53338100ee74196613471f21",
   "assets": {
-    "directory": "../dist",
+    // Static-assets deploys replace the entire shared collection. This invalid
+    // path makes accidental Wrangler deploys fail before they can remove pages.
+    "directory": "./__STATIC_ASSET_DEPLOY_BLOCKED__",
     "binding": "ASSETS"
   },
   "compatibility_flags": ["nodejs_compat"],
