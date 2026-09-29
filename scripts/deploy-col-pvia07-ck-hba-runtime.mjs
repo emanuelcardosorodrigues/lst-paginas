@@ -55,7 +55,7 @@ form.set("metadata", JSON.stringify({
   compatibility_flags: ["nodejs_compat"],
   bindings: [{ name: "ASSETS", type: "assets" }],
 }));
-form.set("index.js", new Blob([updatedSource], { type: "application/javascript" }), "index.js");
+form.set("index.js", new Blob([updatedSource], { type: "application/javascript+module" }), "index.js");
 
 const deployed = await fetch(api, { method: "PUT", headers: auth, body: form });
 const result = await deployed.json();
