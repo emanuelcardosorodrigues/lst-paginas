@@ -1,10 +1,12 @@
 import { handleInscricao, retryPending } from "./inscricao.js";
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
     if (url.pathname === "/p/col-inup-cap01-web01/api/inscricao") {
+      // Sem cron: cada inscrição também reenvia o que ficou pendente no KV.
+      ctx.waitUntil(retryPending(env));
       return handleInscricao(request, env);
     }
 
