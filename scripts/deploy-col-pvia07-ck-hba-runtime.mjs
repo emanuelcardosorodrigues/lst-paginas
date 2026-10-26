@@ -54,7 +54,12 @@ async function publish(source) {
     keep_assets: true,
     compatibility_date: "2026-04-22",
     compatibility_flags: ["nodejs_compat"],
-    bindings: [{ name: "ASSETS", type: "assets" }],
+    // Preserva os secrets (CRM_QUIZ_INTAKE_*) e o KV da inscrição INUP; sem isso o PUT os apaga.
+    keep_bindings: ["secret_text", "plain_text"],
+    bindings: [
+      { name: "ASSETS", type: "assets" },
+      { name: "INSCRICOES", type: "kv_namespace", namespace_id: "240a7a010d6b468ca86e35fa97393712" },
+    ],
   }));
   form.set("index.js", new Blob([source], { type: "application/javascript+module" }), "index.js");
   const response = await fetch(api, { method: "PUT", headers: auth, body: form });
