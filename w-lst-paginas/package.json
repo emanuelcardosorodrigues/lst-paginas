@@ -4,7 +4,7 @@
   "description": "Worker para servir páginas LST",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "deploy": "node ../scripts/block-shared-asset-deploy.mjs"
   },
   "devDependencies": {
     "wrangler": "^4.83.0"
