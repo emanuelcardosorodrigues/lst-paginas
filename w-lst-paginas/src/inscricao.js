@@ -54,8 +54,9 @@ export async function buildPayload(body) {
   };
 }
 
+// Devolve { ok, status, error } — status é o HTTP do quiz-intake (nunca o segredo).
 async function send(env, payload) {
-  if (!env.CRM_QUIZ_INTAKE_URL || !env.CRM_QUIZ_INTAKE_SECRET) return false;
+  if (!env.CRM_QUIZ_INTAKE_URL || !env.CRM_QUIZ_INTAKE_SECRET) return { ok: false, error: "sem_secret_ou_url" };
   try {
     const r = await fetch(env.CRM_QUIZ_INTAKE_URL, {
       method: "POST",
@@ -63,9 +64,11 @@ async function send(env, payload) {
       body: JSON.stringify(payload),
       signal: AbortSignal.timeout(8000),
     });
-    return r.ok;
-  } catch {
-    return false;
+    if (r.ok) return { ok: true, status: r.status };
+    const resp = (await r.text().catch(() => "")).slice(0, 200);
+    return { ok: false, status: r.status, resp };
+  } catch (e) {
+    return { ok: false, error: String(e && e.name ? e.name : e).slice(0, 60) };
   }
 }
 
@@ -81,9 +84,10 @@ export async function handleInscricao(request, env) {
   const { payload, error } = await buildPayload(body || {});
   if (error) return json({ ok: false, error }, 400);
 
-  if (await send(env, payload)) return json({ ok: true });
+  const res = await send(env, payload);
+  if (res.ok) return json({ ok: true });
   // Não perde o lead: guarda e o cron reenvia (mesmo event_id, sem duplicar).
-  await env.INSCRICOES.put(`pend:${payload.event_id}`, JSON.stringify({ payload, attempts: 1 }), { expirationTtl: TTL });
+  await env.INSCRICOES.put(`pend:${payload.event_id}`, JSON.stringify({ payload, attempts: 1, last: { status: res.status, error: res.error, resp: res.resp, at: new Date().toISOString() } }), { expirationTtl: TTL });
   return json({ ok: true, queued: true }, 202);
 }
 
@@ -93,7 +97,9 @@ export async function retryPending(env) {
     const raw = await env.INSCRICOES.get(name);
     if (!raw) continue;
     const item = JSON.parse(raw);
-    if (await send(env, item.payload)) {
+    const res = await send(env, item.payload);
+    item.last = { status: res.status, error: res.error, resp: res.resp, at: new Date().toISOString() };
+    if (res.ok) {
       await env.INSCRICOES.delete(name);
     } else if (item.attempts + 1 >= MAX_ATTEMPTS) {
       await env.INSCRICOES.put(`dead:${name.slice(5)}`, raw, { expirationTtl: TTL });
