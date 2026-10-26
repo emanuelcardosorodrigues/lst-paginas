@@ -56,7 +56,8 @@ export async function buildPayload(body) {
 
 // Devolve { ok, status, error } — status é o HTTP do quiz-intake (nunca o segredo).
 async function send(env, payload) {
-  if (!env.CRM_QUIZ_INTAKE_URL || !env.CRM_QUIZ_INTAKE_SECRET) return { ok: false, error: "sem_secret_ou_url" };
+  if (!env.CRM_QUIZ_INTAKE_URL) return { ok: false, error: "url_vazia" };
+  if (!env.CRM_QUIZ_INTAKE_SECRET) return { ok: false, error: "secret_vazio" };
   try {
     const r = await fetch(env.CRM_QUIZ_INTAKE_URL, {
       method: "POST",

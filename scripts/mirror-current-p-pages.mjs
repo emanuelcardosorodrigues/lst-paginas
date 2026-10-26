@@ -43,7 +43,7 @@ const fetched = new Set();
 function localPath(url) {
   if (url.origin !== origin || !url.pathname.startsWith("/p/")) return null;
   const relative = decodeURIComponent(url.pathname.slice(3));
-  if (!relative || relative.includes("..")) return null;
+  if (!relative || relative.includes("..") || relative.includes("/api/")) return null;
   if (relative.endsWith("/")) return `${relative}index.html`;
   // A bare page URL and its trailing-slash version resolve to index.html.
   return path.extname(relative) ? relative : `${relative}/index.html`;
