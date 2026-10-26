@@ -8,6 +8,8 @@
     "directory": "../dist",
     "binding": "ASSETS"
   },
+  "kv_namespaces": [{ "binding": "INSCRICOES", "id": "240a7a010d6b468ca86e35fa97393712" }],
+  "triggers": { "crons": ["*/5 * * * *"] },
   "compatibility_flags": ["nodejs_compat"],
   "workers_dev": true
 }

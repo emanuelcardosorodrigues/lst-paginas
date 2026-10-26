@@ -105,7 +105,7 @@ main{grid-template-columns:1fr 1fr;align-items:start;padding-top:40px;column-gap
 <script>
 (function(){
 var SLUG="col-inup-cap01-web01",
-INTAKE="https://api-crm.apolosales.com.br/intake/3267c6e0eea392b26e42747f62ab4f07",
+INTAKE="/p/col-inup-cap01-web01/api/inscricao",
 NEXT="/p/col-inup-cap01-web01/obrigado/",
 f=document.getElementById("f"),b=document.getElementById("b"),err=document.getElementById("err");
 f.telefone.addEventListener("input",function(){
@@ -123,7 +123,7 @@ f.addEventListener("submit",function(e){
   if(tel.length<10)return show("Informe um WhatsApp com DDD.");
   b.disabled=true;b.textContent="Enviando...";
   var params=Object.fromEntries(new URLSearchParams(location.search));
-  var body={nome:nome,email:email,telefone:"55"+tel,pagina:SLUG,params:params,landing_page:location.href,referrer:document.referrer||""};
+  var body={nome:nome,email:email,telefone:tel,pagina:SLUG,params:params,landing_page:location.href,referrer:document.referrer||""};
   try{localStorage.setItem("lst_lead",JSON.stringify({nome:nome,email:email,telefone:tel}))}catch(x){}
   var done=function(){
     try{(window.dataLayer=window.dataLayer||[]).push({event:"lead_capturado",pagina:SLUG})}catch(x){}

@@ -1,6 +1,12 @@
+import { handleInscricao, retryPending } from "./inscricao.js";
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    if (url.pathname === "/p/col-inup-cap01-web01/api/inscricao") {
+      return handleInscricao(request, env);
+    }
 
     if (url.pathname.startsWith("/p/")) {
       // Only redirect /p/slug (no trailing slash, no sub-path) → /p/slug/
@@ -14,5 +20,9 @@ export default {
     }
 
     return env.ASSETS.fetch(request);
+  },
+
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(retryPending(env));
   },
 };
