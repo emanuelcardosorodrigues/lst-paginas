@@ -33,6 +33,7 @@ const roots = [
   "col-pvia05",
   "col-web01",
   "col-cap01-web01",
+  "col-inup-cap01-web01",
 ];
 const textExtensions = new Set([".html", ".css", ".js", ".mjs", ".json", ".svg"]);
 const queue = [];
