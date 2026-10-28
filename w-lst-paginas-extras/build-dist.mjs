@@ -10,4 +10,7 @@ for (const s of slugs) {
   if (!fs.existsSync(path.join(src, s, "index.html"))) throw new Error(`sem index.html: ${s}`);
   fs.cpSync(path.join(src, s), path.join(out, s), { recursive: true });
 }
+// ativos-d referencia assets na raiz (/ativos-d/...), rota que o w-lst-paginas ainda detém: reescreve p/ /p/ativos-d/.
+const f = path.join(out, "ativos-d/index.html");
+fs.writeFileSync(f, fs.readFileSync(f, "utf8").replaceAll('"/ativos-d/', '"/p/ativos-d/'));
 console.log(`dist ok: ${slugs.length} slugs`);

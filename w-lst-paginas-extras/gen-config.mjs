@@ -4,8 +4,6 @@ const slugs = fs.readFileSync(new URL("./slugs.list", import.meta.url), "utf8").
 const routes = [];
 for (const h of ["leandrostecca.com.br", "www.leandrostecca.com.br"]) {
   for (const s of slugs) routes.push(`${h}/p/${s}`, `${h}/p/${s}/*`);
-  // ativos-d referencia assets na raiz (/ativos-d/assets/...)
-  routes.push(`${h}/ativos-d`, `${h}/ativos-d/*`);
 }
 const cfg = {
   name: "w-lst-paginas-extras",
