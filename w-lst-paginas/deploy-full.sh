@@ -18,7 +18,8 @@ chk() { local bad=0 c s; for s in $(cat ../slugs-todos.list); do
 npx wrangler deploy --dry-run --assets ../dist >/dev/null
 echo "ANTES (não-200 listados):"; chk || true
 [ "${CONFIRMO:-}" = sim ] || { echo "CHECK_ONLY: nada publicado. Rode: CONFIRMO=sim ./deploy-full.sh"; exit 0; }
-npx wrangler deploy --assets ../dist 2>&1 | grep -v "Will match assets"
+WHO="deploy-full $(whoami)@$(hostname) $(git rev-parse --short HEAD) $(date -u +%FT%TZ)"; echo "$WHO" >> ../deploys.log
+npx wrangler deploy --assets ../dist --message "$WHO" --tag "$(git rev-parse --short HEAD)" 2>&1 | grep -v "Will match assets"
 echo "Removendo o extras (agora redundante)"; npx wrangler delete --name w-lst-paginas-extras --force || true
 sleep 10
 echo "DEPOIS (todas devem ser 200):"
