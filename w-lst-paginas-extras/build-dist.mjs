@@ -1,7 +1,7 @@
-// Monta ./dist a partir de ./pages (fonte versionada das 36 páginas restauradas em 28/10/2026).
+// Monta ./dist a partir de ../extra-pages (fonte versionada das 36 páginas restauradas em 28/10/2026).
 import fs from "node:fs";
 import path from "node:path";
-const src = process.env.SRC_DIST || new URL("./pages", import.meta.url).pathname;
+const src = process.env.SRC_DIST || new URL("../extra-pages", import.meta.url).pathname;
 const slugs = fs.readFileSync(new URL("./slugs.list", import.meta.url), "utf8").split("\n").filter(Boolean);
 const out = new URL("./dist", import.meta.url).pathname;
 fs.rmSync(out, { recursive: true, force: true });

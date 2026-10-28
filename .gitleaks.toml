@@ -3,4 +3,4 @@ useDefault = true
 
 [allowlist]
 description = "Páginas públicas /p/* restauradas: embutem a chave anon do Supabase (role=anon), pública por desenho"
-paths = ['''w-lst-paginas-extras/pages/.*/index\.html''']
+paths = ['''extra-pages/.*/index\.html''']

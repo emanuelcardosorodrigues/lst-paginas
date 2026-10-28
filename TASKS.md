@@ -1,16 +1,19 @@
 # TASKS — lst-paginas (atualizado 28/10/2026)
 
+## Regra: UM Worker só
+Tudo de `leandrostecca.com.br/p/*` vive no `w-lst-paginas`. Não criar Worker novo para página.
+
 ## Estado
-- `w-lst-paginas` (assets em `dist/`): serve 33 páginas `/p/*`. Deploy de assets BLOQUEADO (`directory` inválido); nunca publicar assets daqui.
-- `w-lst-paginas-extras`: Worker das 36 páginas restauradas (rota por slug). Fontes versionadas em `w-lst-paginas-extras/pages/`.
-  - Deploy: `cd w-lst-paginas-extras && CONFIRMO=sim ./deploy.sh` (token do cofre CF_DEPLOY_LST; checa 69 slugs; reverte se algum cair).
-  - Rollback: `ROLLBACK=sim ./deploy.sh` (apaga só o extras).
-- Cópias `protocolo-dpl` e `protocolo-dpl-frufru`: deploy de assets bloqueado (commits c5c57a1 / 54bdeee). Não publicam.
+- Fonte das páginas: `dist/` = espelho do ar (`scripts/mirror-current-p-pages.mjs`) + `extra-pages/` (36 restauradas + frufru01/02, versionadas) + clone `col-pvia07-ck-hba`. Monte com `node scripts/build-full-dist.mjs` (gera `slugs-todos.list` e `w-lst-paginas/src/sck-slugs.js`).
+- Deploy: `cd w-lst-paginas && CONFIRMO=sim ./deploy-full.sh` (sem CONFIRMO só checa; verifica todos os slugs; reverte se algum cair; remove o `w-lst-paginas-extras`).
+- `wrangler.jsonc` do w-lst-paginas segue com `directory` bloqueado: deploy de assets só via `deploy-full.sh` (`--assets ../dist`).
+- Nova página: copiar para `extra-pages/<slug>/`, rodar o deploy-full. Nunca deploy de dist parcial.
+- `w-lst-paginas-extras/`: Worker transitório; some depois do deploy-full. Cópias `protocolo-dpl*` bloqueadas para deploy de assets.
 
 ## Incidente 28/10/2026
-36 páginas deram 404: deploy de assets do w-lst-paginas a partir de dist sem elas. Corrigido com o extras. Regras: CLAUDE.md "Produção compartilhada" + PADRAO-CONSTRUCAO D11–D12.
+36 páginas deram 404 (deploy de assets sem elas). Regras: CLAUDE.md "Produção compartilhada" + PADRAO-CONSTRUCAO D11–D12.
 
 ## Pendências
-- `/ativos-d` na raiz do domínio ainda é rota do w-lst-paginas e dá 404; a página vive em `/p/ativos-d`.
-- Monitor externo: alerta vermelho se qualquer slug de `/p/*` cair (hoje só avisa; não bloqueia).
-- Chave anon Supabase nas páginas está liberada no `.gitleaks.toml` (pública por desenho); rodar gitleaks com `-c .gitleaks.toml`.
+- `/ativos-d` na raiz ainda é rota do w-lst-paginas (404); página em `/p/ativos-d`.
+- Monitor externo: vermelho se qualquer slug cair.
+- Chave anon Supabase liberada em `.gitleaks.toml` (`extra-pages/`); rodar gitleaks com `-c .gitleaks.toml`.
