@@ -7,6 +7,8 @@ const root = path.resolve(import.meta.dirname, "..");
 const dist = path.join(root, "dist");
 execFileSync("node", [path.join(root, "scripts/mirror-current-p-pages.mjs")], { stdio: "inherit" });
 execFileSync("node", [path.join(root, "scripts/clone-col-pvia07-ck-hba.mjs")], { stdio: "inherit" });
+// INUP: fonte versionada na raiz do repo; o espelho do ar não a traz se ela já tiver caído.
+fs.cpSync(path.join(root, "col-inup-cap01-web01"), path.join(dist, "col-inup-cap01-web01"), { recursive: true });
 const extra = path.join(root, "extra-pages");
 for (const s of fs.readdirSync(extra)) fs.cpSync(path.join(extra, s), path.join(dist, s), { recursive: true });
 // ativos-d referencia assets na raiz (/ativos-d/...); aqui tudo vive sob /p/.
