@@ -3,6 +3,9 @@
 # Rollback: ROLLBACK=sim ./deploy.sh  (apaga só w-lst-paginas-extras; as 33 páginas do w-lst-paginas não são tocadas)
 set -euo pipefail
 cd "$(dirname "$0")"
+# Token do cofre (conta LST, edita rotas); o do ambiente não tem escopo de zona.
+set -a; . "${CF_DEPLOY_VAULT:-$HOME/.config/apolo/cf-deploy-tokens.env}"; set +a
+export CLOUDFLARE_API_TOKEN="${CF_DEPLOY_LST:?CF_DEPLOY_LST ausente no cofre}"
 O=https://leandrostecca.com.br
 chk() { # $1=rótulo $2=esperado ; confere TODOS os slugs
   local bad=0 c s

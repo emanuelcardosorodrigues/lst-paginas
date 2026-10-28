@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Imersão Lucro Clínico · 27.07–02.08 · Dr. Leandro Stecca</title>
+  <meta name="description" content="5 aulas de segunda a sexta, 7h da manhã. Faça a conta de quanto sobra realmente na sua clínica. 27 de julho a 2 de agosto. Ingresso R$ 49,90.">
+
+  <!-- Preload fontes acima da dobra -->
+  <link rel="preload" href="/p/lps-pv-turbo02/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/p/lps-pv-turbo02/assets/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/p/lps-pv-turbo02/assets/fonts/inter-900.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://ts.leandrostecca.com.br/1bioyobqmd.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','9o7=DQlMJTs0QiQnNzoxOUEhTxJQQ0xeXwsHWQEUAwEdHQYXGRQBDBhBCgsAXwAd');</script>
+  <!-- End Google Tag Manager -->
+
+  <style>
+    /* ── FONTES ─────────────────────────────────────────────────────────── */
+    @font-face {
+      font-family: 'Inter';
+      src: url(/p/lps-pv-turbo02/assets/fonts/inter-400.woff2) format('woff2');
+      font-weight: 400; font-style: normal; font-display: optional;
+    }
+    @font-face {
+      font-family: 'Inter';
+      src: url(/p/lps-pv-turbo02/assets/fonts/inter-700.woff2) format('woff2');
+      font-weight: 700; font-style: normal; font-display: optional;
+    }
+    @font-face {
+      font-family: 'Inter';
+      src: url(/p/lps-pv-turbo02/assets/fonts/inter-900.woff2) format('woff2');
+      font-weight: 900; font-style: normal; font-display: optional;
+    }
+    @font-face {
+      font-family: "Inter-fallback";
+      src: local("Arial"), local("Helvetica"), local("Liberation Sans");
+      size-adjust: 107%;
+      ascent-override: 90%;
+      descent-override: 22.43%;
+      line-gap-override: 0%;
+    }
+
+
+    /* ── TOKENS ─────────────────────────────────────────────────────────── */
+    :root {
+      /* herdados de pv01 */
+      --bg:           #f6f8fc;
+      --card:         #ffffff;
+      --tile:         #e9edf6;
+      --border:       #dfe6f2;
+      --text:         #0f172a;
+      --muted:        #64748b;
+      --blue:         #1f5cff;
+      --blue-dark:    #1848c6;
+      --blue-strong:  #0b3cff;
+      --radius:       22px;
+      --shadow:       0 14px 34px rgba(15,23,42,.08);
+      /* extensões turbo02 */
+      --dark:         #0f172a;
+      --dark-text:    #f1f5f9;
+      --dark-muted:   #94a3b8;
+      --negative:     #dc2626;
+      --gutter:       20px;
+      --max-w:        680px;
+      --radius-cta:   10px;
+      --font: 'Inter', 'Inter-fallback', system-ui, -apple-system, sans-serif;
+      /* escala tipográfica */
+      --text-xl:        clamp(36px, 9vw, 52px);
+      --text-display:   clamp(40px, 11vw, 80px);
+      --text-date:      40px;
+      --text-h2:        clamp(22px, 5vw, 32px);
+      --text-h3:        clamp(18px, 3.5vw, 24px);
+      --text-body:      17px;
+      --text-small:     14px;
+      --text-eyebrow:   11px;
+      --text-quote-big: clamp(18px, 3.5vw, 24px);
+      /* espaçamento */
+      --gap-xs: 8px;
+      --gap-s:  16px;
+      --gap-m:  24px;
+      --gap-l:  48px;
+      --gap-xl: 64px;
+      --gap-xxl:96px;
+    }
+
+    /* ── RESET / BASE ───────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font);
+      font-size: var(--text-body);
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+    ul { list-style: none; }
+
+    /* ── LAYOUT ─────────────────────────────────────────────────────────── */
+    .bloco {
+      padding-top: var(--gap-xxl);
+      padding-bottom: var(--gap-xxl);
+    }
+    .inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+
+    /* ── TIPOGRAFIA BASE ────────────────────────────────────────────────── */
+    h2 {
+      font-size: var(--text-h2);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--gap-m);
+    }
+    h3 {
+      font-size: var(--text-h3);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--gap-s);
+    }
+    p { margin-bottom: var(--gap-m); }
+    p:last-child { margin-bottom: 0; }
+    strong { font-weight: 700; }
+
+    /* ── CTA ────────────────────────────────────────────────────────────── */
+    .cta-btn {
+      display: block;
+      background: var(--blue);
+      color: #ffffff;
+      font-family: var(--font);
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      border-radius: var(--radius-cta);
+      height: 56px;
+      line-height: 56px;
+      padding: 0 24px;
+      width: 100%;
+      max-width: 360px;
+      letter-spacing: -0.01em;
+      transition: background-color 0.15s ease, transform 0.15s ease;
+    }
+    .cta-btn:hover  { background-color: var(--blue-dark); transform: translateY(-1px); }
+    .cta-btn:active { background-color: var(--blue-dark); transform: translateY(0); }
+    .cta-wrap { margin-bottom: calc(var(--gap-s) - 12px); }
+    .cta-sub {
+      font-size: var(--text-small);
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    /* ── BLOCO 1 · DOBRA ────────────────────────────────────────────────── */
+    .b1 {
+      background: var(--dark);
+      color: var(--dark-text);
+      padding-top: 40px;
+      padding-bottom: var(--gap-xxl);
+    }
+    .b1-eyebrow {
+      font-size: var(--text-eyebrow);
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--dark-muted);
+      margin-bottom: var(--gap-xs);
+      line-height: 1.0;
+    }
+    .b1-date-ticker {
+      font-size: var(--text-date);
+      font-weight: 900;
+      line-height: 1.00;
+      letter-spacing: -0.03em;
+      color: var(--dark-text);
+      display: block;
+      margin-bottom: 4px;
+    }
+    @media (min-width: 480px) {
+      .b1-date-ticker { font-size: 48px; }
+      :root { --text-date: 48px; }
+    }
+    .b1-date-desc {
+      font-size: var(--text-small);
+      color: var(--dark-muted);
+      line-height: 1.45;
+      margin-bottom: var(--gap-l);
+    }
+    .b1-cover {
+      font-size: var(--text-xl);
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      color: var(--dark-text);
+      margin-bottom: var(--gap-m);
+    }
+    .b1-deck {
+      font-size: var(--text-body);
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--dark-muted);
+      margin-bottom: var(--gap-l);
+    }
+    @media (max-width: 379px) {
+      .b1-deck { font-size: 15px; }
+    }
+    .b1 .cta-sub { color: var(--dark-muted); }
+
+    /* ── BLOCO 2 · A CONTA ──────────────────────────────────────────────── */
+    .b2 { background: var(--card); }
+    .number-spread {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      gap: var(--gap-m);
+      margin: var(--gap-xl) 0 var(--gap-m);
+    }
+    .number-item { text-align: center; }
+    .number-big {
+      font-size: clamp(44px, 11vw, 72px);
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      display: block;
+    }
+    .number-label {
+      font-size: var(--text-small);
+      color: var(--muted);
+      display: block;
+      margin-top: 4px;
+    }
+    .number-result {
+      font-size: clamp(22px, 5vw, 32px);
+      font-weight: 900;
+      line-height: 1.1;
+      text-align: center;
+      margin-top: var(--gap-m);
+      margin-bottom: var(--gap-l);
+    }
+    .loss { color: var(--negative); }
+    .b2-subbloco {
+      border-left: 3px solid var(--border);
+      padding-left: var(--gap-m);
+      margin-top: var(--gap-l);
+      margin-bottom: var(--gap-l);
+    }
+    .b2-subbloco h3 { margin-bottom: var(--gap-m); }
+    .b2-disclaimer {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-top: var(--gap-m);
+      margin-bottom: var(--gap-l);
+    }
+
+    /* ── BLOCO 3 · QUATRO COISAS ────────────────────────────────────────── */
+    .b3 { background: var(--bg); }
+    .provocacoes-lista { grid-column: 1; }
+    .provocacao-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 var(--gap-s);
+      margin-bottom: var(--gap-m);
+      align-items: start;
+    }
+    .provocacao-item:last-child { margin-bottom: 0; }
+    .provocacao-num {
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1.3;
+    }
+    .provocacao-txt {
+      font-size: var(--text-body);
+      line-height: 1.65;
+      color: var(--text);
+      padding-top: 2px;
+      margin-bottom: 0;
+    }
+    .sidebar-faceta {
+      background: var(--tile);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: var(--gap-m);
+      margin-right: calc(-1 * var(--gutter));
+      margin-top: var(--gap-l);
+      margin-bottom: var(--gap-l);
+    }
+    .sidebar-faceta-titulo {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--gap-s);
+    }
+    .sidebar-faceta p {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.55;
+      margin-bottom: var(--gap-s);
+    }
+    .sidebar-faceta p:last-child { margin-bottom: 0; }
+    @media (min-width: 768px) {
+      .provocacoes-grid {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: var(--gap-l);
+        align-items: start;
+      }
+      .sidebar-faceta {
+        margin: 0;
+        border-radius: var(--radius);
+        grid-column: 2;
+        grid-row: 1;
+        align-self: start;
+      }
+    }
+
+    /* ── BLOCO 4 · POR QUE FICA INVISÍVEL ──────────────────────────────── */
+    .b4 { background: var(--card); }
+    .pull-dark {
+      background: var(--dark);
+      color: var(--dark-text);
+      margin-left:  calc(-1 * var(--gutter));
+      margin-right: calc(-1 * var(--gutter));
+      padding: 64px var(--gutter);
+      position: relative;
+      quotes: '\201C' '\201D';
+      margin-top: var(--gap-l);
+      margin-bottom: var(--gap-l);
+    }
+    .pull-dark::before {
+      content: open-quote;
+      font-size: clamp(80px, 15vw, 120px);
+      font-weight: 900;
+      color: var(--blue);
+      position: absolute;
+      top: 20px;
+      left: var(--gutter);
+      line-height: 0.8;
+      font-family: var(--font);
+    }
+    .pull-dark p {
+      font-size: var(--text-quote-big);
+      font-weight: 700;
+      line-height: 1.3;
+      position: relative;
+      padding-top: clamp(60px, 12vw, 90px);
+      margin: 0;
+      color: var(--dark-text);
+    }
+    @media (min-width: 768px) {
+      .pull-dark {
+        margin-left: calc(-50vw + var(--max-w) / 2);
+        margin-right: calc(-50vw + var(--max-w) / 2);
+        padding-left: calc(50vw - var(--max-w) / 2 + var(--gutter));
+        padding-right: calc(50vw - var(--max-w) / 2 + var(--gutter));
+      }
+      .pull-dark::before {
+        left: calc(50vw - var(--max-w) / 2 + var(--gutter));
+      }
+    }
+
+    /* ── BLOCO 5 · 345 DE 930 ───────────────────────────────────────────── */
+    .b5 { background: var(--bg); }
+    .big-stat {
+      font-size: clamp(80px, 20vw, 140px);
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      display: block;
+      margin: var(--gap-m) 0;
+    }
+    .citacoes { margin: var(--gap-m) 0; }
+    .citacao {
+      font-size: 15px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.5;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .citacoes-legenda {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-top: var(--gap-s);
+    }
+    .b5-sep {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: var(--gap-l) 0;
+    }
+
+    /* ── BLOCO 6 · A SEMANA ─────────────────────────────────────────────── */
+    .b6 { background: var(--card); }
+    .aula-item {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 0 var(--gap-m);
+      padding: var(--gap-m) 0;
+      border-top: 1px solid var(--border);
+      align-items: start;
+    }
+    .aula-num {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+      padding-top: 3px;
+    }
+    .aula-meta {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .aula-titulo {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .aula-desc {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.55;
+      margin-bottom: 0;
+    }
+    .b6-deadline {
+      font-size: var(--text-body);
+      font-weight: 700;
+      color: var(--text);
+      margin-top: var(--gap-l);
+      margin-bottom: var(--gap-l);
+    }
+    .b6 .cta-btn { max-width: 280px; }
+
+    /* ── BLOCO 7 · O QUE VOCÊ NÃO FAZ SOZINHO ──────────────────────────── */
+    .b7 { background: var(--bg); }
+
+    /* ── BLOCO 8 · O INGRESSO E A GARANTIA ─────────────────────────────── */
+    .b8 { background: var(--card); }
+    .preco-display {
+      font-size: var(--text-display);
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      display: block;
+      margin: var(--gap-m) 0 var(--gap-l);
+    }
+    .b8-pix {
+      font-size: var(--text-body);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--gap-m);
+    }
+    .garantia-box {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--gap-m);
+      background: var(--tile);
+      margin-top: var(--gap-l);
+    }
+    .garantia-titulo {
+      font-size: var(--text-h3);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--gap-s);
+    }
+    .garantia-box p { font-size: var(--text-body); color: var(--text); line-height: 1.6; }
+
+    /* ── BLOCO 9 · SOBRE O MEDO DE OLHAR ───────────────────────────────── */
+    .b9 { background: var(--bg); }
+    .objecao-principal {
+      font-size: clamp(22px, 5vw, 32px);
+      font-weight: 700;
+      color: var(--text);
+      border-left: 4px solid var(--blue);
+      padding-left: var(--gap-m);
+      margin: var(--gap-l) 0;
+      line-height: 1.2;
+    }
+    .objecoes-secundarias { margin: var(--gap-m) 0 var(--gap-l); }
+    .objecao-sec {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    /* ── BLOCO 10 · QUEM CONDUZ ─────────────────────────────────────────── */
+    .b10 {
+      background: var(--dark);
+      color: var(--dark-text);
+    }
+    .b10-foto {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 0;
+      margin: 0 auto var(--gap-l);
+      filter: grayscale(100%) contrast(1.1);
+    }
+    .b10-nome {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--dark-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: var(--gap-xs);
+    }
+    .b10-credencial {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--dark-muted);
+      margin-bottom: var(--gap-m);
+    }
+    .b10 p {
+      font-size: var(--text-body);
+      font-weight: 400;
+      color: var(--dark-text);
+      line-height: 1.65;
+      margin-bottom: var(--gap-m);
+    }
+    .b10 p:last-child { margin-bottom: 0; }
+    .b10-assinatura {
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 700;
+      color: var(--dark-text);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      border-top: 1px solid rgba(241,245,249,.15);
+      padding-top: var(--gap-m);
+      margin-top: var(--gap-m);
+    }
+
+    /* ── BLOCO 11 · PRA QUEM É ──────────────────────────────────────────── */
+    .b11 { background: var(--card); }
+    .lista-pra-quem {
+      list-style: none;
+      margin: var(--gap-s) 0 var(--gap-l);
+    }
+    .lista-pra-quem li {
+      font-size: var(--text-body);
+      line-height: 1.65;
+      color: var(--text);
+      padding-left: var(--gap-m);
+      position: relative;
+      margin-bottom: var(--gap-s);
+    }
+    .lista-pra-quem li::before {
+      content: '—';
+      color: var(--muted);
+      position: absolute;
+      left: 0;
+    }
+    .b11-sep {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: var(--gap-xl) 0;
+    }
+    .b11-label {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: var(--gap-s);
+    }
+    .b11-fechamento {
+      font-size: var(--text-xl);
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: var(--gap-l);
+    }
+    .b11-deadline {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: var(--gap-l);
+    }
+
+    /* ── BLOCO 12 · FAQ ─────────────────────────────────────────────────── */
+    .b12 { background: var(--bg); }
+    .faq-grid { column-count: 1; }
+    @media (min-width: 600px) {
+      .faq-grid {
+        column-count: 2;
+        column-gap: var(--gap-xl);
+        column-rule: 1px solid var(--border);
+      }
+    }
+    .faq-item {
+      break-inside: avoid;
+      padding-top: var(--gap-m);
+      border-top: 1px solid var(--border);
+      margin-bottom: var(--gap-m);
+    }
+    .faq-q {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .faq-a {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.55;
+      margin-bottom: 0;
+    }
+
+    /* ── REDUCED MOTION ─────────────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .cta-btn { transition: background-color 0.15s ease; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://ts.leandrostecca.com.br/ns.html?id=GTM-MCZKSV8N" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- ── BLOCO 1 · DOBRA ─────────────────────────────────────────────── -->
+  <section class="b1">
+    <div class="inner">
+      <p class="b1-eyebrow">IMERSÃO LUCRO CLÍNICO · PARA DENTISTA DONO DE CONSULTÓRIO</p>
+      <span class="b1-date-ticker">27.07 → 02.08</span>
+      <p class="b1-date-desc">5 aulas, seg–sex, 7h da manhã, com retransmissão às 20h. Aula bônus dom 02/08.</p>
+      <h1 class="b1-cover">Sua clínica fatura.<br>Mas você sabe quanto realmente sobra?</h1>
+      <p class="b1-deck">Um ortodontista com quase 30 anos de profissão me procurou porque o dinheiro não ficava. Essa é a conta que a gente vai fazer com o seu número, de 27 de julho a 2 de agosto.</p>
+      <div class="cta-wrap">
+        <a href="https://leandrostecca.com.br/r/check/lps-tck-padrao" class="cta-btn">Quero fazer essa conta</a>
+      </div>
+      <p class="cta-sub">Ingresso de R$ 49,90 · Pix ou até 10x no cartão.<br>Garantia incondicional · 7 dias · 100% do valor de volta, sem pergunta.</p>
+    </div>
+  </section>
+
+  <!-- ── BLOCO 2 · A CONTA ────────────────────────────────────────────── -->
+  <section class="b2 bloco">
+    <div class="inner">
+      <h2 >R$ 240 de um lado. R$ 243 do outro.</h2>
+
+      <div class="number-spread">
+        <div class="number-item">
+          <span class="number-big">R$&nbsp;240</span>
+          <span class="number-label">cobrado</span>
+        </div>
+        <div class="number-item">
+          <span class="number-big">R$&nbsp;243</span>
+          <span class="number-label">hora clínica</span>
+        </div>
+      </div>
+
+      <p class="number-result">Cada limpeza saía da clínica dele com <span class="loss">R$&nbsp;34,50 de prejuízo.</span></p>
+
+      <p>Um ortodontista com quase 30 anos de profissão me procurou porque o faturamento estava bom e o dinheiro não ficava. Agenda cheia, implante rodando, três gerações de paciente da mesma família sentando naquela cadeira.</p>
+      <p>A gente sentou e fez a conta da limpeza.</p>
+      <p><strong>R$ 240</strong> era o que ele cobrava. <strong>R$ 243</strong> era a hora clínica dele. E aí ainda entrava material, imposto e o tempo real que o paciente ficava ocupando a cadeira.</p>
+      <p>Ele não fazia uma limpeza por mês. Limpeza é procedimento de toda hora, todo dia. O implante entrava, dava lucro e ia embora tapando o buraco dos procedimentos pequenos, e no fim do ano ele olhava o faturamento e achava que estava indo bem.</p>
+      <p>Já tinham dito pra ele que o preço estava errado. Já tinham falado. Ele até tinha recebido uma tabela nova e riscado, porque achou que o pessoal da cidade não pagaria.</p>
+      <p>Ele só mudou quando viu a conta com o número dele dentro.</p>
+
+      <div class="b2-subbloco">
+        <h3 >O que aconteceu depois</h3>
+        <p>Ele reprecificou o que já fazia todo dia. Não comprou equipamento, não abriu cadeira nova, não contratou agência.</p>
+        <p>Comparando o ano com o ano anterior, o faturamento dele ficou praticamente igual. A lucratividade subiu quase 30%. E praticamente não entrou dinheiro novo em divulgação, porque a gente mexeu em quanto sobrava de cada paciente que já entrava pela porta.</p>
+      </div>
+
+      <p class="b2-disclaimer">Caso real de um cliente. A gente não publica nome nem cidade sem autorização por escrito. Resultado individual. O que muda na lucratividade depois da reprecificação depende do mix de procedimentos, do volume e da estrutura de custo de cada clínica.</p>
+
+      <p>Só que antes da conta da limpeza, o ortodontista não queria ouvir certas coisas. Dentista nenhum quer. São estas:</p>
+    </div>
+  </section>
+
+  <!-- ── BLOCO 3 · QUATRO COISAS ──────────────────────────────────────── -->
+  <section class="b3 bloco">
+    <div class="inner">
+      <h2 >Quatro coisas que eu vou falar nessa semana e que você provavelmente não vai gostar de ouvir</h2>
+
+      <div class="provocacoes-grid">
+        <div class="provocacoes-lista">
+          <div class="provocacao-item">
+            <span class="provocacao-num">01.</span>
+            <p class="provocacao-txt">Trazer paciente novo é a última coisa que você precisa agora. Antes de encher a agenda, você precisa saber quanto sobra de cada hora que já está ocupada.</p>
+          </div>
+          <div class="provocacao-item">
+            <span class="provocacao-num">02.</span>
+            <p class="provocacao-txt">Repasse pra dentista parceiro não deveria passar de 33% do valor do tratamento. Se o seu passa, o dinheiro está saindo por ali, e não é por falta de paciente.</p>
+          </div>
+          <div class="provocacao-item">
+            <span class="provocacao-num">03.</span>
+            <p class="provocacao-txt">A secretária certa é o maior investimento que você faz na clínica. Melhor que um scanner, melhor que uma impressora 3D, melhor que um kit de cirurgia guiada.</p>
+          </div>
+          <div class="provocacao-item">
+            <span class="provocacao-num">04.</span>
+            <p class="provocacao-txt">Quem tem que bancar o consultório é o próprio consultório. Se você está tirando do seu bolso pra pintar a parede, o preço está errado.</p>
+          </div>
+        </div>
+
+        <aside class="sidebar-faceta">
+          <p class="sidebar-faceta-titulo">A conta da faceta</p>
+          <p>O dentista chega e diz que gosta de ganhar pelo menos R$ 600 numa faceta de resina. Aí eu faço a conta: mão de obra, nota fiscal, inadimplência, hora ociosa, depreciação do equipamento. Pra pagar R$ 600 pra ele, eu teria que cobrar R$ 1.800 do paciente.</p>
+          <p>Só que do lado eu vendo uma porcelana por R$ 1.400. Ninguém vai pagar R$ 1.800 numa resina.</p>
+          <p>Então a conversa vira outra: "eu quero você comigo, mas preciso que a faceta chegue no máximo a R$ 1.000 pro paciente. Com os meus custos, o máximo que eu consigo te pagar é R$ 300. Vamos fechar?"</p>
+          <p>Eles sabem fazer a conta de quanto querem receber. Não sabem fazer a conta de quanto querem ganhar.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BLOCO 4 · POR QUE FICA INVISÍVEL ────────────────────────────── -->
+  <section class="b4 bloco">
+    <div class="inner">
+      <h2 >O implante banca o prejuízo da limpeza. E você nunca vê.</h2>
+      <p>Essa é a parte que quase ninguém enxerga sozinho. Quando você olha o mês fechado, você vê um número só. O que dá lucro e o que dá prejuízo entram no mesmo bolo, e o procedimento grande cobre o pequeno.</p>
+      <p>Os que mais aparecem no vermelho são sempre os mesmos: limpeza, restauração, extração e manutenção ortodôntica. Justamente os de maior volume. Justamente os que enchem a cadeira.</p>
+      <p>Na nossa comunidade, a margem em cima de um procedimento comum ficava no máximo em 20%. Com 20% de margem, uma maquininha que come 9% já leva quase metade do que sobrou.</p>
+      <p>E tem o outro lado, que é mais difícil de admitir. Vou contar um da minha clínica.</p>
+
+      <blockquote class="pull-dark">
+        <p>Durante 5 anos, mais de 20 pacientes fizeram levantamento de seio comigo e nenhum voltou pra fazer o protocolo. Quando eu fui descobrir, todos já tinham feito em outro lugar. E todos os lugares tinham um dentista que trabalhava na minha clínica.</p>
+      </blockquote>
+
+      <p>Procedimento de baixa complexidade ficava. Média, às vezes ficava. Alta complexidade fugia. Todo mundo lá dentro feliz, todo mundo ganhando dinheiro, e a clínica sem fechar a conta.</p>
+    </div>
+  </section>
+
+  <!-- ── BLOCO 5 · 345 DE 930 ─────────────────────────────────────────── -->
+  <section class="b5 bloco">
+    <div class="inner">
+      <h2 >930 dentistas responderam qual era a maior dificuldade hoje. 345 escreveram alguma versão da mesma coisa.</h2>
+
+      <span class="big-stat">345</span>
+
+      <p>E quase nunca do jeito técnico. Do jeito que veio escrito:</p>
+
+      <div class="citacoes">
+        <span class="citacao">"Medo de cobrar"</span>
+        <span class="citacao">"cobrar o paciente"</span>
+        <span class="citacao">"Saber meu lucro real"</span>
+        <span class="citacao">"o medo de passar orçamento para os pacientes"</span>
+        <span class="citacao">"ver o dinheiro que entra, ter lucro, passar para o paciente os valores sem medo"</span>
+        <span class="citacao">"Trabalhar com % baixa e ganhar pouco"</span>
+        <span class="citacao">"Saber se estou fazendo certo"</span>
+      </div>
+
+      <p class="citacoes-legenda">Respostas literais da ficha de matrícula da Calculadora OdontoLucro. 956 fichas no total, 930 responderam essa pergunta. Depois de preço vem organização e tempo, com 237. Depois o lucro que não aparece, com 97.</p>
+
+      <hr class="b5-sep">
+
+      <p>Repara que nenhuma dessas frases é sobre não saber odontologia.</p>
+      <p>Você é bom de clínica. Isso não está em discussão aqui, e nunca esteve. Quase todo dentista que senta comigo fala alguma versão de "eu sou ótimo de clínica e péssimo de gestão", e fala sem eu perguntar. Ninguém deu essa segunda aula. Na faculdade ela não existe.</p>
+    </div>
+  </section>
+
+  <!-- ── BLOCO 6 · A SEMANA ───────────────────────────────────────────── -->
+  <section class="b6 bloco">
+    <div class="inner">
+      <h2 >27 de julho a 2 de agosto</h2>
+      <h3>Cinco aulas de segunda a sexta, 7h da manhã, com retransmissão às 20h. Mais uma aula bônus no domingo.</h3>
+
+      <div class="aula-item">
+        <span class="aula-num">01</span>
+        <div>
+          <p class="aula-meta">SEG 27/07 · AULA 01</p>
+          <p class="aula-titulo">CLÍNICA LUCRATIVA</p>
+          <p class="aula-desc">Por onde o dinheiro sai de uma clínica cheia. A gente começa mapeando os vazamentos antes de mexer em qualquer preço.</p>
+        </div>
+      </div>
+
+      <div class="aula-item">
+        <span class="aula-num">02</span>
+        <div>
+          <p class="aula-meta">TER 28/07 · AULA 02</p>
+          <p class="aula-titulo">PREÇO DO LUCRO</p>
+          <p class="aula-desc">Sua hora clínica, o custo real de cada procedimento e quanto você precisa cobrar pra parar de pagar pra trabalhar. É nessa aula que a conta do R$ 34,50 é feita com o seu número.</p>
+        </div>
+      </div>
+
+      <div class="aula-item">
+        <span class="aula-num">03</span>
+        <div>
+          <p class="aula-meta">QUA 29/07 · AULA 03</p>
+          <p class="aula-titulo">DENTISTA TROFÉU</p>
+          <p class="aula-desc">Como fazer a clínica trabalhar sem você no mocho. Percentual, diária e valor fixo por procedimento, e por que os três não dão no mesmo no fim do mês.</p>
+        </div>
+      </div>
+
+      <div class="aula-item">
+        <span class="aula-num">04</span>
+        <div>
+          <p class="aula-meta">QUI 30/07 · AULA 04</p>
+          <p class="aula-titulo">AGENDA LUCRATIVA</p>
+          <p class="aula-desc">Horário vago é capacidade desperdiçada. Como ocupar o que já existe sem colocar um real em anúncio: rechamada de quem já te conhece e campanha de indicação.</p>
+        </div>
+      </div>
+
+      <div class="aula-item">
+        <span class="aula-num">05</span>
+        <div>
+          <p class="aula-meta">SEX 31/07 · AULA 05</p>
+          <p class="aula-titulo">DINHEIRO ESQUECIDO</p>
+          <p class="aula-desc">Orçamento aprovado que o paciente não fechou. Tratamento parado no meio. Onde está essa receita e como retomar a conversa sem parecer cobrança.</p>
+        </div>
+      </div>
+
+      <div class="aula-item">
+        <span class="aula-num">★</span>
+        <div>
+          <p class="aula-meta">DOM 02/08 · BÔNUS</p>
+          <p class="aula-titulo">PLANO DE TRATAMENTO</p>
+          <p class="aula-desc">A lógica de plano de tratamento que faz um paciente somar um valor expressivo ao longo do tempo. O dentista costuma enxergar R$ 5.000 porque só enxerga o que ele mesmo faz.</p>
+        </div>
+      </div>
+
+      <p class="b6-deadline">Começa segunda-feira, 27 de julho, às 7h. Quem entrar depois começa com a primeira aula já dada.</p>
+
+      <div class="cta-wrap">
+        <a href="https://leandrostecca.com.br/r/check/lps-tck-padrao" class="cta-btn">Quero fazer essa conta</a>
+      </div>
+      <p class="cta-sub">Ingresso de R$ 49,90 · Pix ou cartão. Garantia incondicional · 7 dias · 100% do valor de volta, sem pergunta.</p>
+    </div>
+  </section>
+
+  <!-- ── BLOCO 7 · O QUE VOCÊ NÃO FAZ SOZINHO ────────────────────────── -->
+  <section class="b7 bloco">
+    <div class="inner">
+      <h2 >Você não vai preencher a calculadora sozinho.</h2>
+      <p>Eu sei que tem dentista que compra planilha de precificação e nunca abre. Não é preguiça. É que sentar sozinho na frente do computador, sem ninguém pra confirmar se o número está certo, é chato e dá medo.</p>
+      <p>Por isso a semana funciona assim:</p>
+      <p>A <strong>Calculadora OdontoLucro</strong> vem junto com o ingresso. Durante a imersão, o <strong>time de consultores</strong> entra pra implementar com você, não só pra explicar, mas pra sentar junto. Quando a semana acabar, você fica <strong>30 dias num grupo de implementação</strong>, com gente de verdade respondendo dúvida da sua clínica.</p>
+      <p>Foi por isso que a gente montou em cinco manhãs, e não num sábado inteiro. Sábado inteiro você assiste. Cinco manhãs você aplica no meio da semana, com a clínica aberta e o número real na sua frente.</p>
+    </div>
+  </section>
+
+  <!-- ── BLOCO 8 · O INGRESSO E A GARANTIA ───────────────────────────── -->
+  <section class="b8 bloco">
+    <div class="inner">
+      <h2 >O ingresso custa R$ 49,90.</h2>
+
+      <span class="preco-display">R$&nbsp;49,90.</span>
+
+      <p>Não vou comparar com pizza nem com lanche. Seria estranho eu passar uma semana falando pra você parar de justificar preço baixo e abrir a minha oferta fazendo exatamente isso.</p>
+      <p>Ele custa R$ 49,90 por dois motivos.</p>
+      <p>O primeiro é que imersão de graça enche de gente que não aparece. Sete da manhã já filtra, e um valor pago filtra junto. Quem paga senta.</p>
+      <p>O segundo é que R$ 49,90 é menos do que aquele ortodontista perdia em duas limpezas. E ele fazia limpeza todo dia. Essa é a única comparação de preço que eu acho honesto fazer aqui.</p>
+
+      <p class="b8-pix">Pix ou cartão.</p>
+
+      <div class="cta-wrap">
+        <a href="https://leandrostecca.com.br/r/check/lps-tck-padrao" class="cta-btn">Quero fazer essa conta</a>
+      </div>
+
+      <div class="garantia-box">
+        <h3 class="garantia-titulo">Garantia incondicional de 7 dias</h3>
+        <p>Entra na primeira aula. Faz a conta com o seu número. Se em 7 dias você achar que não valeu, manda um e-mail e a gente devolve os R$ 49,90 inteiros. Sem perguntar por quê e sem ligação de retenção.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BLOCO 9 · SOBRE O MEDO DE OLHAR ─────────────────────────────── -->
+  <section class="b9 bloco">
+    <div class="inner">
+      <h2 >Sobre o medo de olhar</h2>
+      <p>Quando a gente perguntou o que quase impediu as pessoas de comprar a calculadora, apareceu uma resposta que não era sobre dinheiro:</p>
+
+      <p class="objecao-principal">"Medo de ver tantos anos de erro."</p>
+
+      <p>E apareceram as outras, que eu também vou responder de frente:</p>
+
+      <div class="objecoes-secundarias">
+        <span class="objecao-sec">"Ser mais um curso qualquer."</span>
+        <span class="objecao-sec">"Ser mais um enchedor de linguiça e não ajudar em nada."</span>
+        <span class="objecao-sec">"Já tive outras experiências com calculadora não tão legais."</span>
+        <span class="objecao-sec">"Medo de não ser o que eu espero... golpe."</span>
+      </div>
+
+      <p><strong>Sobre ver o erro.</strong> Aquele ortodontista viu quase 30 anos de erro numa tarde só. Não foi bonito. Mas o que ele fez com aquilo foi reprecificar o que já fazia todo dia. No ano seguinte, a lucratividade subiu quase 30%, sem trocar de paciente e sem gastar mais em divulgação. Resultado do caso dele; o que muda em cada clínica depende dos próprios números. O erro que você não olha continua acontecendo do mesmo jeito. O que você olha, você pode corrigir na segunda.</p>
+
+      <p><strong>Sobre ser mais um.</strong> Eu não vou te entregar 50 aulas gravadas pra você assistir quando der. São cinco manhãs, com consultor entrando pra implementar junto e um grupo aberto por 30 dias depois. Se mesmo assim não for o que você esperava, são 7 dias de garantia e eu devolvo tudo.</p>
+
+      <p><strong>E sobre o que essa conta costuma descobrir.</strong> Quando o preço está errado, o imposto incide em cima de um faturamento que não sobra, você literalmente paga pra trabalhar. E é uma pena isso.</p>
+    </div>
+  </section>
+
+  <!-- ── BLOCO 10 · QUEM CONDUZ ───────────────────────────────────────── -->
+  <section class="b10 bloco">
+    <div class="inner">
+      <img
+        src="/p/lps-pv-turbo02/assets/img/leandro.webp"
+        alt="Dr. Leandro Stecca"
+        class="b10-foto"
+        width="400"
+        height="533"
+        loading="lazy"
+      >
+
+      <p class="b10-nome">Dr. Leandro Stecca</p>
+      <p class="b10-credencial">Dentista há quase 30 anos. Periodontista. Professor de graduação e de pós.</p>
+
+      <p>Eu não faço mais raspagem. Desenvolvi uma dor na mão que não resolve com fisioterapia, não resolve com laser, não resolve com nada. Hoje eu tenho limitação física pra exercer justamente a especialidade que eu mais amo, e tive que formar periodontista pra fazer o que eu fazia.</p>
+      <p>Eu já fui pro outro lado também. Uma das grandes franquias de implante de fora, quem trouxe pra cá fui eu. Com 4 meses eu saí, quando vi o balaio que eu estava entrando. Era muito lucrativa. Só que com estratégia de venda que pra mim não fazia sentido.</p>
+      <p>Então já adianto: aqui não tem sino tocando quando bate meta, nem papel picado voando dentro da clínica. Não é sobre isso.</p>
+
+      <p class="b10-assinatura">Faturamento é vaidade. Lucro é sanidade.</p>
+    </div>
+  </section>
+
+  <!-- ── BLOCO 11 · PRA QUEM É ────────────────────────────────────────── -->
+  <section class="b11 bloco">
+    <div class="inner">
+      <h2 >É pra você se</h2>
+      <ul class="lista-pra-quem">
+        <li>Você tem consultório ou clínica própria, mesmo que seja uma cadeira só. Mais da metade das fichas que chegam aqui é de gente com uma cadeira.</li>
+        <li>Você fatura e não consegue dizer com segurança quanto sobra.</li>
+        <li>Você já ouviu que o seu preço está errado e não teve coragem de mexer.</li>
+        <li>Você tem dentista parceiro e não sabe se aquela parceria dá lucro ou prejuízo.</li>
+      </ul>
+
+      <h2 >Não é pra você se</h2>
+      <ul class="lista-pra-quem">
+        <li>Você ainda não atende, ou atende só como parceiro na clínica de outra pessoa.</li>
+        <li>Você quer encher a agenda antes de saber quanto sobra de cada hora que já está ocupada.</li>
+        <li>Você quer uma semana motivacional. Aqui é planilha e número.</li>
+      </ul>
+
+      <hr class="b11-sep">
+
+      <p class="b11-label">Uma última coisa, e é a que eu mais repito.</p>
+      <p class="b11-fechamento">Se você não se colocar em primeiro lugar dentro da sua clínica, a sua clínica nunca vai ser o primeiro lugar pra você.</p>
+
+      <p class="b11-deadline">Cinco aulas de 27 a 31 de julho, sete da manhã, com retransmissão às 20h. Mais a aula bônus no domingo, 2 de agosto.<br>Começa segunda-feira. Quem entrar depois começa com a primeira aula já dada.</p>
+
+      <div class="cta-wrap">
+        <a href="https://leandrostecca.com.br/r/check/lps-tck-padrao" class="cta-btn">Quero fazer essa conta</a>
+      </div>
+      <p class="cta-sub">Ingresso de R$ 49,90 · Pix ou cartão.<br>Garantia incondicional · 7 dias · 100% do valor de volta, sem pergunta.</p>
+    </div>
+  </section>
+
+  <!-- ── BLOCO 12 · FAQ ────────────────────────────────────────────────── -->
+  <section class="b12 bloco">
+    <div class="inner">
+      <div class="faq-grid">
+        <div class="faq-item">
+          <p class="faq-q">Sou eu e uma cadeira só. Funciona?</p>
+          <p class="faq-a">Foi pra você que eu escrevi a semana. Quanto menor a estrutura, mais rápido um preço errado vira prejuízo no seu bolso, porque não tem implante de ninguém bancando o buraco.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">7 da manhã é cedo demais pra mim.</p>
+          <p class="faq-a">A mesma aula passa de novo às 20h.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Eu não entendo de planilha.</p>
+          <p class="faq-a">A calculadora vem junto e a gente preenche na aula. Você joga o número, ela faz a conta.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Já comprei coisa parecida e não usei.</p>
+          <p class="faq-a">Eu sei, e é por isso que essa semana tem consultor entrando junto com você e um grupo aberto por 30 dias depois que ela acaba.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Quando eu vejo resultado?</p>
+          <p class="faq-a">Não vou te dar prazo. O que eu sei te dizer é o que muda na segunda seguinte: você passa a saber quanto custa a sua hora e quanto sobra em cada procedimento. O que você faz com esse número é o que decide o resto.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Posso parcelar?</p>
+          <p class="faq-a">Até 10x no cartão.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll: enhancement. Se o JS falhar, todos os elementos permanecem visíveis. -->
+  
+</body>
+</html>

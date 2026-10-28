@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Laudo Técnico-Econômico — Calculadora OdontoLucro × CoDental</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --verde:#08130e; --verde2:#0d1b14; --verde3:#10241a; --linha:#1d3a2b;
+  --ouro:#d8a93a; --ouro2:#c79a33; --txt:#e8ede9; --mut:#9fb0a6; --mut2:#7d8f84;
+  --azul:#5fa8d3; --vermelho:#d9534f; --verdeok:#4caf7d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--verde);color:var(--txt);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{display:flex;min-height:100vh}
+
+/* ---- SIDEBAR ---- */
+nav.side{position:sticky;top:0;align-self:flex-start;width:290px;min-width:290px;height:100vh;
+  overflow-y:auto;background:var(--verde2);border-right:1px solid var(--linha);padding:26px 20px}
+nav.side .brand{font-family:Georgia,"Times New Roman",serif;font-size:15px;color:var(--ouro);
+  letter-spacing:.5px;margin-bottom:4px}
+nav.side .sub{font-size:11.5px;color:var(--mut2);text-transform:uppercase;letter-spacing:2px;margin-bottom:22px}
+nav.side a{display:block;color:var(--mut);text-decoration:none;font-size:13.5px;padding:7px 10px;
+  border-radius:7px;margin:2px 0;border-left:2px solid transparent}
+nav.side a .n{color:var(--ouro2);font-variant-numeric:tabular-nums;margin-right:9px;font-size:12px}
+nav.side a:hover{background:var(--verde3);color:var(--txt)}
+nav.side a.on{background:var(--verde3);color:var(--txt);border-left-color:var(--ouro)}
+nav.side .foot{margin-top:26px;padding-top:16px;border-top:1px solid var(--linha);font-size:11px;color:var(--mut2)}
+
+/* ---- CONTENT ---- */
+main{flex:1;min-width:0;max-width:940px;margin:0 auto;padding:54px 60px 120px}
+section{scroll-margin-top:24px;padding-bottom:46px;margin-bottom:12px;border-bottom:1px solid var(--linha)}
+section:last-child{border-bottom:none}
+h1{font-family:Georgia,serif;font-size:30px;line-height:1.25;margin:0 0 6px;font-weight:600}
+h2{font-family:Georgia,serif;font-size:23px;color:#fff;margin:6px 0 14px;font-weight:600;
+  display:flex;align-items:baseline;gap:14px}
+h2 .num{color:var(--ouro);font-size:15px;font-variant-numeric:tabular-nums;
+  border:1px solid var(--ouro);border-radius:6px;padding:2px 9px;flex:none}
+h3{font-size:16.5px;color:var(--ouro);margin:26px 0 8px;font-weight:600;letter-spacing:.2px}
+p{margin:11px 0}
+.lead{font-size:18px;color:#eef3ef}
+.mut{color:var(--mut)}
+small{font-size:12.5px;color:var(--mut2)}
+b,strong{color:#fff}
+em{color:var(--ouro);font-style:normal;font-weight:600}
+a.inl{color:var(--azul)}
+ul,ol{margin:11px 0;padding-left:22px}
+li{margin:6px 0}
+hr{border:none;border-top:1px solid var(--linha);margin:30px 0}
+
+.tag{display:inline-block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--ouro);border:1px solid var(--ouro);border-radius:20px;padding:3px 12px;margin-bottom:18px}
+.callout{background:var(--verde3);border:1px solid var(--linha);
+  border-radius:10px;padding:16px 20px;margin:20px 0}
+.callout .h{font-weight:700;color:var(--ouro);margin-bottom:4px;letter-spacing:.2px}
+.callout.warn .h{color:var(--vermelho)}
+.callout.ok .h{color:var(--verdeok)}
+.placeholder{background:repeating-linear-gradient(-45deg,#1a2c22,#1a2c22 10px,#162419 10px,#162419 20px);
+  border:1px dashed var(--ouro);border-radius:10px;padding:14px 18px;margin:18px 0;color:#f0e6cb}
+.placeholder .h{color:var(--ouro);font-weight:700;letter-spacing:.5px}
+
+/* cards / KPI */
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.kpi{background:var(--verde2);border:1px solid var(--linha);border-radius:12px;padding:16px 18px}
+.kpi .l{font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:1px}
+.kpi .v{font-family:Georgia,serif;font-size:27px;color:#fff;margin-top:6px;line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi .d{font-size:12.5px;margin-top:5px}
+.up{color:var(--vermelho)} .down{color:var(--vermelho)} .good{color:var(--verdeok)}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+th,td{padding:9px 11px;text-align:right;border-bottom:1px solid var(--linha);font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+thead th{color:var(--ouro);font-weight:600;border-bottom:1.5px solid var(--ouro2);font-size:12px;
+  text-transform:uppercase;letter-spacing:.5px}
+tbody tr:hover{background:var(--verde2)}
+tr.hl td{background:rgba(216,169,58,.08);color:#fff;font-weight:600}
+.cap{font-size:12px;color:var(--mut2);margin:6px 2px 0}
+
+/* charts */
+.chart{background:var(--verde2);border:1px solid var(--linha);border-radius:12px;padding:18px 18px 10px;margin:18px 0}
+.chart .t{font-size:14px;color:#fff;font-weight:600;margin-bottom:2px}
+.chart .s{font-size:12px;color:var(--mut);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.leg{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin-top:8px}
+.leg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+/* ladder */
+.ladder .bar{position:relative;background:var(--verde3);border:1px solid var(--linha);border-radius:8px;
+  padding:12px 16px;margin:10px 0;overflow:hidden}
+.ladder .fill{position:absolute;inset:0;background:linear-gradient(90deg,rgba(216,169,58,.22),rgba(216,169,58,.04));border-right:2px solid var(--ouro)}
+.ladder .row{position:relative;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.ladder .row .n{color:#fff;font-weight:600}
+.ladder .row .val{font-family:Georgia,serif;font-size:20px;color:var(--ouro);font-variant-numeric:tabular-nums}
+.ladder .row small{display:block;color:var(--mut)}
+
+.toc{columns:2;column-gap:34px}
+.toc a{color:var(--txt);text-decoration:none;display:block;padding:5px 0;border-bottom:1px dotted var(--linha)}
+.toc a .n{color:var(--ouro2);margin-right:8px}
+.toc a:hover{color:var(--ouro)}
+
+.printonly{display:none}
+.docmeta{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:12.5px;color:var(--mut);margin:14px 0 4px}
+.docmeta b{color:#fff}
+
+/* ============ PRINT / LAUDO ============ */
+@media print{
+  @page{size:A4;margin:20mm 18mm 22mm;
+    @bottom-center{content:"Laudo Técnico-Econômico — Confidencial — pág. " counter(page) " de " counter(pages);font-size:9pt;color:#666}
+    @top-right{content:"CONFIDENCIAL";font-size:8pt;color:#999;letter-spacing:2px}}
+  html,body{background:#fff;color:#111;font-family:Georgia,"Times New Roman",serif;font-size:10.7pt;line-height:1.5}
+  .wrap{display:block}
+  nav.side{display:none}
+  main{max-width:none;margin:0;padding:0}
+  .printonly{display:block}
+  .tag{color:#7a5c00;border-color:#7a5c00}
+  h1{font-size:22pt;color:#000}
+  h2{font-size:15pt;color:#000;page-break-after:avoid;border-bottom:1.5px solid #000;padding-bottom:4px}
+  h2 .num{color:#000;border-color:#000}
+  h3{color:#111;font-size:12pt;page-break-after:avoid}
+  section{border-bottom:none;padding-bottom:8px;margin-bottom:8px}
+  section.pb{page-break-before:always}
+  p,li{orphans:3;widows:3}
+  .mut,small,.cap,.leg{color:#444}
+  em{color:#000;text-decoration:underline}
+  b,strong,.kpi .v,.ladder .row .val,h2 span,td b{color:#000}
+  .callout,.chart,.kpi,.placeholder,.ladder .bar{border:1px solid #999;background:#f6f6f2 !important;
+    box-shadow:none;page-break-inside:avoid}
+  .callout .h{color:#000}
+  .placeholder{background:#f0efe8 !important}
+  .kpi .l,.kpi .d,.chart .s{color:#444}
+  .kpi .v{font-size:16pt}
+  table{font-size:9pt;page-break-inside:auto}
+  .tblwrap{overflow:visible !important}
+  td{white-space:nowrap}
+  thead th{color:#000;border-bottom:1.5px solid #000}
+  th,td{border-bottom:1px solid #bbb}
+  tr.hl td{background:#eee !important;color:#000}
+  .ladder .fill{background:#e7e0c8 !important;border-right:2px solid #000}
+  .ladder .row .val{color:#000}
+  .ladder .row .n{color:#000}
+  .ladder .row small{color:#555}
+  .chart .t{color:#000}
+  .placeholder{color:#111}
+  .placeholder .h{color:#7a5c00}
+  .up,.down{color:#000;font-weight:700}
+  svg text{fill:#222 !important}
+  .chart{padding:10px}
+  a.inl,.toc a{color:#000;text-decoration:none}
+  .no-print{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<nav class="side">
+  <div class="brand">OdontoLucro · Dr. Leandro Stecca</div>
+  <div class="sub">Laudo Técnico-Econômico</div>
+  <a href="#sumario" class="on"><span class="n">00</span>Sumário executivo</a>
+  <a href="#glossario"><span class="n">01</span>Glossário para o Juízo</a>
+  <a href="#produto"><span class="n">02</span>O produto e o modelo</a>
+  <a href="#linha"><span class="n">03</span>Linha do tempo</a>
+  <a href="#prova"><span class="n">04</span>A prova nos números</a>
+  <a href="#nexo"><span class="n">05</span>Nexo de causalidade</a>
+  <a href="#dano"><span class="n">06</span>Quantificação do dano</a>
+  <a href="#projecao"><span class="n">07</span>Dano continuado</a>
+  <a href="#backend"><span class="n">08</span>O elo de maior valor</a>
+  <a href="#metodo"><span class="n">09</span>Método, fontes e limites</a>
+  <a href="#conclusao"><span class="n">10</span>Conclusão e parâmetro</a>
+  <a href="#anexo"><span class="n">A</span>Anexo — dados mês a mês</a>
+  <div class="foot">
+    Documento de trabalho · rascunho v1<br>
+    Base: banco de dados operacional<br>
+    Emitido em 24/07/2026
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ CAPA / SUMÁRIO ============ -->
+<section id="sumario">
+  <div class="tag">Confidencial · Material pré-processual</div>
+  <h1>Impacto econômico da disponibilização gratuita, por concorrente, de uma cópia da Calculadora OdontoLucro</h1>
+  <p class="lead mut">Laudo técnico que quantifica, a partir dos registros de venda e de investimento em tráfego, o prejuízo causado à operação do Dr. Leandro Stecca (OdontoLucro) pela conduta da <b style="color:#fff">CoDental</b>, que passou a oferecer gratuitamente uma versão da calculadora — o produto porta-de-entrada do negócio — utilizando-a como isca para captar clientes e vender o próprio software de gestão.</p>
+
+  <div class="docmeta">
+    <span><b>Objeto:</b> Calculadora OdontoLucro (produto digital, R$ 67)</span>
+    <span><b>Período analisado:</b> 28/01/2026 a 24/07/2026</span>
+    <span><b>Registros:</b> 2.100 vendas aprovadas · 3.241 registros de anúncio</span>
+  </div>
+
+  <h3>O que os números provam, em uma frase</h3>
+  <p>Entre o fim de janeiro e a terceira semana de março de 2026 a calculadora crescia de forma regular e eficiente. <b>No final de março</b> — marco em que se identificou a cópia gratuita disponibilizada pela CoDental — a curva se quebra e, de abril em diante, <em>a mesma verba de anúncio passa a gerar cada vez menos vendas</em>: o custo para vender uma calculadora <b>subiu 77%</b> e a taxa de conversão da página <b>caiu 35%</b>, forçando a operação a recuar o investimento. O dano não está em "cada cliente valer menos", e sim em <b>terem sido perdidos os clientes</b>.</p>
+
+  <div class="grid g4" style="margin-top:22px">
+    <div class="kpi"><div class="l">Pico → vale (vendas/mês)</div><div class="v">446 → 75</div><div class="d down">queda de 83%</div></div>
+    <div class="kpi"><div class="l">Custo por venda (CPA)</div><div class="v">R$33 → R$59</div><div class="d up">alta de 77%</div></div>
+    <div class="kpi"><div class="l">Conversão da página</div><div class="v">9,6% → 6,2%</div><div class="d down">queda de 35%</div></div>
+    <div class="kpi"><div class="l">Valor por comprador</div><div class="v">~R$89</div><div class="d good">estável (dano é em volume)</div></div>
+  </div>
+
+  <h3>Parâmetro de prejuízo para o ajuizamento</h3>
+  <div class="ladder" id="ladder-top"></div>
+  <p><small>Cada patamar é demonstrado nas seções <a class="inl" href="#dano">06</a> (front + order bumps) e <a class="inl" href="#backend">08</a> (backend Programa Águia). Todos os valores partem de registros do banco de dados e de parâmetros informados pela operação; a metodologia e os limites estão na seção <a class="inl" href="#metodo">09</a>.</small></p>
+</section>
+
+<!-- ============ 01 GLOSSÁRIO ============ -->
+<section id="glossario" class="pb">
+  <h2><span class="num">01</span>Glossário para o Juízo</h2>
+  <p class="mut">Este laudo trata de venda de produtos digitais por meio de anúncios na internet. Os termos abaixo são explicados em linguagem simples porque sustentam todo o raciocínio econômico que se segue.</p>
+  <div class="grid g2">
+    <div class="callout"><div class="h">Produto digital / infoproduto</div>Um produto entregue pela internet (aqui, uma <b>calculadora com um curso</b> que ensina o dentista a precificar seus procedimentos). Vendido por R$ 67, com pagamento processado pela plataforma <b>Hotmart</b>.</div>
+    <div class="callout"><div class="h">Funil de vendas</div>A sequência que leva um estranho a virar cliente. Começa por uma <b>porta de entrada barata</b> (a calculadora), passa por <b>complementos</b> (os "order bumps") e culmina numa <b>mentoria cara</b> (o Programa Águia, R$ 8–12 mil). A calculadora é a <em>isca que traz o cliente para dentro do negócio</em>.</div>
+    <div class="callout"><div class="h">Tráfego pago (Meta Ads)</div>Para atrair visitantes, paga-se ao Facebook/Instagram (grupo <b>Meta</b>) para exibir anúncios. Cada visita e cada venda tem, portanto, um <b>custo</b>. Não há venda "de graça": ela é comprada com verba de anúncio.</div>
+    <div class="callout"><div class="h">CPA — Custo por Aquisição</div>Quanto se gasta em anúncio para conseguir <b>1 venda</b>. Se o produto custa R$ 67 e o CPA sobe para R$ 59, quase toda a receita vai embora em anúncio — a operação deixa de ser sustentável e é <b>forçada a recuar</b>.</div>
+    <div class="callout"><div class="h">Taxa de conversão</div>De cada 100 pessoas que <b>visitam a página</b>, quantas <b>compram</b>. Se cai — mesma página, mesma oferta, mesmo preço — é sinal de que algo <b>externo</b> mudou a decisão do consumidor.</div>
+    <div class="callout"><div class="h">Contrafactual</div>O cenário hipotético de "o que teria acontecido <b>se a conduta não existisse</b>". A diferença entre esse cenário e a realidade é a medida do <b>prejuízo</b> (lucros cessantes).</div>
+  </div>
+</section>
+
+<!-- ============ 02 PRODUTO ============ -->
+<section id="produto" class="pb">
+  <h2><span class="num">02</span>O produto e o modelo de negócio</h2>
+  <p>A <b>Calculadora OdontoLucro</b> é o produto de entrada (porta de entrada) da operação do Dr. Leandro Stecca. Custa <b>R$ 67</b>, dá acesso vitalício e ensina o dentista a descobrir o custo e o lucro reais de cada procedimento. No período analisado ela respondeu por <b>1.463 vendas</b> e <b>R$ 98.989,56</b> de faturamento bruto direto.</p>
+  <p>Seu papel, porém, é maior do que a própria receita: ela funciona como <em>gerador de clientes</em> para todo o restante do funil. Cada comprador da calculadora vale, em média, <b>R$ 89,15</b> quando se somam os produtos complementares que ele adquire — e isso <b>ainda não inclui</b> a mentoria de alto valor (Programa Águia, R$ 8–12 mil), que é alimentada por essa mesma base.</p>
+  <div class="grid g3">
+    <div class="kpi"><div class="l">Vendas da calculadora (período)</div><div class="v">1.463</div><div class="d mut">faturamento R$ 98.989,56</div></div>
+    <div class="kpi"><div class="l">Compradores únicos</div><div class="v">1.414</div><div class="d mut">base de clientes gerada</div></div>
+    <div class="kpi"><div class="l">Receita do ecossistema</div><div class="v">R$ 126.053</div><div class="d mut">R$ 89,15 por comprador</div></div>
+  </div>
+  <h3>Por que atacar a calculadora atinge o negócio inteiro</h3>
+  <p>Como a calculadora é a <b>isca</b> que traz o cliente, retirá-la do jogo — oferecendo-a de graça — não reduz apenas a venda de R$ 67. Reduz a <b>entrada de clientes</b> em todo o funil: menos compradores de complementos, menos leads para a mentoria de milhares de reais. É exatamente esse o efeito que a conduta da CoDental produz, ao usar a inteligência copiada da calculadora como isca para o <b>seu próprio</b> processo comercial.</p>
+</section>
+
+<!-- ============ 03 LINHA DO TEMPO ============ -->
+<section id="linha" class="pb">
+  <h2><span class="num">03</span>Linha do tempo do episódio</h2>
+  <div class="chart"><div class="t">Vendas da calculadora por semana</div>
+    <div class="s">Cada barra = uma semana. Crescimento regular até o pico de março; a partir de abril/maio, erosão contínua.</div>
+    <div id="chart-weekly"></div>
+  </div>
+  <ul>
+    <li><b>28/01 a 28/02 — Estabelecimento e crescimento.</b> A operação parte do zero e cresce de forma regular: de 23 vendas em janeiro (4 dias) para 273 em fevereiro.</li>
+    <li><b>1ª a 3ª semana de março — Pico.</b> Melhor período de toda a série: ~110–138 vendas/semana, custo por venda ainda saudável (R$ 33,79 no mês). O negócio estava em franca ascensão e com base consolidada.</li>
+    <li><b>Final de março — Entrada da cópia gratuita da CoDental (marco do dano).</b> É quando se identifica a disponibilização, pela concorrente, de uma versão gratuita da calculadora. Os dados <em>corroboram</em> a data: a curva diária tem sua <b>primeira quebra a partir de 23/03</b> (de ~18–21 vendas/dia para 3–10/dia), e a deterioração se aprofunda nas semanas seguintes — exatamente o padrão de uma cópia que entra no fim de março e se difunde (indexação, compartilhamento) ao longo de abril.</li>
+    <li class="placeholder" style="list-style:none;margin-left:-22px"><span class="h">▸ A JUNTAR — prova documental do marco.</span> A data de final de março precisa ser fixada nos autos com a <b>prova da conduta</b>: URL da página da CoDental, capturas de tela datadas, data de indexação no Google e/ou registro no Wayback Machine. É o item que converte o forte indício dos dados em <b>marco jurídico incontestável</b>.</li>
+    <li><b>Abril — Primeiro mês cheio sob a conduta: erosão sob disfarce de volume.</b> A operação <b>aumentou</b> o investimento (o maior do período) e trouxe muito tráfego, mas a <b>conversão da página caiu pela metade</b> (de ~9,5% para ~5,2%). O volume só não caiu porque se pagou muito mais caro por ele.</li>
+    <li><b>Maio a julho — Colapso de eficiência e recuo forçado.</b> Com o custo por venda dobrando, escalar virou prejuízo. O investimento na calculadora foi cortado (de R$ 16 mil para R$ 4 mil/mês) e as vendas despencaram para 75/mês.</li>
+  </ul>
+</section>
+
+<!-- ============ 04 A PROVA NOS NÚMEROS ============ -->
+<section id="prova" class="pb">
+  <h2><span class="num">04</span>A prova nos números</h2>
+  <p class="mut">Três gráficos contam a história inteira. Todos saem do mesmo banco de dados operacional e podem ser auditados linha a linha (anexo A).</p>
+
+  <div class="chart"><div class="t">1 · Vendas mensais da calculadora</div>
+    <div class="s">Cresce até o pico de março (446) e cai continuamente a partir de abril.</div>
+    <div id="chart-vendas"></div></div>
+
+  <div class="chart"><div class="t">2 · Custo por venda (CPA) — a operação ficou 77% mais cara</div>
+    <div class="s">Faixa saudável fev–mar ≈ R$ 33. A partir de abril o custo dispara e ultrapassa o próprio preço do produto (R$ 67 em jun/jul, contando taxas).</div>
+    <div id="chart-cpa"></div></div>
+
+  <div class="chart"><div class="t">3 · Conversão da página (visitantes que compram) — caiu 35%</div>
+    <div class="s">Mesma página, mesma oferta, mesmo preço. A queda da conversão a partir de abril indica mudança <b>externa</b> na decisão do consumidor.</div>
+    <div id="chart-conv"></div></div>
+
+  <div class="callout ok"><div class="h">A leitura combinada</div>Custo por venda <b>subindo</b> + conversão <b>caindo</b>, ao mesmo tempo, com o valor por cliente <b>estável</b>, é a assinatura econômica de um produto que <b>deixou de ser exclusivo</b>: o consumidor que veria o anúncio passa a encontrar a mesma solução de graça e não compra. Não é um problema do produto nem do preço — é uma mudança no <b>mercado</b>.</div>
+</section>
+
+<!-- ============ 05 NEXO ============ -->
+<section id="nexo" class="pb">
+  <h2><span class="num">05</span>Nexo de causalidade — e por que as explicações alternativas não se sustentam</h2>
+  <p>Um laudo honesto precisa enfrentar as <b>hipóteses concorrentes</b>. Abaixo, cada explicação alternativa é testada contra os próprios dados.</p>
+
+  <h3>Hipótese A — "As vendas caíram só porque vocês investiram menos"</h3>
+  <p><b>Refutada.</b> O corte de verba veio <em>depois</em> e <em>por causa</em> da perda de eficiência. A prova está em medir a <b>eficiência por real investido</b>, que independe do tamanho da verba: o custo por venda saltou de R$ 33 (fev/mar) para R$ 54–59 (mai/jul). Cada real passou a comprar menos venda — isso não é gastar menos, é o dinheiro <b>render menos</b>.</p>
+
+  <h3>Hipótese B — "É só desgaste natural de anúncio (saturação)"</h3>
+  <p><b>Insuficiente.</b> A saturação pressiona o custo aos poucos e de forma difusa. O que se observa é diferente: uma <b>queda concentrada na etapa página→checkout</b> (o visitante chega e <b>não inicia</b> a compra), estável e persistente por meses. Esse é o comportamento de quem descobre que pode obter o mesmo de graça — não de quem se cansou de ver o anúncio.</p>
+
+  <h3>Hipótese C — "Vocês pararam a calculadora para lançar outro produto"</h3>
+  <p><b>Inverte a causa e o efeito.</b> É verdade que parte da verba migrou para um novo produto em maio. Mas essa migração foi a <b>reação</b> ao fato de a calculadora ter deixado de ser lucrável — uma medida de <b>mitigação de dano</b>, não a origem dele. A calculadora já vinha perdendo eficiência em abril, antes de qualquer novo lançamento.</p>
+
+  <div class="callout"><div class="h">Conclusão do nexo</div>Os dados, isoladamente, provam o <b>dano</b> (colapso de eficiência e recuo forçado) e um forte <b>indício de causa</b> (a coincidência temporal e a assinatura de "produto virou gratuito"). A prova documental da conduta da CoDental — quando e onde a cópia foi ao ar — <b>fecha o elo causal</b>. Por isso ela é o item prioritário a ser juntado (seção 09).</div>
+</section>
+
+<!-- ============ 06 DANO ============ -->
+<section id="dano" class="pb">
+  <h2><span class="num">06</span>Quantificação do dano</h2>
+  <p>O prejuízo é medido como <b>vendas perdidas × valor de cada venda</b>. "Vendas perdidas" é a diferença entre o que a operação <b>gerou</b> e o que <b>teria gerado</b> se a eficiência histórica (pré-conduta) tivesse se mantido. Apresentam-se três leituras, da mais conservadora à mais completa, para dar ao Juízo um intervalo seguro.</p>
+
+  <h3>Cenário A — Piso conservador (à prova de contestação)</h3>
+  <p>Mantém-se <b>exatamente a verba que de fato foi gasta</b> de maio a julho (R$ 18.789) e pergunta-se: quantas vendas essa mesma verba teria gerado ao custo saudável de R$ 33,16? Resposta: ~567. Foram geradas 337. <b>Perda ≈ 230 vendas.</b></p>
+  <div class="grid g3">
+    <div class="kpi"><div class="l">Vendas perdidas (mai–jul)</div><div class="v">~230</div><div class="d mut">só a queda de eficiência</div></div>
+    <div class="kpi"><div class="l">Dano — só o produto (R$ 67)</div><div class="v">R$ 15.385</div></div>
+    <div class="kpi"><div class="l">Dano — ecossistema (R$ 89)</div><div class="v">R$ 20.471</div></div>
+  </div>
+  <p><small>Incluindo abril (mês de transição, já contaminado), a perda sobe para ~338 vendas e <b>R$ 30.171</b> no ecossistema.</small></p>
+
+  <h3>Cenário B — Retração forçada (cenário central)</h3>
+  <p>Sem a conduta, a operação <b>não teria recuado</b>: manteria o ritmo do último mês em escala plena (abril = 384 vendas/mês) ao longo do período de dano. Contrafactual ≈ 1.065 vendas; realidade 337. <b>Perda ≈ 728 vendas.</b></p>
+  <div class="grid g3">
+    <div class="kpi"><div class="l">Vendas perdidas (mai–jul)</div><div class="v">~728</div><div class="d mut">inclui o crescimento sufocado</div></div>
+    <div class="kpi"><div class="l">Dano — só o produto</div><div class="v">R$ 48.795</div></div>
+    <div class="kpi"><div class="l">Dano — ecossistema</div><div class="v">R$ 64.927</div></div>
+  </div>
+
+  <h3>A escada do dano (visão consolidada)</h3>
+  <div class="ladder" id="ladder-main"></div>
+  <p class="cap">Valores no critério "ecossistema" (R$ 89,15/comprador), referentes apenas a maio–julho de 2026, exceto onde indicado. Não incluem o backend Águia (seção 08) nem o dano futuro (seção 07).</p>
+</section>
+
+<!-- ============ 07 PROJEÇÃO ============ -->
+<section id="projecao" class="pb">
+  <h2><span class="num">07</span>Dano continuado — a conduta não parou</h2>
+  <p>Enquanto a cópia gratuita permanecer no ar, a perda se repete mês a mês. Projeta-se a <b>perda mensal média</b> de cada cenário para horizontes usuais, apenas para dimensionar a ordem de grandeza do dano que continua a correr.</p>
+  <table>
+    <thead><tr><th>Horizonte</th><th>Perda/mês</th><th>Piso conservador</th><th>Retração forçada</th></tr></thead>
+    <tbody>
+      <tr><td>Mensal (corrente)</td><td>—</td><td>R$ 7.379</td><td>R$ 23.406</td></tr>
+      <tr><td>6 meses</td><td></td><td>R$ 44.277</td><td>R$ 140.433</td></tr>
+      <tr class="hl"><td>12 meses</td><td></td><td>R$ 88.554</td><td>R$ 280.867</td></tr>
+      <tr><td>24 meses</td><td></td><td>R$ 177.107</td><td>R$ 561.734</td></tr>
+    </tbody>
+  </table>
+  <div class="callout ok"><div class="h">Somando o backend Programa Águia</div>A perda <b>mensal total</b> sobe para <b>R$ 11.594 (piso)</b> a <b>R$ 36.774 (retração)</b>, e o dano de <b>12 meses</b> a <b>R$ 139.128 (piso)</b> — <b>R$ 441.291 (retração)</b>.</div>
+  <p class="cap">Projeção linear da perda mensal observada em mai–jul/2026. Serve como parâmetro de dano continuado; o valor final depende do tempo em que a conduta permanecer ativa.</p>
+</section>
+
+<!-- ============ 08 BACKEND ============ -->
+<section id="backend" class="pb">
+  <h2><span class="num">08</span>O elo de maior valor — a mentoria Programa Águia</h2>
+  <p>Tudo acima mede apenas a receita <b>registrada na plataforma de pagamentos</b>. O produto mais valioso do negócio — a mentoria <b>Programa Águia</b> — é vendido por outro canal e é <b>alimentado pela base de clientes da calculadora</b>. Cada comprador da calculadora perdido é também um <b>potencial cliente de mentoria perdido</b>.</p>
+  <h3>Parâmetros reais da operação</h3>
+  <div class="grid g3">
+    <div class="kpi"><div class="l">Clientes Águia vindos da calculadora</div><div class="v">~12</div><div class="d mut">no período analisado</div></div>
+    <div class="kpi"><div class="l">Base de compradores da calculadora</div><div class="v">1.414</div><div class="d mut">universo de origem</div></div>
+    <div class="kpi"><div class="l">Taxa de ascensão à mentoria</div><div class="v">0,85%</div><div class="d mut">12 ÷ 1.414</div></div>
+  </div>
+  <p>Aplicando a fórmula <b>vendas perdidas × 0,85% × R$ 6.000</b> (ticket conservador, o piso informado), o dano no backend é:</p>
+  <div class="grid g2">
+    <div class="kpi"><div class="l">Cenário piso (230 vendas perdidas)</div><div class="v">R$ 11.691</div><div class="d mut">≈ 2 clientes de mentoria perdidos</div></div>
+    <div class="kpi"><div class="l">Cenário retração (728 vendas perdidas)</div><div class="v">R$ 37.085</div><div class="d mut">≈ 6 clientes de mentoria perdidos</div></div>
+  </div>
+  <div class="callout ok"><div class="h">Total consolidado (front + order bumps + backend Águia), mai–jul/2026</div>
+  <b>Piso conservador: R$ 32.162</b> · <b>Retração forçada: R$ 102.012</b>. Projetado por 12 meses de conduta continuada: <b>R$ 139 mil (piso) a R$ 441 mil (retração)</b>.</div>
+  <p><small>A taxa de 0,85% é <b>conservadora</b>: contabiliza apenas as ascensões já ocorridas — compradores recentes ainda não tiveram tempo de subir para a mentoria. Além disso, adotou-se o ticket-piso de R$ 6.000, embora o Programa Águia alcance valores superiores. Ambas as escolhas puxam o dano para baixo, a favor da parte contrária.</small></p>
+</section>
+
+<!-- ============ 09 MÉTODO ============ -->
+<section id="metodo" class="pb">
+  <h2><span class="num">09</span>Metodologia, fontes e limitações</h2>
+  <h3>Fontes dos dados</h3>
+  <ul>
+    <li><b>Vendas:</b> registros da plataforma Hotmart, integrados ao banco operacional (2.100 transações aprovadas). Todos os valores são de vendas efetivamente <b>aprovadas</b>.</li>
+    <li><b>Investimento e funil de tráfego:</b> API oficial da Meta (Facebook/Instagram), 3.241 registros diários de anúncio, isolados às campanhas da calculadora.</li>
+    <li><b>Cálculos:</b> executados por rotina determinística e auditável; nenhum número deste laudo foi estimado "de cabeça".</li>
+  </ul>
+  <h3>Limitações (declaradas para transparência)</h3>
+  <ul>
+    <li>A base operacional inicia em <b>28/01/2026</b>. A janela "antes da conduta" é de ~5 semanas; caso existam registros anteriores na Hotmart, sua juntada reforçará a tese de crescimento regular e base pré-existente.</li>
+    <li>O nexo causal é <b>fortemente indiciário</b> pelos dados; sua confirmação plena depende da <b>prova documental</b> da conduta da CoDental (data, URL, capturas), item prioritário a juntar.</li>
+    <li>A separação entre efeito da conduta e desgaste natural de anúncio é <b>conservadora por construção</b> (o cenário-piso atribui à conduta apenas a perda de eficiência sobre a verba realmente gasta).</li>
+    <li>Os parâmetros do <b>Programa Águia</b> (≈12 clientes ascendidos da base; ticket) foram <b>informados pela operação</b> e adotados de forma conservadora: taxa de ascensão pelo histórico já realizado (0,85%) e ticket no piso de R$ 6.000.</li>
+  </ul>
+  <div class="placeholder"><span class="h">▸ PENDÊNCIAS PARA A VERSÃO FINAL</span>
+  <ol style="margin:8px 0 0">
+    <li><b>Prova documental</b> da entrada da cópia gratuita da CoDental (URL, print datado, registro no Wayback/indexação Google) — a ser juntada pela parte. A data de <b>final de março</b> já está sustentada pelos indícios dos próprios dados (quebra da curva a partir de 23/03).</li>
+    <li>Histórico de vendas anterior a 28/01/2026, se existir — reforça a base pré-existente e o crescimento regular.</li>
+  </ol></div>
+</section>
+
+<!-- ============ 10 CONCLUSÃO ============ -->
+<section id="conclusao" class="pb">
+  <h2><span class="num">10</span>Conclusão e parâmetro para o ajuizamento</h2>
+  <p>Os registros demonstram que a Calculadora OdontoLucro vinha em <b>crescimento regular e eficiente</b> até março de 2026 e sofreu, a partir de abril/maio, uma <b>degradação econômica atípica</b> — custo por venda em alta de 77%, conversão em queda de 35% e recuo forçado de investimento — cuja assinatura corresponde à disponibilização gratuita do produto por terceiro, exatamente a conduta imputada à CoDental.</p>
+  <p>Como parâmetro para o pedido, sugere-se a seguinte gradação, do inatacável ao completo:</p>
+  <div class="ladder" id="ladder-final"></div>
+  <p>Recomenda-se pleitear na faixa da <b>retração forçada com backend (R$ 102.012)</b>, acrescida do <b>dano continuado</b> (R$ 139 mil a R$ 441 mil em 12 meses de conduta), adotando o <b>piso consolidado de R$ 32.162</b> como chão inquestionável da indenização. A análise econômica já está completa; resta juntar a prova documental da conduta (seção 09).</p>
+  <div class="callout warn no-print"><div class="h">Aviso</div>Rascunho de trabalho para validação interna e ajuste com a assessoria jurídica. Não é peça processual nem parecer contábil assinado; os valores devem ser revisados antes de qualquer uso judicial.</div>
+</section>
+
+<!-- ============ ANEXO ============ -->
+<section id="anexo">
+  <h2><span class="num">A</span>Anexo — dados mês a mês (auditável)</h2>
+  <div class="tblwrap" style="overflow-x:auto"><table id="tbl-anexo">
+    <thead><tr>
+      <th>Mês</th><th>Vendas</th><th>Faturamento</th><th>Investimento</th><th>CPA</th>
+      <th>Conv. página→compra</th><th>Valor/comprador</th>
+    </tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <p class="cap">* jan e jul são meses parciais (início da base em 28/01; corte em 24/07). Investimento e funil referem-se às campanhas da calculadora (funil COL). CPA = investimento ÷ vendas. Conversão = compras ÷ visitantes da página (dado Meta).</p>
+</section>
+
+</main>
+</div>
+
+<script>
+const D = {
+  rows: [
+    {label:"jan*",vendas:23,bruto:1808.98,inv:180.72,cpa:7.86,conv:12.40,vpb:217.50},
+    {label:"fev",vendas:273,bruto:18586.74,inv:8771.68,cpa:32.13,conv:9.76,vpb:94.47},
+    {label:"mar",vendas:446,bruto:30804.22,inv:15068.11,cpa:33.79,conv:9.44,vpb:90.56},
+    {label:"abr",vendas:384,bruto:25320.56,inv:16341.72,cpa:42.56,conv:5.19,vpb:80.11},
+    {label:"mai",vendas:172,bruto:11525.15,inv:9311.63,cpa:54.14,conv:5.83,vpb:83.23},
+    {label:"jun",vendas:90,bruto:5956.62,inv:5065.70,cpa:56.29,conv:6.55,vpb:93.87},
+    {label:"jul*",vendas:75,bruto:4987.29,inv:4411.79,cpa:58.82,conv:6.18,vpb:74.66}
+  ],
+  weekly:[["26/01",25],["02/02",59],["09/02",72],["16/02",79],["23/02",76],["02/03",138],["09/03",110],["16/03",126],["23/03",44],["30/03",39],["06/04",87],["13/04",141],["20/04",101],["27/04",49],["04/05",42],["11/05",38],["18/05",43],["25/05",29],["01/06",22],["08/06",14],["15/06",30],["22/06",15],["29/06",30],["06/07",24],["13/07",22],["20/07",8]]
+};
+const brl = n => "R$ "+n.toLocaleString("pt-BR",{minimumFractionDigits:0,maximumFractionDigits:0});
+const brl2 = n => "R$ "+n.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
+const OURO="#d8a93a", VERM="#d9534f", AZUL="#5fa8d3", VERDE="#4caf7d", MUT="#9fb0a6", GRID="#1d3a2b";
+const NS="http://www.w3.org/2000/svg";
+function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+function txt(x,y,s,o={}){const t=el("text",{x,y,fill:o.fill||MUT,"font-size":o.fs||11,"text-anchor":o.anchor||"middle","font-family":"system-ui"});if(o.weight)t.setAttribute("font-weight",o.weight);t.textContent=s;return t;}
+
+function barChart(id,data,val,fmt,color,opts={}){
+  const W=880,H=opts.h||230,pl=54,pr=16,pt=18,pb=34;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`});
+  const max=opts.max||Math.max(...data.map(val))*1.12;
+  const iw=W-pl-pr, ih=H-pt-pb, bw=iw/data.length;
+  for(let g=0;g<=4;g++){const y=pt+ih*g/4;const v=max*(1-g/4);
+    svg.appendChild(el("line",{x1:pl,y1:y,x2:W-pr,y2:y,stroke:GRID,"stroke-width":1}));
+    svg.appendChild(txt(pl-8,y+4,opts.yfmt?opts.yfmt(v):Math.round(v),{anchor:"end",fs:10}));}
+  data.forEach((d,i)=>{const v=val(d);const bh=Math.max(1,ih*v/max);const x=pl+bw*i+bw*0.18;const y=pt+ih-bh;
+    const c=(opts.colorFn?opts.colorFn(d,i):color);
+    svg.appendChild(el("rect",{x,y,width:bw*0.64,height:bh,fill:c,rx:3,opacity:opts.op||0.92}));
+    if(opts.showVal!==false)svg.appendChild(txt(x+bw*0.32,y-5,fmt(v),{fill:"#fff",fs:opts.vfs||10.5,weight:600}));
+    svg.appendChild(txt(x+bw*0.32,H-12,d.label||d[0],{fs:10.5}));});
+  if(opts.band){const y0=pt+ih*(1-opts.band[1]/max),y1=pt+ih*(1-opts.band[0]/max);
+    svg.appendChild(el("rect",{x:pl,y:y0,width:iw,height:y1-y0,fill:VERDE,opacity:0.10}));
+    svg.appendChild(txt(W-pr,y0-4,opts.bandLabel||"",{anchor:"end",fill:VERDE,fs:10,weight:600}));}
+  document.getElementById(id).appendChild(svg);
+}
+function lineChart(id,data,val,fmt,color,opts={}){
+  const W=880,H=opts.h||230,pl=54,pr=18,pt=20,pb=34;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`});
+  const vals=data.map(val);const max=opts.max||Math.max(...vals)*1.15;const min=opts.min||0;
+  const iw=W-pl-pr, ih=H-pt-pb;
+  const X=i=>pl+iw*i/(data.length-1);const Y=v=>pt+ih*(1-(v-min)/(max-min));
+  for(let g=0;g<=4;g++){const y=pt+ih*g/4;const v=max-(max-min)*g/4;
+    svg.appendChild(el("line",{x1:pl,y1:y,x2:W-pr,y2:y,stroke:GRID,"stroke-width":1}));
+    svg.appendChild(txt(pl-8,y+4,opts.yfmt?opts.yfmt(v):Math.round(v),{anchor:"end",fs:10}));}
+  if(opts.band){const y0=Y(opts.band[1]),y1=Y(opts.band[0]);
+    svg.appendChild(el("rect",{x:pl,y:y0,width:iw,height:y1-y0,fill:VERDE,opacity:0.12}));
+    svg.appendChild(txt(pl+6,y0-4,opts.bandLabel||"",{anchor:"start",fill:VERDE,fs:10,weight:600}));}
+  let dpath="";data.forEach((d,i)=>{dpath+=(i?"L":"M")+X(i)+" "+Y(val(d))+" ";});
+  svg.appendChild(el("path",{d:dpath,fill:"none",stroke:color,"stroke-width":2.5,"stroke-linejoin":"round"}));
+  data.forEach((d,i)=>{const c=opts.colorFn?opts.colorFn(d,i):color;
+    svg.appendChild(el("circle",{cx:X(i),cy:Y(val(d)),r:3.5,fill:c}));
+    if(opts.showVal!==false)svg.appendChild(txt(X(i),Y(val(d))-9,fmt(val(d)),{fill:"#fff",fs:10,weight:600}));
+    svg.appendChild(txt(X(i),H-12,d.label||d[0],{fs:10}));});
+  if(opts.markLine!=null){const y=Y(opts.markLine);
+    svg.appendChild(el("line",{x1:pl,y1:y,x2:W-pr,y2:y,stroke:VERM,"stroke-width":1,"stroke-dasharray":"5 4"}));
+    svg.appendChild(txt(W-pr,y-4,opts.markLabel||"",{anchor:"end",fill:VERM,fs:10,weight:600}));}
+  document.getElementById(id).appendChild(svg);
+}
+
+// weekly
+barChart("chart-weekly",D.weekly,d=>d[1],v=>v,OURO,{h:210,vfs:9,
+  colorFn:(d)=>{const wk=d[0];const late=["23/03","30/03","06/04","13/04","20/04","27/04"].includes(wk);
+    const post=["04/05","11/05","18/05","25/05","01/06","08/06","15/06","22/06","29/06","06/07","13/07","20/07"].includes(wk);
+    return post?VERM:(late?"#c98f2e":OURO);}});
+// vendas mensais
+barChart("chart-vendas",D.rows,d=>d.vendas,v=>v,OURO,{h:220,
+  colorFn:(d)=>["mai","jun","jul*"].includes(d.label)?VERM:(d.label==="abr"?"#c98f2e":OURO)});
+// cpa
+lineChart("chart-cpa",D.rows,d=>d.cpa,v=>brl(v),VERM,{h:220,min:0,max:70,yfmt:v=>brl(v),
+  band:[30,36],bandLabel:"faixa saudável (~R$33)",markLine:67,markLabel:"preço do produto: R$67"});
+// conversao
+lineChart("chart-conv",D.rows.slice(1),d=>d.conv,v=>v.toFixed(1)+"%",AZUL,{h:210,min:0,max:12,
+  yfmt:v=>v.toFixed(0)+"%",band:[9.4,9.8],bandLabel:"conversão saudável ~9,5%"});
+
+// ladders
+function ladder(id,items){
+  const host=document.getElementById(id);const max=Math.max(...items.map(i=>i.v));
+  items.forEach(it=>{
+    const bar=document.createElement("div");bar.className="bar";
+    const fill=document.createElement("div");fill.className="fill";fill.style.width=(100*it.v/max)+"%";
+    const row=document.createElement("div");row.className="row";
+    row.innerHTML=`<div class="n">${it.n}<small>${it.s||""}</small></div><div class="val">${it.label||brl(it.v)}</div>`;
+    bar.appendChild(fill);bar.appendChild(row);host.appendChild(bar);
+  });
+}
+const ladderFB=[
+  {n:"Piso conservador",s:"só a queda de eficiência · mai–jul",v:20471},
+  {n:"Piso + abril (transição)",s:"inclui o mês já contaminado",v:30171},
+  {n:"Retração forçada",s:"crescimento sufocado · mai–jul",v:64927},
+];
+const ladderCons=[
+  {n:"Piso conservador · mai–jul",s:"front+bumps R$20,5k + Águia R$11,7k",v:32162,label:"R$ 32.162"},
+  {n:"Retração forçada · mai–jul",s:"front+bumps R$64,9k + Águia R$37,1k",v:102012,label:"R$ 102.012"},
+  {n:"+ Dano continuado · 12 meses",s:"com Águia · enquanto a cópia estiver no ar",v:441291,label:"R$ 139 mil – 441 mil"},
+];
+ladder("ladder-top",ladderCons);
+ladder("ladder-main",ladderFB);
+ladder("ladder-final",ladderCons);
+
+// tabela anexo
+const tb=document.querySelector("#tbl-anexo tbody");
+D.rows.forEach(r=>{const tr=document.createElement("tr");if(r.label==="mar")tr.className="hl";
+  tr.innerHTML=`<td>${r.label}</td><td>${r.vendas}</td><td>${brl2(r.bruto)}</td><td>${brl2(r.inv)}</td>
+  <td>${brl2(r.cpa)}</td><td>${r.conv.toFixed(2)}%</td><td>${brl2(r.vpb)}</td>`;tb.appendChild(tr);});
+
+// scrollspy
+const links=[...document.querySelectorAll("nav.side a")];
+const secs=links.map(a=>document.querySelector(a.getAttribute("href")));
+addEventListener("scroll",()=>{let idx=0;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<160)idx=i;});
+  links.forEach(l=>l.classList.remove("on"));links[idx]&&links[idx].classList.add("on");},{passive:true});
+</script>
+</body>
+</html>

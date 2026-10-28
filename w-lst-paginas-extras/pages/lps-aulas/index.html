@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#16307e" />
+  <meta name="color-scheme" content="light" />
+  <title>Área de Aulas · Imersão Lucro Clínico</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/p/lps-aulas/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/p/lps-aulas/favicon-180.png" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://ts.leandrostecca.com.br/1bioyobqmd.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','9o7=DQlMJTs0QiQnNzoxOUEhTxJQQ0xeXwsHWQEUAwEdHQYXGRQBDBhBCgsAXwAd');</script>
+  <!-- End Google Tag Manager -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ======================================================================
+       ÁREA DE AULAS — IMERSÃO LUCRO CLÍNICO (Leandro Stecca)
+       Identidade: azul royal + dourado sobre branco/azul-claro, navy escuro.
+       Página única, autocontida.
+       ====================================================================== */
+    :root{
+      --blue:#2b53e6;
+      --blue-strong:#1e40cf;
+      --blue-deep:#16307e;
+      --blue-tint:#eef3fe;
+      --blue-tint-2:#e2ebff;
+      --gold:#e4b24d;
+      --gold-2:#f3d585;
+      --gold-grad:linear-gradient(135deg,#f4d585,#e0aa45);
+      --ink:#0f1a2e;
+      --ink-2:#25324a;
+      --muted:#5c6675;
+      --muted-2:#98a1b0;
+      --dark:#0b111c;
+      --dark-2:#111a29;
+      --bg:#ffffff;
+      --gray:#f5f7fb;
+      --line:#e6eaf1;
+      --line-2:#dbe1ec;
+      --green:#16a34a;
+      --green-soft:#dcfce7;
+      --live:#e23b52;
+      --radius:16px;
+      --shadow:0 18px 44px -22px rgba(21,40,90,.28);
+      --shadow-sm:0 6px 18px -10px rgba(21,40,90,.22);
+      --ff: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      --ff-display: "Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;overflow-x:hidden}
+    body{
+      font-family:var(--ff);
+      color:var(--ink);
+      background:var(--bg);
+      min-height:100vh;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+    /* ---------- BOTÕES ---------- */
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--ff);
+      font-weight:600;font-size:14.5px;border:none;cursor:pointer;
+      padding:12px 20px;border-radius:12px;white-space:nowrap;
+      min-height:44px;                       /* alvo de toque mínimo no mobile */
+      -webkit-tap-highlight-color:transparent;
+      transition:transform .15s ease, box-shadow .2s ease, filter .2s ease, background .2s ease;
+    }
+    .btn svg{width:16px;height:16px;flex:0 0 auto}
+    .btn-gold{background:var(--gold-grad);color:#3d2c05;box-shadow:var(--shadow-sm)}
+    .btn-gold:hover{transform:translateY(-1px);filter:brightness(1.04);box-shadow:0 12px 26px -14px rgba(190,140,30,.62)}
+    .btn-blue{background:var(--blue);color:#fff;box-shadow:var(--shadow-sm)}
+    .btn-blue:hover{transform:translateY(-1px);background:var(--blue-strong)}
+    .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line-2)}
+    .btn-ghost:hover{background:var(--gray)}
+    /* feedback de toque: no celular não existe hover, o :active é o único retorno */
+    .btn:active{transform:translateY(0) scale(.985);filter:brightness(.97)}
+
+    /* ---------- FOCO VISÍVEL (teclado) ---------- */
+    :focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:8px}
+    .btn-gold:focus-visible{outline-color:var(--blue-deep)}
+    .consult :focus-visible{outline-color:#fff}
+    .field input:focus-visible{outline:none}   /* já tem anel próprio no :focus */
+
+    /* ---------- HEADER ---------- */
+    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .hbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:11px;min-width:0}
+    .logo-badge{width:44px;height:44px;flex:0 0 auto;border-radius:12px;background:linear-gradient(145deg,#1f3f9e,#16307e);border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:6px;box-shadow:var(--shadow-sm)}
+    /* GOTCHA: <picture> é inline por padrão. Sem constranger o wrapper, o img
+       "100%" passa a ser 100% de um inline shrink-to-fit e o dente volta a
+       renderizar em tamanho natural, cortado pelo overflow do badge (caixa vazia). */
+    .logo-badge picture{display:block;width:100%;height:100%}
+    .logo-badge img{width:100%;height:100%;object-fit:contain;display:block}
+    .g-logo picture{display:block;max-width:100%}
+    .brand .t1{font-family:var(--ff-display);font-weight:700;letter-spacing:.2px;font-size:15px;line-height:1.05;color:var(--ink)}
+    .brand .t2{font-size:11px;color:var(--muted-2);letter-spacing:1px;text-transform:uppercase;font-weight:600}
+    .hbar .btn .lbl-short{display:none}
+    @media(max-width:560px){
+      .hbar .btn .lbl-long{display:none}
+      .hbar .btn .lbl-short{display:inline}
+      .hbar .btn{padding:11px 14px}
+    }
+
+    /* ---------- INTRO ---------- */
+    .intro{background:linear-gradient(180deg,var(--blue-tint),#fff);border-bottom:1px solid var(--line)}
+    .intro-in{padding:36px 0 30px}
+    .kicker{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--blue);background:#fff;border:1px solid var(--blue-tint-2);padding:6px 13px;border-radius:100px}
+    .kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--blue);animation:blink 2.4s ease-in-out infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+    h1{font-family:var(--ff-display);font-weight:700;font-size:clamp(27px,4.6vw,42px);line-height:1.1;margin:16px 0 10px;letter-spacing:-.4px;color:var(--ink)}
+    h1 .em{color:var(--blue)}
+    .sub{color:var(--muted);font-size:clamp(15px,2vw,17px);max-width:620px}
+    .liveinfo{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+    .chip{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2);background:#fff;border:1px solid var(--line);padding:8px 13px;border-radius:100px;box-shadow:var(--shadow-sm)}
+    .chip b{color:var(--ink);font-weight:600}
+    .chip svg{width:15px;height:15px;color:var(--blue)}
+
+    /* ---------- LAYOUT ---------- */
+    .layout{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;padding:28px 0 20px}
+    main,aside,.player-card,.consult,.consult-inner,.lessons,.lesson,.player-body{min-width:0;max-width:100%}
+    @media(min-width:980px){.layout{grid-template-columns:minmax(0,1fr) 372px;align-items:start}}
+
+    /* ---------- PLAYER ---------- */
+    /* scroll-margin: sem isso o scrollIntoView do mobile encaixa o card DEBAIXO do header sticky */
+    .player-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);scroll-margin-top:82px}
+    .video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#05070c}
+    .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .locked{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;gap:14px;background:radial-gradient(600px 320px at 50% 25%, rgba(43,83,230,.22), transparent 70%),linear-gradient(180deg,#0d1626,#070b13)}
+    .locked .lk-ico{width:56px;height:56px;border-radius:15px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;color:#7fa0ff}
+    .locked .lk-ico svg{width:26px;height:26px}
+    .locked h3{font-family:var(--ff-display);font-weight:600;margin:0;font-size:20px;color:#fff}
+    .locked p{margin:0;color:#aeb9cc;font-size:14px;max-width:430px}
+    .locked .when{color:#9db6ff;font-weight:600}
+
+    .player-body{padding:22px 22px 24px}
+    .plabel{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px}
+    .badge{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:5px 10px;border-radius:7px}
+    .badge-num{background:var(--blue);color:#fff}
+    .badge-date{background:var(--gray);color:var(--muted);border:1px solid var(--line)}
+    .badge-bonus{background:var(--green-soft);color:#15803d}
+    .badge-live{background:var(--live);color:#fff;display:inline-flex;align-items:center;gap:6px}
+    .badge-live .d{width:6px;height:6px;border-radius:50%;background:#fff;animation:blink 1.4s infinite}
+    .player-body h2{font-family:var(--ff-display);font-weight:600;margin:4px 0 6px;font-size:clamp(21px,3vw,29px);letter-spacing:-.3px;color:var(--ink)}
+    .player-body .lead{color:var(--blue);font-size:15.5px;font-weight:600;margin-bottom:16px}
+    .topics{display:grid;gap:11px;margin:0;padding:0;list-style:none}
+    .topics li{display:flex;gap:11px;align-items:flex-start;color:var(--ink-2);font-size:14.5px}
+    .topics li svg{width:19px;height:19px;color:var(--blue);flex:0 0 auto;margin-top:1px}
+    .lesson-cta{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+    .lesson-cta:empty{display:none}
+    .lesson-cta .btn{width:100%;justify-content:center;padding:14px 20px;font-size:15px}
+
+    /* ---------- CONSULTORES CTA ---------- */
+    .consult{margin-top:22px;border-radius:var(--radius);overflow:hidden;position:relative;background:linear-gradient(120deg,#2b53e6,#1b3fb0);box-shadow:var(--shadow)}
+    .consult::after{content:"";position:absolute;right:0;top:0;transform:translate(40px,-40px);width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.08);pointer-events:none}
+    .consult-inner{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:22px 24px}
+    .consult .btn-gold{font-size:15.5px;padding:13px 24px;flex:0 0 auto}
+    .consult-login{margin:0;max-width:560px;text-align:center;font-size:13px;line-height:1.7;color:#dbe4fb}
+    .consult-login .pw{color:#fff;font-weight:700;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);padding:2px 8px;border-radius:6px;white-space:nowrap}
+    .copy-btn{font-family:var(--ff);font-size:12px;font-weight:700;color:#16307e;background:#fff;border:none;border-radius:7px;padding:4px 11px;margin-left:6px;cursor:pointer;vertical-align:middle;min-height:0;transition:transform .12s ease,background .15s ease}
+    .copy-btn:hover{background:#eef3fe}
+    .copy-btn:active{transform:scale(.95)}
+    .copy-btn.done{background:var(--green);color:#fff}
+    .consult .txt{min-width:0;flex:1 1 240px}
+    .consult .txt .h{font-family:var(--ff-display);font-size:18px;font-weight:600;color:#fff;display:flex;align-items:flex-start;gap:9px;line-height:1.3}
+    .consult .txt .h svg{width:20px;height:20px;color:var(--gold-2);flex:0 0 auto;margin-top:3px}
+    .consult .txt p{margin:7px 0 0;color:#c9d5f5;font-size:14px;max-width:470px;line-height:1.5}
+    @media(max-width:560px){
+      .consult-inner{padding:20px;flex-direction:column;align-items:stretch;text-align:left;gap:16px}
+      /* eixo vira coluna: flex-basis passa a valer ALTURA — 240px aqui abria um vão morto */
+      .consult .txt{flex:0 0 auto}
+      .consult .btn-gold{width:100%}
+    }
+
+    /* ---------- LISTA DE AULAS ---------- */
+    aside{position:relative}
+    @media(min-width:980px){aside{position:sticky;top:82px}}
+    .list-head{display:flex;align-items:center;justify-content:space-between;margin:2px 2px 12px}
+    .list-head .lh{font-family:var(--ff-display);font-size:13px;font-weight:600;letter-spacing:.4px;color:var(--ink)}
+    .list-head .count{font-size:12px;color:var(--muted-2)}
+    .lessons{display:grid;gap:10px}
+    .lesson{
+      width:100%;text-align:left;cursor:pointer;font-family:var(--ff);color:inherit;
+      display:flex;gap:13px;align-items:center;
+      background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 13px;
+      transition:border-color .16s ease, box-shadow .16s ease, transform .12s ease, background .16s ease;
+    }
+    .lesson:hover{border-color:var(--line-2);box-shadow:var(--shadow-sm)}
+    .lesson.active{border-color:var(--blue);background:var(--blue-tint)}
+    .l-num{width:40px;height:40px;flex:0 0 auto;border-radius:11px;display:grid;place-items:center;font-family:var(--ff-display);font-weight:600;font-size:15px;background:var(--blue-tint);border:1px solid var(--blue-tint-2);color:var(--blue)}
+    .lesson.active .l-num{background:var(--blue);border-color:var(--blue);color:#fff}
+    .l-num svg{width:18px;height:18px}
+    .l-body{min-width:0;flex:1}
+    .l-top{display:flex;align-items:center;gap:8px;margin-bottom:2px}
+    .l-date{font-size:11px;color:var(--muted-2);font-weight:600;letter-spacing:.3px}
+    .l-tag{font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 6px;border-radius:5px}
+    .l-tag.bonus{background:var(--green-soft);color:#15803d}
+    .l-tag.live{background:var(--live);color:#fff}
+    .l-title{font-family:var(--ff-display);font-size:14px;font-weight:600;color:var(--ink);line-height:1.3;overflow-wrap:anywhere}
+    /* subtítulo em 2 linhas: cortar com "…" numa linha só escondia metade da promessa da aula */
+    .l-sub{font-size:12.5px;color:var(--muted);line-height:1.4;margin-top:2px;
+      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+    .l-state{flex:0 0 auto;color:var(--muted-2)}
+    .l-state svg{width:17px;height:17px;display:block}
+    .l-state.available{color:var(--blue)}
+    /* .72 em vez de .66: a .66 sobre o card bônus (texto claro sobre azul) apagava o subtítulo */
+    .lesson.locked-item{opacity:.72}
+    .lesson.locked-item:hover{opacity:.92}
+    /* aula bônus destacada (espelha a página de vendas) */
+    .lesson.bonus-card{background:linear-gradient(120deg,#2b53e6,#1b3fb0);border-color:transparent}
+    .lesson.bonus-card .l-num{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.25);color:#fff}
+    .lesson.bonus-card .l-title{color:#fff}
+    .lesson.bonus-card .l-sub{color:#e4ebff}
+    .lesson.bonus-card .l-date{color:#cfd9f7}
+    .lesson.bonus-card.active{outline:2px solid var(--gold);outline-offset:1px}
+    .lesson.bonus-card .l-state{color:#cdd9ff}
+    .lesson.bonus-card.locked-item{opacity:.88}   /* o gradiente já rebaixa; .72 aqui matava o contraste */
+
+    /* ---------- GATE DE CAPTURA ---------- */
+    body.gated{overflow:hidden}
+    .gate{position:fixed;inset:0;z-index:100;display:flex;overflow-y:auto;padding:20px;background:radial-gradient(700px 500px at 50% 0%, rgba(43,83,230,.14), transparent 62%),rgba(15,26,46,.55);backdrop-filter:blur(7px)}
+    .gate[hidden]{display:none}
+    .gate-card{width:100%;max-width:452px;margin:auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px 28px 24px;box-shadow:0 40px 80px -30px rgba(15,26,46,.6);animation:rise .4s ease both}
+    @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    .g-logo{display:flex;justify-content:center;margin-bottom:16px}
+    .g-logo img{width:206px;max-width:72%;height:auto;display:block}
+    .gate-card .g-top{display:flex;align-items:center;gap:11px;margin-bottom:18px}
+    .gate-card .g-mark{width:42px;height:42px;border-radius:12px;background:var(--blue-tint);border:1px solid var(--blue-tint-2);display:grid;place-items:center;color:var(--blue-deep);flex:0 0 auto}
+    .gate-card .g-mark svg{width:24px;height:24px}
+    .gate-card .g-top .gt1{font-family:var(--ff-display);font-weight:700;font-size:15px;color:var(--ink)}
+    .gate-card .g-top .gt2{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted-2);font-weight:600}
+    .gate-card h2{font-family:var(--ff-display);font-weight:600;font-size:23px;letter-spacing:-.3px;margin:2px 0 6px;line-height:1.15;color:var(--ink)}
+    .gate-card .g-sub{color:var(--muted);font-size:14px;margin:0 0 20px}
+    .field{margin-bottom:14px}
+    .field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+    .field input{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--line-2);border-radius:11px;padding:12px 14px;outline:none;transition:border-color .15s ease, box-shadow .15s ease}
+    .field input::placeholder{color:var(--muted-2)}
+    .field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(43,83,230,.14)}
+    .field input.err{border-color:var(--live)}
+    .field .msg{font-size:12px;color:var(--live);margin-top:5px;display:none}
+    .field.show-err .msg{display:block}
+    .gate .btn-gold{width:100%;justify-content:center;padding:14px;font-size:15px;margin-top:4px}
+    .gate .fineprint{font-size:11.5px;color:var(--muted-2);text-align:center;margin:14px 0 0;line-height:1.5}
+    .gate .fineprint svg{width:12px;height:12px;vertical-align:-2px;color:var(--green);margin-right:3px}
+
+    footer{background:var(--dark);color:#9aa6b8;padding:26px 0 34px;font-size:13px;text-align:center;margin-top:40px}
+    footer b{color:#d7deea}
+
+    @media(max-width:560px){.intro-in{padding:28px 0 24px}}
+
+    /* ---------- ACESSIBILIDADE DE MOVIMENTO ----------
+       Tudo que anima aqui é transform/opacity (não custa layout nem LCP).
+       Quem pediu menos movimento no SO recebe a página estática — nada some. */
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+      .kicker .dot,.badge-live .d{opacity:1!important}
+    }
+  </style>
+</head>
+<body class="gated">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://ts.leandrostecca.com.br/ns.html?id=GTM-MCZKSV8N" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- ========================= GATE DE CAPTURA ========================= -->
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+    <div class="gate-card">
+      <div class="g-logo">
+        <picture>
+          <source srcset="/p/lps-aulas/ilc-logo-560.webp" type="image/webp" />
+          <img src="/p/lps-aulas/ilc-logo.jpg" width="460" height="307" alt="Imersão Lucro Clínico"
+               fetchpriority="high" decoding="async" />
+        </picture>
+      </div>
+      <h2 id="gateTitle">Libere o acesso às suas aulas</h2>
+      <p class="g-sub">Confirme seus dados para entrar na área e assistir a todas as aulas da imersão.</p>
+      <form id="gateForm" novalidate>
+        <div class="field" id="f-nome">
+          <label for="in-nome">Nome completo</label>
+          <input id="in-nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome"
+                 enterkeyhint="next" aria-describedby="e-nome" />
+          <div class="msg" id="e-nome" role="alert">Informe seu nome.</div>
+        </div>
+        <div class="field" id="f-email">
+          <label for="in-email">E-mail</label>
+          <input id="in-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="voce@email.com"
+                 autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-describedby="e-email" />
+          <div class="msg" id="e-email" role="alert">Informe um e-mail válido.</div>
+        </div>
+        <div class="field" id="f-tel">
+          <label for="in-tel">WhatsApp / Telefone</label>
+          <input id="in-tel" name="telefone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(00) 00000-0000" maxlength="16"
+                 enterkeyhint="go" aria-describedby="e-tel" />
+          <div class="msg" id="e-tel" role="alert">Informe um telefone válido.</div>
+        </div>
+        <button class="btn btn-gold" type="submit">
+          Acessar as aulas
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <p class="fineprint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Seus dados estão seguros e são usados apenas para o seu acesso à imersão.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================= HEADER ========================= -->
+  <header>
+    <div class="wrap hbar">
+      <div class="brand">
+        <div class="logo-badge">
+          <picture>
+            <source srcset="/p/lps-aulas/ilc-dente-128.webp" type="image/webp" />
+            <img src="/p/lps-aulas/ilc-dente.png" width="128" height="128" alt="" decoding="async" />
+          </picture>
+        </div>
+        <div>
+          <div class="t1">Imersão Lucro Clínico</div>
+          <div class="t2">Área de Aulas</div>
+        </div>
+      </div>
+      <a class="btn btn-gold" id="hdrConsult" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span class="lbl-long">Central de Consultores</span>
+        <span class="lbl-short">Consultores</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========================= INTRO ========================= -->
+  <section class="intro">
+    <div class="wrap intro-in">
+      <span class="kicker"><span class="dot"></span> Imersão ao vivo · 27/07 a 02/08</span>
+      <h1>1 semana para reestruturar sua clínica e <span class="em">dobrar o LUCRO</span></h1>
+      <p class="sub">Imersão mão na massa: precificação, negociação, captação a custo zero e a estratégia que gera tickets médios de R$28.000. Assista às aulas abaixo.</p>
+      <div class="liveinfo">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Ao vivo às <b>07h</b></span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6-6.3 4.6L7.9 14l-6-4.6h7.6z"/></svg> 5 aulas + <b>1 aula bônus</b></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= LAYOUT ========================= -->
+  <div class="wrap layout">
+    <main>
+      <div class="player-card">
+        <div class="video-frame" id="videoFrame"></div>
+        <div class="player-body">
+          <div class="plabel" id="plabel"></div>
+          <h2 id="pTitle"></h2>
+          <div class="lead" id="pLead"></div>
+          <ul class="topics" id="pTopics"></ul>
+          <div class="lesson-cta" id="lessonCta"></div>
+        </div>
+      </div>
+
+      <div class="consult">
+        <div class="consult-inner">
+          <a class="btn btn-gold" id="ctaConsult" href="#" target="_blank" rel="noopener">
+            Acessar Central de Consultores
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <p class="consult-login">
+            Acesse com o seu e-mail de inscrição e a senha padrão
+            <span class="pw" id="pwText">alunolucrooculto123@</span>
+            <button type="button" class="copy-btn" id="copyPw" aria-label="Copiar senha">copiar</button>
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="list-head">
+        <span class="lh">Programação da imersão</span>
+        <span class="count" id="progCount"></span>
+      </div>
+      <div class="lessons" id="lessons"></div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="wrap">Imersão Lucro Clínico · com <b>Dr. Leandro Stecca</b> — Faturamento é vaidade, lucro é sanidade.</div>
+  </footer>
+
+  <script>
+  /* ======================================================================
+     CONFIGURAÇÃO — edite só esta parte
+     ======================================================================
+     • CONSULTORES_URL: link do botão "Central de Consultores".
+     • Em cada aula, preencha "youtubeId" quando o vídeo estiver no ar
+       (aceita o ID puro OU o link completo do YouTube).
+     • Os leads (nome/e-mail/telefone) vão para o Supabase (tabela abaixo).
+     ====================================================================== */
+
+  const CONSULTORES_URL = "https://centraldeconsultores.leandrostecca.com.br/login";
+
+  // Botão "Preencher ficha de Interesse do Programa Águia" — aparece da Aula 04 em diante.
+  // Deixe o placeholder até ter o link real; o botão avisa se estiver sem URL.
+  const FICHA_AGUIA_URL = "https://l.leandrostecca.com.br/lps-pda-ficha";
+
+  // E-mails que enxergam QUALQUER aula a qualquer momento (ignoram a trava de data).
+  // Todos os demais só acessam cada aula quando chegar a data dela.
+  const PREVIEW_EMAILS = ["apololancamentosdigitais@gmail.com"];
+
+  // Supabase (projeto LST) — a anon key é pública por design; a tabela é
+  // insert-only via RLS, ninguém consegue LER a lista com esta chave.
+  const SUPABASE_URL   = "https://wcozfnhzkqaqviscpcnn.supabase.co";
+  const SUPABASE_ANON  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indjb3pmbmh6a3FhcXZpc2NwY25uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4MzI3NzEsImV4cCI6MjA5MDQwODc3MX0.tnyPLpiGhFU9_qAV6KuGrp9dG8iAfmW9pSYH8xjX6WM";
+  const SUPABASE_TABLE = "lps_aulas_leads";
+
+  const LESSONS = [
+    { n:1, bonus:false, dateLabel:"SEG · 27/07 · ~1h", unlock:"2026-07-27T07:00:00-03:00",
+      title:"Clínica Lucrativa", lead:"O modelo para ganhar mais sem virar escravo do consultório",
+      topics:["Por que clínicas movimentadas continuam sem dinheiro no caixa","Os vazamentos que fazem seu faturamento desaparecer"],
+      youtubeId:"nxCpsL-p_fI" },
+    { n:2, bonus:false, dateLabel:"TER · 28/07 · ~1h", unlock:"2026-07-28T07:00:00-03:00",
+      title:"Preço do Lucro", lead:"Descubra quanto cobrar para parar de pagar para trabalhar",
+      topics:["Como descobrir o custo real dos seus procedimentos","Quais tratamentos podem estar destruindo sua margem"],
+      youtubeId:"nnmLq4ZyO9Q" },
+    { n:3, bonus:false, dateLabel:"QUA · 29/07 · ~1h", unlock:"2026-07-29T07:00:00-03:00",
+      title:"Dentista Troféu", lead:"Como fazer sua clínica trabalhar mesmo sem você no mocho",
+      topics:["Como remunerar dentistas parceiros sem destruir sua margem","O caminho para uma clínica menos dependente da sua produção"],
+      youtubeId:"AuQqLo37EiU" },
+    { n:4, bonus:false, dateLabel:"QUI · 30/07 · ~1h", unlock:"2026-07-30T07:00:00-03:00",
+      title:"Agenda Lucrativa", lead:"Como ocupar horários vagos sem gastar um centavo com tráfego pago",
+      topics:["Como ativar oportunidades escondidas na sua própria base","Estratégias para gerar consultas sem depender de anúncios"],
+      youtubeId:"MgHtBGFsWfg" },
+    { n:5, bonus:false, dateLabel:"SEX · 31/07 · ~1h", unlock:"2026-07-31T07:00:00-03:00",
+      title:"Dinheiro Esquecido", lead:"Como transformar orçamentos parados em faturamento",
+      topics:["Como identificar orçamentos com maior potencial de recuperação","O processo para retomar conversas e recuperar oportunidades"],
+      youtubeId:"jthr9LREws8" },
+    { n:6, bonus:true, dateLabel:"DOM · 02/08 · ~1h", unlock:"2026-08-02T07:00:00-03:00",
+      title:"Paciente de 28K", lead:"Como faturar mais sem precisar atender mais gente",
+      topics:["A lógica por trás da estratégia de ticket médio de 28K","Como sair do procedimento avulso para tratamentos de maior valor"],
+      youtubeId:"-BCc4GNSPrg" }
+  ];
+
+  /* ================= NÃO PRECISA EDITAR DAQUI PRA BAIXO ================= */
+
+  function ytId(v){
+    if(!v) return "";
+    v = v.trim();
+    if(!/[\/\.?=]/.test(v)) return v;
+    const m = v.match(/(?:youtu\.be\/|v=|\/embed\/|\/shorts\/)([A-Za-z0-9_-]{6,})/);
+    return m ? m[1] : v;
+  }
+
+  const now = new Date();
+  const todayISO = new Date(now.getTime() - now.getTimezoneOffset()*60000).toISOString().slice(0,10);
+
+  const lessonsEl = document.getElementById("lessons");
+  const frameEl  = document.getElementById("videoFrame");
+  let currentIdx = -1;
+  let isPreview = false; // e-mail liberado vê tudo (bypass da trava de data)
+  const norm = s => (s||"").trim().toLowerCase();
+  function setPreviewFromEmail(email){ isPreview = PREVIEW_EMAILS.map(norm).includes(norm(email)); }
+
+  ["hdrConsult","ctaConsult"].forEach(id=>{ document.getElementById(id).href = CONSULTORES_URL; });
+
+  // guarda: se a ficha do Águia ainda não tem URL, avisa em vez de abrir link quebrado
+  document.getElementById("lessonCta").addEventListener("click", (e)=>{
+    const a = e.target.closest("a[data-ficha]"); if(!a) return;
+    if(FICHA_AGUIA_URL.indexOf("COLE_AQUI") === 0){ e.preventDefault(); alert("Configure o link da ficha em FICHA_AGUIA_URL."); }
+  });
+
+  // botão "copiar" da senha padrão
+  (function(){
+    const btn = document.getElementById("copyPw"); if(!btn) return;
+    const PW = "alunolucrooculto123@";
+    btn.addEventListener("click", async ()=>{
+      try{ await navigator.clipboard.writeText(PW); }
+      catch(e){ const t=document.createElement("textarea"); t.value=PW; t.style.position="fixed"; t.style.opacity="0"; document.body.appendChild(t); t.focus(); t.select(); try{document.execCommand("copy");}catch(_){} t.remove(); }
+      const old = btn.textContent; btn.textContent = "copiado!"; btn.classList.add("done");
+      setTimeout(()=>{ btn.textContent = old; btn.classList.remove("done"); }, 1600);
+    });
+  })();
+
+  function status(l){
+    const hasVideo = !!ytId(l.youtubeId);
+    const dateReached = Date.now() >= new Date(l.unlock).getTime();
+    // Público: só acessa quando a data chegou E o vídeo está no ar.
+    // Preview (e-mail liberado): ignora a data (mas ainda precisa do vídeo existir).
+    if(hasVideo && (isPreview || dateReached)) return "available";
+    if(dateReached) return "soon";      // data chegou, gravação ainda não subiu
+    return "scheduled";                  // antes da data → travada
+  }
+  function isLiveToday(l){ return l.unlock.slice(0,10) === todayISO; }
+
+  function icon(name){
+    const p = {
+      play:'<polygon points="5 3 19 12 5 21 5 3"/>',
+      lock:'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+      check:'<path d="M20 6L9 17l-5-5"/>',
+      clock:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+      clip:'<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 12h6M9 16h6"/>',
+      arrow:'<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>'
+    };
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p[name]+'</svg>';
+  }
+
+  function renderList(){
+    lessonsEl.innerHTML = "";
+    LESSONS.forEach((l,i)=>{
+      const st = status(l);
+      const btn = document.createElement("button");
+      btn.className = "lesson" + (i===currentIdx?" active":"") + (st==="available"?"":" locked-item") + (l.bonus?" bonus-card":"");
+      btn.type = "button";
+      if(i===currentIdx) btn.setAttribute("aria-current","true");
+      // o cadeado/relógio é só ícone: sem isto o leitor de tela anuncia todas as aulas iguais
+      btn.setAttribute("aria-label",
+        "Aula "+l.n+": "+l.title+" — "+l.dateLabel+" — "+
+        (st==="available" ? "disponível" : st==="soon" ? "gravação a caminho" : "bloqueada até "+fmtDate(l.unlock)));
+
+      const numInner = st==="available" ? l.n : icon(st==="scheduled"?"lock":"clock");
+      const stateIco = st==="available" ? '<span class="l-state available">'+icon("play")+'</span>'
+                    : st==="soon"      ? '<span class="l-state">'+icon("clock")+'</span>'
+                    :                    '<span class="l-state">'+icon("lock")+'</span>';
+      const tag = isLiveToday(l) ? '<span class="l-tag live">Hoje</span>'
+                : l.bonus        ? '<span class="l-tag bonus">Bônus</span>' : '';
+
+      btn.innerHTML =
+        '<div class="l-num">'+numInner+'</div>'+
+        '<div class="l-body">'+
+          '<div class="l-top"><span class="l-date">'+l.dateLabel+'</span>'+tag+'</div>'+
+          '<div class="l-title">'+l.title+'</div>'+
+          '<div class="l-sub">'+l.lead+'</div>'+
+        '</div>'+ stateIco;
+
+      btn.addEventListener("click", ()=>select(i));
+      lessonsEl.appendChild(btn);
+    });
+    document.getElementById("progCount").textContent = LESSONS.length + " aulas";
+  }
+
+  function select(i){
+    currentIdx = i;
+    const l = LESSONS[i];
+    const st = status(l);
+    const id = ytId(l.youtubeId);
+
+    if(st==="available"){
+      frameEl.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&modestbranding=1" '+
+        'title="'+l.title+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '+
+        'allowfullscreen loading="lazy"></iframe>';
+    } else {
+      const msg = st==="soon"
+        ? 'A aula já aconteceu ao vivo. A gravação está sendo processada e será liberada aqui em instantes.'
+        : 'Esta aula acontece ao vivo às <span class="when">07h</span>, com retransmissão às <span class="when">20h</span>. A gravação fica disponível aqui logo depois.';
+      frameEl.innerHTML =
+        '<div class="locked">'+
+          '<div class="lk-ico">'+icon(st==="soon"?"clock":"lock")+'</div>'+
+          '<h3>'+(st==="soon"?"Gravação a caminho":"Disponível em "+fmtDate(l.unlock))+'</h3>'+
+          '<p>'+msg+'</p>'+
+        '</div>';
+    }
+
+    const labels = [];
+    labels.push('<span class="badge badge-num">Aula '+String(l.n).padStart(2,"0")+'</span>');
+    labels.push('<span class="badge badge-date">'+l.dateLabel+'</span>');
+    if(isLiveToday(l)) labels.push('<span class="badge badge-live"><span class="d"></span>Hoje ao vivo</span>');
+    if(l.bonus) labels.push('<span class="badge badge-bonus">Aula bônus</span>');
+    document.getElementById("plabel").innerHTML = labels.join("");
+
+    document.getElementById("pTitle").textContent = l.title;
+    document.getElementById("pLead").textContent = l.lead;
+    document.getElementById("pTopics").innerHTML = l.topics.map(t=>'<li>'+icon("check")+'<span>'+t+'</span></li>').join("");
+
+    // Ficha de Interesse do Programa Águia: da Aula 04 em diante.
+    const cta = document.getElementById("lessonCta");
+    cta.innerHTML = (l.n >= 4)
+      ? '<a class="btn btn-gold" href="'+FICHA_AGUIA_URL+'" target="_blank" rel="noopener" data-ficha>'+icon("clip")+
+        '<span>Preencher ficha de Interesse do Programa Águia</span>'+icon("arrow")+'</a>'
+      : '';
+
+    renderList();
+    if(window.innerWidth < 980){ document.querySelector(".player-card").scrollIntoView({behavior:"smooth", block:"start"}); }
+  }
+
+  function fmtDate(iso){
+    const p = iso.slice(0,10).split("-");
+    const meses=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+    const hh = iso.slice(11,13);
+    return parseInt(p[2],10)+" de "+meses[parseInt(p[1],10)-1]+(hh?" às "+parseInt(hh,10)+"h":"");
+  }
+
+  function initialIndex(){
+    let lastAvail = -1;
+    for(let i=0;i<LESSONS.length;i++){ if(status(LESSONS[i])==="available") lastAvail=i; }
+    if(lastAvail>=0) return lastAvail;
+    for(let i=0;i<LESSONS.length;i++){ if(status(LESSONS[i])!=="available") return i; }
+    return 0;
+  }
+
+  // visitante que já preencheu o gate: usa o e-mail salvo pra decidir o preview
+  try{ const saved = JSON.parse(localStorage.getItem("lc_lead_v1")||"null"); if(saved) setPreviewFromEmail(saved.email); }catch(e){}
+  renderList();
+  select(initialIndex());
+
+  /* ================= GATE DE CAPTURA (nome / e-mail / telefone → Supabase) ================= */
+  (function(){
+    const LS_KEY = "lc_lead_v1";
+    const gate = document.getElementById("gate");
+    const form = document.getElementById("gateForm");
+    const inNome = document.getElementById("in-nome");
+    const inEmail = document.getElementById("in-email");
+    const inTel = document.getElementById("in-tel");
+
+    if(localStorage.getItem(LS_KEY)){ openArea(); return; }
+
+    function openArea(){ gate.setAttribute("hidden",""); document.body.classList.remove("gated"); }
+
+    // Foco no 1º campo só onde há mouse: no celular o autofoco abre o teclado
+    // por cima do cartão antes da pessoa ler o que está sendo pedido.
+    try{
+      if(window.matchMedia && window.matchMedia("(pointer:fine)").matches) inNome.focus({preventScroll:true});
+    }catch(e){}
+
+    // Tab não pode escapar do gate — sem isso o teclado navega para a página travada atrás.
+    gate.addEventListener("keydown", (e)=>{
+      if(e.key !== "Tab") return;
+      const f = gate.querySelectorAll("input, button");
+      if(!f.length) return;
+      const first = f[0], last = f[f.length-1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    });
+
+    inTel.addEventListener("input", ()=>{
+      let d = inTel.value.replace(/\D/g,"").slice(0,11);
+      let out = d;
+      if(d.length > 2) out = "("+d.slice(0,2)+") "+d.slice(2);
+      if(d.length > 7) out = "("+d.slice(0,2)+") "+d.slice(2,7)+"-"+d.slice(7);
+      inTel.value = out;
+    });
+
+    function setErr(fieldId, on){
+      const f = document.getElementById(fieldId);
+      f.classList.toggle("show-err", on);
+      const i = f.querySelector("input");
+      i.classList.toggle("err", on);
+      // leitor de tela precisa saber que o campo está inválido, não só a borda vermelha
+      if(on) i.setAttribute("aria-invalid","true"); else i.removeAttribute("aria-invalid");
+    }
+    [["in-nome","f-nome"],["in-email","f-email"],["in-tel","f-tel"]].forEach(([i,f])=>{
+      document.getElementById(i).addEventListener("input",()=>setErr(f,false));
+    });
+    const validEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+
+    async function sendToSupabase(lead){
+      if(!SUPABASE_URL || !SUPABASE_ANON) return;
+      try{
+        await fetch(SUPABASE_URL + "/rest/v1/" + SUPABASE_TABLE, {
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json",
+            "apikey": SUPABASE_ANON,
+            "Authorization": "Bearer " + SUPABASE_ANON,
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify(lead),
+          keepalive:true
+        });
+      }catch(err){ /* silencioso: o acesso já foi liberado */ }
+    }
+
+    form.addEventListener("submit", (e)=>{
+      e.preventDefault();
+      const nome = inNome.value.trim();
+      const email = inEmail.value.trim();
+      const telDigits = inTel.value.replace(/\D/g,"");
+      let ok = true, firstBad = null;
+      if(nome.length < 2){ setErr("f-nome",true); ok=false; firstBad = firstBad || inNome; }
+      if(!validEmail(email)){ setErr("f-email",true); ok=false; firstBad = firstBad || inEmail; }
+      if(telDigits.length < 10){ setErr("f-tel",true); ok=false; firstBad = firstBad || inTel; }
+      // levar o cursor pro primeiro campo com erro: no mobile o campo errado
+      // costuma estar fora da área visível com o teclado aberto
+      if(!ok){ if(firstBad){ try{ firstBad.focus({preventScroll:false}); }catch(e){ firstBad.focus(); } } return; }
+
+      const lead = {
+        nome, email,
+        telefone: inTel.value.trim(),
+        telefone_e164: "+55"+telDigits,
+        origem: "area-aulas-lucro-clinico",
+        user_agent: navigator.userAgent,
+        referer: document.referrer || null,
+        capturado_em: new Date().toISOString()
+      };
+
+      localStorage.setItem(LS_KEY, JSON.stringify(lead)); // libera na hora
+      setPreviewFromEmail(email);   // e-mail liberado? re-renderiza com acesso total
+      openArea();
+      select(initialIndex());
+      sendToSupabase(lead);
+    });
+  })();
+  </script>
+</body>
+</html>

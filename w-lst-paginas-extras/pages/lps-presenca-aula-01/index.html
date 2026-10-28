@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#16307e" />
+  <meta name="color-scheme" content="light" />
+  <title>Ficha de Presença · Aula 01 — Imersão Lucro Clínico</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/p/lps-aulas/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/p/lps-aulas/favicon-180.png" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://ts.leandrostecca.com.br/1bioyobqmd.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','9o7=DQlMJTs0QiQnNzoxOUEhTxJQQ0xeXwsHWQEUAwEdHQYXGRQBDBhBCgsAXwAd');</script>
+  <!-- End Google Tag Manager -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --blue:#2b53e6;--blue-strong:#1e40cf;--blue-deep:#16307e;--blue-tint:#eef3fe;--blue-tint-2:#e2ebff;
+      --gold-grad:linear-gradient(135deg,#f4d585,#e0aa45);
+      --ink:#0f1a2e;--ink-2:#25324a;--muted:#5c6675;--muted-2:#98a1b0;
+      --line:#e6eaf1;--line-2:#dbe1ec;--green:#16a34a;--green-soft:#dcfce7;--live:#e23b52;
+      --white:#fff;--radius:18px;
+      --shadow:0 20px 50px -24px rgba(21,40,90,.30);--shadow-sm:0 6px 18px -10px rgba(21,40,90,.22);
+      --ff:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      --ff-display:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55;
+      background:radial-gradient(1100px 620px at 50% -10%, var(--blue-tint), #fff 60%);
+      min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;
+      padding:24px 18px;padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+    a{color:inherit}
+    .card{width:100%;max-width:468px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+      box-shadow:var(--shadow);padding:28px 26px 24px}
+    .brand{display:flex;align-items:center;gap:11px;margin-bottom:20px}
+    .logo-badge{width:46px;height:46px;flex:0 0 auto;border-radius:12px;
+      background:linear-gradient(145deg,#1f3f9e,#16307e);border:1px solid rgba(255,255,255,.14);
+      display:flex;align-items:center;justify-content:center;overflow:hidden;padding:7px;box-shadow:var(--shadow-sm)}
+    .logo-badge picture{display:block;width:100%;height:100%}
+    .logo-badge img{width:100%;height:100%;object-fit:contain;display:block}
+    .brand .t1{font-family:var(--ff-display);font-weight:700;font-size:15px;line-height:1.05;color:var(--ink)}
+    .brand .t2{font-size:11px;color:var(--muted-2);letter-spacing:1px;text-transform:uppercase;font-weight:600}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+    .badge{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:5px 10px;border-radius:7px}
+    .badge-num{background:var(--blue);color:#fff}
+    .badge-date{background:#f5f7fb;color:var(--muted);border:1px solid var(--line)}
+    .badge-bonus{background:var(--green-soft);color:#15803d}
+    h1{font-family:var(--ff-display);font-weight:600;font-size:clamp(22px,5.5vw,28px);letter-spacing:-.3px;
+      line-height:1.12;color:var(--ink);margin-bottom:8px}
+    .sub{color:var(--muted);font-size:14.5px;margin-bottom:22px}
+    form{display:flex;flex-direction:column;gap:14px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-size:12.5px;font-weight:600;color:var(--ink-2)}
+    .field input{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:#fff;
+      border:1.5px solid var(--line-2);border-radius:11px;padding:12px 14px;outline:none;
+      transition:border-color .15s ease,box-shadow .15s ease}
+    .field input::placeholder{color:var(--muted-2)}
+    .field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(43,83,230,.14)}
+    .field input.invalid{border-color:var(--live)}
+    .msg{color:var(--live);font-size:12.5px;min-height:1.1em}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;border:none;cursor:pointer;
+      font-family:var(--ff);font-weight:700;font-size:15px;padding:15px 20px;border-radius:12px;
+      background:var(--gold-grad);color:#3d2c05;box-shadow:var(--shadow-sm);
+      transition:transform .15s ease,filter .18s ease}
+    .btn{min-height:48px;-webkit-tap-highlight-color:transparent}
+    .btn:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.04)}
+    .btn:active:not(:disabled){transform:translateY(0) scale(.985);filter:brightness(.97)}
+    :focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:8px}
+    .field input:focus-visible{outline:none}   /* já tem anel próprio no :focus */
+    .fmsg{color:var(--live);font-size:12px;margin-top:2px;display:none}
+    .field.show-err .fmsg{display:block}
+    .btn:disabled{opacity:.6;cursor:default}
+    .btn .spinner{width:18px;height:18px;border:2px solid rgba(61,44,5,.3);border-top-color:#3d2c05;border-radius:50%;
+      animation:spin .7s linear infinite;display:none}
+    .btn.loading .spinner{display:inline-block}.btn.loading .label{opacity:.7}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .privacy{font-size:11.5px;color:var(--muted-2);text-align:center;margin-top:14px;line-height:1.5}
+    .privacy svg{width:12px;height:12px;vertical-align:-2px;margin-right:3px;color:var(--green)}
+    @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://ts.leandrostecca.com.br/ns.html?id=GTM-MCZKSV8N" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <main class="card">
+    <div class="brand">
+      <div class="logo-badge">
+        <picture>
+          <source srcset="/p/lps-aulas/ilc-dente-128.webp" type="image/webp" />
+          <img src="/p/lps-aulas/ilc-dente.png" width="128" height="128" alt="" decoding="async" />
+        </picture>
+      </div>
+      <div>
+        <div class="t1">Imersão Lucro Clínico</div>
+        <div class="t2">Ficha de Presença</div>
+      </div>
+    </div>
+
+    <div class="badges">
+      <span class="badge badge-num">Aula 01</span>
+      <span class="badge badge-date">SEG · 27/07</span>
+    </div>
+    <h1>Clínica Lucrativa</h1>
+    <p class="sub">Confirme sua presença para liberar o acesso a esta aula.</p>
+
+    <form id="form" novalidate>
+      <div class="field">
+        <label for="in-nome">Nome completo</label>
+        <input id="in-nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome"
+               enterkeyhint="next" aria-describedby="e-nome" />
+        <p class="fmsg" id="e-nome" role="alert">Informe seu nome.</p>
+      </div>
+      <div class="field">
+        <label for="in-email">E-mail</label>
+        <input id="in-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="voce@email.com"
+               autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-describedby="e-email" />
+        <p class="fmsg" id="e-email" role="alert">Informe um e-mail válido.</p>
+      </div>
+      <div class="field">
+        <label for="in-tel">WhatsApp / Telefone</label>
+        <input id="in-tel" name="telefone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(00) 00000-0000"
+               maxlength="16" enterkeyhint="go" aria-describedby="e-tel" />
+        <p class="fmsg" id="e-tel" role="alert">Informe um telefone com DDD.</p>
+      </div>
+      <p class="msg" id="err" aria-live="polite"></p>
+      <button class="btn" type="submit" id="submit">
+        <span class="spinner"></span><span class="label">Acessar a aula →</span>
+      </button>
+      <p class="privacy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Seus dados estão seguros e são usados apenas para o seu acesso.
+      </p>
+    </form>
+  </main>
+
+  <script>
+  /* ====== CONFIG ====== */
+  const AULA    = "aula-01";
+  const YT_URL  = "https://l.leandrostecca.com.br/lps-aula01-youtube";                                     // short link Short.io -> YouTube da aula
+  // ⚠️ VERIFICADO EM 25/07/2026: o short link acima responde 404 no Short.io.
+  // Enquanto YT_ATIVO for false, quem confirma presença vai para a área de aulas
+  // (mesmo domínio, e sem preencher formulário de novo) em vez de bater num 404.
+  // Depois de criar o link no painel do Short.io: troque para true. Só esta linha.
+  const YT_ATIVO = true;
+  const FALLBACK = "https://leandrostecca.com.br/p/lps-aulas/";
+
+  const SUPABASE_URL   = "https://wcozfnhzkqaqviscpcnn.supabase.co";
+  const SUPABASE_ANON  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indjb3pmbmh6a3FhcXZpc2NwY25uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4MzI3NzEsImV4cCI6MjA5MDQwODc3MX0.tnyPLpiGhFU9_qAV6KuGrp9dG8iAfmW9pSYH8xjX6WM";
+  const SUPABASE_TABLE = "fichas_presenca";
+  /* ==================== */
+
+  const $ = id => document.getElementById(id);
+  const inNome=$("in-nome"), inEmail=$("in-email"), inTel=$("in-tel"), err=$("err"), btn=$("submit");
+  function destino(){
+    if(!YT_ATIVO) return FALLBACK;
+    return (YT_URL && YT_URL.indexOf("COLE_") !== 0) ? YT_URL : FALLBACK;
+  }
+
+  inTel.addEventListener("input", ()=>{
+    let d = inTel.value.replace(/\D/g,"").slice(0,11), out = d;
+    if(d.length>2) out="("+d.slice(0,2)+") "+d.slice(2);
+    if(d.length>7) out="("+d.slice(0,2)+") "+d.slice(2,7)+"-"+d.slice(7);
+    inTel.value = out;
+  });
+  function marcar(el,on){
+    el.classList.toggle("invalid",on);
+    el.closest(".field").classList.toggle("show-err",on);
+    if(on) el.setAttribute("aria-invalid","true"); else el.removeAttribute("aria-invalid");
+  }
+  [inNome,inEmail,inTel].forEach(el=>el.addEventListener("input",()=>{marcar(el,false);err.textContent="";}));
+  const validEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+
+  function salvar(lead){
+    if(!SUPABASE_URL || !SUPABASE_ANON) return Promise.resolve();
+    return fetch(SUPABASE_URL+"/rest/v1/"+SUPABASE_TABLE,{
+      method:"POST",
+      headers:{"Content-Type":"application/json","apikey":SUPABASE_ANON,"Authorization":"Bearer "+SUPABASE_ANON,"Prefer":"return=minimal"},
+      body:JSON.stringify(lead), keepalive:true
+    });
+  }
+
+  let submitting=false;
+  $("form").addEventListener("submit",(e)=>{
+    e.preventDefault();
+    if(submitting) return;
+    const nome=inNome.value.trim(), email=inEmail.value.trim(), digits=inTel.value.replace(/\D/g,"");
+    let ok=true, primeiro=null;
+    if(nome.length<2){marcar(inNome,true);ok=false;primeiro=primeiro||inNome;}
+    if(!validEmail(email)){marcar(inEmail,true);ok=false;primeiro=primeiro||inEmail;}
+    if(digits.length<10){marcar(inTel,true);ok=false;primeiro=primeiro||inTel;}
+    // cada campo agora diz o próprio erro; o cursor vai pro primeiro deles
+    if(!ok){ if(primeiro) primeiro.focus(); return; }
+
+    submitting=true; btn.classList.add("loading"); btn.disabled=true;
+    window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:"presenca_submit",aula:AULA});
+
+    const lead={ aula:AULA, nome, email, telefone:inTel.value.trim(), telefone_e164:"+55"+digits,
+      origem:"ficha-presenca", user_agent:navigator.userAgent, referer:document.referrer||null,
+      capturado_em:new Date().toISOString() };
+
+    // mesma origem da área de aulas: gravar aqui evita pedir os mesmos
+    // dados duas vezes quando a pessoa chega lá.
+    try{ localStorage.setItem("lc_lead_v1", JSON.stringify(lead)); }catch(e){}
+
+    let done=false; const goOut=()=>{ if(done)return; done=true; window.location.href=destino(); };
+    const safety=setTimeout(goOut,2500);
+    salvar(lead).then(()=>{clearTimeout(safety);goOut();}).catch(()=>{clearTimeout(safety);goOut();});
+  });
+  </script>
+</body>
+</html>

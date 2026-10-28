@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workshop Lançamento Pago | 6ª Edição</title>
+<meta name="description" content="11 e 12 de Julho | Construa seu lançamento pago com 99% de assertividade baseando-se em dados e fundamentos consolidados. GARANTA O SEU INGRESSO!">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/p/testewslp/img/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Workshop Lançamento Pago | 6ª Edição">
+<meta property="og:description" content="11 e 12 de Julho | Construa seu lançamento pago com base em dados e fundamentos consolidados.">
+<meta property="og:image" content="https://leandrostecca.com.br/p/testewslp/img/og.webp">
+
+<link rel="preload" href="/p/testewslp/fonts/begum-medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/p/testewslp/img/hero-bg.webp" as="image" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+@font-face{font-family:'Begum';src:url(/p/testewslp/fonts/begum-regular.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Begum';src:url(/p/testewslp/fonts/begum-medium.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Begum';src:url(/p/testewslp/fonts/begum-semibold.woff2) format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Begum';src:url(/p/testewslp/fonts/begum-bold.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Public Sans';src:url(https://fonts.gstatic.com/s/publicsans/v21/ijwRs572Xtc6ZYQws9YVwnNGfJ4.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{
+  --red:#d61200; --red-hi:#f01700;
+  --ink:#0a0a0a; --paper:#fff;
+  --serif:'Begum',Georgia,'Times New Roman',serif;
+  --sans:'Public Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --pad:24px; --max:1200px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ink);color:#fff;font-family:var(--sans);font-size:16px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.03em;line-height:1.1}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.serif{font-family:var(--serif)}
+.dim{opacity:.55}
+
+/* ---- reveal (com rede de segurança: nunca esconde pra sempre) ---- */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important;transition:none}
+ .marquee__track,.ticker__track{animation:none!important}}
+
+/* ---- topbar ---- */
+.top{position:relative;z-index:20;padding:18px var(--pad) 0;text-align:center}
+.top__logo{font-family:var(--serif);font-size:15px;letter-spacing:.01em;display:inline-flex;align-items:center;gap:9px;justify-content:center}
+.top__logo svg{width:14px;height:14px;fill:#fff;opacity:.9}
+.datebar{margin:14px auto 0;max-width:1392px;border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:13px;display:flex;align-items:center;justify-content:center;gap:9px;font-size:14px;background:rgba(255,255,255,.02)}
+.datebar svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:1.6;opacity:.85}
+
+/* ---- hero ---- */
+.hero{position:relative;min-height:820px;display:flex;align-items:center;overflow:hidden;padding:80px 0 0}
+.hero__bg{position:absolute;inset:0;z-index:0}
+.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.72) 0%,rgba(10,10,10,.35) 45%,rgba(10,10,10,.9) 100%)}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{font-size:clamp(30px,4.2vw,44px);letter-spacing:-.035em;max-width:530px;margin-bottom:22px}
+.hero p{font-size:15px;line-height:1.55;color:rgba(255,255,255,.82);max-width:44ch;margin-bottom:34px}
+.hero__row{display:flex;align-items:center;gap:34px;flex-wrap:wrap}
+.hero__support{display:flex;align-items:center;gap:18px;font-size:12px;color:rgba(255,255,255,.5)}
+.hero__support b{font-family:var(--serif);font-size:15px;color:rgba(255,255,255,.85);font-weight:600;letter-spacing:-.01em}
+
+/* ---- cta ---- */
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--red);color:#fff;font-size:15px;font-weight:500;padding:17px 30px;border-radius:4px;border:0;cursor:pointer;transition:background .2s,transform .2s;font-family:var(--sans)}
+.cta:hover{background:var(--red-hi);transform:translateY(-2px)}
+.cta svg{width:17px;height:17px;fill:#fff}
+.cta--ghost{background:transparent;border:1px solid rgba(255,255,255,.25)}
+.cta--ghost:hover{background:rgba(255,255,255,.08)}
+
+/* ---- marquee de players ---- */
+.players{background:var(--ink);padding:0 0 70px;overflow:hidden}
+.marquee{display:flex;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee__track{display:flex;gap:14px;flex:0 0 auto;animation:slide 60s linear infinite;padding-right:14px}
+.players:hover .marquee__track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-100%)}}
+.player{flex:0 0 auto;width:230px;border-radius:10px;overflow:hidden;position:relative;background:#141414}
+.player img{width:100%;height:270px;object-fit:cover;filter:grayscale(.15)}
+.player__meta{position:absolute;left:0;right:0;bottom:0;padding:34px 16px 14px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.88))}
+.player__at{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:2px}
+.player__name{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:-.02em}
+.players__note{text-align:center;margin-top:44px;font-size:14px;color:rgba(255,255,255,.55);padding:0 var(--pad)}
+
+/* ---- seção clara ---- */
+.light{background:var(--paper);color:var(--ink);padding:110px 0}
+.light h2{font-size:clamp(26px,3.4vw,40px);letter-spacing:-.035em;line-height:1.18;max-width:22ch;margin-bottom:70px}
+.light h2 .dim{color:rgba(10,10,10,.42)}
+.why{display:grid;grid-template-columns:328px 1fr;gap:60px;align-items:start}
+.why__img{border-radius:6px;overflow:hidden;position:sticky;top:40px}
+.why__img img{width:100%;height:auto}
+.why__list{display:flex;flex-direction:column;gap:54px;padding-top:8px}
+.why__row{display:grid;grid-template-columns:180px 1fr;gap:44px;align-items:start}
+.why__t{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.02em;text-align:right}
+.why__ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.why__ul li{position:relative;padding-left:22px;font-size:15px;color:rgba(10,10,10,.72);line-height:1.45}
+.why__ul li::before{content:"";position:absolute;left:2px;top:7px;width:6px;height:6px;border-radius:50%;border:1.4px solid rgba(10,10,10,.5)}
+
+/* ---- fail ---- */
+.fail{background:var(--paper);color:var(--ink);padding:0 0 120px}
+.fail__grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.fail h2{font-size:clamp(26px,3.2vw,38px);letter-spacing:-.03em;line-height:1.2;position:sticky;top:120px}
+.fail__cards{display:flex;flex-direction:column;gap:14px}
+.fcard{border:1px solid rgba(10,10,10,.1);border-radius:10px;padding:20px 22px;display:flex;gap:14px;align-items:center;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.fcard svg{flex:0 0 auto;width:19px;height:19px;stroke:var(--red);fill:none;stroke-width:1.6}
+.fcard span{font-size:14.5px;color:rgba(10,10,10,.62);line-height:1.42}
+
+/* ---- ticker vermelho ---- */
+.ticker{background:var(--red);padding:16px 0;overflow:hidden;display:flex}
+.ticker__track{display:flex;gap:26px;flex:0 0 auto;animation:slide 34s linear infinite;padding-right:26px;white-space:nowrap}
+.ticker__track span{font-family:var(--serif);font-size:21px;font-weight:500;letter-spacing:-.02em;color:#fff}
+.ticker__track b{opacity:.45;font-weight:500}
+
+/* ---- resultados ---- */
+.res{background:var(--ink);padding:120px 0}
+.res__grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.res__title{position:sticky;top:140px;text-align:center}
+.res__kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#ff3a24;margin-bottom:14px;text-shadow:0 1px 12px rgba(0,0,0,.9)}
+.res__title h2{font-size:clamp(32px,4.6vw,54px);letter-spacing:-.04em}
+.res__cards{display:flex;flex-direction:column;gap:60px}
+.rcard{border-radius:12px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,.07)}
+.rcard__hd{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#0d0d0d}
+.rcard__hd h3{font-size:20px;font-weight:700;letter-spacing:-.02em}
+.rcard__hd svg{width:15px;height:15px;fill:var(--red)}
+.rcard__img{height:250px;overflow:hidden;background:#0b0b0b}
+.rcard__img img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.rcard__stats{padding:18px 20px;display:flex;flex-direction:column;gap:9px;background:linear-gradient(180deg,#0f0f0f,#141414)}
+.stat{display:grid;grid-template-columns:110px 1fr 54px;align-items:center;gap:12px;font-size:14px}
+.stat__bar{height:11px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+.stat__bar i{display:block;height:100%;background:var(--red);border-radius:2px;transform-origin:left;transform:scaleX(0);transition:transform 1s cubic-bezier(.16,1,.3,1) .15s}
+.rcard.on .stat__bar i{transform:scaleX(1)}
+.stat__v{text-align:right;font-weight:500}
+.rcard__note{padding:0 20px 20px;font-size:13.5px;color:rgba(255,255,255,.6);line-height:1.5}
+
+/* ---- aprender ---- */
+.learn{background:var(--ink);padding:0 0 130px;position:relative;overflow:hidden}
+.learn__bg{position:absolute;top:0;left:0;right:0;height:1000px;z-index:0;opacity:.45}
+.learn__bg img{width:100%;height:100%;object-fit:cover}
+.learn__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--ink) 0%,rgba(10,10,10,.55) 26%,rgba(10,10,10,.88) 72%,var(--ink) 100%)}
+.learn .wrap{position:relative;z-index:2}
+.learn__hd{text-align:center;margin-bottom:80px;padding-top:110px}
+.learn__hd h2{font-size:clamp(26px,3.4vw,40px);letter-spacing:-.035em;max-width:20ch;margin:0 auto}
+.learn__cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.lcard{border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:34px 30px 32px;background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.012));backdrop-filter:blur(9px);transition:border-color .3s,transform .3s}
+.lcard:hover{border-color:rgba(214,18,0,.5);transform:translateY(-3px)}
+.lcard__n{font-family:var(--serif);font-size:74px;font-weight:700;color:var(--red);letter-spacing:-.05em;line-height:.85;margin-bottom:30px}
+.lcard h3{font-size:22px;font-weight:600;letter-spacing:-.02em;margin-bottom:14px}
+.lcard p{font-size:14.5px;color:rgba(255,255,255,.62);line-height:1.55}
+.lcard:last-child:nth-child(odd){grid-column:1/-1}
+
+/* ---- claim (plateia) ---- */
+.claim{position:relative;min-height:760px;display:flex;align-items:center;overflow:hidden}
+.claim__bg{position:absolute;inset:0}
+.claim__bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.34)}
+.claim__bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(10,10,10,.55),rgba(10,10,10,.95))}
+.claim .wrap{position:relative;z-index:2}
+.claim h2{font-size:clamp(28px,4.4vw,58px);letter-spacing:-.045em;line-height:1.14;margin-bottom:44px}
+.claim h2 .dim{color:rgba(255,255,255,.42)}
+.claim__warn{display:flex;align-items:center;gap:11px;font-size:14.5px;color:rgba(255,255,255,.78)}
+.claim__warn svg{width:19px;height:19px;stroke:var(--red);fill:none;stroke-width:1.6;flex:0 0 auto}
+
+/* ---- cronograma ---- */
+.sched{background:var(--ink);padding:120px 0}
+.sched__grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.sched__pill{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(255,255,255,.16);border-radius:7px;padding:12px 16px;font-size:14px;margin-bottom:22px}
+.sched__pill svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:1.6;opacity:.85}
+.sched h2{font-size:clamp(34px,4.4vw,52px);letter-spacing:-.04em;margin-bottom:14px}
+.sched__sub{font-size:14.5px;color:rgba(255,255,255,.6)}
+.sched__card{position:relative;border-radius:12px;overflow:hidden;padding:40px;min-height:560px;display:flex;flex-direction:column;justify-content:center}
+.sched__card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.sched__inner{position:relative;z-index:2;border:1px solid rgba(255,255,255,.14);border-radius:9px;background:rgba(10,10,10,.34);backdrop-filter:blur(3px)}
+.sched__row{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;border-bottom:1px solid rgba(255,255,255,.1);font-size:15px}
+.sched__row:last-child{border-bottom:0}
+.sched__row .t{display:flex;align-items:center;gap:10px}
+.sched__row svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:1.5;opacity:.8}
+.sched__note{position:relative;z-index:2;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.5}
+
+/* ---- preço ---- */
+.price{background:var(--ink);padding:0 0 120px;text-align:center}
+.price h2{font-size:clamp(30px,4vw,46px);letter-spacing:-.04em;margin-bottom:10px}
+.price__sub{font-size:14px;color:rgba(255,255,255,.5);margin-bottom:44px}
+.price__list{max-width:660px;margin:0 auto;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;background:#0f0f0f}
+.price__row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.08);font-size:14.5px;text-align:left}
+.price__row span:first-child{color:rgba(255,255,255,.72)}
+.price__row span:last-child{color:rgba(255,255,255,.5);white-space:nowrap}
+.price__total{display:flex;align-items:baseline;justify-content:center;gap:8px;padding:30px 24px;background:rgba(214,18,0,.08)}
+.price__total b{font-family:var(--serif);font-size:52px;font-weight:700;letter-spacing:-.04em;color:var(--red);text-decoration:line-through;text-decoration-thickness:3px}
+.price__total i{font-family:var(--serif);font-style:normal;font-size:22px;color:var(--red);opacity:.7}
+
+/* ---- cta final ---- */
+.final{position:relative;padding:130px 0;overflow:hidden}
+.final__bg{position:absolute;inset:0}
+.final__bg img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.final__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.94) 40%,rgba(10,10,10,.6))}
+.final .wrap{position:relative;z-index:2}
+.final h2{font-size:clamp(26px,3.2vw,38px);letter-spacing:-.035em;line-height:1.22;max-width:24ch;margin-bottom:34px}
+.final__closed{font-family:var(--serif);font-size:26px;font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.45);margin-bottom:18px}
+
+/* ---- faq ---- */
+.faq{background:var(--ink);padding:120px 0}
+.faq__grid{display:grid;grid-template-columns:320px 1fr;gap:70px;align-items:start}
+.faq__side{position:sticky;top:120px}
+.faq__side h2{font-size:clamp(38px,4.8vw,58px);letter-spacing:-.04em;margin-bottom:16px}
+.faq__side p{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:22px;line-height:1.5}
+.faq__list{display:flex;flex-direction:column;gap:12px}
+details{border:1px solid rgba(255,255,255,.1);border-radius:10px;background:#0f0f0f;overflow:hidden}
+details[open]{border-color:rgba(214,18,0,.4);background:#121212}
+summary{list-style:none;cursor:pointer;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;font-family:var(--serif);font-size:18px;font-weight:600;letter-spacing:-.02em;transition:color .2s}
+summary::-webkit-details-marker{display:none}
+summary:hover{color:#fff}
+summary svg{flex:0 0 auto;width:17px;height:17px;stroke:var(--red);fill:none;stroke-width:2;transition:transform .3s}
+details[open] summary svg{transform:rotate(45deg)}
+.faq__a{padding:0 24px 24px;font-size:14.5px;color:rgba(255,255,255,.62);line-height:1.6}
+.faq__a p+p{margin-top:12px}
+
+/* ---- footer ---- */
+.foot{position:relative;padding:110px 0 60px;overflow:hidden;border-top:1px solid rgba(255,255,255,.07)}
+.foot__bg{position:absolute;inset:0;opacity:.28}
+.foot__bg img{width:100%;height:100%;object-fit:cover}
+.foot__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--ink),rgba(10,10,10,.75))}
+.foot .wrap{position:relative;z-index:2}
+.foot__cta{text-align:center;max-width:780px;margin:0 auto 90px}
+.foot__cta p{font-size:15px;color:rgba(255,255,255,.68);line-height:1.6;margin-bottom:30px}
+.foot__bar{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:34px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;color:rgba(255,255,255,.42)}
+.foot__support{display:flex;align-items:center;gap:16px}
+.foot__support b{font-family:var(--serif);font-size:14px;color:rgba(255,255,255,.7);font-weight:600}
+
+/* ---- responsivo ---- */
+@media(max-width:900px){
+  :root{--pad:20px}
+  .hero{min-height:640px;padding-top:50px}
+  .hero h1{font-size:clamp(26px,7vw,34px)}
+  .hero__row{gap:20px}
+  .why,.fail__grid,.res__grid,.sched__grid,.faq__grid,.learn__cards{grid-template-columns:1fr;gap:40px}
+  .why__img,.fail h2,.res__title,.faq__side{position:static}
+  .why__row{grid-template-columns:1fr;gap:14px}
+  .why__t{text-align:left}
+  .light,.res,.sched,.faq,.learn__hd{padding-top:80px}
+  .light,.res,.sched,.faq{padding-bottom:80px}
+  .fail,.learn,.price{padding-bottom:80px}
+  .lcard:last-child:nth-child(odd){grid-column:auto}
+  .sched__card{padding:20px;min-height:auto}
+  .claim{min-height:520px}
+  .final__bg::after{background:rgba(10,10,10,.86)}
+  .stat{grid-template-columns:88px 1fr 44px;font-size:13px}
+  .price__total b{font-size:38px}
+  .datebar{margin-top:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://ts.leandrostecca.com.br/1bioyobqmd.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','9o7=DQlMJTs0QiQnNzoxOUEhTxJQQ0xeXwsHWQEUAwEdHQYXGRQBDBhBCgsAXwAd');</script>
+<noscript><iframe src="https://ts.leandrostecca.com.br/ns.html?id=GTM-MCZKSV8N" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header class="top">
+  <div class="top__logo">
+    <svg viewBox="0 0 24 24"><path d="M12 1l1.8 6.6L19.8 4.2l-3.4 6 6.6 1.8-6.6 1.8 3.4 6-6-3.4L12 23l-1.8-6.6-6 3.4 3.4-6L1 12l6.6-1.8-3.4-6 6 3.4z"/></svg>
+    Workshop Lançamento Pago &nbsp;|&nbsp; 6ª Edição
+  </div>
+  <div class="datebar">
+    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+    11 e 12 de Julho | 09h30 às 17h30
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__bg"><img src="/p/testewslp/img/hero-bg.webp" alt="" fetchpriority="high" decoding="async"></div>
+  <div class="wrap">
+    <h1 class="rv">Construa e otimize seu lançamento pago com base em dados e fundamentos consolidados.</h1>
+    <p class="rv">Vou dividir os padrões que identifiquei após executar 24 lançamentos pagos e faturar mais de R$55 milhões, e os aprendizados mentorando mais de 300 negócios que rodam essa estratégia.</p>
+    <div class="hero__row rv">
+      <a href="#lista" class="cta" data-cta="hero">Entre para a Lista de Espera
+        <svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 010 6v3a2 2 0 002 2h16a2 2 0 002-2v-3a3 3 0 010-6V6a2 2 0 00-2-2H4a2 2 0 00-2 2v3z" opacity=".9"/></svg>
+      </a>
+      <div class="hero__support">Apoio: <b>Send Flow</b> <b>DISPARO<i>VIP</i></b></div>
+    </div>
+  </div>
+</section>
+
+<section class="players">
+  <div class="marquee">
+    <div class="marquee__track" id="mq1"></div>
+    <div class="marquee__track" id="mq2" aria-hidden="true"></div>
+  </div>
+  <p class="players__note rv">Todos esses players, utilizam ou utilizaram as nossas estratégias em seus projetos.</p>
+</section>
+
+<section class="light">
+  <div class="wrap">
+    <h2 class="rv">O mercado inteiro está migrando para lançamentos pagos, inclusive quem ainda <span class="dim">lucra com gratuito. Por quê?</span></h2>
+    <div class="why">
+      <div class="why__img rv"><img src="/p/testewslp/img/men-red.webp" alt="Willian Baldan no palco" loading="lazy"></div>
+      <div class="why__list">
+        <div class="why__row rv"><div class="why__t">Captação</div>
+          <ul class="why__ul">
+            <li>Custo de aquisição previsível e controlado</li>
+            <li>Lead se tornando cliente todos os dias</li>
+            <li>Ingresso e order bump financiando o tráfego</li>
+            <li>Mais receita com menos base</li>
+          </ul></div>
+        <div class="why__row rv"><div class="why__t">Evento</div>
+          <ul class="why__ul">
+            <li>Comparecimento previsível (50% a 70%)</li>
+            <li>Retenção altíssima (90%)</li>
+            <li>Tempo de tela que aquece e nivela toda a base</li>
+            <li>Gerar valor é mais importante que fazer pitches perfeitos</li>
+          </ul></div>
+        <div class="why__row rv"><div class="why__t">Carrinho</div>
+          <ul class="why__ul">
+            <li>Conversão previsível (5% a 9% da base na abertura)</li>
+            <li>Carrinho mais longo (10 a 17 dias para dobrar a conversão da base)</li>
+            <li>Atividade e estratégia comercial para tirar vendas com facilidade</li>
+          </ul></div>
+        <div class="why__row rv"><div class="why__t">Conclusão</div>
+          <ul class="why__ul">
+            <li>Mais receita, margem e previsibilidade</li>
+            <li>Menos base e complexidade</li>
+          </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker__track" id="tk1"></div>
+  <div class="ticker__track" id="tk2" aria-hidden="true"></div>
+</div>
+
+<section class="fail">
+  <div class="light" style="padding-bottom:0;padding-top:110px">
+  <div class="wrap">
+    <div class="fail__grid">
+      <h2 class="rv">Mas você pode falhar miseravelmente em seu evento pago se:</h2>
+      <div class="fail__cards" id="fails"></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="res">
+  <div class="wrap">
+    <div class="res__grid">
+      <div class="res__title rv">
+        <div class="res__kicker">resultados</div>
+        <h2>Nossos resultados</h2>
+      </div>
+      <div class="res__cards" id="rescards"></div>
+    </div>
+  </div>
+</section>
+
+<section class="learn">
+  <div class="learn__bg"><img src="/p/testewslp/img/learn-bg.webp" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="learn__hd rv">
+      <div class="res__kicker">O que você vai aprender</div>
+      <h2>O que você vai aprender construir no workshop?</h2>
+    </div>
+    <div class="learn__cards" id="learn"></div>
+  </div>
+</section>
+
+<section class="claim">
+  <div class="claim__bg"><img src="/p/testewslp/img/plateia.webp" alt="Plateia do workshop" loading="lazy"></div>
+  <div class="wrap">
+    <h2 class="rv">Esse será o evento mais prático, técnico <span class="dim">e data-driven que você já participou.</span></h2>
+    <div class="claim__warn rv">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+      Não recomendado para quem possui zero experiência no digital.
+    </div>
+  </div>
+</section>
+
+<section class="sched">
+  <div class="wrap">
+    <div class="sched__grid">
+      <div class="rv">
+        <div class="sched__pill">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+          11 e 12 de Julho | 09h30 às 17h30
+        </div>
+        <h2>Cronograma</h2>
+        <p class="sched__sub">Ambos os dias seguirão esse cronograma:</p>
+      </div>
+      <div class="sched__card rv">
+        <img src="/p/testewslp/img/cronograma-bg.jpg" alt="" loading="lazy">
+        <div class="sched__inner" id="sched"></div>
+        <p class="sched__note">*Considere encerrar mais tarde, caso os participantes peçam para nos aprofundarmos em algum ponto. Porém, o conteúdo combinado será entregue dentro do horário programado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="price">
+  <div class="wrap">
+    <h2 class="rv">Quanto custa?</h2>
+    <p class="price__sub rv">Fora do Workshop:</p>
+    <div class="price__list rv">
+      <div class="price__row"><span>Curso de tráfego para lançamento pago</span><span>R$ 2.997</span></div>
+      <div class="price__row"><span>Curso de copy para lançamento pago</span><span>R$ 2.997</span></div>
+      <div class="price__row"><span>Mentoria de lançamento pago</span><span>R$ 20.000</span></div>
+      <div class="price__row"><span>Ia's para te ensinar a fazer 💩</span><span>R$ 670</span></div>
+      <div class="price__total"><i>R$</i><b>26.664</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="final__bg"><img src="/p/testewslp/img/cta-foto.jpg" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <h2 class="rv">Vamos juntos, construir um lançamento pago baseado no que deu certo em mais de 350 negócios e mais de mil lançamentos pagos.</h2>
+    <div class="rv">
+      <div class="final__closed">Vendas encerradas</div>
+      <a href="#lista" class="cta" data-cta="final">Lista de Espera
+        <svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 010 6v3a2 2 0 002 2h16a2 2 0 002-2v-3a3 3 0 010-6V6a2 2 0 00-2-2H4a2 2 0 00-2 2v3z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="faq__grid">
+      <div class="faq__side rv">
+        <h2>FAQ.</h2>
+        <p>Se ainda estiver com dúvida nossa equipe está a disposição:</p>
+        <a href="#lista" class="cta cta--ghost" data-cta="suporte">Falar com suporte</a>
+      </div>
+      <div class="faq__list" id="faq-list"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot" id="lista">
+  <div class="foot__bg"><img src="/p/testewslp/img/footer-bg.webp" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="foot__cta">
+      <p class="rv">Você pode fazer agora, e aproveitar o timming, ou aguardar todo o mercado fazer primeiro e começar tarde, como a maioria fez com lançamentos gratuitos, perpétuo, sessão estratégica, etc.</p>
+      <a href="#lista" class="cta rv" data-cta="footer">Lista de espera
+        <svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 010 6v3a2 2 0 002 2h16a2 2 0 002-2v-3a3 3 0 010-6V6a2 2 0 00-2-2H4a2 2 0 00-2 2v3z"/></svg>
+      </a>
+    </div>
+    <div class="foot__bar">
+      <div>© 2025 Imagenation. Todos os direitos reservados<br>CNPJ: 24.286.053/0001-89</div>
+      <div class="foot__support">Apoio: <b>Send Flow</b> <b>DISPARO<i>VIP</i></b></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var X='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>';
+  var STAR='<svg viewBox="0 0 24 24"><path d="M12 1l1.8 6.6L19.8 4.2l-3.4 6 6.6 1.8-6.6 1.8 3.4 6-6-3.4L12 23l-1.8-6.6-6 3.4 3.4-6L1 12l6.6-1.8-3.4-6 6 3.4z"/></svg>';
+  var CLOCK='<svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M5 3L2 6M19 3l3 3"/></svg>';
+  var PLUS='<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>';
+
+  var players=[["sameragi","Samer Agi","p01.webp"],["pedro.calabrez","Pedro Calabrez","p02.webp"],["kacio.filipe","Kácio Filipe","p03.jpg"],["marcelokimuradesign","Marcelo Kimura","p04.webp"],["pedrosupertibr","Pedro Superti","p05.webp"],["andreavermont","Andréa Vermont","p06.webp"],["euriler","Euriler Jubé","p07.webp"],["rick_miura","Rick Miura","p08.webp"],["omarcelosantanna","Marcelo Sant’Anna","p09.webp"],["lucaspuertofaria","Lucas Puerto Faria","p10.webp"],["charles_laveso","Charles Laveso","p11.webp"],["facial.academy","Instituto Facial Academy","p12.webp"],["iagor","Iagor Gonçalves","p13.webp"],["lucaslfelix","Lucas Felix","p14.webp"]];
+  var ph=players.map(function(p){
+    return '<figure class="player"><img src="/p/testewslp/img/'+p[2]+'" alt="'+p[1]+'" loading="lazy"><figcaption class="player__meta"><div class="player__at">@'+p[0]+'</div><div class="player__name">'+p[1]+'</div></figcaption></figure>';
+  }).join('');
+  mq1.innerHTML=ph; mq2.innerHTML=ph;
+
+  var tick=["Converte público frio (50%)","Comparecimento de 50% a 75%","Conversão de 11% a 20%"];
+  var th=tick.map(function(t){return '<span>'+t+'</span><b>✳</b>';}).join('').repeat(4);
+  tk1.innerHTML=th; tk2.innerHTML=th;
+
+  var fails=["Vender ingressos caros pra qualificar o lead e pagar o tráfego.","Não vender gravações (a fatia da base que mais converte).","Transformar o evento pago em 3 cpl’s.","Focar toda a captação em público quente (sem intenção).","Estender a entrega do evento por muitos dias.","Gastar mais tempo na pesquisa que na venda de ingressos.","Tentar vender ingresso com página e promessa de evento gratuito.","Focar toda a otimização em criativos e tráfego."];
+  document.getElementById('fails').innerHTML=fails.map(function(f){
+    return '<div class="fcard rv">'+X+'<span>'+f+'</span></div>';}).join('');
+
+  var res=[
+    ["Marcelo Kimura","card-kimura.jpg",[["Lançamentos","11",100],["Faturamento","11,7M",100],["Roas","4,87",84]],"Repetimos 7x o mesmo lançamento"],
+    ["Willian Baldan","card-willian.jpg",[["Lançamentos","4",36],["Faturamento","3,7M",32],["Roas","3,5",60]],"Fizemos mais de 200 vendas de high ticket, em 10 meses, sem closer, sem conteúdo (feed) e com apenas 3 lançamentos pagos, começando com 10k seguidores."],
+    ["Kacio Felipe","card-kacio.webp",[["Lançamentos","3",27],["Faturamento","2,3M",20],["Roas","2,81",48]],"Começamos com mil seguidores em abril de 2024"]
+  ];
+  document.getElementById('rescards').innerHTML=res.map(function(r){
+    var stats=r[2].map(function(s){
+      return '<div class="stat"><span>'+s[0]+'</span><div class="stat__bar"><i style="width:'+s[2]+'%"></i></div><span class="stat__v">'+s[1]+'</span></div>';}).join('');
+    return '<article class="rcard rv"><div class="rcard__hd"><h3>'+r[0]+'</h3>'+STAR+'</div><div class="rcard__img"><img src="/p/testewslp/img/'+r[1]+'" alt="'+r[0]+'" loading="lazy"></div><div class="rcard__stats">'+stats+'</div><p class="rcard__note">'+r[3]+'</p></article>';
+  }).join('');
+
+  var learn=[
+    ["Planejamento da estratégia","Você vai descobrir quanto pagar de cac por ingresso vendido, quanto pode investir de tráfego, cobrar no ingresso, quantos lotes fazer, como definir o tempo ideal de captação, entre outros detalhes que podem ser elegidos antes de vender o primeiro ingresso."],
+    ["Promessas e criativos","Definir um formato de evento e promessa compatíveis com um lançamento pago é a coisa que vai definir sua capacidade de escalar a venda de ingressos. Esse é o tipo de estratégia muito sensível ao tamanho do público quente do especialista."],
+    ["Planejamento de tráfego","Descubra os indicadores que você precisa alcançar para conseguir bater suas metas de captação. Referência de cpm, ctr, connect rate, conversão de página, checkout, order bumps, etc."],
+    ["Página de vendas","A espinha dorsal do seu lançamento é a página que aterrisa todas as suas fontes de tráfego. O modelo de página para um influenciador muito engajado é diferente do modelo para um projeto com audiência mais tímida."],
+    ["Masterizando a captação","Vamos entender qual a escala máxima de venda de ingressos, através da forma mais eficiente de analisar performance com base em indicadores-chave. Nem tudo se resolve com criativos e nesse momento você descobre como e por que."],
+    ["Construção do cronograma de conteúdo do evento","Você vai entender o que nos faz ter 90% de retenção em 16h de evento. Venda ingresso, entregue 3 cpls e falhe miseravelmente. A dinâmica aqui é bem diferente, mais prática, mais conversa e menos aula."],
+    ["Construção dos pitches e planejamento da abertura","Há diferentes formas de vender seu produto em um evento pago. Depende do ticket, do tempo de duração do evento e do seu produto. Vamos alinhar essas 3 variáveis e encontrar o seu formato ideal."]
+  ];
+  document.getElementById('learn').innerHTML=learn.map(function(l,i){
+    return '<article class="lcard rv"><div class="lcard__n">'+String(i+1).padStart(2,'0')+'</div><h3>'+l[0]+'</h3><p>'+l[1]+'</p></article>';}).join('');
+
+  var sched=[["09H30","Inicio"],["12H00","Almoço"],["13H30","Retorno"],["17H30","Encerramento*"]];
+  document.getElementById('sched').innerHTML=sched.map(function(s){
+    return '<div class="sched__row"><span class="t">'+CLOCK+s[0]+'</span><span>'+s[1]+'</span></div>';}).join('');
+
+  var faq=[
+    ["Comprei e não vou conseguir participar","Sem crise, você ainda pode participar do evento e solicitar o reembolso do seu ingresso em até 2 dias após o evento. Eu sei que será o evento mais prático, técnico e Data-driven que você já fez. Só não vai curtir se realmente não for o seu momento."],
+    ["Converte público frio?","Lead frio não compra produto caro, mas compra ingresso barato para acessar um conteúdo valioso.|Esse gráfico resumo os dados dos projetos que rodamos internamente. Mas existem diversos membros da Rise que rodam captação para um público 100% frio."],
+    ["Como saber se é o momento de rodar um lançamento pago?","Se os seus lançamentos gratuitos vão bem, siga fazendo, se vão mal, faça pagos imediatamente. Há uma forma de conectar o lançamento pago no seu lançamento gratuito e aumentar entre 50% e 100% a receita desse lançamento."],
+    ["Preço de ingresso influencia na conversão?","Fizemos alguns estudos e vamos apresentar a conclusão no Workshop. Essa informação é vital e super valiosa para conseguir montar seus planos."],
+    ["Melhor fazer ingressos vips ou vender gravações?","Testamos ambos formatos e vamos apresentar a conclusão, os estudos e todo o lastro para vocês no Workshop. Essa informação é muito importante para aumentar a sua conversão geral e seu faturamento como um todo."],
+    ["Quantos produtos eu preciso para fazer um lançamento pago?","Idealmente 1, mas somando com as gravações e o workshop, você já terá 3."],
+    ["Que tipo de produto vender?","Depende do seu nicho, vamos explorar no evento alguns exemplos e possibilidades, usando os alunos como exemplo."],
+    ["Vai ficar gravado?","Sim, mas o ingresso do evento ao vivo não dá acesso às gravações.|Você poderá adquirir separadamente as gravações dos 2 dias de evento em formato de aulas, durante a compra do seu ingresso para o evento ao vivo, ou mais tardar até o dia 10 de Julho (último dia de vendas das gravações)!|O preço das gravações é de R$997 à vista ou em até 12x de R$97,14.|Se precisar de ajuda, pode falar com nosso time de suporte, chamando a Gabi no WhatsApp!"],
+    ["Posso desistir do meu ingresso?","Sim! Tem um prazo de garantia, mas por ser um evento ao vivo, as regras são um pouco diferentes.|Você pode solicitar o reembolso do seu ingresso em até 2 dias após o evento. Após esse período, não será possível solicitar o reembolso.|Se tiver qualquer dúvida, entre em contato com nosso suporte!"]
+  ];
+  document.getElementById('faq-list').innerHTML=faq.map(function(f){
+    var body=f[1].split('|').map(function(p){return '<p>'+p+'</p>';}).join('');
+    return '<details class="rv"><summary>'+f[0]+PLUS+'</summary><div class="faq__a">'+body+'</div></details>';}).join('');
+
+  // duplica marquee pra loop contínuo em telas largas
+  [['mq1','mq2'],['tk1','tk2']].forEach(function(p){
+    var a=document.getElementById(p[0]);
+    while(a.scrollWidth < window.innerWidth*2){ a.innerHTML+=a.innerHTML; document.getElementById(p[1]).innerHTML=a.innerHTML; }
+  });
+
+  // reveal on-scroll — com rede de segurança: nada fica escondido pra sempre
+  var items=document.querySelectorAll('.rv');
+  function showAll(){ items.forEach(function(e){e.classList.add('on');}); }
+  if(!('IntersectionObserver' in window)){ showAll(); }
+  else{
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('on'); io.unobserve(x.target);} });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.05});
+    items.forEach(function(e,i){ e.style.transitionDelay=(Math.min(i%4,3)*60)+'ms'; io.observe(e); });
+    setTimeout(showAll,4000);
+  }
+
+  // click tracker universal (padrão LST)
+  document.addEventListener('click',function(ev){
+    var el=ev.target.closest('a,button'); if(!el) return;
+    var kind='other', h=el.getAttribute('href')||'';
+    if(el.dataset.cta) kind='cta'; else if(h.indexOf('#')===0) kind='anchor'; else if(h) kind='link';
+    (window.dataLayer=window.dataLayer||[]).push({event:'click_tracker',
+      click_id:el.id||el.dataset.cta||'',
+      click_classes:el.className||'',
+      click_text:(el.innerText||'').trim().slice(0,80),
+      click_href:h, click_target_kind:kind, page_slug:'testewslp'});
+  },true);
+})();
+</script>
+</body>
+</html>
