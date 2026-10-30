@@ -12,6 +12,7 @@ node ../scripts/build-full-dist.mjs | tail -1
 miss=0
 for s in $(cat ../w-lst-paginas-extras/slugs.list); do [ -f "../dist/$s/index.html" ] || { echo "FALTA no dist: $s"; miss=1; }; done
 for s in col-pvia07 col-pvia07-ck-hba col-pvia-frufru01 col-pvia-frufru02 col-inup-cap01-web01; do [ -f "../dist/$s/index.html" ] || { echo "FALTA no dist: $s"; miss=1; }; done
+[ "${REQUIRE_SENTINELA_COL:-}" != 1 ] || [ -f ../dist/col-pvia-sentinela/index.html ] || { echo "FALTA no dist: col-pvia-sentinela (REQUIRE_SENTINELA_COL=1)"; miss=1; }
 [ "$miss" = 0 ] || { echo "ABORTADO: inventário incompleto"; exit 1; }
 chk() { local bad=0 c s; for s in $(cat ../slugs-todos.list); do
   c=$(curl -sL -A "Mozilla/5.0" -o /dev/null -w "%{http_code}" "$O/p/$s/?h=$RANDOM"); [ "$c" = 200 ] || { echo "  $s -> $c"; bad=$((bad+1)); }; done; return $bad; }

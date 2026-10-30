@@ -3,6 +3,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
+import { checkSentinelaDir } from "./guard-sentinela.mjs";
 const root = path.resolve(import.meta.dirname, "..");
 const dist = path.join(root, "dist");
 execFileSync("node", [path.join(root, "scripts/mirror-current-p-pages.mjs")], { stdio: "inherit" });
@@ -10,7 +11,9 @@ execFileSync("node", [path.join(root, "scripts/clone-col-pvia07-ck-hba.mjs")], {
 // INUP: fonte versionada na raiz do repo; o espelho do ar não a traz se ela já tiver caído.
 fs.cpSync(path.join(root, "col-inup-cap01-web01"), path.join(dist, "col-inup-cap01-web01"), { recursive: true });
 const extra = path.join(root, "extra-pages");
-for (const s of fs.readdirSync(extra)) fs.cpSync(path.join(extra, s), path.join(dist, s), { recursive: true });
+const gs = checkSentinelaDir(path.join(extra, "col-pvia-sentinela"));
+if (gs.length) { console.error("ABORTADO: col-pvia-sentinela com placeholder: " + gs.join("; ") + ". Gere de novo com TRACKER_ORIGIN/SENTINEL_TID reais ou apague extra-pages/col-pvia-sentinela."); process.exit(1); }
+for (const s of fs.readdirSync(extra)) fs.cpSync(path.join(extra, s), path.join(dist, s), { recursive: true, filter: (p) => path.basename(p) !== ".placeholder" });
 // ativos-d referencia assets na raiz (/ativos-d/...); aqui tudo vive sob /p/.
 const f = path.join(dist, "ativos-d/index.html");
 fs.writeFileSync(f, fs.readFileSync(f, "utf8").replaceAll('"/ativos-d/', '"/p/ativos-d/'));

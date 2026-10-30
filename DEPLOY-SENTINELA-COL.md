@@ -4,15 +4,21 @@
 
 **Como o Purchase casa.** O tracker põe `stl_<sessão>` no `sck` do link (sempre vence valor existente), repassa os parâmetros da chegada (UTM, fbclid) e, sem `fbc`/`fbp`, cria os cookies. Hotmart devolve o `sck` no webhook; é isso que liga a venda à visita. Para Hotmart, a área precisa estar com plataforma `hotmart` (aí o tracker também preenche `xcod` com as UTMs).
 
+## ATENÇÃO: pixel cadastrado = fbq no navegador, direto ao Meta
+Se a área do Sentinela tiver pixel cadastrado, o `tracker.js` carrega o `fbq` e dispara PageView/InitiateCheckout no navegador **direto ao Meta**, independente de a CAPI estar `off`/em teste. O HTML não tem `fbq`, mas o runtime tem. Portanto: **só cadastre o pixel 1446152707568415 na área COL no momento do teste, com Test Events do Meta aberto**; remover/desativar o pixel na área devolve o silêncio (a página volta a só gravar no Sentinela, sem Meta). Verificação: com pixel descadastrado, `curl "<tracker>/api/t/tracker.js?tid=<uuid>" | grep -c fbevents` = 0; com pixel cadastrado, o mesmo grep > 0 (é o pixel ligando).
+
 ## Ligar (Chefe)
-Pré-requisitos: DNS `track.<dominio>` no ar, `tid` da área, `SENTINEL_ALLOWED_HOSTS` com o host, pixel cadastrado. O valor `https://track.leandrostecca.com.br` no script é placeholder **a confirmar**; sem `TRACKER_ORIGIN`/`SENTINEL_TID` reais o build aborta (`ALLOW_PLACEHOLDER=1` só para teste local).
+Pré-requisitos: DNS `track.<dominio>` no ar, `tid` da área, `SENTINEL_ALLOWED_HOSTS` com o host. O valor `https://track.leandrostecca.com.br` no script é placeholder **a confirmar**; sem `TRACKER_ORIGIN`/`SENTINEL_TID` reais o build aborta. Com `ALLOW_PLACEHOLDER=1` (só teste) a pasta recebe o marcador `.placeholder` e `build-full-dist.mjs` **recusa** montar o dist (exit 1), tal como se o HTML contiver o UUID zero ou o origin placeholder (`scripts/guard-sentinela.mjs`; teste: `node scripts/test-guard-sentinela.mjs`).
+
+O `deploy-full.sh` lê o cofre sozinho e **não passa pelo `--check` do `cf-deploy.sh`**: o `--check` é pré-condição separada, por isso o `set -e` abaixo aborta tudo se ele falhar. `REQUIRE_SENTINELA_COL=1` faz o deploy exigir a página no inventário; sem a flag o deploy é idêntico ao de hoje.
 
 ```bash
-cd ~/orca/projects/lst-paginas/w-lst-paginas && ~/.config/apolo/cf-deploy.sh --slug LST --check \
-&& cd .. && TRACKER_ORIGIN=https://track.<dominio> SENTINEL_TID=<uuid> node scripts/build-col-pvia-sentinela.mjs \
-&& cd w-lst-paginas && CONFIRMO=sim ./deploy-full.sh
+set -e; cd ~/orca/projects/lst-paginas
+~/.config/apolo/cf-deploy.sh --slug LST --check
+TRACKER_ORIGIN=https://track.<dominio> SENTINEL_TID=<uuid> node scripts/build-col-pvia-sentinela.mjs
+cd w-lst-paginas && REQUIRE_SENTINELA_COL=1 CONFIRMO=sim ./deploy-full.sh
 ```
-`deploy-full.sh` já monta o dist completo (inclui `extra-pages/`), compara inventário, confere todos os slugs e reverte se algum cair. Não altera `wrangler.*` nem rotas: a página entra pela rota `/p/*` existente do `w-lst-paginas`. (Se preferir cf-deploy.sh no lugar do deploy-full.sh, use o mesmo `<dir>` `w-lst-paginas`; o deploy-full é o caminho vigente do TASKS.md.)
+Não altera `wrangler.*` nem rotas: a página entra pela rota `/p/*` do `w-lst-paginas`. **O deploy regenera `w-lst-paginas/src/sck-slugs.js` e `slugs-todos.list` e deixa o repo sujo**: confira `git diff` desses dois arquivos (deve ser só a linha/slug `col-pvia-sentinela`), depois commite.
 
 ## Verificação pós-deploy (comando único)
 ```bash

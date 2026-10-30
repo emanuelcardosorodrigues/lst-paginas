@@ -69,4 +69,6 @@ for (const re of banned) if (re.test(html)) throw new Error(`rastreio proibido n
 fs.rmSync(outDir, { recursive: true, force: true });
 fs.cpSync(srcDir, outDir, { recursive: true, filter: (p) => path.basename(p) !== "t.js" && path.basename(p) !== "index.html" });
 fs.writeFileSync(path.join(outDir, "index.html"), html);
+// marcador fora do HTML publicável: build-full-dist.mjs recusa publicar enquanto existir
+if (isPlaceholder) fs.writeFileSync(path.join(outDir, ".placeholder"), "gerada com placeholder; nao publicar\n");
 console.log(`OK: extra-pages/${SLUG}/index.html (${html.length} bytes), ${n} links de checkout marcados, tracker ${host}${isPlaceholder ? " [PLACEHOLDER]" : ""}`);
