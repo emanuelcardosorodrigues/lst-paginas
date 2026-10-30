@@ -4,3 +4,6 @@ dist/
 .DS_Store
 *.local
 deploys.log
+
+# gerada por scripts/build-col-pvia-sentinela.mjs (depende de TRACKER_ORIGIN/SENTINEL_TID reais; nunca versionar)
+extra-pages/col-pvia-sentinela/
