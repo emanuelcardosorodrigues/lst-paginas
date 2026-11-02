@@ -14,6 +14,9 @@ const extra = path.join(root, "extra-pages");
 const gs = checkSentinelaDir(path.join(extra, "col-pvia-sentinela"));
 if (gs.length) { console.error("ABORTADO: col-pvia-sentinela com placeholder: " + gs.join("; ") + ". Gere de novo com TRACKER_ORIGIN/SENTINEL_TID reais ou apague extra-pages/col-pvia-sentinela."); process.exit(1); }
 for (const s of fs.readdirSync(extra)) fs.cpSync(path.join(extra, s), path.join(dist, s), { recursive: true, filter: (p) => path.basename(p) !== ".placeholder" });
+// overrides/: arquivos que trocam o espelho do ar sem virar extra-page (não ligam o corretor de sck). Ex.: mockup.webp.
+const ov = path.join(root, "overrides");
+if (fs.existsSync(ov)) for (const s of fs.readdirSync(ov)) fs.cpSync(path.join(ov, s), path.join(dist, s), { recursive: true });
 // ativos-d referencia assets na raiz (/ativos-d/...); aqui tudo vive sob /p/.
 const f = path.join(dist, "ativos-d/index.html");
 fs.writeFileSync(f, fs.readFileSync(f, "utf8").replaceAll('"/ativos-d/', '"/p/ativos-d/'));
