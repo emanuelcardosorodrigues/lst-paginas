@@ -395,7 +395,7 @@
      • CONSULTORES_URL: link do botão "Central de Consultores".
      • Em cada aula, preencha "youtubeId" quando o vídeo estiver no ar
        (aceita o ID puro OU o link completo do YouTube).
-     • Os leads (nome/e-mail/telefone) vão para o Supabase (tabela abaixo).
+     • Os leads (nome/e-mail/telefone) vão para o D1 via /q/api/ficha-captura.
      ====================================================================== */
 
   const CONSULTORES_URL = "https://centraldeconsultores.leandrostecca.com.br/login";
@@ -408,11 +408,7 @@
   // Todos os demais só acessam cada aula quando chegar a data dela.
   const PREVIEW_EMAILS = ["apololancamentosdigitais@gmail.com"];
 
-  // Supabase (projeto LST) — a anon key é pública por design; a tabela é
-  // insert-only via RLS, ninguém consegue LER a lista com esta chave.
-  const SUPABASE_URL   = "https://wcozfnhzkqaqviscpcnn.supabase.co";
-  const SUPABASE_ANON  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indjb3pmbmh6a3FhcXZpc2NwY25uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4MzI3NzEsImV4cCI6MjA5MDQwODc3MX0.tnyPLpiGhFU9_qAV6KuGrp9dG8iAfmW9pSYH8xjX6WM";
-  const SUPABASE_TABLE = "lps_aulas_leads";
+  // Leads vão ao Worker do quiz (mesmo domínio): POST /q/api/ficha-captura -> D1.
 
   const LESSONS = [
     { n:1, bonus:false, dateLabel:"SEG · 27/07 · ~1h", unlock:"2026-07-27T07:00:00-03:00",
@@ -602,7 +598,7 @@
   renderList();
   select(initialIndex());
 
-  /* ================= GATE DE CAPTURA (nome / e-mail / telefone → Supabase) ================= */
+  /* ================= GATE DE CAPTURA (nome / e-mail / telefone → D1) ================= */
   (function(){
     const LS_KEY = "lc_lead_v1";
     const gate = document.getElementById("gate");
@@ -652,18 +648,12 @@
     });
     const validEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 
-    async function sendToSupabase(lead){
-      if(!SUPABASE_URL || !SUPABASE_ANON) return;
+    async function sendLead(lead){
       try{
-        await fetch(SUPABASE_URL + "/rest/v1/" + SUPABASE_TABLE, {
+        await fetch("/q/api/ficha-captura", {
           method:"POST",
-          headers:{
-            "Content-Type":"application/json",
-            "apikey": SUPABASE_ANON,
-            "Authorization": "Bearer " + SUPABASE_ANON,
-            "Prefer": "return=minimal"
-          },
-          body: JSON.stringify(lead),
+          headers:{ "Content-Type":"application/json" },
+          body: JSON.stringify({ tabela:"lead", quiz_slug:"area-aulas-lucro-clinico", ...lead }),
           keepalive:true
         });
       }catch(err){ /* silencioso: o acesso já foi liberado */ }
@@ -696,7 +686,7 @@
       setPreviewFromEmail(email);   // e-mail liberado? re-renderiza com acesso total
       openArea();
       select(initialIndex());
-      sendToSupabase(lead);
+      sendLead(lead);
     });
   })();
   </script>
