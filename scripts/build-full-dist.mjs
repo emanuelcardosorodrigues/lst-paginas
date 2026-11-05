@@ -20,6 +20,14 @@ if (fs.existsSync(ov)) for (const s of fs.readdirSync(ov)) fs.cpSync(path.join(o
 // ativos-d referencia assets na raiz (/ativos-d/...); aqui tudo vive sob /p/.
 const f = path.join(dist, "ativos-d/index.html");
 fs.writeFileSync(f, fs.readFileSync(f, "utf8").replaceAll('"/ativos-d/', '"/p/ativos-d/'));
+// FAQ estático (faq-panel-N sem bundle React): o gerador injetava o handler antes de </body>, que não existe; sem ele o botão fica morto.
+const FAQ_JS = `<script>document.querySelectorAll('[aria-controls^="faq-panel-"]').forEach(function(b){b.addEventListener('click',function(){var p=document.getElementById(b.getAttribute('aria-controls')),o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));p.dataset.open=String(!o)})})</script>`;
+for (const n of fs.readdirSync(dist)) {
+  const h = path.join(dist, n, "index.html");
+  if (!fs.existsSync(h)) continue;
+  const t = fs.readFileSync(h, "utf8");
+  if (t.includes('id="faq-panel-0"') && !/type="module"/.test(t) && !t.includes('[aria-controls^="faq-panel-"]')) fs.writeFileSync(h, t + "\n" + FAQ_JS + "\n");
+}
 const slugs = fs.readdirSync(dist).filter((n) => fs.existsSync(path.join(dist, n, "index.html")));
 fs.writeFileSync(path.join(root, "slugs-todos.list"), slugs.sort().join("\n") + "\n");
 const sck = fs.readdirSync(extra).sort();
