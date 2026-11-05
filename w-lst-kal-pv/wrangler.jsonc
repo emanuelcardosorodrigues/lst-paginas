@@ -1,0 +1,33 @@
+{
+  "name": "w-lst-kal-pv",
+  "main": "src/index.js",
+  "compatibility_date": "2026-04-22",
+  "account_id": "21e4875f53338100ee74196613471f21",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "workers_dev": false,
+  "routes": [
+    "leandrostecca.com.br/p/kal-pv01",
+    "leandrostecca.com.br/p/kal-pv01/*",
+    "leandrostecca.com.br/p/kal-pv02",
+    "leandrostecca.com.br/p/kal-pv02/*",
+    "leandrostecca.com.br/p/kal-pv03",
+    "leandrostecca.com.br/p/kal-pv03/*",
+    "leandrostecca.com.br/p/kal-pv04",
+    "leandrostecca.com.br/p/kal-pv04/*",
+    "leandrostecca.com.br/p/kal-pv05",
+    "leandrostecca.com.br/p/kal-pv05/*",
+    "www.leandrostecca.com.br/p/kal-pv01",
+    "www.leandrostecca.com.br/p/kal-pv01/*",
+    "www.leandrostecca.com.br/p/kal-pv02",
+    "www.leandrostecca.com.br/p/kal-pv02/*",
+    "www.leandrostecca.com.br/p/kal-pv03",
+    "www.leandrostecca.com.br/p/kal-pv03/*",
+    "www.leandrostecca.com.br/p/kal-pv04",
+    "www.leandrostecca.com.br/p/kal-pv04/*",
+    "www.leandrostecca.com.br/p/kal-pv05",
+    "www.leandrostecca.com.br/p/kal-pv05/*"
+  ]
+}
