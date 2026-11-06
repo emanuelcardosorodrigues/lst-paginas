@@ -1,5 +1,6 @@
 import { handleInscricao, retryPending } from "./inscricao.js";
 import { SCK_FIX_SLUGS } from "./sck-slugs.js";
+import { withSentinelaTag } from "./sentinela-tag.js";
 
 // Corretor de atribuição (sck) injetado em toda página /p/.
 // O decorator de sck do container GTM (compartilhado, read-only) deriva o slug de
@@ -67,11 +68,11 @@ export default {
       const res = await env.ASSETS.fetch(new Request(url.toString(), request));
       // Corretor de sck só nas páginas restauradas (SCK_FIX_SLUGS); as demais seguem como estavam.
       if (SCK_FIX_SLUGS.has(slug) && (res.headers.get("content-type") || "").includes("text/html")) {
-        return new HTMLRewriter()
+        return withSentinelaTag(new HTMLRewriter()
           .on("head", { element(el) { el.prepend(sckFixScript(slug), { html: true }); } })
-          .transform(res);
+          .transform(res), env);
       }
-      return res;
+      return withSentinelaTag(res, env);
     }
 
     return env.ASSETS.fetch(request);

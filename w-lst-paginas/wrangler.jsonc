@@ -13,6 +13,8 @@
   "kv_namespaces": [{ "binding": "INSCRICOES", "id": "240a7a010d6b468ca86e35fa97393712" }],
   "compatibility_flags": ["nodejs_compat"],
   "workers_dev": true,
+  // Sentinela: SENTINELA_TAG "1" injeta a tag no <head> de todo HTML; "0" desliga (só trocar e fazer deploy).
+  "vars": { "SENTINELA_TAG": "1", "SENTINELA_TID": "faafca5a-fb53-404f-8469-499d8869944c" },
   "routes": [
     "leandrostecca.com.br/p/*",
     "www.leandrostecca.com.br/p/*"

@@ -4,9 +4,11 @@
   "description": "Worker para servir páginas LST",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "node ../scripts/block-shared-asset-deploy.mjs"
+    "deploy": "node ../scripts/block-shared-asset-deploy.mjs",
+    "test": "node --test test/"
   },
   "devDependencies": {
+    "miniflare": "^3.20250408.0",
     "wrangler": "^4.83.0"
   }
 }

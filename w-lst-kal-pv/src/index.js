@@ -43,6 +43,8 @@ function sckFixScript(slug) {
   '})();<\/script>';
 }
 
+import { withSentinelaTag } from "../../w-lst-paginas/src/sentinela-tag.js";
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -55,10 +57,10 @@ export default {
     const res = await env.ASSETS.fetch(new Request(url.toString(), request));
     const ct = res.headers.get("content-type") || "";
     if (slug && ct.includes("text/html")) {
-      return new HTMLRewriter()
+      return withSentinelaTag(new HTMLRewriter()
         .on("head", { element(el) { el.prepend(sckFixScript(slug), { html: true }); } })
-        .transform(res);
+        .transform(res), env);
     }
-    return res;
+    return withSentinelaTag(res, env);
   },
 };
