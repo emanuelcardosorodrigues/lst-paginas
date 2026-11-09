@@ -39,12 +39,10 @@ test("remove o par solto pv_event_id e preserva o fbq byte a byte", () => {
   assert.equal(count(h, "window.dataLayer = window.dataLayer || [];"), 0);
   assert.ok(h.includes(`<script>\n${fbq}\n</script>`));
 });
-test("controle negativo: dataLayer de função e handler não muda", () => {
-  const body = `<script>function push(o){ try{ (window.dataLayer=window.dataLayer||[]).push(o); }catch(e){} }\nwindow.dataLayer.push({event:"presenca_submit"})</script>`;
+test("controle negativo: dataLayer de forma desconhecida não muda", () => {
+  const body = `<script>window.dataLayer.push({event:"presenca_submit"})</script>`;
   const src = page("", body);
   assert.equal(transform(src), src.replace("</head>", TAG + "\n</head>"));
-  assert.ok(transform(src).includes(`function push(o){ try{ (window.dataLayer=window.dataLayer||[]).push(o); }catch(e){} }`));
-  assert.ok(transform(src).includes(`window.dataLayer.push({event:"presenca_submit"})`));
 });
 test("idempotente", () => {
   const src = page(GTM + PIXEL);
@@ -53,4 +51,102 @@ test("idempotente", () => {
 test("controle negativo: preconnect ao Stape fica se ainda é usado", () => {
   const src = page(`<link rel="preconnect" href="https://ts.leandrostecca.com.br" crossorigin>\n<script src="https://ts.leandrostecca.com.br/outro.js"></script>`);
   assert.ok(transform(src).includes('rel="preconnect" href="https://ts.leandrostecca.com.br"'));
+});
+
+// ---- remoção do código morto do GTM ----
+const FBQ = `fbq('init','1');fbq('track','PageView',{}, { eventID: window.__pvEventID });`;
+const parses = (js) => { try { new Function(js); return true; } catch { return false; } };
+const inline = (html) => [...html.matchAll(/<script(?![^>]*\bsrc=)([^>]*)>([\s\S]*?)<\/script>/gi)].filter((m) => !/type="(?:module|application\/(?:ld\+)?json)/i.test(m[1])).map((m) => m[2]);
+test("presenca_submit sai; handler em volta fica", () => {
+  const src = page("", `<script>\nfunction go(){\n    submitting=true;\n    window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:"presenca_submit",aula:AULA});\n    send();\n}\n${FBQ}</script>`);
+  const h = transform(src);
+  assert.equal(count(h, "dataLayer"), 0);
+  assert.ok(h.includes("submitting=true;\n    send();"));
+  assert.ok(h.includes(FBQ));
+});
+test("lead_capturado (INUP) e quiz_frase/simulador (frufru01) saem sem quebrar o resto", () => {
+  const src = page("", `<script>var done=function(){\n    try{(window.dataLayer=window.dataLayer||[]).push({event:"lead_capturado",pagina:SLUG})}catch(x){}\n    location.href=NEXT;\n};\nb.addEventListener("click",function(){\n      try { (window.dataLayer=window.dataLayer||[]).push({event:"quiz_frase", quiz_resposta:b.dataset.k}); } catch(e){}\n      scroll();\n});\nvar simTracked=false; document.getElementById("sim").addEventListener("input",function(){ if(simTracked) return; simTracked=true; try{(window.dataLayer=window.dataLayer||[]).push({event:"simulador_uso"})}catch(e){} });\ncalc();</script>`);
+  const h = transform(src);
+  assert.equal(count(h, "dataLayer") + count(h, "simTracked"), 0);
+  assert.ok(h.includes("var done=function(){\n    location.href=NEXT;"));
+  assert.ok(h.includes('function(){\n      scroll();'));
+  assert.ok(h.includes("calc();"));
+  for (const b of inline(h)) assert.ok(parses(b));
+});
+test("wrapper push(): chamadas e wrapper somem, nenhuma referência solta, JS ainda parseia", () => {
+  const W = `function push(o){ try{ (window.dataLayer=window.dataLayer||[]).push(o); }catch(e){} }`;
+  const js = `(function(){\n  var stack=[]; stack.push({event:"keep"}); T3.push(cb);\n  ${W}\n  var b=document.body, open=true;\n  b.addEventListener("click",function(){ var open=b.getAttribute("x")==="true"; b.setAttribute("x", open?"f":"t"); if(!open) push({event:"faq_abre", faq:b.textContent.trim().slice(0,60)}); });\n  document.addEventListener("click",function(ev){ var a=ev.target; var toPrice=a.getAttribute("href")==="#preco"; push({event:"cta_clique", cta_origem:a.dataset.cta||"?", cta_destino:toPrice?"preco":"checkout"});\n    if(toPrice){ ev.preventDefault(); go(); }\n  },true);\n  var seen={};\n  var so=new IntersectionObserver(function(es){ es.forEach(function(e){ var k=e.target.dataset.sec; if(e.isIntersecting && !seen[k]){ seen[k]=1; push({event:"secao_vista", secao:k}); } }); },{rootMargin:"-45% 0px -45% 0px"});\n  document.querySelectorAll("[data-sec]").forEach(function(el){ so.observe(el); });\n  push({event:"quiz_frase", quiz_resposta:1});\n})();`;
+  const src = page("", `<script>${js}</script>`);
+  assert.ok(parses(js));
+  const h = transform(src);
+  const out = inline(h)[0];
+  assert.ok(parses(out));
+  assert.equal(count(out, "dataLayer"), 0);
+  assert.ok(!/(?<![.\w$])push\(/.test(out), "chamada solta de push()");
+  assert.ok(out.includes('stack.push({event:"keep"}); T3.push(cb);'), "push de array não é tocado");
+  assert.ok(out.includes("if(toPrice){ ev.preventDefault(); go(); }"));
+});
+test("controle negativo: wrapper com chamada de forma desconhecida fica inteiro (sem referência solta)", () => {
+  const W = `function push(o){ try{ (window.dataLayer=window.dataLayer||[]).push(o); }catch(e){} }`;
+  const body = `<script>${W}\nvar ev={event:"x"}; push(ev);</script>`;
+  const h = transform(page("", body));
+  assert.ok(h.includes(W) && h.includes("push(ev);"));
+});
+test("wrapper dl() (virada): if(push)dl(...) e dl(...) soltos saem", () => {
+  const js = `function dl(o){try{(window.dataLayer=window.dataLayer||[]).push(o)}catch(x){}}\nfunction irPara(n,push){\n  foco();\n  if(push)dl({event:"form_etapa",etapa:n,pagina:SLUG});\n}\nfunction abrir(){\n  aberto=true;dl({event:"form_aberto",pagina:SLUG});irPara(etapa,true);\n}\nvar done=function(){\n    dl({event:"lead_capturado",pagina:SLUG});\n    setTimeout(function(){location.href=NEXT},300);\n};`;
+  const out = inline(transform(page("", `<script>${js}</script>`)))[0];
+  assert.ok(parses(out));
+  assert.ok(!/(?<![.\w$])dl\(|dataLayer/.test(out));
+  assert.ok(out.includes("aberto=true;irPara(etapa,true);") && out.includes("setTimeout(function(){location.href=NEXT},300);"));
+});
+test("click tracker do testewslp sai inteiro; outros listeners ficam", () => {
+  const src = page("", `<script>(function(){\n  document.addEventListener('keydown',function(){ k(); });\n  // click tracker universal (padrão LST)\n  document.addEventListener('click',function(ev){\n    var el=ev.target.closest('a,button'); if(!el) return;\n    (window.dataLayer=window.dataLayer||[]).push({event:'click_tracker',\n      click_id:el.id||'',\n      click_text:(el.innerText||'').trim().slice(0,80),\n      page_slug:'testewslp'});\n  },true);\n})();</script>`);
+  const h = transform(src);
+  assert.equal(count(h, "click_tracker") + count(h, "dataLayer"), 0);
+  assert.ok(h.includes("document.addEventListener('keydown',function(){ k(); });"));
+  assert.ok(parses(inline(h)[0]));
+});
+test("holder do Clarity sai (com comentário); dns-prefetch/preconnect de clarity e google-analytics ficam", () => {
+  const KEEP = `<link rel="dns-prefetch" href="https://www.clarity.ms">\n<link rel="preconnect" href="https://www.google-analytics.com">`;
+  const HOLD = `<!-- Clarity fora do caminho crítico: segura só o src do clarity.ms e solta depois do load. -->\n<script>\n(function () {\n  var RX = /clarity\\.ms/;\n  var orig = document.createElement;\n})();\n</script>\n`;
+  const other = `<script>var x=1; /clarity/.test(y)</script>`;
+  const h = transform(page(`${KEEP}\n${PIXEL}\n${HOLD}${other}`));
+  assert.equal(count(h, "RX = "), 0);
+  assert.equal(count(h, "Clarity fora"), 0);
+  assert.ok(h.includes(KEEP) && h.includes(PIXEL) && h.includes(other));
+});
+test("data-gtm-id sai do HTML; id/class/href ficam", () => {
+  const h = transform(page("", `<a class="btn" href="/r/c" data-gtm-id="cta-1" id="a1">x</a><button data-gtm-id='b'>y</button>`));
+  assert.equal(count(h, "data-gtm-id"), 0);
+  assert.ok(h.includes(`<a class="btn" href="/r/c" id="a1">x</a><button>y</button>`));
+});
+test("comentário pv_event_id/CAPI/ts.leandrostecca sai; fbq fica", () => {
+  const src = page("", `<script>\n${FBQ}\n// eventID no mesmo formato do template do GTM (<ts>_<rand>).\n// Hoje o Meta aqui é 100% client-side (o único canal server é o GA4, em ts.leandrostecca),\n// então não há evento server pra deduplicar. Fica publicado no dataLayer para o dia\n// em que uma tag CAPI server-side precisar casar o event_id com este PageView.\nwindow.__pvEventID = 1;\n</script>`);
+  const h = transform(src);
+  assert.equal(count(h, "ts.leandrostecca") + count(h, "dataLayer") + count(h, "CAPI"), 0);
+  assert.ok(h.includes(`${FBQ}\nwindow.__pvEventID = 1;`));
+});
+test("controle negativo: gtag/dataLayer de third-party (script com src) e comentário comum não mudam", () => {
+  const src = page(`<script src="/p/dpl-pv01/third-party.js"></script>\n<!-- Hero preload -->`);
+  assert.equal(transform(src), src.replace("</head>", TAG + "\n</head>"));
+});
+// controle sobre o dist real: todo inline script que parseava antes ainda parseia depois; fbq não muda
+import fs from "node:fs";
+import path from "node:path";
+const DIST = path.resolve(import.meta.dirname, "../dist");
+test("dist real: parse dos scripts inline antes/depois e fbq por página", { skip: !fs.existsSync(DIST) }, () => {
+  const files = fs.readdirSync(DIST, { recursive: true }).filter((n) => n.endsWith(".html") && !n.endsWith(".bak.html"));
+  let ok = 0, bad = 0;
+  for (const n of files) {
+    const before = fs.readFileSync(path.join(DIST, n), "utf8"), after = transform(before);
+    assert.equal(count(after, "fbq("), count(before, "fbq("), n + " fbq");
+    assert.equal(count(after, "dataLayer"), 0, n);
+    const b = inline(before), a = inline(after);
+    bad += b.filter((x) => !parses(x)).length;
+    ok += b.filter(parses).length;
+    // todo script que parseava antes parseia depois (ou sumiu inteiro, como o holder do Clarity)
+    assert.ok(a.filter((x) => !parses(x)).length <= b.filter((x) => !parses(x)).length, n + ": script passou a não parsear");
+    assert.ok(a.length >= b.length - 1, n + ": scripts demais sumiram");
+  }
+  console.log(`# parse: ${files.length} html; scripts inline que parseavam antes: ${ok} (não parseavam antes: ${bad}); nenhum novo quebrado`);
 });

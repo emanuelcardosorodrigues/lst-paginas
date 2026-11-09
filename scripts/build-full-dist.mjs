@@ -37,7 +37,8 @@ for (const h of htmls) {
   fs.writeFileSync(h, t);
   const tag = t.split("/api/t/tracker.js").length - 1;
   // Stape GTM não tem a string googletagmanager: checa também gtm.start e o domínio ts.
-  if (/googletagmanager\.com|gtm\.start|ts\.leandrostecca\.com\.br/i.test(t) || tag !== 1) bad.push(`${path.relative(dist, h)} tag=${tag}`);
+  // + resíduo de GTM no JS de página (dataLayer, data-gtm-id, ts.leandrostecca) e chamada solta de push()/dl() de wrapper removido.
+  if (/googletagmanager\.com|gtm\.start|ts\.leandrostecca|dataLayer|data-gtm-id|(?<![.\w$])(?:push|dl)\(\{\s*event\s*:/i.test(t) || tag !== 1) bad.push(`${path.relative(dist, h)} tag=${tag}`);
 }
 if (bad.length) { console.error("ABORTADO: GTM restante ou tag != 1: " + bad.join("; ")); process.exit(1); }
 const slugs = fs.readdirSync(dist).filter((n) => fs.existsSync(path.join(dist, n, "index.html")));
