@@ -150,3 +150,50 @@ test("dist real: parse dos scripts inline antes/depois e fbq por página", { ski
   }
   console.log(`# parse: ${files.length} html; scripts inline que parseavam antes: ${ok} (não parseavam antes: ${bad}); nenhum novo quebrado`);
 });
+
+// ---- t.js só atribuição ----
+import vm from "node:vm";
+import { transformTracker } from "./gtm-to-sentinela.mjs";
+const FIX = path.resolve(import.meta.dirname, "fixtures");
+const T_OLD = fs.readFileSync(path.join(FIX, "t.original.js"), "utf8"), UTM = fs.readFileSync(path.join(FIX, "utm.js"), "utf8");
+const T_NEW = transformTracker(T_OLD);
+// harness: t.js + utm.js num contexto com DOM mínimo; devolve o que fica gravado/exposto e o href do checkout
+function runPage(tjs, search, { pre = {} } = {}) {
+  const mk = (o = {}) => ({ store: { ...o }, getItem(k) { return k in this.store ? this.store[k] : null; }, setItem(k, v) { this.store[k] = String(v); } });
+  const session = mk(pre.session), local = mk(pre.local), jar = { ...(pre.cookie || {}) };
+  const a = { nodeType: 1, tagName: "A", h: "https://pay.hotmart.com/X?off=1", getAttribute(k) { return k === "href" ? this.h : null; }, setAttribute(k, v) { if (k === "href") this.h = v; }, closest: () => null };
+  const body = { nodeType: 1, tagName: "BODY", querySelectorAll: (q) => (q === "a[href]" ? [a] : []) };
+  const document = { readyState: "complete", body, addEventListener() {}, querySelectorAll: () => [a],
+    get cookie() { return Object.entries(jar).map(([k, v]) => `${k}=${v}`).join("; "); },
+    set cookie(s) { const [kv] = s.split(";"); const i = kv.indexOf("="); jar[kv.slice(0, i)] = kv.slice(i + 1); } };
+  const window = { document, sessionStorage: session, localStorage: local, location: { search, origin: "https://leandrostecca.com.br", href: "https://leandrostecca.com.br/p/x" }, URL, URLSearchParams, WeakSet, setTimeout() {}, __cfg: { externalCheckoutHosts: ["pay.hotmart.com"], consentBypass: true }, crypto: {} };
+  const ctx = vm.createContext({ ...window, window, document, sessionStorage: session, localStorage: local, location: window.location, setTimeout() {}, console });
+  window.window = window; vm.runInContext(tjs, ctx); vm.runInContext(UTM, ctx);
+  return JSON.parse(JSON.stringify({ session: session.store, local: local.store, cookie: jar, attrib: vm.runInContext("window.__attrib", ctx), href: a.h }));
+}
+test("t.js novo: parseia, sem dataLayer/data-gtm-id/__pending, idempotente", () => {
+  assert.ok(parses(T_NEW) && T_NEW.length < T_OLD.length);
+  assert.ok(!/dataLayer|data-gtm-id|__pending|uuid|addEventListener/.test(T_NEW));
+  assert.equal(transformTracker(T_NEW), T_NEW);
+});
+test("t.js: com ?utm_source=a&fbclid=b, storage, cookie, __attrib e href do checkout idênticos ao original", () => {
+  const q = "?utm_source=a&fbclid=b&x=1";
+  const o = runPage(T_OLD, q), n = runPage(T_NEW, q);
+  assert.deepEqual(n, o);
+  assert.deepEqual(n.attrib, { utm_source: "a", fbclid: "b" });
+  assert.ok(n.cookie.__attrib && n.local.__attrib_first && n.session.__attrib);
+  assert.equal(n.href, "https://pay.hotmart.com/X?off=1&utm_source=a&fbclid=b");
+});
+test("t.js: sem parâmetros, recupera do storage/cookie igual ao original; controle negativo (sem nada) fica vazio", () => {
+  const pre = { local: { __attrib_first: '{"gclid":"g"}' } };
+  assert.deepEqual(runPage(T_NEW, "", { pre }), runPage(T_OLD, "", { pre }));
+  const e = runPage(T_NEW, "");
+  assert.deepEqual(e.attrib, {}); assert.equal(e.href, "https://pay.hotmart.com/X?off=1");
+});
+test("t.js desconhecido não muda; produtores __pending e comentário saem do HTML", () => {
+  assert.equal(transformTracker("/* outro */ var x=1;"), "/* outro */ var x=1;");
+  const h = transform(page("", `<!-- Pre-hydration click queue (pending-shim) -->\n<script>\n  window.__pending = window.__pending || [];\n  window.__pendingPush = function (payload) {\n    try { window.__pending.push(payload); }\n    catch (e) {}\n  };\n</script>\n<script>\n  window.__pageSlug = "x";\n  window.__pending = window.__pending || [];\n  window.__pendingPush = function (p) { try { window.__pending.push(p); } catch (e) {} };\n  window.__cfg = {a:1};\n</script>`));
+  assert.equal(count(h, "__pending") + count(h, "pending-shim"), 0);
+  assert.ok(h.includes('window.__pageSlug = "x";') && h.includes("window.__cfg = {a:1};"));
+  assert.ok(inline(h).every(parses));
+});

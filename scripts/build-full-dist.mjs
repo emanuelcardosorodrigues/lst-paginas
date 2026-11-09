@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { checkSentinelaDir } from "./guard-sentinela.mjs";
-import { transform } from "./gtm-to-sentinela.mjs";
+import { transform, transformTracker } from "./gtm-to-sentinela.mjs";
 const root = path.resolve(import.meta.dirname, "..");
 const dist = path.join(root, "dist");
 execFileSync("node", [path.join(root, "scripts/mirror-current-p-pages.mjs")], { stdio: "inherit" });
@@ -32,6 +32,12 @@ for (const n of fs.readdirSync(dist)) {
 // GTM -> tag Sentinela em todo HTML servido (fora *.bak.html); aborta se sobrar GTM ou se a tag não ficar exatamente 1x.
 const htmls = fs.readdirSync(dist, { recursive: true }).filter((n) => n.endsWith(".html") && !n.endsWith(".bak.html")).map((n) => path.join(dist, n));
 const bad = [];
+// t.js (servido em /p/<slug>/t.js e assets/js/t.js): só atribuição; guard: sem dataLayer/data-gtm-id.
+for (const n of fs.readdirSync(dist, { recursive: true }).filter((n) => path.basename(n) === "t.js")) {
+  const f = path.join(dist, n), t = transformTracker(fs.readFileSync(f, "utf8"));
+  fs.writeFileSync(f, t);
+  if (/dataLayer|data-gtm-id|__pending/.test(t)) bad.push(`${n} (t.js com resíduo GTM)`);
+}
 for (const h of htmls) {
   const t = transform(fs.readFileSync(h, "utf8"));
   fs.writeFileSync(h, t);

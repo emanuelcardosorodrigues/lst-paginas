@@ -57,5 +57,20 @@ function removeDeadGtm(h) {
     g = g.replace(new RegExp(`[ \\t]*${esc(def)}[ \\t]*\\r?\\n`), "").replace(def, "");
     if (!new RegExp(`(?<![.\\w$])${name}\\(`).test(g)) h = g; // sem referência solta
   }
+  // produtores __pending/__pendingPush: ninguém lê (só o t.js, que perdeu o drain) nem chama
+  h = rmStmt(h, String.raw`window\.__pending = window\.__pending \|\| \[\];`);
+  h = rmStmt(h, String.raw`window\.__pendingPush = function \((?:p|payload)\) \{\s*try \{ window\.__pending\.push\((?:p|payload)\); \}\s*(?:catch \(e\) \{\}\s*)?\};`);
+  h = h.replace(/[ \t]*<!-- Pre-hydration click queue \(pending-shim\) -->[ \t]*\r?\n/g, "").replace(/[ \t]*<script>\s*<\/script>[ \t]*\r?\n?/g, "");
   return h;
+}
+
+// t.js "tracker 1.0.0": fica só a atribuição (sessionStorage/localStorage/cookie __attrib e window.__attrib, lidos por utm.js).
+// Sai: dataLayer, uuid, data-gtm-id em runtime, captura de clique e drain de __pending. Forma desconhecida ou já limpo: devolve igual.
+export function transformTracker(js) {
+  if (!js.startsWith("/* tracker 1.0.0") || !js.includes("var DL = (W.dataLayer")) return js;
+  const cut = (t, a, b) => { const i = t.indexOf(a), j = t.indexOf(b, i); return i < 0 || j < 0 ? t : t.slice(0, i) + t.slice(j); };
+  let t = js.replace(/ *var CFG = W\.__cfg \|\| \{\};\r?\n/, "").replace(/ *var DL = \(W\.dataLayer = W\.dataLayer \|\| \[\]\);\r?\n/, "");
+  t = cut(t, "  function uuid()", "  function readSearch");
+  t = cut(t, "  function targetKind", "})();");
+  return t.replace("/* tracker 1.0.0 — captura de clique delegada + atribuição (Meta/Google) */", "/* tracker 1.0.0 — só atribuição (utm/gclid/fbclid -> __attrib) */");
 }
