@@ -1,4 +1,4 @@
-# TASKS — lst-paginas (atualizado 28/10/2026)
+# TASKS — lst-paginas (atualizado 09/11/2026)
 
 ## Regra: UM Worker só
 Tudo de `leandrostecca.com.br/p/*` vive no `w-lst-paginas`. Não criar Worker novo para página.
@@ -12,6 +12,11 @@ Tudo de `leandrostecca.com.br/p/*` vive no `w-lst-paginas`. Não criar Worker no
 
 ## Incidente 28/10/2026
 36 páginas deram 404 (deploy de assets sem elas). Regras: CLAUDE.md "Produção compartilhada" + PADRAO-CONSTRUCAO D11–D12.
+
+## Incidente 09/11/2026 (loop com query)
+`/p/<slug>?qualquer-query` dava loop 301 em TODAS as 74 páginas (`toString() + "/"` no w-lst-paginas). Fix: `url.pathname += "/"`.
+Trava: `w-lst-paginas/test/barra-final.test.mjs` roda no início do `deploy-full.sh`; `chk` agora testa 4 formas por slug.
+Deploy do fix pendente (Chefe). Depois: confirmar 74×4 em 200 com ≤ 1 redirect.
 
 ## Pendências
 - `col-pvia-frufru03` no ar (02/11/2026, 72/72 em 200). Faltam: bloco "Dúvidas?" (escopo a definir), bio do Leandro (formação/anos), pipeline de copy nos textos novos; "Lucro é Liberdade" só nesta página.
