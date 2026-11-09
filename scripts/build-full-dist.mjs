@@ -5,6 +5,9 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { checkSentinelaDir } from "./guard-sentinela.mjs";
 import { transform, transformTracker } from "./gtm-to-sentinela.mjs";
+import { lerModo } from "./gtm-modo.mjs";
+const MODO = lerModo(); // com = GTM como espelhado/versionado (default); sem = remove GTM e escreve a tag
+console.log(`GTM_MODO=${MODO}`);
 const root = path.resolve(import.meta.dirname, "..");
 const dist = path.join(root, "dist");
 execFileSync("node", [path.join(root, "scripts/mirror-current-p-pages.mjs")], { stdio: "inherit" });
@@ -34,19 +37,22 @@ const htmls = fs.readdirSync(dist, { recursive: true }).filter((n) => n.endsWith
 const bad = [];
 // t.js (servido em /p/<slug>/t.js e assets/js/t.js): só atribuição; guard: sem dataLayer/data-gtm-id.
 for (const n of fs.readdirSync(dist, { recursive: true }).filter((n) => path.basename(n) === "t.js")) {
+  if (MODO === "com") continue;
   const f = path.join(dist, n), t = transformTracker(fs.readFileSync(f, "utf8"));
   fs.writeFileSync(f, t);
   if (/dataLayer|data-gtm-id|__pending/.test(t)) bad.push(`${n} (t.js com resíduo GTM)`);
 }
 for (const h of htmls) {
-  const t = transform(fs.readFileSync(h, "utf8"));
-  fs.writeFileSync(h, t);
+  const t = MODO === "sem" ? transform(fs.readFileSync(h, "utf8")) : fs.readFileSync(h, "utf8");
+  if (MODO === "sem") fs.writeFileSync(h, t);
   const tag = t.split("/api/t/tracker.js").length - 1;
+  // com: o Worker injeta a tag (idempotente); aqui só não pode haver mais de 1.
+  if (MODO === "com") { if (tag > 1) bad.push(`${path.relative(dist, h)} tag=${tag}`); continue; }
   // Stape GTM não tem a string googletagmanager: checa também gtm.start e o domínio ts.
   // + resíduo de GTM no JS de página (dataLayer, data-gtm-id, ts.leandrostecca) e chamada solta de push()/dl() de wrapper removido.
   if (/googletagmanager\.com|gtm\.start|ts\.leandrostecca|dataLayer|data-gtm-id|(?<![.\w$])(?:push|dl)\(\{\s*event\s*:/i.test(t) || tag !== 1) bad.push(`${path.relative(dist, h)} tag=${tag}`);
 }
-if (bad.length) { console.error("ABORTADO: GTM restante ou tag != 1: " + bad.join("; ")); process.exit(1); }
+if (bad.length) { console.error("ABORTADO: " + (MODO === "sem" ? "GTM restante ou tag != 1: " : "tag > 1: ") + bad.join("; ")); process.exit(1); }
 const slugs = fs.readdirSync(dist).filter((n) => fs.existsSync(path.join(dist, n, "index.html")));
 fs.writeFileSync(path.join(root, "slugs-todos.list"), slugs.sort().join("\n") + "\n");
 const sck = fs.readdirSync(extra).sort();

@@ -1,0 +1,12 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import { lerModo, ARQUIVO } from "./gtm-modo.mjs";
+const tmp = (c) => { const f = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "gm-")), "GTM_MODO"); fs.writeFileSync(f, c); return f; };
+test("arquivo versionado = com", () => assert.equal(lerModo({}), "com"));
+test("arquivo sem + newline", () => assert.equal(lerModo({}, tmp("sem\n")), "sem"));
+test("env sobrescreve o arquivo", () => assert.equal(lerModo({ GTM_MODO: "sem" }, ARQUIVO), "sem"));
+test("valor invalido no arquivo aborta", () => assert.throws(() => lerModo({}, tmp("talvez\n")), /invalido/));
+test("valor invalido no env aborta (inclusive vazio)", () => { assert.throws(() => lerModo({ GTM_MODO: "COM" })); assert.throws(() => lerModo({ GTM_MODO: "" })); });
