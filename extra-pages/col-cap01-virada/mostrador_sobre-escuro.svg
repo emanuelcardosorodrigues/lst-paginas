@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" aria-hidden="true">
+  <!-- Mostrador: elemento de fundo atrás do expert. Opacidades já aplicadas. -->
+  <circle cx="500" cy="500" r="480" fill="none" stroke="#C8A96A" stroke-width="1" opacity="0.28"/>
+  <!-- 60 marcações de minuto: circunferência 2π·420 = 2638,9 / 60 = 43,98 -->
+  <circle cx="500" cy="500" r="420" fill="none" stroke="#C8A96A" stroke-width="12" stroke-dasharray="1.2 42.78" opacity="0.45"/>
+  <!-- 12 marcações de hora: 2638,9 / 12 = 219,9 -->
+  <circle cx="500" cy="500" r="420" fill="none" stroke="#C8A96A" stroke-width="28" stroke-dasharray="1.6 218.3" opacity="0.7"/>
+  <circle cx="500" cy="500" r="340" fill="none" stroke="#C8A96A" stroke-width="1" opacity="0.22"/>
+  <circle cx="500" cy="500" r="230" fill="none" stroke="#C8A96A" stroke-width="1" stroke-dasharray="2 9" opacity="0.3"/>
+  <!-- Arco da virada: do 12 ao 1 (30°) -->
+  <path d="M500 20 A480 480 0 0 1 740 84.3" fill="none" stroke="#C8A96A" stroke-width="7"/>
+  <!-- Ponteiros fantasma -->
+  <polygon points="515.3,526.5 411.1,259.3 296.0,146.7 336.0,302.6" fill="#F2EDE4" opacity="0.12"/>
+  <polygon points="484.7,526.5 664.0,302.6 704.0,146.7 588.9,259.3" fill="#C8A96A" opacity="0.75"/>
+</svg>

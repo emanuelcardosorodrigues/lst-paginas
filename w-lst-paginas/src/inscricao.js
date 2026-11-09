@@ -1,8 +1,11 @@
 // Inscrição do webinário INUP: valida, repassa ao quiz-intake do megacrm e,
 // se falhar, guarda no KV e reenvia pelo cron. Segredo só em env (secret).
-const SLUG = "col-inup-cap01-web01";
-const TAG = "reforma-29-10-inscrito";
+const INUP = "col-inup-cap01-web01";
+const VIRADA = "col-cap01-virada";
 const DEAL_STAGE_ID = "c8ee6cd8-a35f-4c85-9258-1282cb2fcda7";
+const FAT = { ate15: "Até R$ 15 mil", "15-35": "R$ 15–35 mil", "35-70": "R$ 35–70 mil", "70mais": "Acima de R$ 70 mil" };
+const SOBRA = { nada: "Nada", ate5: "Até R$ 5 mil", mais5: "Mais de R$ 5 mil", "nao-sei": "Não sei" };
+export const SLUGS = [INUP, VIRADA];
 const MAX_ATTEMPTS = 50;
 const TTL = 60 * 60 * 24 * 14;
 const ORIGINS = new Set(["https://leandrostecca.com.br", "https://www.leandrostecca.com.br"]);
@@ -29,29 +32,29 @@ export function cleanUtms(params) {
   return out;
 }
 
-async function eventId(phone) {
-  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`${SLUG}|${phone}`));
+async function eventId(slug, phone) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`${slug}|${phone}`));
   return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("").slice(0, 32);
 }
 
-export async function buildPayload(body) {
+export async function buildPayload(body, slug) {
+  const virada = slug === VIRADA;
   const name = String(body.nome ?? body.name ?? "").trim();
   const email = String(body.email ?? "").trim().toLowerCase();
   const phone = normalizePhone(body.telefone ?? body.phone);
+  const fat = String(body.faturamento ?? "");
+  const sobra = String(body.sobra ?? "");
   if (name.length < 2 || name.length > 120) return { error: "nome" };
-  if (!/^[^\s@]{1,64}@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 160) return { error: "email" };
+  if ((!virada || email) && (!/^[^\s@]{1,64}@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 160)) return { error: "email" };
   if (!phone) return { error: "telefone" };
-  return {
-    payload: {
-      phone, email, name,
-      quiz_slug: SLUG, form_id: SLUG,
-      tags: [TAG], tag_only: true,
-      deal_stage_id: DEAL_STAGE_ID,
-      skip_group_alert: true,
-      utms: cleanUtms(body.params),
-      event_id: await eventId(phone),
-    },
-  };
+  const common = { phone, name, quiz_slug: slug, form_id: slug, tag_only: true, skip_group_alert: true, utms: cleanUtms(body.params), event_id: await eventId(slug, phone) };
+  if (!virada) return { payload: { phone, email, name, quiz_slug: slug, form_id: slug, tags: ["reforma-29-10-inscrito"], tag_only: true, deal_stage_id: DEAL_STAGE_ID, skip_group_alert: true, utms: common.utms, event_id: common.event_id } };
+  if (!Object.hasOwn(FAT, fat)) return { error: "faturamento" };
+  if (sobra && !Object.hasOwn(SOBRA, sobra)) return { error: "sobra" };
+  const qualificacao = { faturamento: FAT[fat] };
+  const tags = ["virada-inscrito", `virada-fat-${fat}`];
+  if (sobra) { qualificacao.sobra = SOBRA[sobra]; tags.push(`virada-sobra-${sobra}`); }
+  return { payload: { ...common, ...(email && { email }), tags, qualificacao } };
 }
 
 // Devolve { ok, status, error } — status é o HTTP do quiz-intake (nunca o segredo).
@@ -73,7 +76,7 @@ async function send(env, payload) {
   }
 }
 
-export async function handleInscricao(request, env) {
+export async function handleInscricao(request, env, slug) {
   if (request.method !== "POST") return json({ ok: false }, 405);
   const origin = request.headers.get("Origin");
   if (origin && !ORIGINS.has(origin)) return json({ ok: false }, 403);
@@ -82,7 +85,7 @@ export async function handleInscricao(request, env) {
   let body;
   try { body = JSON.parse(raw); } catch { return json({ ok: false, error: "json" }, 400); }
   if (body && body.website) return json({ ok: true }); // honeypot
-  const { payload, error } = await buildPayload(body || {});
+  const { payload, error } = await buildPayload(body || {}, slug);
   if (error) return json({ ok: false, error }, 400);
 
   const res = await send(env, payload);

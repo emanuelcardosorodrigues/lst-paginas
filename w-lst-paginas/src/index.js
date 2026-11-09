@@ -1,4 +1,4 @@
-import { handleInscricao, retryPending } from "./inscricao.js";
+import { handleInscricao, retryPending, SLUGS } from "./inscricao.js";
 import { SCK_FIX_SLUGS } from "./sck-slugs.js";
 import { withSentinelaTag } from "./sentinela-tag.js";
 
@@ -50,10 +50,11 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    if (url.pathname === "/p/col-inup-cap01-web01/api/inscricao") {
+    const insc = url.pathname.match(/^\/p\/([^/]+)\/api\/inscricao$/);
+    if (insc && SLUGS.includes(insc[1])) {
       // Sem cron: cada inscrição também reenvia o que ficou pendente no KV.
       ctx.waitUntil(retryPending(env));
-      return handleInscricao(request, env);
+      return handleInscricao(request, env, insc[1]);
     }
 
     if (url.pathname.startsWith("/p/")) {
