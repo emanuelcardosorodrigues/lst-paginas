@@ -198,3 +198,13 @@ test("t.js desconhecido não muda; produtores __pending e comentário saem do HT
   assert.ok(h.includes('window.__pageSlug = "x";') && h.includes("window.__cfg = {a:1};"));
   assert.ok(inline(h).every(parses));
 });
+
+test("stripTag tira a tag Sentinela e preserva o GTM", async () => {
+  const { stripTag } = await import("./gtm-to-sentinela.mjs");
+  const gtm = `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':1})})(window,document,'script','dataLayer','GTM-X');</script>`;
+  const h = `<html><head>\n${gtm}\n  ${TAG}\n</head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-X"></iframe></noscript></body></html>`;
+  const out = stripTag(h);
+  assert.equal(count(out, "track.leandrostecca.com.br"), 0);
+  assert.ok(out.includes(gtm) && out.includes("ns.html?id=GTM-X"));
+  assert.equal(stripTag(out), out);
+});

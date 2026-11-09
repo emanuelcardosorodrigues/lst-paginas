@@ -26,6 +26,10 @@ Deploy do fix pendente (Chefe). Depois: confirmar 74×4 em 200 com ≤ 1 redirec
 - kal-pv01..05 viraram `extra-pages/` (cópia byte a byte do `w-lst-kal-pv/dist` no ar). Ordem: 1) `CONFIRMO=sim ./deploy-full.sh` (kal ainda servido pelo w-lst-kal-pv; chktag acusa só elas); 2) `cd ../w-lst-kal-pv && ROLLBACK=sim ./deploy.sh` (apaga o Worker; tráfego cai no w-lst-paginas).
 - Rollback: tag git `pre-gtm-sentinela-20261109`; `wrangler rollback c82d8597-4a15-4fb3-ae24-fa11a309ff3d` (w-lst-paginas); kal: `~/.config/apolo/cf-deploy.sh w-lst-kal-pv` (dist de 05/11 + rotas; NÃO rodar build.mjs).
 
+## Tag Sentinela removida, GTM mantido (Chefe 09/11)
+- `SENTINELA_TAG "0"` no w-lst-paginas; build `com` tira o script `/api/t/tracker.js` do HTML (`stripTag`) e aborta se sobrar `track.leandrostecca`; `chktag` (com) exige 0 ocorrências. Build local: 74 páginas, 0 HTML com a tag, 68 com gtm.start (+dpl-pv01 via third-party.js).
+- Deploy pendente (Chefe): `cd w-lst-paginas && CONFIRMO=sim ./deploy-full.sh`. kal-pv01..05 ainda saem pelo w-lst-kal-pv (SENTINELA_TAG "1"), fora do deploy-full.
+
 ## Pendências
 - `col-pvia-frufru03` no ar (02/11/2026, 72/72 em 200). Faltam: bloco "Dúvidas?" (escopo a definir), bio do Leandro (formação/anos), pipeline de copy nos textos novos; "Lucro é Liberdade" só nesta página.
 - `/ativos-d` na raiz ainda é rota do w-lst-paginas (404); página em `/p/ativos-d`.

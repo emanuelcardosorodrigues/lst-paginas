@@ -2,6 +2,8 @@
 // Não toca em Pixel, gtag (third-party.js), Hotmart, t.js/utm.js nem em dns-prefetch/preconnect de clarity/google-analytics.
 // Também remove o código morto que sobrou do GTM (dataLayer em JS de página, holder do Clarity, data-gtm-id, comentários).
 export const TAG = '<script async src="https://track.leandrostecca.com.br/api/t/tracker.js?tid=faafca5a-fb53-404f-8469-499d8869944c"></script>';
+// Remove a tag Sentinela (script /api/t/tracker.js), linha inteira se ela a ocupa sozinha. Não toca no GTM.
+export const stripTag = (h) => h.replace(/^[ \t]*<script\b[^>]*\/api\/t\/tracker\.js[^>]*><\/script>[ \t]*\r?\n/gm, "").replace(/<script\b[^>]*\/api\/t\/tracker\.js[^>]*><\/script>/g, "");
 const esc = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const TRY_PUSH = String.raw`try\s*\{\s*\(window\.dataLayer=window\.dataLayer\|\|\[\]\)\.push\(\{[^{}]*\}\);?\s*\}\s*catch\s*\(\w+\)\s*\{\s*\}`;
 // remove um statement: linha inteira se ele a ocupa sozinho, senão só o trecho
