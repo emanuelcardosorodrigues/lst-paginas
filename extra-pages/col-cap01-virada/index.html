@@ -56,7 +56,7 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--onix);color:var(--marfim);font-family:var(--fonte-texto);font-size:var(--t-corpo);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--onix);color:var(--marfim);font-family:var(--fonte-texto);font-size:var(--t-corpo);line-height:1.6;font-variation-settings:"opsz" 18;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,svg{display:block;max-width:100%}
 a{color:inherit}
 h1,h2,h3,h4,p,blockquote{margin:0}
@@ -134,7 +134,7 @@ h1,h2,h3,h4,p,blockquote{margin:0}
 .faixa{border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);background:var(--onix-2);overflow:hidden}
 .faixa__escala{height:24px;background-image:url("/p/col-cap01-virada/escala-graduada.svg");background-repeat:repeat-x;background-size:400px 24px;opacity:.55;animation:desliza 40s linear infinite}
 @keyframes desliza{from{background-position:0 0}to{background-position:-400px 0}}
-.faixa__provas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.faixa__provas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .prova{padding:32px var(--gutter);display:flex;flex-direction:column;gap:6px;border-right:1px solid var(--linha)}
 .prova:last-child{border-right:0}
 .prova b{font-family:var(--fonte-display);font-weight:500;font-size:clamp(30px,2.7vw,40px);line-height:1.05;color:var(--marfim)}
@@ -179,6 +179,8 @@ h1,h2,h3,h4,p,blockquote{margin:0}
 .dia .mini{width:96px;height:96px;background:var(--onix-2);border-radius:50%}
 .dia__titulo{font-family:var(--fonte-display);font-weight:500;font-size:var(--t-h4);line-height:1.2}
 .dia p.corpo{font-size:16px}
+.conteudo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+@media (max-width:640px){.conteudo{grid-template-columns:1fr}}
 .cta-linha{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:clamp(32px,4vw,56px)}
 
 /* AUTOR */
@@ -460,7 +462,44 @@ h1,h2,h3,h4,p,blockquote{margin:0}
 <section class="secao secao--alt oferta" style="padding-top:clamp(56px,7vw,96px)">
   <div class="oferta__luz" aria-hidden="true"></div>
   <div class="container" style="position:relative">
-    <div class="cabeca-secao cabeca-secao--centro revela" style="margin-bottom:28px">
+    <div class="cabeca-secao revela">
+      <span class="rotulo">O que você vai aplicar</span>
+      <h2 class="display h2">Prático, para aplicar <em>no dia seguinte.</em></h2>
+      <p class="corpo-g">Nada de teoria. Cada parte da noite termina com um ajuste que você faz no seu consultório já na quarta-feira.</p>
+    </div>
+    <div class="conteudo">
+      <article class="card dia revela">
+        <div class="numero"><i>Nº</i><b>01</b></div>
+        <h3 class="dia__titulo">As oportunidades de 2027</h3>
+        <p class="corpo">Onde está o dinheiro que muda com o novo cenário econômico e tributário, e o primeiro movimento para pegar a sua parte.</p>
+      </article>
+      <article class="card dia revela atraso-1">
+        <div class="numero"><i>Nº</i><b>02</b></div>
+        <h3 class="dia__titulo">Preço que dá lucro</h3>
+        <p class="corpo">Você calcula ao vivo, com a calculadora aberta, o preço do procedimento que mais faz. Sai da noite com o número na mão.</p>
+      </article>
+      <article class="card dia revela">
+        <div class="numero"><i>Nº</i><b>03</b></div>
+        <h3 class="dia__titulo">Imposto e contabilidade</h3>
+        <p class="corpo">A checagem rápida para saber se você está pagando imposto a mais no regime errado, e o que fazer se estiver.</p>
+      </article>
+      <article class="card dia revela atraso-1">
+        <div class="numero"><i>Nº</i><b>04</b></div>
+        <h3 class="dia__titulo">Paciente de alto ticket</h3>
+        <p class="corpo">O ajuste no Instagram e no atendimento para atrair quem fecha o tratamento completo, dentro das novas regras do CFO.</p>
+      </article>
+      <article class="card dia revela">
+        <div class="numero"><i>Nº</i><b>05</b></div>
+        <h3 class="dia__titulo">Equipe e conversão</h3>
+        <p class="corpo">O passo a passo para a equipe fechar tratamento sem você em cada conversa, para começar no dia seguinte.</p>
+      </article>
+      <article class="card card--destaque dia revela atraso-1">
+        <div class="numero"><i>Nº</i><b>06</b></div>
+        <h3 class="dia__titulo">Revelação ao vivo</h3>
+        <p class="corpo">O agente de IA que faz o trabalho manual por você. Só quem estiver ao vivo vai ver.</p>
+      </article>
+    </div>
+    <div class="cabeca-secao cabeca-secao--centro revela" style="margin-top:clamp(56px,7vw,96px);margin-bottom:28px">
       <span class="rotulo">A imersão começa em</span>
     </div>
     <div class="contagem revela" id="contagem" data-alvo="2026-11-10T20:00:00-03:00" aria-live="off">
@@ -481,8 +520,7 @@ h1,h2,h3,h4,p,blockquote{margin:0}
   <div class="faixa__escala" aria-hidden="true"></div>
   <div class="faixa__provas container" style="padding:0">
     <div class="prova revela"><b><span class="odo" data-de="00">30 anos</span></b><span>de odontologia</span></div>
-    <div class="prova revela atraso-1"><b><span class="odo" data-de="000">~R$ 250 mil/mês</span></b><span>na clínica do Leandro, com lucro</span></div>
-    <div class="prova revela atraso-2"><b>Centenas</b><span>de dentistas acompanhados</span></div>
+    <div class="prova revela atraso-1"><b>+ de 1.600</b><span>de dentistas acompanhados</span></div>
   </div>
   <div class="faixa__escala" aria-hidden="true" style="animation-direction:reverse"></div>
 </section>
@@ -627,8 +665,7 @@ h1,h2,h3,h4,p,blockquote{margin:0}
       <div class="credenciais">
         <div class="credencial"><span><b>30 anos</b> de odontologia</span></div>
         <div class="credencial"><span><b>+15 anos</b> como professor</span></div>
-        <div class="credencial"><span><b>~R$ 250 mil</b> por mês na minha clínica, com lucro</span></div>
-        <div class="credencial"><span><b>Centenas</b> de dentistas acompanhados</span></div>
+        <div class="credencial"><span><b>+ de 1.600</b> de dentistas acompanhados</span></div>
       </div>
     </div>
   </div>
