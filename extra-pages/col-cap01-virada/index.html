@@ -217,8 +217,28 @@ h1,h2,h3,h4,p,blockquote{margin:0}
 .contagem b{font-family:var(--fonte-display);font-weight:500;font-size:clamp(44px,5vw,72px);line-height:1;font-variant-numeric:tabular-nums}
 .contagem span{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cinza)}
 .contagem .aovivo{font-family:var(--fonte-display);font-style:italic;font-size:clamp(40px,5vw,64px);color:var(--champanhe);align-self:center;min-width:0}
-.ingresso{position:relative;max-width:640px;margin:0 auto;display:grid;gap:18px;scroll-margin-top:96px}
+.ingresso{position:relative;display:grid;gap:18px}
 .ingresso h2{font-size:clamp(26px,3vw,34px);line-height:1.15}
+.ingresso h2 small{font-family:var(--fonte-texto);font-size:15px;color:var(--cinza);font-weight:400;letter-spacing:0}
+.cta-linha--centro{align-items:center;text-align:center;margin-top:0}
+.pop{width:min(480px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 32px);margin:auto;overflow:auto;background:var(--onix-2);color:var(--marfim);display:none}
+.pop[open]{display:block}
+.pop::backdrop{background:rgba(0,0,0,.72)}
+.pop-aberto{overflow:hidden}
+.pop-aberto .barra{visibility:hidden}
+.pop__topo{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:-8px -8px 12px}
+.pop__bt{width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:var(--marfim-2);font-size:28px;line-height:1;cursor:pointer}
+.pop__bt:hover{color:var(--champanhe)}
+.pop__bt:focus-visible,.pular:focus-visible{outline:2px solid var(--champanhe);outline-offset:2px}
+.prog{height:3px;border-radius:2px;background:var(--linha);margin-bottom:24px;overflow:hidden}
+.prog i{display:block;height:100%;width:25%;background:var(--champanhe);transition:width .2s var(--ease-suave)}
+.etapa{align-content:start}
+.etapa[hidden]{display:none}
+.etapa.in{animation:etIn .18s var(--ease-entrada)}
+@keyframes etIn{from{opacity:0;translate:12px 0}to{opacity:1;translate:0 0}}
+.env{text-align:center;min-height:1px}
+.pular{justify-self:center;background:none;border:0;color:var(--cinza);font:inherit;font-size:15px;text-decoration:underline;cursor:pointer;padding:10px}
+.pular:hover{color:var(--marfim)}
 .campo{display:grid;gap:8px;font-size:15px;font-weight:600;color:var(--marfim)}
 .campo small{color:var(--cinza);font-weight:400}
 .ingresso input[type=text],.ingresso input[type=tel]{font:inherit;font-size:17px;font-weight:400;min-height:52px;padding:12px 16px;border:1px solid var(--linha);border-radius:12px;background:var(--grafite);color:var(--marfim);width:100%}
@@ -342,6 +362,9 @@ h1,h2,h3,h4,p,blockquote{margin:0}
   .contagem div{min-width:0}
   .contagem b{font-size:44px}
   .opts span{font-size:14px;gap:10px;padding:10px}
+  .pop{width:100%;height:100dvh;max-height:none;border:0;border-radius:0}
+  .pop[open]{display:flex;flex-direction:column}
+  .pop .ingresso{flex:1;align-content:center}
 }
 </style>
 </head>
@@ -446,33 +469,10 @@ h1,h2,h3,h4,p,blockquote{margin:0}
       <div><b data-u="m">--</b><span>min</span></div>
       <div><b data-u="s">--</b><span>seg</span></div>
     </div>
-    <form class="card card--destaque ingresso revela atraso-1" id="inscricao" novalidate>
-      <h2 class="display">Quero meu lugar na imersão</h2>
-      <label class="campo">Como você quer ser chamado?<input type="text" name="nome" autocomplete="given-name" required placeholder="Seu nome" /></label>
-      <label class="campo">Seu WhatsApp para receber o link<input type="tel" name="telefone" inputmode="tel" autocomplete="tel" required placeholder="(00) 00000-0000" /></label>
-      <div class="campo" role="group" aria-labelledby="l-fat">
-        <span id="l-fat">Quanto seu consultório fatura por mês?</span>
-        <div class="opts">
-          <label><input type="radio" name="faturamento" value="ate15" /><span>Até R$ 15 mil</span></label>
-          <label><input type="radio" name="faturamento" value="15-35" /><span>R$ 15–35 mil</span></label>
-          <label><input type="radio" name="faturamento" value="35-70" /><span>R$ 35–70 mil</span></label>
-          <label><input type="radio" name="faturamento" value="70mais" /><span>Acima de R$ 70 mil</span></label>
-        </div>
-      </div>
-      <div class="campo" role="group" aria-labelledby="l-sob">
-        <span id="l-sob">No fim do mês, quanto sobra na sua mão? <small>(opcional)</small></span>
-        <div class="opts">
-          <label><input type="radio" name="sobra" value="nada" /><span>Nada</span></label>
-          <label><input type="radio" name="sobra" value="ate5" /><span>Até R$ 5 mil</span></label>
-          <label><input type="radio" name="sobra" value="mais5" /><span>Mais de R$ 5 mil</span></label>
-          <label><input type="radio" name="sobra" value="nao-sei" /><span>Não sei</span></label>
-        </div>
-      </div>
-      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-      <p class="err" role="alert"></p>
-      <button class="btn btn--primario btn--largo" type="submit">Quero meu lugar na imersão</button>
-      <p class="nota" style="text-align:center">Depois do cadastro você entra no grupo do WhatsApp, é por lá que o link chega.</p>
-    </form>
+    <div class="cta-linha cta-linha--centro revela atraso-1">
+      <a class="btn btn--primario" href="#inscricao">Quero meu lugar na imersão</a>
+      <p class="nota">Depois do cadastro você entra no grupo do WhatsApp, é por lá que o link chega.</p>
+    </div>
   </div>
 </section>
 
@@ -698,6 +698,49 @@ h1,h2,h3,h4,p,blockquote{margin:0}
   </div>
 </footer>
 
+<dialog class="card card--destaque pop" id="inscricao" aria-label="Inscrição na imersão">
+  <div class="pop__topo">
+    <button type="button" class="pop__bt" id="voltar" aria-label="Voltar" style="visibility:hidden">&larr;</button>
+    <span class="rotulo" id="passo" aria-live="polite">Passo 1 de 4</span>
+    <button type="button" class="pop__bt" id="fechar" aria-label="Fechar">&times;</button>
+  </div>
+  <div class="prog" aria-hidden="true"><i id="progb"></i></div>
+  <form class="ingresso" id="f" novalidate>
+    <div class="etapa campo" role="group" aria-labelledby="t1">
+      <h2 class="display" id="t1">Como você quer ser chamado?</h2>
+      <input type="text" name="nome" autocomplete="given-name" required placeholder="Seu nome" aria-labelledby="t1" />
+      <button type="button" class="btn btn--primario btn--largo" data-continuar>Continuar</button>
+    </div>
+    <div class="etapa campo" role="group" aria-labelledby="t2" hidden>
+      <h2 class="display" id="t2">Seu WhatsApp para receber o link</h2>
+      <input type="tel" name="telefone" inputmode="tel" autocomplete="tel" required placeholder="(00) 00000-0000" aria-labelledby="t2" />
+      <button type="button" class="btn btn--primario btn--largo" data-continuar>Continuar</button>
+    </div>
+    <div class="etapa campo" role="group" aria-labelledby="t3" hidden>
+      <h2 class="display" id="t3">Quanto seu consultório fatura por mês?</h2>
+      <div class="opts">
+        <label><input type="radio" name="faturamento" value="ate15" /><span>Até R$ 15 mil</span></label>
+        <label><input type="radio" name="faturamento" value="15-35" /><span>R$ 15–35 mil</span></label>
+        <label><input type="radio" name="faturamento" value="35-70" /><span>R$ 35–70 mil</span></label>
+        <label><input type="radio" name="faturamento" value="70mais" /><span>Acima de R$ 70 mil</span></label>
+      </div>
+    </div>
+    <div class="etapa campo" role="group" aria-labelledby="t4" hidden>
+      <h2 class="display" id="t4">No fim do mês, quanto sobra na sua mão? <small>(opcional)</small></h2>
+      <div class="opts">
+        <label><input type="radio" name="sobra" value="nada" /><span>Nada</span></label>
+        <label><input type="radio" name="sobra" value="ate5" /><span>Até R$ 5 mil</span></label>
+        <label><input type="radio" name="sobra" value="mais5" /><span>Mais de R$ 5 mil</span></label>
+        <label><input type="radio" name="sobra" value="nao-sei" /><span>Não sei</span></label>
+      </div>
+      <p class="nota env" id="env" aria-live="polite"></p>
+      <button type="button" class="pular" id="pular">Pular</button>
+    </div>
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <p class="err" role="alert"></p>
+  </form>
+</dialog>
+
 <div class="barra" id="barra"><a class="btn btn--primario" href="#inscricao">Quero meu lugar na imersão</a></div>
 
 <script>
@@ -780,11 +823,15 @@ if(sg){
   }
 }
 
-/* Formulario */
+/* Formulario em popup, uma etapa por vez */
 var SLUG="col-cap01-virada",
 INTAKE="/p/col-cap01-virada/api/inscricao",
 NEXT="https://l.leandrostecca.com.br/col-virada-grupo",
-f=document.getElementById("inscricao"),b=f.querySelector("button"),err=f.querySelector(".err"),LABEL=b.textContent;
+dlg=document.getElementById("inscricao"),f=document.getElementById("f"),err=f.querySelector(".err"),
+et=[].slice.call(f.querySelectorAll(".etapa")),N=et.length,etapa=1,aberto=false,envio=false,
+bv=document.getElementById("voltar"),ps=document.getElementById("passo"),pb=document.getElementById("progb"),st=document.getElementById("env"),
+html=document.documentElement;
+function dl(o){try{(window.dataLayer=window.dataLayer||[]).push(o)}catch(x){}}
 f.telefone.addEventListener("input",function(){
   var d=this.value.replace(/\D/g,"").slice(0,11),o=d,c=d.length>10?7:6;
   if(d.length>2)o="("+d.slice(0,2)+") "+d.slice(2,c)+(d.length>c?"-"+d.slice(c):"");
@@ -792,28 +839,65 @@ f.telefone.addEventListener("input",function(){
 });
 function show(m){err.textContent=m}
 function val(n){var r=f.querySelector('input[name="'+n+'"]:checked');return r?r.value:""}
-f.addEventListener("submit",function(e){
-  e.preventDefault();show("");
-  if(f.website.value)return;
-  var nome=f.nome.value.trim(),tel=f.telefone.value.replace(/\D/g,""),fat=val("faturamento");
-  if(nome.length<2)return show("Informe seu nome.");
-  if(tel.length<10)return show("Informe um WhatsApp com DDD.");
-  if(!fat)return show("Escolha a faixa de faturamento.");
-  b.disabled=true;b.textContent="Enviando...";
-  var body={nome:nome,telefone:tel,faturamento:fat,sobra:val("sobra"),pagina:SLUG,params:Object.fromEntries(new URLSearchParams(location.search)),landing_page:location.href,referrer:document.referrer||""};
+function foco(){var e=et[etapa-1],i=e.querySelector("input:checked")||e.querySelector("input");if(i)i.focus()}
+function irPara(n,push){
+  etapa=n;show("");st.textContent="";
+  et.forEach(function(e,i){e.hidden=i+1!==n;e.classList.remove("in")});
+  void et[n-1].offsetWidth;et[n-1].classList.add("in");
+  ps.textContent="Passo "+n+" de "+N;pb.style.width=(n/N*100)+"%";bv.style.visibility=n>1?"visible":"hidden";
+  foco();
+  if(push)dl({event:"form_etapa",etapa:n,pagina:SLUG});
+}
+function valida(n){
+  if(n==1&&f.nome.value.trim().length<2){show("Informe seu nome.");return false}
+  if(n==2&&f.telefone.value.replace(/\D/g,"").length<10){show("Informe um WhatsApp com DDD.");return false}
+  if(n==3&&!val("faturamento")){show("Escolha a faixa de faturamento.");return false}
+  show("");return true;
+}
+function avancar(){if(valida(etapa)&&etapa<N)irPara(etapa+1,true)}
+function abrir(){
+  if(!dlg.open){dlg.showModal();html.classList.add("pop-aberto")}
+  if(aberto)return foco();
+  aberto=true;dl({event:"form_aberto",pagina:SLUG});irPara(etapa,true);
+}
+function fechar(){dlg.close()}
+function travar(x){envio=x;[].forEach.call(f.querySelectorAll("input,button"),function(e){e.disabled=x})}
+function enviar(){
+  if(envio||f.website.value)return;
+  for(var i=1;i<=3;i++)if(!valida(i)){irPara(i,true);valida(i);return}
+  travar(true);st.textContent="Enviando...";show("");
+  var body={nome:f.nome.value.trim(),telefone:f.telefone.value.replace(/\D/g,""),faturamento:val("faturamento"),sobra:val("sobra"),pagina:SLUG,params:Object.fromEntries(new URLSearchParams(location.search)),landing_page:location.href,referrer:document.referrer||""};
   var done=function(){
-    try{(window.dataLayer=window.dataLayer||[]).push({event:"lead_capturado",pagina:SLUG})}catch(x){}
+    dl({event:"lead_capturado",pagina:SLUG});
     setTimeout(function(){location.href=NEXT},300);
   };
   Promise.race([
     fetch(INTAKE,{method:"POST",headers:{"Content-Type":"application/json"},keepalive:true,body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw 0}),
     new Promise(function(_,rej){setTimeout(rej,6000)})
-  ]).then(done,function(){b.disabled=false;b.textContent=LABEL;show("Não foi possível enviar. Tente novamente.")});
+  ]).then(done,function(){travar(false);st.textContent="";show("Não foi possível enviar. Tente novamente.")});
+}
+document.querySelectorAll('a[href="#inscricao"]').forEach(function(a){
+  a.addEventListener("click",function(e){if(!dlg.showModal)return;e.preventDefault();abrir()});
 });
+[].forEach.call(f.querySelectorAll("[data-continuar]"),function(x){x.addEventListener("click",avancar)});
+f.addEventListener("keydown",function(e){
+  if(e.key==="Enter"&&e.target.type!=="radio"&&etapa<3){e.preventDefault();avancar()}
+});
+f.addEventListener("submit",function(e){e.preventDefault();if(etapa<N)avancar()});
+f.querySelectorAll('input[name="faturamento"]').forEach(function(r){r.addEventListener("click",function(){if(etapa==3)avancar()})});
+f.querySelectorAll('input[name="sobra"]').forEach(function(r){r.addEventListener("click",enviar)});
+document.getElementById("pular").addEventListener("click",function(){
+  [].forEach.call(f.querySelectorAll('input[name="sobra"]'),function(r){r.checked=false});enviar();
+});
+bv.addEventListener("click",function(){if(!envio&&etapa>1)irPara(etapa-1,true)});
+document.getElementById("fechar").addEventListener("click",fechar);
+dlg.addEventListener("click",function(e){if(e.target===dlg)fechar()});
+dlg.addEventListener("close",function(){html.classList.remove("pop-aberto")});
+if(location.hash==="#inscricao"&&dlg.showModal)abrir();
 
-/* Barra fixa (celular) só quando o card de inscrição sai da tela */
+/* Barra fixa (celular) só quando o hero sai da tela */
 var s=document.getElementById("barra");
-if("IntersectionObserver" in window){new IntersectionObserver(function(en){s.classList.toggle("on",!en[0].isIntersecting)}).observe(f)}
+if("IntersectionObserver" in window){new IntersectionObserver(function(en){s.classList.toggle("on",!en[0].isIntersecting)}).observe(document.getElementById("inicio"))}
 })();
 </script>
 <script defer src="/p/col-cap01-virada/t.js"></script>
