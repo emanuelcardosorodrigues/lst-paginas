@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { checkSentinelaDir } from "./guard-sentinela.mjs";
+import { transform } from "./gtm-to-sentinela.mjs";
 const root = path.resolve(import.meta.dirname, "..");
 const dist = path.join(root, "dist");
 execFileSync("node", [path.join(root, "scripts/mirror-current-p-pages.mjs")], { stdio: "inherit" });
@@ -28,6 +29,16 @@ for (const n of fs.readdirSync(dist)) {
   const t = fs.readFileSync(h, "utf8");
   if (t.includes('id="faq-panel-0"') && !/type="module"/.test(t) && !t.includes('[aria-controls^="faq-panel-"]')) fs.writeFileSync(h, t + "\n" + FAQ_JS + "\n");
 }
+// GTM -> tag Sentinela em todo HTML servido (fora *.bak.html); aborta se sobrar GTM ou se a tag não ficar exatamente 1x.
+const htmls = fs.readdirSync(dist, { recursive: true }).filter((n) => n.endsWith(".html") && !n.endsWith(".bak.html")).map((n) => path.join(dist, n));
+const bad = [];
+for (const h of htmls) {
+  const t = transform(fs.readFileSync(h, "utf8"));
+  fs.writeFileSync(h, t);
+  const tag = t.split("/api/t/tracker.js").length - 1;
+  if (/googletagmanager\.com/i.test(t) || tag !== 1) bad.push(`${path.relative(dist, h)} tag=${tag}`);
+}
+if (bad.length) { console.error("ABORTADO: GTM restante ou tag != 1: " + bad.join("; ")); process.exit(1); }
 const slugs = fs.readdirSync(dist).filter((n) => fs.existsSync(path.join(dist, n, "index.html")));
 fs.writeFileSync(path.join(root, "slugs-todos.list"), slugs.sort().join("\n") + "\n");
 const sck = fs.readdirSync(extra).sort();
