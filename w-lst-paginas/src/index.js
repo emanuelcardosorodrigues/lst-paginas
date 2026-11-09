@@ -58,8 +58,11 @@ export default {
     if (url.pathname.startsWith("/p/")) {
       // Only redirect /p/slug (no trailing slash, no sub-path) → /p/slug/
       // This avoids redirecting asset paths like /p/slug/assets/file.js
-      if (/^\/p\/[^/]+$/.test(url.pathname)) {
-        return Response.redirect(url.toString() + "/", 301);
+      // Mexe no pathname, nunca na URL serializada: `toString() + "/"` cola a barra na query
+      // (?fbclid=x/) e vira loop infinito em todo clique de anúncio. Caminho com ponto é arquivo.
+      if (/^\/p\/[^/.]+$/.test(url.pathname)) {
+        url.pathname += "/";
+        return Response.redirect(url.toString(), 301);
       }
 
       const slug = (url.pathname.match(/^\/p\/([^/]+)/) || [])[1] || "";
