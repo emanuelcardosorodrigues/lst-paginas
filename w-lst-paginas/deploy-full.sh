@@ -20,10 +20,10 @@ UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Ge
 chk() { local bad=0 r s q; for s in $(cat ../slugs-todos.list); do
   for q in "?h=$RANDOM" "?fbclid=x$RANDOM" "?utm_source=a&utm_content=b$RANDOM" "/?fbclid=x$RANDOM"; do
     r=$(curl -sL --max-redirs 5 -A "$UA" -o /dev/null -w "%{http_code} %{num_redirects}" "$O/p/$s$q" || true)
-    [ "${r% *}" = 200 ] && [ "${r#* }" -le 1 ] || { echo "  $s$q -> $r"; bad=$((bad+1)); }; done; done; return $bad; }
+    [ "${r% *}" = 200 ] && [ "${r#* }" -le 1 ] || { echo "  $s$q -> $r"; bad=$((bad+1)); }; done; done; return $((bad>0)); }
 # Sentinela: cada slug em 200 precisa ter a tag UMA vez (0 = não injetou, >1 = duplicou). Só relata; rollback é só para slug caído.
 chktag() { local bad=0 n s; for s in $(cat ../slugs-todos.list); do
-  n=$(curl -sL -A "$UA" "$O/p/$s/?h=$RANDOM" | grep -o '/api/t/tracker.js' | wc -l); [ "$n" = 1 ] || { echo "  $s tag x$n"; bad=$((bad+1)); }; done; return $bad; }
+  n=$(curl -sL -A "$UA" "$O/p/$s/?h=$RANDOM" | grep -o '/api/t/tracker.js' | wc -l); [ "$n" = 1 ] || { echo "  $s tag x$n"; bad=$((bad+1)); }; done; return $((bad>0)); }
 npx wrangler deploy --dry-run --assets ../dist >/dev/null
 echo "ANTES (não-200 listados):"; chk || true
 echo "ANTES, tag (informativo):"; chktag || true
