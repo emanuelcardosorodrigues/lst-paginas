@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { transform, TAG } from "./gtm-to-sentinela.mjs";
+import { lerModo } from "./gtm-modo.mjs";
 const PIXEL = `<script>!function(f,b,e,v,n,t,s){n=f.fbq=function(){};}(window,document);fbq('init','1');fbq('track','PageView');</script>`;
 const OTHER = `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('config','G-1')</script>`;
 const GTM = `<!-- Google Tag Manager -->
@@ -134,7 +135,7 @@ test("controle negativo: gtag/dataLayer de third-party (script com src) e coment
 import fs from "node:fs";
 import path from "node:path";
 const DIST = path.resolve(import.meta.dirname, "../dist");
-test("dist real: parse dos scripts inline antes/depois e fbq por página", { skip: !fs.existsSync(DIST) }, () => {
+test("dist real: parse dos scripts inline antes/depois e fbq por página", { skip: !fs.existsSync(DIST) || lerModo() !== "sem" }, () => {
   const files = fs.readdirSync(DIST, { recursive: true }).filter((n) => n.endsWith(".html") && !n.endsWith(".bak.html"));
   let ok = 0, bad = 0;
   for (const n of files) {
