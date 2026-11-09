@@ -18,6 +18,12 @@ Tudo de `leandrostecca.com.br/p/*` vive no `w-lst-paginas`. Não criar Worker no
 Trava: `w-lst-paginas/test/barra-final.test.mjs` roda no início do `deploy-full.sh`; `chk` agora testa 4 formas por slug.
 Deploy do fix pendente (Chefe). Depois: confirmar 74×4 em 200 com ≤ 1 redirect.
 
+## GTM → Sentinela + kal-pv no w-lst-paginas (09/11/2026, deploy pendente — Chefe)
+- `scripts/gtm-to-sentinela.mjs` (testes: `node --test scripts/gtm-to-sentinela.test.mjs`) roda no `build-full-dist.mjs`: tira GTM (Stape `ts.leandrostecca` e gtm.js padrão, noscript, preconnect, comentários, push solto `pv_event_id`) e escreve a tag Sentinela 1x no `<head>`. Build aborta se sobrar GTM ou tag != 1. 70/74 páginas tinham GTM no ar (a maioria sem a string googletagmanager).
+- `dataLayer.push` dentro de handlers ficou (inerte sem GTM; remover mexe na lógica).
+- kal-pv01..05 viraram `extra-pages/` (cópia byte a byte do `w-lst-kal-pv/dist` no ar). Ordem: 1) `CONFIRMO=sim ./deploy-full.sh` (kal ainda servido pelo w-lst-kal-pv; chktag acusa só elas); 2) `cd ../w-lst-kal-pv && ROLLBACK=sim ./deploy.sh` (apaga o Worker; tráfego cai no w-lst-paginas).
+- Rollback: tag git `pre-gtm-sentinela-20261109`; `wrangler rollback c82d8597-4a15-4fb3-ae24-fa11a309ff3d` (w-lst-paginas); kal: `~/.config/apolo/cf-deploy.sh w-lst-kal-pv` (dist de 05/11 + rotas; NÃO rodar build.mjs).
+
 ## Pendências
 - `col-pvia-frufru03` no ar (02/11/2026, 72/72 em 200). Faltam: bloco "Dúvidas?" (escopo a definir), bio do Leandro (formação/anos), pipeline de copy nos textos novos; "Lucro é Liberdade" só nesta página.
 - `/ativos-d` na raiz ainda é rota do w-lst-paginas (404); página em `/p/ativos-d`.

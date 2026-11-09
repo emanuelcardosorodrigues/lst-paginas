@@ -31,6 +31,21 @@ test("sem GTM: tag entra uma vez antes de </head>", () => {
   assert.ok(h.includes(`${TAG}\n</head>`));
   assert.ok(h.includes(PIXEL));
 });
+test("remove o par solto pv_event_id e preserva o fbq byte a byte", () => {
+  const fbq = `fbq('track','PageView',{}, { eventID: window.__pvEventID });`;
+  const src = page(`${PIXEL}`, `<script>\n${fbq}\nwindow.dataLayer = window.dataLayer || [];\nwindow.dataLayer.push({ event: 'pv_event_id', pv_event_id: window.__pvEventID });\n</script>`);
+  const h = transform(src);
+  assert.equal(count(h, "pv_event_id"), 0);
+  assert.equal(count(h, "window.dataLayer = window.dataLayer || [];"), 0);
+  assert.ok(h.includes(`<script>\n${fbq}\n</script>`));
+});
+test("controle negativo: dataLayer de função e handler não muda", () => {
+  const body = `<script>function push(o){ try{ (window.dataLayer=window.dataLayer||[]).push(o); }catch(e){} }\nwindow.dataLayer.push({event:"presenca_submit"})</script>`;
+  const src = page("", body);
+  assert.equal(transform(src), src.replace("</head>", TAG + "\n</head>"));
+  assert.ok(transform(src).includes(`function push(o){ try{ (window.dataLayer=window.dataLayer||[]).push(o); }catch(e){} }`));
+  assert.ok(transform(src).includes(`window.dataLayer.push({event:"presenca_submit"})`));
+});
 test("idempotente", () => {
   const src = page(GTM + PIXEL);
   assert.equal(transform(transform(src)), transform(src));

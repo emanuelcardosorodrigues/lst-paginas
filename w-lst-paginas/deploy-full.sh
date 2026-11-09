@@ -22,8 +22,12 @@ chk() { local bad=0 r s q; for s in $(cat ../slugs-todos.list); do
     r=$(curl -sL --max-redirs 5 -A "$UA" -o /dev/null -w "%{http_code} %{num_redirects}" "$O/p/$s$q" || true)
     [ "${r% *}" = 200 ] && [ "${r#* }" -le 1 ] || { echo "  $s$q -> $r"; bad=$((bad+1)); }; done; done; return $((bad>0)); }
 # Sentinela: cada slug em 200 precisa ter a tag UMA vez (0 = não injetou, >1 = duplicou). Só relata; rollback é só para slug caído.
-chktag() { local bad=0 n s; for s in $(cat ../slugs-todos.list); do
-  n=$(curl -sL -A "$UA" "$O/p/$s/?h=$RANDOM" | grep -o '/api/t/tracker.js' | wc -l); [ "$n" = 1 ] || { echo "  $s tag x$n"; bad=$((bad+1)); }; done; return $((bad>0)); }
+# Também conta GTM/Stape residual (g): tem que ser 0.
+chktag() { local bad=0 n g s body; for s in $(cat ../slugs-todos.list); do
+  body=$(curl -sL -A "$UA" "$O/p/$s/?h=$RANDOM")
+  n=$(printf '%s' "$body" | grep -o '/api/t/tracker.js' | wc -l)
+  g=$(printf '%s\n' "$body" | grep -Eci 'googletagmanager.com|gtm.start|ts.leandrostecca.com.br' || true)
+  [ "$n" = 1 ] && [ "$g" = 0 ] || { echo "  $s tag x$n gtm x$g"; bad=$((bad+1)); }; done; return $((bad>0)); }
 npx wrangler deploy --dry-run --assets ../dist >/dev/null
 echo "ANTES (não-200 listados):"; chk || true
 echo "ANTES, tag (informativo):"; chktag || true
@@ -37,5 +41,5 @@ if ! chk; then
   echo "FALHOU: revertendo"; npx wrangler rollback --name w-lst-paginas --message "rollback deploy-full" -y || true
   (cd ../w-lst-paginas-extras && CONFIRMO=sim ./deploy.sh) || true; exit 1
 fi
-echo "TAG Sentinela (exatamente 1 por slug):"; chktag || { echo "ATENÇÃO: slugs sem tag (ou duplicada) acima; páginas seguem em 200, sem rollback. Cheque o <head> e SENTINELA_TAG"; exit 1; }
+echo "TAG Sentinela (exatamente 1 por slug, 0 GTM):"; chktag || { echo "ATENÇÃO: slugs sem tag 1x e 0 GTM (acima); páginas seguem em 200, sem rollback. Cheque o <head> e SENTINELA_TAG"; exit 1; }
 echo "OK: $(wc -l < ../slugs-todos.list) páginas em 200 no w-lst-paginas, todas com a tag"
