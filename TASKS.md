@@ -28,7 +28,7 @@ Deploy do fix pendente (Chefe). Depois: confirmar 74×4 em 200 com ≤ 1 redirec
 
 ## Tag Sentinela removida, GTM mantido (Chefe 09/11)
 - `SENTINELA_TAG "0"` no w-lst-paginas; build `com` tira o script `/api/t/tracker.js` do HTML (`stripTag`) e aborta se sobrar `track.leandrostecca`; `chktag` (com) exige 0 ocorrências. Build local: 74 páginas, 0 HTML com a tag, 68 com gtm.start (+dpl-pv01 via third-party.js).
-- NO AR 10/11: w-lst-paginas versão a28bea81 (74/74 em 200; só teste-track com tag). kal-pv01..05 saem pelo w-lst-kal-pv: `SENTINELA_TAG "0"` commitado, **deploy pendente (Chefe)** via `cf-deploy.sh` (NÃO usar `deploy.sh`, ele roda build.mjs). Até lá o chktag do deploy-full acusa as 5 kal-pv (exit 1, sem rollback).
+- NO AR 10/11: w-lst-paginas versão a28bea81 (74/74 em 200; só teste-track com tag). kal-pv01..05 saem pelo w-lst-kal-pv: `SENTINELA_TAG "0"` NO AR (versão 7363d6ab, via `cf-deploy.sh .`; NÃO usar `deploy.sh`, ele roda build.mjs). Conferido 10/11: 74/74 em 200, track.leandrostecca só na teste-track (1x).
 
 - Exceção (Chefe 10/11): `sentinela-slugs.list` = páginas que LEVAM a tag no modo `com` (hoje só `col-pvia-frufru03-teste-track`, tag logo após `<meta charset>`, sem GTM). Build e chktag exigem 1 nelas e 0 nas demais. Controle negativo 10/11: teste-track sem a tag -> build ABORTADO; com a tag -> 74 páginas.
 
