@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" aria-hidden="true">
+  <!-- Camada da FRENTE: fica na frente da foto. Metade inferior da elipse, com rastro de luz. -->
+  <defs>
+    <linearGradient id="rastro" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#C8A96A" stop-opacity="0"/>
+      <stop offset="0.75" stop-color="#C8A96A" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#E9D3A2" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <g transform="rotate(-14 600 300)">
+    <path id="arcoFrente" d="M40 300 A560 150 0 0 0 1160 300" fill="none" stroke="url(#rastro)" stroke-width="3"/>
+    <circle r="26" fill="#C8A96A" opacity="0.18"><animateMotion dur="7s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .25 1"><mpath href="#arcoFrente"/></animateMotion></circle>
+    <circle r="8" fill="#F1DDB0"><animateMotion dur="7s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .25 1"><mpath href="#arcoFrente"/></animateMotion></circle>
+  </g>
+</svg>
