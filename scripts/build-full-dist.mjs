@@ -6,7 +6,8 @@ import { execFileSync } from "node:child_process";
 import { checkSentinelaDir } from "./guard-sentinela.mjs";
 import { transform, transformTracker, stripTag } from "./gtm-to-sentinela.mjs";
 import { lerModo } from "./gtm-modo.mjs";
-const MODO = lerModo(); // com = GTM como espelhado/versionado (default); sem = remove GTM e escreve a tag
+const MODO = lerModo();
+const SENTINELA_SLUGS = new Set(fs.readFileSync(path.resolve(import.meta.dirname, "../sentinela-slugs.list"), "utf8").split("\n").map((l) => l.trim()).filter((l) => l && !l.startsWith("#"))); // com = GTM como espelhado/versionado (default); sem = remove GTM e escreve a tag
 console.log(`GTM_MODO=${MODO}`);
 const root = path.resolve(import.meta.dirname, "..");
 const dist = path.join(root, "dist");
@@ -43,16 +44,19 @@ for (const n of fs.readdirSync(dist, { recursive: true }).filter((n) => path.bas
   if (/dataLayer|data-gtm-id|__pending/.test(t)) bad.push(`${n} (t.js com resíduo GTM)`);
 }
 for (const h of htmls) {
-  const t = MODO === "sem" ? transform(fs.readFileSync(h, "utf8")) : stripTag(fs.readFileSync(h, "utf8"));
+  const keep = MODO === "com" && SENTINELA_SLUGS.has(path.relative(dist, h).split(path.sep)[0]);
+  const t = MODO === "sem" ? transform(fs.readFileSync(h, "utf8")) : keep ? fs.readFileSync(h, "utf8") : stripTag(fs.readFileSync(h, "utf8"));
   fs.writeFileSync(h, t);
   const tag = t.split("/api/t/tracker.js").length - 1;
-  // com (Chefe 09/11): GTM intacto e SEM a tag Sentinela (Worker com SENTINELA_TAG "0"); nenhum track.leandrostecca no HTML.
-  if (MODO === "com") { if (tag || t.includes("track.leandrostecca.com.br")) bad.push(`${path.relative(dist, h)} tag=${tag}`); continue; }
+  // com (Chefe 09/11): GTM intacto e SEM a tag Sentinela (Worker com SENTINELA_TAG "0"); exceção: sentinela-slugs.list leva a tag 1x (index.html).
+  // index.html da página da lista: exatamente 1; outros HTML dela: livres; demais páginas: 0.
+  const rel = path.relative(dist, h), want = !keep ? 0 : rel === path.join(rel.split(path.sep)[0], "index.html") ? 1 : tag;
+  if (MODO === "com") { if (tag !== want || (!want && t.includes("track.leandrostecca.com.br"))) bad.push(`${rel} tag=${tag} (esperado ${want})`); continue; }
   // Stape GTM não tem a string googletagmanager: checa também gtm.start e o domínio ts.
   // + resíduo de GTM no JS de página (dataLayer, data-gtm-id, ts.leandrostecca) e chamada solta de push()/dl() de wrapper removido.
   if (/googletagmanager\.com|gtm\.start|ts\.leandrostecca|dataLayer|data-gtm-id|(?<![.\w$])(?:push|dl)\(\{\s*event\s*:/i.test(t) || tag !== 1) bad.push(`${path.relative(dist, h)} tag=${tag}`);
 }
-if (bad.length) { console.error("ABORTADO: " + (MODO === "sem" ? "GTM restante ou tag != 1: " : "tag Sentinela presente: ") + bad.join("; ")); process.exit(1); }
+if (bad.length) { console.error("ABORTADO: " + (MODO === "sem" ? "GTM restante ou tag != 1: " : "tag Sentinela fora do esperado: ") + bad.join("; ")); process.exit(1); }
 const slugs = fs.readdirSync(dist).filter((n) => fs.existsSync(path.join(dist, n, "index.html")));
 fs.writeFileSync(path.join(root, "slugs-todos.list"), slugs.sort().join("\n") + "\n");
 const sck = fs.readdirSync(extra).sort();

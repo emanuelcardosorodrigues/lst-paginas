@@ -4,7 +4,7 @@
 # Se algum slug cair: wrangler rollback do w-lst-paginas e recria o extras (rede de segurança).
 # GTM_MODO (arquivo w-lst-paginas/GTM_MODO, versionado): com = mantém o GTM como está (padrão) | sem = remove o GTM e deixa só a tag Sentinela.
 #   Virar para "sem": echo sem > w-lst-paginas/GTM_MODO ; git commit ; ./deploy-full.sh. Env GTM_MODO=com|sem vale só para uma execução. Outro valor aborta.
-#   com: chktag exige 200 + 0 "track.leandrostecca" (sem tag Sentinela, Chefe 09/11) e só informa o GTM; falha se slug que tinha GTM no ar ANTES do deploy ficar com 0 depois.
+#   com: chktag exige 200 + 0 "track.leandrostecca" (sem tag Sentinela, Chefe 09/11; slugs de ../sentinela-slugs.list: exatamente 1) e só informa o GTM; falha se slug que tinha GTM no ar ANTES do deploy ficar com 0 depois.
 set -euo pipefail
 cd "$(dirname "$0")"
 MODO=$(node ../scripts/gtm-modo.mjs) || exit 1; echo "GTM_MODO=$MODO"; export GTM_MODO=$MODO
@@ -34,7 +34,7 @@ chktag() { local bad=0 n g s body p; for s in $(cat ../slugs-todos.list); do
   g=$(printf '%s\n' "$body" | grep -Eci 'googletagmanager.com|gtm.start|ts.leandrostecca.com.br' || true)
   [ "$MODO" = com ] && echo "  $s tag x$n gtm x$g"
   if [ "${1:-}" = antes ]; then [ "$g" = 0 ] || echo "$s" >> "$GTM0"; fi
-  if [ "$MODO" = com ]; then t=$(printf '%s' "$body" | grep -o 'track.leandrostecca.com.br' | wc -l); [ "$t" = 0 ] || { echo "  FALHA $s track.leandrostecca x$t"; bad=$((bad+1)); continue; }
+  if [ "$MODO" = com ]; then t=$(printf '%s' "$body" | grep -o 'track.leandrostecca.com.br' | wc -l); w=0; grep -qx "$s" ../sentinela-slugs.list && w=1; [ "$t" = "$w" ] && [ "$n" = "$w" ] || { echo "  FALHA $s track.leandrostecca x$t (esperado $w)"; bad=$((bad+1)); continue; }
   else [ "$n" = 1 ] || { echo "  FALHA $s tag x$n"; bad=$((bad+1)); continue; }; fi
   if [ "$MODO" = sem ]; then [ "$g" = 0 ] || { echo "  FALHA $s gtm x$g"; bad=$((bad+1)); }
   elif [ "${1:-}" = depois ] && [ "$g" = 0 ] && grep -qx "$s" "$GTM0"; then echo "  FALHA $s tinha GTM e ficou com 0"; bad=$((bad+1)); fi

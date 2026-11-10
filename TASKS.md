@@ -30,6 +30,8 @@ Deploy do fix pendente (Chefe). Depois: confirmar 74×4 em 200 com ≤ 1 redirec
 - `SENTINELA_TAG "0"` no w-lst-paginas; build `com` tira o script `/api/t/tracker.js` do HTML (`stripTag`) e aborta se sobrar `track.leandrostecca`; `chktag` (com) exige 0 ocorrências. Build local: 74 páginas, 0 HTML com a tag, 68 com gtm.start (+dpl-pv01 via third-party.js).
 - Deploy pendente (Chefe): `cd w-lst-paginas && CONFIRMO=sim ./deploy-full.sh`. kal-pv01..05 ainda saem pelo w-lst-kal-pv (SENTINELA_TAG "1"), fora do deploy-full.
 
+- Exceção (Chefe 10/11): `sentinela-slugs.list` = páginas que LEVAM a tag no modo `com` (hoje só `col-pvia-frufru03-teste-track`, tag logo após `<meta charset>`, sem GTM). Build e chktag exigem 1 nelas e 0 nas demais.
+
 ## Pendências
 - `col-pvia-frufru03` no ar (02/11/2026, 72/72 em 200). Faltam: bloco "Dúvidas?" (escopo a definir), bio do Leandro (formação/anos), pipeline de copy nos textos novos; "Lucro é Liberdade" só nesta página.
 - `/ativos-d` na raiz ainda é rota do w-lst-paginas (404); página em `/p/ativos-d`.
