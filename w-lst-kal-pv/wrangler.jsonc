@@ -9,7 +9,7 @@
   },
   "workers_dev": false,
   // Sentinela: SENTINELA_TAG "1" injeta a tag no <head> de todo HTML; "0" desliga (só trocar e fazer deploy).
-  "vars": { "SENTINELA_TAG": "1", "SENTINELA_TID": "faafca5a-fb53-404f-8469-499d8869944c" },
+  "vars": { "SENTINELA_TAG": "0", "SENTINELA_TID": "faafca5a-fb53-404f-8469-499d8869944c" },
   "routes": [
     "leandrostecca.com.br/p/kal-pv01",
     "leandrostecca.com.br/p/kal-pv01/*",
