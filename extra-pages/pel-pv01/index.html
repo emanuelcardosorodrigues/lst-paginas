@@ -618,6 +618,17 @@ ol.l.big2 li::before{content:counter(o) ".";width:auto;height:auto;left:0;top:11
 .bub{text-align:center}.bub p,.bub .k,.bub .n{text-align:center}
 .chip.b b:last-of-type{display:inline;font:inherit;color:var(--ouro2);font-weight:700}
 #oferta{scroll-margin-top:12px}
+/* ===== v8 ===== */
+.wf{max-width:640px;margin:26px auto 0}
+.wfb{display:flex;height:54px;border-radius:12px;overflow:hidden;border:2px solid rgba(255,255,255,.35)}
+.wfb span{display:flex;align-items:center;justify-content:center;font:600 10px/1.1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:#fff;padding:0 3px;text-align:center;overflow:hidden}
+.wf .w1{flex:0 0 26%;background:#276C58}.wf .w2{flex:0 0 14%;background:#A23B32}.wf .w3{flex:0 0 14%;background:#7d2a24}.wf .w4{flex:0 0 18%;background:#A23B32}.wf .w5{flex:0 0 12%;background:#7d2a24}.wf .w6{flex:0 0 10%;background:#A23B32}.wf .w7{flex:1;background:var(--ouro);color:#0B1426}
+.wf small{display:block;margin-top:8px;color:#c9d2e6;font-size:12px}
+.eq{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:30px 0 0}
+.eq span{background:#fff;border:2px solid rgba(179,141,85,.6);border-radius:999px;padding:9px 16px;font:600 14px/1 var(--sans);color:#0B1426}
+.eq b{background:#A23B32;color:#fff;border-radius:999px;padding:10px 18px;font:700 14px/1 var(--sans)}
+.shield{display:block;margin:0 auto 12px}
+img.calc{display:block;width:min(560px,100%);height:auto;margin:26px auto 0;border-radius:22px;box-shadow:0 24px 50px -20px rgba(11,20,38,.6);border:3px solid #0B1426}
 </style>
 </head>
 <body>
@@ -705,6 +716,10 @@ ol.l.big2 li::before{content:counter(o) ".";width:auto;height:auto;left:0;top:11
     <div class="tag">Um dado que quase ninguém olha</div>
     <h2>Faturamento <em>não é lucro.</em></h2>
     <p>O que entra na conta não é o que sobra no seu bolso. No meio do caminho ficam o <b>laboratório</b>, o <b>imposto</b>, a <b>folha</b>, o <b>aluguel</b> e o <b>material</b>.</p>
+    <div class="wf rv" aria-label="Ilustração: do faturamento ao que sobra">
+      <div class="wfb"><span class="w1">Faturamento</span><span class="w2">Laboratório</span><span class="w3">Imposto</span><span class="w4">Folha</span><span class="w5">Aluguel</span><span class="w6">Material</span><span class="w7">Sobra</span></div>
+      <small>Ilustração, sem valores.</small>
+    </div>
   </div>
 </section>
 
@@ -719,6 +734,7 @@ ol.l.big2 li::before{content:counter(o) ".";width:auto;height:auto;left:0;top:11
       <div class="m rv" style="--d:.12s"><div class="ic">+</div><div><b>Mais planilha</b><span>Você abriu às 22h, depois do último paciente, cansado demais para entender.</span></div></div>
       <div class="m rv" style="--d:.18s"><div class="ic">+</div><div><b>Mais faturamento</b><span>Veio junto com mais <b>imposto</b> e mais dor de cabeça.</span></div></div>
     </div>
+    <div class="eq rv"><span>+ paciente</span><span>+ curso</span><span>+ planilha</span><span>+ faturamento</span><b>= o mesmo caixa apertado</b></div>
     <h3 class="rv" style="margin:clamp(34px,5vw,60px) 0 20px">O que você já tentou, e por que não bastou</h3>
     <div class="tw rv"><table class="cmp">
       <thead><tr><th></th><th>Curso</th><th>Mentoria</th><th>Agência</th><th>Contador</th><th class="p">Excelência Lucrativa</th></tr></thead>
@@ -1067,7 +1083,7 @@ ol.l.big2 li::before{content:counter(o) ".";width:auto;height:auto;left:0;top:11
 <!-- 13 · GARANTIAS -->
 <section class="sf pad">
   <div class="w">
-    <div class="head rv"><div class="tag"><b>Duas garantias</b></div>
+    <div class="head rv"><svg class="shield" viewBox="0 0 64 72" width="64" height="72" aria-hidden="true"><path d="M32 3 59 13v22c0 18-12 29-27 34C17 64 5 53 5 35V13z" fill="none" stroke="#B38D55" stroke-width="3.5"/><path d="m20 36 9 9 17-19" fill="none" stroke="#276C58" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="tag"><b>Duas garantias</b></div>
     <h2>O risco é nosso. <em>Duas vezes.</em></h2></div>
     <div class="gs">
       <div class="seal rv"><i class="st">Garantia 1</i><b>7 dias</b><span>Conhecer por dentro</span><em>Entre, abra a Central, converse com o Léo, assista às aulas. Se em 7 dias achar que não é para você, devolvemos 100% do valor. Sem pergunta.</em></div>
@@ -1125,6 +1141,7 @@ ol.l.big2 li::before{content:counter(o) ".";width:auto;height:auto;left:0;top:11
     <p>Você coloca seus custos reais. A calculadora mostra o preço certo. Pronto.</p>
     <p>Agora você decide:</p>
     <p class="knife">Continua cobrando errado e trabalhando de graça? Ou investe esse pequeno valor para descobrir onde você está perdendo dinheiro?</p>
+    <img class="calc" src="images/app-calc.webp" alt="Calculadora OdontoLucro" width="1057" height="775" loading="lazy" />
     <div style="margin-top:26px"><a class="btn cta dark" data-cta="faca" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
   </div>
 </section>
@@ -1193,7 +1210,7 @@ ol.l.big2 li::before{content:counter(o) ".";width:auto;height:auto;left:0;top:11
   if("IntersectionObserver" in window){
     var seen=false,vis=false,pb=document.querySelector(".pbox");
     function up(){d.classList.toggle("on",seen&&!vis)}
-    new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis||e[0].boundingClientRect.top<0)seen=true;up()}).observe(pb);
+    new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis||e[0].boundingClientRect.top<0)seen=true;var da=d.querySelector("a");if(da)da.href=(!vis&&e[0].boundingClientRect.top>0)?"#oferta":"https://l.leandrostecca.com.br/pel-garantir-vaga-pv";up()}).observe(pb);
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12,rootMargin:"0px 0px -6% 0px"});
     document.querySelectorAll(".rv").forEach(function(n){io.observe(n)});
     // contador dos números de prova
