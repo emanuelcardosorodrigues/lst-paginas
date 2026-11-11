@@ -60,3 +60,7 @@ Deploy do fix pendente (Chefe). Depois: confirmar 74×4 em 200 com ≤ 1 redirec
 ## pel-pv01 v7 (11/11/2026, NO AR, noindex; 76/76 em 200; auditoria Sonnet: 1 achado tratado, R$100 mil no H1 mantido)
 - v7: fonte menor no desktop, selos iguais, check no lugar da barra, lista numerada sem círculo, tabela com coluna Mentoria, seção "Faturamento não é lucro" (azul), bloco da faca amarelo no fim, balões "Lucro com um ajuste", Mara na Plurale, Leandro em frente ao painel Sinpla, tag dos bônus fora da imagem, sem "na mentoria".
 - Dúvidas: imagem "#51" do bônus 15 (usei entardecer), R$ 12 mil da Plurale sem fonte, "+X%" sem dados, R$100 mil no H1 vs garantia, sem render em navegador.
+
+## pel-pv01 v8–v9 (11/11/2026, NO AR, noindex; 76/76 em 200)
+- v8: botões antes do preço → #oferta (dock também, antes do preço); balões centralizados; bônus 15 com G1+iHP (direitos de terceiros pendentes); Leandro Sinpla; estímulo visual por dobra. v9: movimento/3D (tilt, parallax, reveal, brilho), respeita reduced-motion. Sem render em navegador.
+- Deploy usou GTM_MODO=sem (commit do Chefe 67abf19).
