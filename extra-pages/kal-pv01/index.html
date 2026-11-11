@@ -17,7 +17,6 @@
 
 <!-- Preconnect (before GTM) -->
 <link rel="preconnect" href="https://ts.leandrostecca.com.br" crossorigin>
-<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
 <link rel="preconnect" href="https://www.facebook.com" crossorigin>
 
 
@@ -34,38 +33,6 @@
   };
 </script>
 
-<!-- Meta Pixel inline.
-     O fbevents entra na fila de rede logo no head e o PageView dispara assim que ele executa,
-     sem esperar o gtm.js + gtag.js terminarem (padrão de connect rate das páginas /p/).
-     O GTM continua com a tag de Pixel dele; o guard abaixo descarta o PageView repetido. -->
-<script>
-(function (f, b, e, v) {
-  if (f.fbq) return;
-  var sentPageView = false;
-  var n = f.fbq = function () {
-    var a = arguments;
-    var dup = (a[0] === 'track' && a[1] === 'PageView') ||
-              (a[0] === 'trackSingle' && a[2] === 'PageView');
-    if (dup) {
-      if (sentPageView) return;
-      sentPageView = true;
-    }
-    n.callMethod ? n.callMethod.apply(n, a) : n.queue.push(a);
-  };
-  if (!f._fbq) f._fbq = n;
-  n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
-  // Página estática, sem navegação SPA: desliga o PageView "automático" que o fbevents
-  // dispara ao interceptar history.replaceState (a tag tmSimo reescreve ?xcod/&sck depois do load).
-  n.disablePushState = true;
-  var t = b.createElement(e); t.async = !0; t.src = v; t.fetchPriority = 'high';
-  var s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
-})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-window.__pvEventID = String(Date.now()) + '_' + Math.floor(Math.random() * 1e14);
-fbq('init', '1535636554388338');
-fbq('track', 'PageView', {}, { eventID: window.__pvEventID });
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({ event: 'pv_event_id', pv_event_id: window.__pvEventID });
-</script>
 
 <!-- Clarity fora do caminho crítico: segura só o src do clarity.ms e solta depois do load. -->
 <script>
