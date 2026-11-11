@@ -43,3 +43,8 @@ Deploy do fix pendente (Chefe). Depois: confirmar 74×4 em 200 com ≤ 1 redirec
 - /p/pel-pv01 (extra-pages/pel-pv01). 12x R$ 199,98 / R$ 2.000 à vista; todo CTA (8) -> https://l.leandrostecca.com.br/pel-garantir-vaga-pv; botão do hero rola para #corrida.
 - Faltam do Chefe: print novo do Lucro (hoje app-home provisório, legenda "em breve" — trocar), prints de Léo no WhatsApp, Placar do Lucro, estoque, fluxo de caixa, contratos, treino de secretária, mentoria mensal, grade de trilhas.
 - Pendências de conteúdo: contrato da garantia, garantia 7 dias na plataforma, contador (CBS/PIS-Cofins), autorização/foto dos alunos (só José Ronaldo e Thais têm foto), história da mão, âncora Águia, prints de terceiros (CNN, UNIFRAN, faculdades) com direitos/crédito, "Dr. Rafael" no print app-membros (pilar 1). Remover noindex só após isso.
+
+## pel-pv01 v6 (11/11/2026, NO AR, noindex; 76/76 em 200; auditoria Sonnet: 2 achados tratados)
+- v6: contraste (--ink escuro em chip/seal/pbox), negrito aninhado inline, bullets em barra dourada, stack com miniatura e preço riscado (soma R$ 15.200, VALORES INVENTADOS: Chefe/Leandro validar), R$ 5.000 oficial riscado, bônus 15/10/5 com imagem, depoimentos em balões com foto, FAQ de objeções (36-doc), faca reescrita, Léo corpo inteiro, Leandro retrato.
+- Dúvidas: nome do Igor (foto "Raitelli" × copy "Mazzioli": página usa "Dr. Igor"); "#51"/imagem 48/"Mais trabalho" interpretados; sem render em navegador (contraste não medido); aviso de resultado individual adicionado.
+- Seguem pendentes: autorização dos alunos, contrato da garantia, 7 dias na plataforma, contador, história da mão, âncora Águia, R$28 mil receita×lucro, direitos de prints de terceiros.
