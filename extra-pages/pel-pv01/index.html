@@ -629,6 +629,43 @@ ol.l.big2 li::before{content:counter(o) ".";width:auto;height:auto;left:0;top:11
 .eq b{background:#A23B32;color:#fff;border-radius:999px;padding:10px 18px;font:700 14px/1 var(--sans)}
 .shield{display:block;margin:0 auto 12px}
 img.calc{display:block;width:min(560px,100%);height:auto;margin:26px auto 0;border-radius:22px;box-shadow:0 24px 50px -20px rgba(11,20,38,.6);border:3px solid #0B1426}
+/* ===== v9 movimento ===== */
+@media(prefers-reduced-motion:no-preference){
+.js .rv{transform:perspective(1000px) translateY(34px) rotateX(9deg) scale(.97);transform-origin:50% 100%}
+.js .rv.in{transform:none}
+.js .rv.in.tilt{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateZ(0);transition:transform .18s ease-out,opacity .8s var(--ease),box-shadow .3s;will-change:transform}
+.js .rv.in.tilt:hover{box-shadow:0 30px 60px -24px rgba(0,0,0,.55)}
+.hph{transform-style:preserve-3d}.hph.tilt{transform:perspective(1100px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .2s ease-out}
+.hph .chip{transform:translateZ(60px)}
+.btn{transition:transform .25s var(--ease),box-shadow .25s}
+.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 36px -12px rgba(11,20,38,.55)}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn.cta{overflow:hidden;isolation:isolate}
+.btn.cta::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);animation:shine 3.6s ease-in-out infinite}
+@keyframes shine{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.wfb{clip-path:inset(0 100% 0 0);transition:clip-path 1.8s var(--ease) .2s}
+.wf.in .wfb{clip-path:inset(0 0 0 0)}
+.eq span,.eq b{opacity:0;transform:scale(.6)}
+.eq.in span,.eq.in b{animation:pop .55s var(--ease) forwards}
+.eq.in span:nth-child(2){animation-delay:.15s}.eq.in span:nth-child(3){animation-delay:.3s}.eq.in span:nth-child(4){animation-delay:.45s}.eq.in b{animation-delay:.75s}
+@keyframes pop{0%{opacity:0;transform:scale(.6) rotate(-4deg)}70%{transform:scale(1.08)}100%{opacity:1;transform:none}}
+.js .shield path{stroke-dasharray:240;stroke-dashoffset:240}
+.js .in .shield path,.js .shield.in path{animation:dr 1.4s ease forwards}
+.js .in .shield path:nth-child(2){animation-delay:.7s}
+@keyframes dr{to{stroke-dashoffset:0}}
+.shield{animation:flt 5s ease-in-out infinite alternate}
+img.calc{animation:flt 6s ease-in-out infinite alternate}
+@keyframes flt{from{transform:translateY(0) rotate(-1deg)}to{transform:translateY(-10px) rotate(1deg)}}
+.aviso,.loud{background-size:200% 200%;animation:gs 14s ease-in-out infinite alternate}
+@keyframes gs{from{background-position:0% 50%}to{background-position:100% 50%}}
+.nums span{display:inline-block;animation:bob 2.4s ease-in-out infinite}
+.nums span:nth-child(2){animation-delay:.3s}.nums span:nth-child(3){animation-delay:.6s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.selos div,.stats>*{transition:transform .3s var(--ease),box-shadow .3s}
+.selos div:hover{transform:translateY(-5px) rotateX(8deg)}
+.stk .it{transition:transform .3s var(--ease)}.stk .it:hover{transform:translateX(6px)}
+.bub{transition:transform .3s var(--ease)}.bub:hover{transform:translateY(-6px) rotate(-.6deg)}
+}
 </style>
 </head>
 <body>
@@ -1225,5 +1262,24 @@ img.calc{display:block;width:min(560px,100%);height:auto;margin:26px auto 0;bord
   });
 })();
 </script>
+<script>
+(function(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var fine=matchMedia("(hover:hover) and (pointer:fine)").matches;
+  if(fine){
+    var sel=".card,.tier,.bal,.bub,.seal,.pa,.m,.cd,.pil,.gfaq,.plur,.fcards>*,.pbox,.hph",mx=9;
+    document.querySelectorAll(sel).forEach(function(el){
+      el.classList.add("tilt");
+      el.addEventListener("pointermove",function(e){var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.setProperty("--ry",(x*mx*(el.classList.contains("hph")?1.6:1)).toFixed(2)+"deg");el.style.setProperty("--rx",(-y*mx*(el.classList.contains("hph")?1.6:1)).toFixed(2)+"deg")});
+      el.addEventListener("pointerleave",function(){el.style.setProperty("--rx","0deg");el.style.setProperty("--ry","0deg")});
+    });
+  }
+  var par=[].slice.call(document.querySelectorAll(".hph .fr,img.calc,.ld .ph1,.ld .ph2"));
+  var tk=false;
+  function pr(){tk=false;var vh=innerHeight;par.forEach(function(el){var r=el.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;var k=(r.top+r.height/2-vh/2)/vh;el.style.translate="0 "+(k*-26).toFixed(1)+"px"})}
+  addEventListener("scroll",function(){if(!tk){tk=true;requestAnimationFrame(pr)}},{passive:true});pr();
+})();
+</script>
+
 </body>
 </html>
