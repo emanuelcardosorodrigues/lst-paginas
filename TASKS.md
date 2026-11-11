@@ -38,6 +38,6 @@ Deploy do fix pendente (Chefe). Depois: confirmar 74×4 em 200 com ≤ 1 redirec
 - Monitor externo: vermelho se qualquer slug cair.
 - Chave anon Supabase liberada em `.gitleaks.toml` (`extra-pages/`); rodar gitleaks com `-c .gitleaks.toml`.
 
-## pel-pv01 (11/11/2026, NO AR, noindex)
+## pel-pv01 (11/11/2026, NO AR, noindex; v2 redesenhada: layout 1120px, hero 2 colunas, barras comparativas, prints reais do app, tabela de comparação; auditoria LIMPO; 76/76 em 200)
 - Página de vendas Excelência Lucrativa em /p/pel-pv01 (extra-pages/pel-pv01). 12x R$ 199,98 / R$ 2.000 à vista; todo CTA → https://l.leandrostecca.com.br/pel-garantir-vaga-pv. Deploy-full OK: 76/76 em 200.
 - Pendências de conteúdo (Chefe/Leandro): contrato da garantia Lucro no Bolso, texto da garantia de 7 dias validado na plataforma, contador valida CBS/PIS-Cofins, autorização dos alunos citados, história da mão, âncora Águia, marco R$ 28 mil (receita ou lucro?). Remover noindex só após isso.
