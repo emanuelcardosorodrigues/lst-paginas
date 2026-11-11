@@ -38,6 +38,7 @@ Deploy do fix pendente (Chefe). Depois: confirmar 74×4 em 200 com ≤ 1 redirec
 - Monitor externo: vermelho se qualquer slug cair.
 - Chave anon Supabase liberada em `.gitleaks.toml` (`extra-pages/`); rodar gitleaks com `-c .gitleaks.toml`.
 
-## pel-pv01 (11/11/2026, NO AR, noindex; v2 redesenhada: layout 1120px, hero 2 colunas, barras comparativas, prints reais do app, tabela de comparação; auditoria LIMPO; 76/76 em 200)
-- Página de vendas Excelência Lucrativa em /p/pel-pv01 (extra-pages/pel-pv01). 12x R$ 199,98 / R$ 2.000 à vista; todo CTA → https://l.leandrostecca.com.br/pel-garantir-vaga-pv. Deploy-full OK: 76/76 em 200.
-- Pendências de conteúdo (Chefe/Leandro): contrato da garantia Lucro no Bolso, texto da garantia de 7 dias validado na plataforma, contador valida CBS/PIS-Cofins, autorização dos alunos citados, história da mão, âncora Águia, marco R$ 28 mil (receita ou lucro?). Remover noindex só após isso.
+## pel-pv01 (11/11/2026, NO AR, noindex; v3: preço só no bloco final, H1 novo, 2 dobras de depoimento, 3 pilares, mapa Lucro/Faturamento/Liberdade com prints, imagens IA ilustrativas; auditoria LIMPO; 76/76 em 200)
+- /p/pel-pv01 (extra-pages/pel-pv01). 12x R$ 199,98 / R$ 2.000 à vista; todo CTA (7) -> https://l.leandrostecca.com.br/pel-garantir-vaga-pv; botão do hero rola para #corrida.
+- Faltam prints (Chefe): Léo no WhatsApp, Placar do Lucro, estoque, fluxo de caixa, contratos, processo seletivo, treino de secretária, Google Meu Negócio, dentista parceiro, reunião mensal, grade de trilhas.
+- Pendências de conteúdo: contrato da garantia, garantia 7 dias na plataforma, contador (CBS/PIS-Cofins), autorização/foto dos alunos (só José Ronaldo e Thais têm foto; resto monograma), história da mão, âncora Águia, prints de terceiros (CNN, UNIFRAN, faculdades) com direitos/crédito, nome "Dr. Rafael" no print app-membros. Remover noindex só após isso.
