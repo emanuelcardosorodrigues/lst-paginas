@@ -38,7 +38,8 @@ Deploy do fix pendente (Chefe). Depois: confirmar 74×4 em 200 com ≤ 1 redirec
 - Monitor externo: vermelho se qualquer slug cair.
 - Chave anon Supabase liberada em `.gitleaks.toml` (`extra-pages/`); rodar gitleaks com `-c .gitleaks.toml`.
 
-## pel-pv01 (11/11/2026, NO AR, noindex; v4: dock só após o preço, "Garantia de LUCRO" no hero, Léo (images/leo.webp) como agente, dobra de delegação da secretária, Liberdade com foto do Leandro viajando, 1 print por pilar, negrito, contraste ≥ 4,5; auditoria LIMPO; 76/76 em 200)
+## pel-pv01 (11/11/2026, NO AR, noindex; v5: estrutura do mapa mental (head→prova→dores→mecanismo→saída→solução→para quem→programa→pilares→entregáveis→bônus→âncoras→stack→preço oficial R$5.000/Virada 12x199,98→2 garantias→Leandro→faca→FAQ penúltima→3 caminhos); sem 58/64; Elisa com foto; auditoria LIMPO; 76/76 em 200)
+- v5 pendências: prints do Lucro/Placar do Lucro (usa calculadora provisória), autorização escrita dos alunos, contrato da garantia, 7 dias na plataforma, contador (CBS), história da mão, âncora Águia, direitos de prints de terceiros, valores do stack a confirmar. Depoimentos 2 ficam após as 3 viradas (resultados da solução).
 - /p/pel-pv01 (extra-pages/pel-pv01). 12x R$ 199,98 / R$ 2.000 à vista; todo CTA (8) -> https://l.leandrostecca.com.br/pel-garantir-vaga-pv; botão do hero rola para #corrida.
 - Faltam do Chefe: print novo do Lucro (hoje app-home provisório, legenda "em breve" — trocar), prints de Léo no WhatsApp, Placar do Lucro, estoque, fluxo de caixa, contratos, treino de secretária, mentoria mensal, grade de trilhas.
 - Pendências de conteúdo: contrato da garantia, garantia 7 dias na plataforma, contador (CBS/PIS-Cofins), autorização/foto dos alunos (só José Ronaldo e Thais têm foto), história da mão, âncora Águia, prints de terceiros (CNN, UNIFRAN, faculdades) com direitos/crédito, "Dr. Rafael" no print app-membros (pilar 1). Remover noindex só após isso.

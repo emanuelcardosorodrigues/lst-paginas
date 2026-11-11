@@ -459,6 +459,16 @@ b{font-weight:700;color:var(--ink)}
 .leo .lp{border-radius:26px;overflow:hidden;border:1px solid var(--line);box-shadow:0 36px 70px -34px rgba(11,20,38,.55);max-width:460px;margin:0 auto}
 .leo .lp img{width:100%;height:auto}
 @media(min-width:860px){.sec2{grid-template-columns:1fr 1fr;gap:56px}.leo{grid-template-columns:.8fr 1.2fr;gap:56px}}
+
+.ofic{text-align:center;margin-bottom:18px;color:#F2F1EE}
+.ofic span{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:6px;color:#dde2ea}
+.ofic s{font:700 clamp(2.4rem,7vw,3.4rem)/1 var(--serif);color:#e8a29a;text-decoration-thickness:3px}
+.ofic em{display:block;font-style:normal;margin-top:4px;color:#dde2ea}
+.paths.p3{grid-template-columns:1fr}
+@media(min-width:860px){.paths.p3{grid-template-columns:repeat(3,1fr)}}
+ol.l{counter-reset:o;list-style:none;padding:0}
+ol.l li{counter-increment:o}
+ol.l.big2 li::before{content:counter(o);color:#0B1426;font:700 12px/12px var(--sans);text-align:center;display:grid;place-items:center;width:24px;height:24px;top:.15em;left:-4px}
 </style>
 </head>
 <body>
@@ -477,7 +487,7 @@ b{font-weight:700;color:var(--ink)}
         <div class="selos">
           <div><b>30</b>anos de odontologia</div>
           <div><b>1.600+</b>dentistas acompanhados</div>
-          <div><b>LUCRO</b>garantido em <b>90 dias</b></div>
+          <div><b>Garantia de LUCRO</b>em <b>90 dias</b></div>
         </div>
         <a class="btn pulse sc" data-cta="hero" href="#corrida">Quero ver como funciona ↓</a>
         <p class="sub" id="hero-end"><b>12 meses</b> · método, ferramenta e acompanhamento</p>
@@ -546,28 +556,81 @@ b{font-weight:700;color:var(--ink)}
     <div class="tag">Pergunta rápida</div>
     <h2>Quanto sobrou no seu bolso no mês passado?</h2>
     <p>Se você hesitou, esta página é <b>para você</b>.</p>
-    <p><b>Meta: R$100.000,00 por mês, com paz, lucro e liberdade.</b></p>
+    <p><b>Até quando</b> vai ser assim? <b>Isso não é normal.</b></p>
   </div>
 </section>
 
-<!-- 5 · OS 3 PILARES -->
+<!-- 9 · POR QUE NADA FUNCIONOU -->
+<section class="lt pad">
+  <div class="w">
+    <div class="head rv"><div class="tag">Por que nada do que você tentou funcionou</div>
+    <h2>Tudo o que te ofereceram até hoje <em>pedia mais de você.</em></h2><p class="lead"><b>Não é culpa sua.</b> Nunca foi falta de conhecimento. Faltou <b>alguém do lado</b>, uma <b>ferramenta</b> e conhecimento organizado para a sua realidade.</p></div>
+    <div class="mais">
+      <div class="m rv"><div class="ic">+</div><div><b>Mais paciente</b><span>A agência trouxe. Muitos vieram de plano que paga pouco.</span></div></div>
+      <div class="m rv" style="--d:.06s"><div class="ic">+</div><div><b>Mais curso</b><span>Você comprou. Ficou na gaveta.</span></div></div>
+      <div class="m rv" style="--d:.12s"><div class="ic">+</div><div><b>Mais planilha</b><span>Você abriu às 22h, depois do último paciente, cansado demais para entender.</span></div></div>
+      <div class="m rv" style="--d:.18s"><div class="ic">+</div><div><b>Mais faturamento</b><span>Veio junto com mais <b>imposto</b> e mais dor de cabeça.</span></div></div>
+    </div>
+    <h3 class="rv" style="margin:clamp(34px,5vw,60px) 0 20px">O que você já tentou, e por que não bastou</h3>
+    <div class="tw rv"><table class="cmp">
+      <thead><tr><th></th><th>Curso</th><th>Agência</th><th>Contador</th><th class="p">Excelência Lucrativa</th></tr></thead>
+      <tbody>
+      <tr><td>Diz o que fazer, em ordem</td><td><span class="yes">Sim</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
+      <tr><td>Faz a conta do seu lucro por procedimento</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
+      <tr><td>Resolve sem você investir em tráfego</td><td><span class="yes">Sim</span></td><td><span class="no">Não</span></td><td><span class="yes">Sim</span></td><td class="p"><span class="yes">Sim</span></td></tr>
+      <tr><td>Alguém cobra a execução toda semana</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
+      <tr><td>Treina a equipe e ajuda a contratar</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
+      <tr><td>Garante o resultado em dinheiro</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- 10 · IMPOSTO / CONTEXTO 2027 (prova com notícia) -->
 <section class="dk pad">
   <div class="w">
-    <div class="head rv"><div class="tag">Como o programa te tira da roda</div>
-    <h2>Três pilares. <em>Os três juntos.</em></h2>
-    <p class="lead">Curso sozinho vai para a gaveta. Aqui tem <b>método, ferramenta e alguém cobrando.</b></p></div>
-    <div class="pil">
-      <div class="pi rv"><span class="e">Pilar 1</span><h3>Metodologia</h3>
-        <ul><li><b>Aulas de 5 minutos</b></li><li>Em <b>trilhas</b> da sua realidade</li><li>Assiste <b>só o que precisa</b>, no seu tempo</li></ul>
-        <div class="pf"><img src="images/app-membros.webp" alt="Área de membros com tarefa da semana e jornada" width="1400" height="788" loading="lazy" /></div></div>
-      <div class="pi rv" style="--d:.08s"><span class="e">Pilar 2</span><h3>Ferramentas</h3>
-        <ul><li><b>Calculadora</b> de <b>precificação</b></li><li><b>Processo Seletivo</b></li><li><b>Contratos</b> e muito mais</li></ul>
-        <div class="pf"><img src="images/app-contratacao.webp" alt="Ferramenta Processo Seletivo: aptidão para contratação" width="587" height="662" loading="lazy" /></div></div>
-      <div class="pi rv" style="--d:.16s"><span class="e">Pilar 3</span><h3>Acompanhamento</h3>
-        <ul><li><b>Léo no WhatsApp</b>, cobrando</li><li><b>Consultores</b> de tudo</li><li><b>Tarefas</b> da sua realidade</li><li><b>Mentoria</b> mensal ao vivo</li></ul>
-        <div class="pf"><img src="images/app-inicio.webp" alt="Central de Excelência com o Léo e os consultores" width="1200" height="898" loading="lazy" /></div></div>
+    <div class="head rv"><div class="tag">O contexto de 2027</div>
+    <h2>A regra do jogo muda. <em>Quem tem número chega na frente.</em></h2></div>
+    <div class="of" style="align-items:center">
+      <div class="rv"><div class="pf"><img src="images/p-cbs.webp" alt="CNN Brasil Money: governo, estados e municípios regulam reforma tributária, com início em 2027" width="812" height="253" loading="lazy" /></div><p class="cap">CNN Brasil Money, 30/04/2026.</p>
+        <div class="pf" style="margin-top:16px"><img src="images/p-mdr.webp" alt="O que é a taxa MDR e quando ela é cobrada" width="649" height="236" loading="lazy" /></div><p class="cap">A taxa da <b>maquininha</b> (MDR) sai do seu <b>faturamento</b> antes de ele chegar ao seu bolso.</p></div>
+      <div class="rv" style="--d:.1s">
+        <ul class="l">
+          <li>Em 2027 entra a CBS no lugar de PIS e Cofins.</li>
+          <li>A odontologia teve redução de 60% na alíquota, mas alíquota menor não garante <b>imposto</b> menor: depende do regime e de como a clínica está montada.</li>
+          <li>Tem muito dentista bom no mercado procurando onde trabalhar. Quem tem número, processo e treino de equipe contrata primeiro.</li>
+        </ul>
+        <p class="big" style="margin-top:22px">Esses dois furos, <b>imposto</b> e <b>maquininha</b>, mais paciente não fecha. Mais paciente aumenta.</p>
+      </div>
     </div>
-    <div style="text-align:center;margin-top:34px"><a class="btn cta" data-cta="pilares" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
+  </div>
+</section>
+
+<!-- 8 · QUANTO CUSTOU ATÉ AQUI -->
+<section class="sf pad">
+  <div class="w">
+    <div class="head rv"><div class="tag">Quanto você já investiu</div>
+    <h2>Você pagou caro para aprender a técnica. <em>Ninguém te ensinou a lucrar com ela.</em></h2>
+    <p class="lead">Números de <b>fontes públicas</b>.</p></div>
+    <div class="prs">
+      <figure class="rv"><div class="pf"><img src="images/p-unifran.webp" alt="Tabela de valores de cursos de odontologia da UNIFRAN" width="508" height="312" loading="lazy" /></div><figcaption>Tabela de cursos de pós em odontologia (UNIFRAN): de R$ 26.820 a R$ 68.040.</figcaption></figure>
+      <figure class="rv" style="--d:.08s"><div class="pf"><img src="images/p-fac-custos.webp" alt="Custos de kit, materiais, taxas e anuidade do CRO na graduação" width="630" height="458" loading="lazy" /></div><figcaption>Custos de kit, materiais, taxas e anuidade do CRO.</figcaption></figure>
+      <figure class="rv"><div class="pf"><img src="images/p-fac-localizacao.webp" alt="Mensalidade de faculdade de odontologia por localização" width="631" height="179" loading="lazy" /></div><figcaption>Mensalidade varia por cidade, com parcela semestral de R$ 3.750 em capitais.</figcaption></figure>
+    </div>
+    <p class="big rv">Você investiu tudo na cadeira. O Excelência Lucrativa é o investimento no que vem depois dela: a empresa.</p>
+  </div>
+</section>
+
+<section class="dk pad">
+  <div class="w">
+    <div class="head rv"><div class="tag">Mas existe uma saída</div>
+    <h2>E se você pudesse <em>parar de vazar dinheiro</em> sem estudar mais?</h2></div>
+    <ul class="l big2 rv">
+      <li>Saber, com número, <b>quanto cada procedimento dá de lucro</b></li>
+      <li>Ter <b>alguém cobrando</b> a execução, sem você virar gestor</li>
+      <li>Ter uma <b>ferramenta</b> fazendo o que você não é bom ou não quer fazer</li>
+      <li>Chegar mais tarde e a clínica <b>já estar funcionando</b></li>
+    </ul>
   </div>
 </section>
 
@@ -575,7 +638,7 @@ b{font-weight:700;color:var(--ink)}
 <section class="lt pad">
   <div class="w">
     <div class="head rv"><div class="tag">Por dentro da <b>Central de Excelência</b></div>
-    <h2><em>Lucro. Faturamento. Liberdade.</em> Cada um com a sua ferramenta.</h2></div>
+    <h2>Três viradas: <em>Lucro. Faturamento. Liberdade.</em> Cada uma com a sua ferramenta.</h2></div>
 
     <div class="mp l">
       <div class="hd rv"><span class="k">1</span><h3>Lucro</h3></div>
@@ -588,7 +651,7 @@ b{font-weight:700;color:var(--ink)}
           <div class="cd"><i>4</i><div><b>Estoque</b><span>Sem <b>sobra</b> e sem <b>falta</b>.</span></div></div>
           <div class="cd"><i>5</i><div><b>Fluxo de caixa</b><span>Quanto <b>entra, sai e sobra</b>.</span></div></div>
         </div>
-        <div class="rv" style="--d:.1s"><div class="shot"><div class="bar"><i></i><i></i><i></i><span><b>Central de Excelência</b> · Lucro</span></div><img src="images/app-home.webp" alt="Central de Excelência: Financeiro e Precificação" width="1200" height="898" loading="lazy" /></div><p class="cap">Print do Lucro: em breve.</p></div>
+        <div class="rv" style="--d:.1s"><div class="shot"><div class="bar"><i></i><i></i><i></i><span><b>Central de Excelência</b> · Lucro</span></div><img src="images/app-calc.webp" alt="Calculadora de precificação da Central de Excelência" width="1057" height="775" loading="lazy" /></div><p class="cap">Calculadora de precificação: o lucro de cada procedimento.</p></div>
       </div>
     </div>
 
@@ -620,6 +683,121 @@ b{font-weight:700;color:var(--ink)}
         <div class="rv viag" style="--d:.1s"><img src="images/leandro-viagem.webp" alt="Prof. Leandro Stecca viajando, nas pirâmides do Egito" width="720" height="1280" loading="lazy" /><div class="vc"><b>Liberdade é viajar.</b><span>Com a clínica funcionando sem você.</span></div></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- 11 · DEPOIMENTOS 2 -->
+<section class="lt2 pad">
+  <div class="w">
+    <div class="head rv"><div class="tag">Mais provas</div>
+    <h2>Mais de 1.600 dentistas já foram acompanhados. <em>Veja o que alguns encontraram.</em></h2>
+    </div>
+    <div class="tgrid t3">
+      <div class="card tc rv"><div class="who"><span class="mono-av">RC</span><div><b>Rafael Castro</b><span>Imposto</span></div></div>
+        <div class="ba"><div><b>Antes</b>Atendia por convênio, como pessoa física. O <b>imposto</b> custava mais do que deveria.</div><div><b>Como</b>Revisou o regime com um contador estratégico, reservou 4 horas para gestão e fixou em R$ 310 o mínimo da resina.</div><div class="d"><b>Agora</b>R$ 1.720 por mês ficam no bolso dele.</div></div></div>
+      <div class="card tc rv" style="--d:.08s"><div class="who"><span class="mono-av">IM</span><div><b>Dr. Igor Mazzioli</b><span>18 anos de formado</span></div></div>
+        <div class="ba"><div><b>Antes</b>Já teve clínica com 10 cadeiras, recomeçou com 2 e trabalhava de segunda a sábado, com pró-labore baixo.</div><div><b>O que queria</b>Tempo, com uma filha de 6 meses.</div><div class="d"><b>Agora</b>Um método para trabalhar menos e ganhar mais.</div></div></div>
+      <div class="card tc rv" style="--d:.16s"><div class="who"><img src="images/elisa-foto.webp" alt="Dra. Elisa" width="192" height="192" loading="lazy" /><div><b>Dra. Elisa</b><span>Hora clínica</span></div></div>
+        <div class="ba"><div><b>Antes</b>4 anos pagando para atender.</div><div class="d"><b>Depois</b>Fez a conta da hora clínica e descobriu que boa parte da agenda dava prejuízo.</div></div></div>
+    </div>
+    <div class="mini" style="margin-top:16px">
+      <div class="card rv"><span class="nm">Amanda · Resina e canal</span><span class="num">–R$ 75 · –R$ 200</span><p>de prejuízo por resina e por canal. Descobriu e corrigiu.</p></div>
+      <div class="card rv" style="--d:.06s"><span class="nm">Cyro · A coroa</span><span class="num">–22%</span><p>A coroa que ele achava que dava +59% de lucro dava prejuízo.</p></div>
+      <div class="card rv" style="--d:.12s"><span class="nm">Bianca · Maquininha</span><span class="num" style="color:var(--good)">4,5% → 2,9%</span><p>Uma conversa. Dinheiro que volta todo mês.</p></div>
+      <div class="card rv"><span class="nm">Clínica Plurale · Diária</span><span class="num">R$ 12 mil</span><p>era o que a diária escondia.</p></div>
+    </div>
+    <div class="card rv" style="margin-top:16px">
+      <div class="brow"><div class="lab"><span>O que o Cyro achava que a coroa dava</span><b>+59%</b></div><div class="tr"><span class="fl" style="--w:59%;background:var(--good)"></span></div></div>
+      <div class="brow" style="margin-top:12px"><div class="lab"><span>O que a conta mostrou</span><b>–22%</b></div><div class="tr"><span class="fl" style="--w:22%"></span></div></div>
+    </div>
+    <div style="text-align:center;margin-top:34px"><a class="btn cta" data-cta="depo2" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
+  </div>
+</section>
+
+<!-- 14 · PARA QUEM -->
+<section class="lt pad">
+  <div class="w">
+    <div class="head rv"><div class="tag">Para quem é</div>
+    <h2>O Excelência Lucrativa é para você se:</h2></div>
+    <div class="pq">
+      <div class="card rv"><ul class="l">
+        <li>Tem consultório ou clínica e já domina a técnica</li>
+        <li>Tem a agenda cheia e o caixa não acompanha</li>
+        <li>Quer chegar a <b>R$100.000,00</b> por mês com <b>paz, lucro e liberdade</b></li>
+        <li>Quer saber, com número, quanto sobra no fim do mês</li>
+        <li>Está disposto a reservar <b>4 horas por semana</b> para isso</li>
+        <li>Quer alguém do lado cobrando até o resultado aparecer</li>
+      </ul></div>
+      <div class="card rv" style="--d:.1s"><h3 style="margin-bottom:6px">Não é para você se:</h3><ul class="l x">
+        <li>Procura uma fórmula para enriquecer sem mudar nada</li>
+        <li>Não aceita olhar os próprios números</li>
+        <li>Quer só mais um curso para assistir quando der</li>
+        <li>Não vai separar duas horas, duas vezes por semana</li>
+      </ul></div>
+    </div>
+    <div style="text-align:center;margin-top:34px"><a class="btn cta" data-cta="paraquem" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
+  </div>
+</section>
+
+<section class="lt2 pad">
+  <div class="w">
+    <div class="sec2">
+      <div class="rv">
+        <div class="tag">O programa</div>
+        <h2>O que é o <em>Programa Excelência Lucrativa</em></h2>
+        <p class="big"><b>12 meses</b> de <b>método, ferramenta e acompanhamento</b> para o dentista excelente na técnica ter <b>lucro</b>, <b>faturamento</b> e <b>liberdade</b>.</p>
+        <ul class="l big2"><li><b>Sem aulas longas.</b> Sem virar administrador</li><li>O foco é um só: <b>lucro</b></li></ul>
+      </div>
+      <div class="rv" style="--d:.1s"><img src="images/mock-central.webp" alt="Central de Excelência em celular, tablet e computador" width="1000" height="1000" loading="lazy" style="border-radius:22px;border:1px solid var(--line)" /></div>
+    </div>
+  </div>
+</section>
+
+<section class="sf pad">
+  <div class="w">
+    <div class="head rv"><div class="tag">A promessa</div>
+    <h2>Acordar, chegar mais tarde e a clínica <em>já estar funcionando.</em></h2></div>
+    <ul class="l big2 rv">
+      <li>Ser <b>reconhecido financeiramente</b> pela qualidade que você entrega</li>
+      <li><b>R$100.000,00</b> por mês, com <b>paz, lucro e liberdade</b>, sem se vender à manada</li>
+      <li><b>Mais de 1.600</b> dentistas já foram acompanhados</li>
+    </ul>
+    <div style="text-align:center;margin-top:30px"><a class="btn cta" data-cta="promessa" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
+  </div>
+</section>
+
+<!-- 5 · OS 3 PILARES -->
+<section class="dk pad">
+  <div class="w">
+    <div class="head rv"><div class="tag">Como o programa te tira da roda</div>
+    <h2>Três pilares. <em>Os três juntos.</em></h2>
+    <p class="lead">Curso sozinho vai para a gaveta. Aqui tem <b>método, ferramenta e alguém cobrando.</b></p></div>
+    <div class="pil">
+      <div class="pi rv"><span class="e">Pilar 1</span><h3>Metodologia</h3>
+        <ul><li><b>Aulas de 5 minutos</b></li><li>Em <b>trilhas</b> da sua realidade</li><li>Assiste <b>só o que precisa</b>, no seu tempo</li></ul>
+        <div class="pf"><img src="images/app-membros2.webp" alt="Área de membros da Central de Excelência" width="1400" height="788" loading="lazy" /></div></div>
+      <div class="pi rv" style="--d:.08s"><span class="e">Pilar 2</span><h3>Ferramentas</h3>
+        <ul><li><b>Calculadora</b> de <b>precificação</b></li><li><b>Processo Seletivo</b></li><li><b>Contratos</b> e muito mais</li></ul>
+        <div class="pf"><img src="images/app-contratacao.webp" alt="Ferramenta Processo Seletivo: aptidão para contratação" width="587" height="662" loading="lazy" /></div></div>
+      <div class="pi rv" style="--d:.16s"><span class="e">Pilar 3</span><h3>Acompanhamento</h3>
+        <ul><li><b>Léo no WhatsApp</b>, cobrando</li><li><b>Consultores</b> de tudo</li><li><b>Tarefas</b> da sua realidade</li><li><b>Mentoria</b> mensal ao vivo</li></ul>
+        <div class="pf"><img src="images/app-leo-chat.webp" alt="Léo no WhatsApp cobrando a tarefa" width="1200" height="675" loading="lazy" /></div></div>
+    </div>
+    <div style="text-align:center;margin-top:34px"><a class="btn cta" data-cta="pilares" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
+  </div>
+</section>
+
+<section class="lt pad">
+  <div class="w">
+    <div class="head rv"><div class="tag">Entregáveis</div>
+    <h2>O que você recebe, <em>na ordem</em> em que você usa</h2></div>
+    <ol class="l big2 rv">
+      <li><b>Semana 1:</b> o <b>Raio-X</b> do seu consultório, feito pela IA</li>
+      <li><b>Trilha do Lucro:</b> uma <b>tarefa por semana</b>, com prova</li>
+      <li><b>Trilha do Faturamento:</b> mais paciente sem agência</li>
+      <li><b>Trilha da Liberdade:</b> equipe e processos funcionando sem você</li>
+      <li><b>Todo mês:</b> mentoria ao vivo com o Leandro</li>
+    </ol>
   </div>
 </section>
 
@@ -664,6 +842,7 @@ b{font-weight:700;color:var(--ink)}
         </ul>
       </div>
     </div>
+    <div class="rv" style="max-width:760px;margin:30px auto 0"><div class="pf"><img src="images/app-fin-chat.webp" alt="Léo lendo os números e respondendo no chat" width="1200" height="675" loading="lazy" /></div><p class="cap">Léo lê seus números e responde na hora.</p></div>
     <div class="fcards">
       <div class="card rv"><h3>Mentoria mensal</h3><p><b>Ao vivo</b>, todo mês, com o Leandro.</p></div>
       <div class="card rv" style="--d:.06s"><h3>Consultores de tudo</h3><p>Financeiro, tributário, comercial, <b>contratação</b>.</p></div>
@@ -672,93 +851,99 @@ b{font-weight:700;color:var(--ink)}
   </div>
 </section>
 
-<!-- 8 · QUANTO CUSTOU ATÉ AQUI -->
-<section class="sf pad">
-  <div class="w">
-    <div class="head rv"><div class="tag">Quanto você já investiu</div>
-    <h2>Você pagou caro para aprender a técnica. <em>Ninguém te ensinou a ser dono.</em></h2>
-    <p class="lead">Números de <b>fontes públicas</b>.</p></div>
-    <div class="prs">
-      <figure class="rv"><div class="pf"><img src="images/p-unifran.webp" alt="Tabela de valores de cursos de odontologia da UNIFRAN" width="508" height="312" loading="lazy" /></div><figcaption>Tabela de cursos de pós em odontologia (UNIFRAN): de R$ 26.820 a R$ 68.040.</figcaption></figure>
-      <figure class="rv" style="--d:.08s"><div class="pf"><img src="images/p-fac-custos.webp" alt="Custos de kit, materiais, taxas e anuidade do CRO na graduação" width="630" height="458" loading="lazy" /></div><figcaption>Custos de kit, materiais, taxas e anuidade do CRO.</figcaption></figure>
-      <figure class="rv"><div class="pf"><img src="images/p-fac-localizacao.webp" alt="Mensalidade de faculdade de odontologia por localização" width="631" height="179" loading="lazy" /></div><figcaption>Mensalidade varia por cidade, com parcela semestral de R$ 3.750 em capitais.</figcaption></figure>
-      <figure class="rv" style="--d:.08s"><div class="pf"><img src="images/p-website.webp" alt="Quanto custa criar um website: de R$ 450 a R$ 10.000" width="540" height="259" loading="lazy" /></div><figcaption>Criar um site custa de R$ 450 a R$ 10.000. E você não precisa de agência para aparecer.</figcaption></figure>
-    </div>
-    <p class="big rv">Você investiu tudo na cadeira. O Excelência Lucrativa é o investimento no que vem depois dela: a empresa.</p>
-  </div>
-</section>
-
-<!-- 9 · POR QUE NADA FUNCIONOU -->
-<section class="lt pad">
-  <div class="w">
-    <div class="head rv"><div class="tag">Por que nada do que você tentou funcionou</div>
-    <h2>Tudo o que te ofereceram até hoje <em>pedia mais de você.</em></h2></div>
-    <div class="mais">
-      <div class="m rv"><div class="ic">+</div><div><b>Mais paciente</b><span>A agência trouxe. Muitos vieram de plano que paga pouco.</span></div></div>
-      <div class="m rv" style="--d:.06s"><div class="ic">+</div><div><b>Mais curso</b><span>Você comprou. Ficou na gaveta.</span></div></div>
-      <div class="m rv" style="--d:.12s"><div class="ic">+</div><div><b>Mais planilha</b><span>Você abriu às 22h, depois do último paciente, cansado demais para entender.</span></div></div>
-      <div class="m rv" style="--d:.18s"><div class="ic">+</div><div><b>Mais faturamento</b><span>Veio junto com mais <b>imposto</b> e mais dor de cabeça.</span></div></div>
-    </div>
-    <h3 class="rv" style="margin:clamp(34px,5vw,60px) 0 20px">O que cada caminho entrega</h3>
-    <div class="tw rv"><table class="cmp">
-      <thead><tr><th></th><th>Curso</th><th>Agência</th><th>Contador</th><th class="p">Excelência Lucrativa</th></tr></thead>
-      <tbody>
-      <tr><td>Diz o que fazer, em ordem</td><td><span class="yes">Sim</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
-      <tr><td>Faz a conta do seu lucro por procedimento</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
-      <tr><td>Resolve sem você investir em tráfego</td><td><span class="yes">Sim</span></td><td><span class="no">Não</span></td><td><span class="yes">Sim</span></td><td class="p"><span class="yes">Sim</span></td></tr>
-      <tr><td>Alguém cobra a execução toda semana</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
-      <tr><td>Treina a equipe e ajuda a contratar</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
-      <tr><td>Garante o resultado em dinheiro</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
-      </tbody>
-    </table></div>
-  </div>
-</section>
-
-<!-- 10 · IMPOSTO / CONTEXTO 2027 (prova com notícia) -->
 <section class="dk pad">
   <div class="w">
-    <div class="head rv"><div class="tag">O contexto de 2027</div>
-    <h2>A regra do jogo muda. <em>Quem tem número chega na frente.</em></h2></div>
-    <div class="of" style="align-items:center">
-      <div class="rv"><div class="pf"><img src="images/p-cbs.webp" alt="CNN Brasil Money: governo, estados e municípios regulam reforma tributária, com início em 2027" width="812" height="253" loading="lazy" /></div><p class="cap">CNN Brasil Money, 30/04/2026.</p>
-        <div class="pf" style="margin-top:16px"><img src="images/p-mdr.webp" alt="O que é a taxa MDR e quando ela é cobrada" width="649" height="236" loading="lazy" /></div><p class="cap">A taxa da <b>maquininha</b> (MDR) sai do seu <b>faturamento</b> antes de ele chegar ao seu bolso.</p></div>
-      <div class="rv" style="--d:.1s">
-        <ul class="l">
-          <li>Em 2027 entra a CBS no lugar de PIS e Cofins.</li>
-          <li>A odontologia teve redução de 60% na alíquota, mas alíquota menor não garante <b>imposto</b> menor: depende do regime e de como a clínica está montada.</li>
-          <li>Tem muito dentista bom no mercado procurando onde trabalhar. Quem tem número, processo e treino de equipe contrata primeiro.</li>
+    <div class="head rv"><div class="tag">Bônus</div>
+    <h2>Bônus para os <em>primeiros 15</em> que entrarem</h2>
+    <p class="lead">Os <b>bônus</b> são cumulativos e <b>acabam conforme as vagas são preenchidas</b>.</p></div>
+    <div class="of">
+      <div class="esc rv" style="grid-template-columns:1fr">
+        <div class="st"><h3>Primeiros 5</h3><ul><li><b>Diagnóstico Individual</b> com Leandro Stecca: 1 hora, só você e ele, olhando os seus números</li><li>Kit de Aquisição de Pacientes Qualificados a Custo Zero</li><li><b>Consultoria Tributária</b></li></ul></div>
+        <div class="st"><h3>Primeiros 10</h3><ul><li>Kit de Aquisição de Pacientes Qualificados a Custo Zero</li><li><b>Consultoria Tributária</b></li></ul></div>
+        <div class="st"><h3>Primeiros 15</h3><ul><li><b>Consultoria Tributária</b> com o time que atende grandes clínicas</li></ul></div>
+      </div>
+      <figure class="rv" style="--d:.1s"><div class="pf"><img src="images/p-website.webp" alt="Quanto custa criar um website: de R$ 450 a R$ 10.000" width="540" height="259" loading="lazy" /></div><figcaption><b>Kit de captação:</b> site pronto para o Google e campanhas de reativação. Um site sozinho custa de R$ 450 a R$ 10.000.</figcaption></figure>
+    </div>
+    <div style="text-align:center;margin-top:30px"><a class="btn cta" data-cta="bonus" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
+  </div>
+</section>
+
+<!-- 16 · CUSTO DE FICAR + OFERTA + PREÇO -->
+<section class="sf pad">
+  <div class="w">
+    <div class="head rv"><div class="tag">Quanto custa ficar onde você está</div>
+    <h2>Primeiro, o preço de <em>não fazer nada.</em></h2></div>
+    <div class="card rv">
+      <div class="bars">
+        <div class="brow"><div class="lab"><span>Imposto pago a mais, como o do Rafael <span class="mut">(R$ 1.720 por mês)</span></span><b>R$ 20.640</b></div><div class="tr"><span class="fl" style="--w:100%"></span></div></div>
+        <div class="brow"><div class="lab"><span>3 canais com o furo da Amanda <span class="mut">(R$ 600 por mês)</span></span><b>R$ 7.200</b></div><div class="tr"><span class="fl" style="--w:34.9%"></span></div></div>
+        <div class="brow"><div class="lab"><span>1,6 ponto de <b>maquininha</b>, como a Bianca, sobre R$ 30 mil em cartão <span class="mut">(R$ 480 por mês, exemplo ilustrativo)</span></span><b>R$ 5.760</b></div><div class="tr"><span class="fl" style="--w:27.9%"></span></div></div>
+        <div class="brow p me"><div class="lab"><span>Programa Excelência Lucrativa, o ano inteiro</span><b>R$ 2.000</b></div><div class="tr"><span class="fl" style="--w:9.7%"></span></div></div>
+      </div>
+      <p class="cap" style="margin:0">Perda em <b>12 meses</b>, na mesma escala.</p>
+    </div>
+    <p class="big rv" style="margin-top:28px">Um furo só já custa mais, em um ano, do que o programa inteiro. A maioria dos consultórios tem mais de um.</p>
+
+    <h3 class="rv" style="margin:clamp(44px,6vw,80px) 0 22px">Você já paga caro para ganhar mais. Compare.</h3>
+    <div class="vs">
+      <div class="c rv"><span class="k">Especialização</span><span class="nm bad">R$ 28.800</span><p>R$ 24.000 de curso, mais 3 dias parado: 24 horas de hora clínica a R$ 200 são R$ 4.800 que você deixa de faturar.</p></div>
+      <div class="c win rv" style="--d:.1s"><span class="k">Excelência Lucrativa</span><span class="nm good"><b>R$ 5.000</b></span><p>de valor, com <b>4 horas por semana</b> para ganhar mais fora da cadeira.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="dk pad" id="oferta">
+  <div class="w">
+    <div class="head rv"><div class="tag">Stack da oferta</div>
+    <h2>Tudo o que você recebe por <em>12 meses</em></h2></div>
+    <div class="of">
+      <div>
+        <ul class="stack rv">
+          <li><b>Central de Excelência</b>, o app com tudo num lugar só</li>
+          <li>Aulas de 5 minutos em trilhas para a sua realidade</li>
+          <li><b>Léo</b> no app e no WhatsApp, cobrando e respondendo</li>
+          <li>Calculadora de <b>precificação</b>, procedimento por procedimento</li>
+          <li>Processo Seletivo, Contratos e muito mais</li>
+          <li>Consultores de lucro, <b>faturamento</b> e liberdade</li>
+          <li>Acesso da sua secretária às ferramentas que você liberar</li>
+          <li>Uma <b>tarefa por semana</b>, com prova e correção</li>
+          <li><b>Placar do Lucro</b></li>
+          <li>Reunião de <b>mentoria mensal</b> ao vivo com o Leandro</li>
+          <li><b>Duas garantias</b></li>
         </ul>
-        <p class="big" style="margin-top:22px">Esses dois furos, <b>imposto</b> e <b>maquininha</b>, mais paciente não fecha. Mais paciente aumenta.</p>
+      </div>
+      <div>
+        <div class="ofic rv"><span>Preço oficial</span><s>R$ 5.000</s><em>Menos de <b>R$ 14 por dia</b>.</em></div>
+        <div class="pbox rv">
+          <div class="tg">Preço da Virada Odontológica · até quinta, 23h59</div>
+          <div class="price"><span class="x">12x de</span><span class="v">R$ 199<small>,98</small></span></div>
+          <div class="av">ou <b>R$ 2.000 à vista</b>, com desconto</div>
+          <div class="tot"><b>Menos de R$ 6,70 por dia.</b> Menos que uma <b>resina</b> por mês. Menos que uma <b>profilaxia</b> por mês. No cartão, o total parcelado é R$ 2.399,76.</div>
+          <a class="btn cta" data-cta="oferta" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a>
+        </div>
+        <p class="seg">Pagamento seguro · Acesso liberado por e-mail · <b>Duas garantias</b></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 11 · DEPOIMENTOS 2 -->
-<section class="lt2 pad">
+<!-- 13 · GARANTIAS -->
+<section class="sf pad">
   <div class="w">
-    <div class="head rv"><div class="tag">Mais provas</div>
-    <h2>Mais de 1.600 dentistas já foram acompanhados. <em>Veja o que alguns encontraram.</em></h2>
+    <div class="head rv"><div class="tag"><b>Duas garantias</b></div>
+    <h2>O risco é nosso. <em>Duas vezes.</em></h2></div>
+    <div class="gs">
+      <div class="seal rv"><b>7 dias</b><span>Conhecer por dentro</span><em>Entre, abra a Central, converse com o Léo, assista às aulas. Se em 7 dias achar que não é para você, devolvemos 100% do valor. Sem pergunta.</em></div>
+      <div class="seal rv" style="--d:.1s"><b>R$ 6.000</b><span><b>Garantia de LUCRO</b> · 90 dias</span><em>Se você fizer as tarefas, com prova, e não colocar R$ 6.000 de lucro no bolso em 90 dias corridos, devolvemos o seu dinheiro.</em></div>
     </div>
-    <div class="tgrid t3">
-      <div class="card tc rv"><div class="who"><span class="mono-av">RC</span><div><b>Rafael Castro</b><span>Imposto</span></div></div>
-        <div class="ba"><div><b>Antes</b>Atendia por convênio, como pessoa física. O <b>imposto</b> custava mais do que deveria.</div><div><b>Como</b>Revisou o regime com um contador estratégico, reservou 4 horas para gestão e fixou em R$ 310 o mínimo da resina.</div><div class="d"><b>Agora</b>R$ 1.720 por mês ficam no bolso dele.</div></div></div>
-      <div class="card tc rv" style="--d:.08s"><div class="who"><span class="mono-av">IM</span><div><b>Dr. Igor Mazzioli</b><span>18 anos de formado</span></div></div>
-        <div class="ba"><div><b>Antes</b>Já teve clínica com 10 cadeiras, recomeçou com 2 e trabalhava de segunda a sábado, com pró-labore baixo.</div><div><b>O que queria</b>Tempo, com uma filha de 6 meses.</div><div class="d"><b>Agora</b>Um método para trabalhar menos e ganhar mais.</div></div></div>
-      <div class="card tc rv" style="--d:.16s"><div class="who"><span class="mono-av">E</span><div><b>Dra. Elisa</b><span>Hora clínica</span></div></div>
-        <div class="ba"><div><b>Antes</b>4 anos pagando para atender.</div><div class="d"><b>Depois</b>Fez a conta da hora clínica e descobriu que boa parte da agenda dava prejuízo.</div></div></div>
-    </div>
-    <div class="mini" style="margin-top:16px">
-      <div class="card rv"><span class="nm">Amanda · Resina e canal</span><span class="num">–R$ 75 · –R$ 200</span><p>de prejuízo por resina e por canal. Descobriu e corrigiu.</p></div>
-      <div class="card rv" style="--d:.06s"><span class="nm">Cyro · A coroa</span><span class="num">–22%</span><p>A coroa que ele achava que dava +59% de lucro dava prejuízo.</p></div>
-      <div class="card rv" style="--d:.12s"><span class="nm">Bianca · Maquininha</span><span class="num" style="color:var(--good)">4,5% → 2,9%</span><p>Uma conversa. Dinheiro que volta todo mês.</p></div>
-      <div class="card rv"><span class="nm">Clínica Plurale · Diária</span><span class="num">R$ 12 mil</span><p>era o que a diária escondia.</p></div>
-    </div>
-    <div class="card rv" style="margin-top:16px">
-      <div class="brow"><div class="lab"><span>O que o Cyro achava que a coroa dava</span><b>+59%</b></div><div class="tr"><span class="fl" style="--w:59%;background:var(--good)"></span></div></div>
-      <div class="brow" style="margin-top:12px"><div class="lab"><span>O que a conta mostrou</span><b>–22%</b></div><div class="tr"><span class="fl" style="--w:22%"></span></div></div>
-    </div>
-    <div style="text-align:center;margin-top:34px"><a class="btn cta" data-cta="depo2" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
+    <h3 class="rv" style="margin-top:34px">Como medimos, sem letra miúda:</h3>
+    <div class="reg rv"><ul class="l">
+      <li>Lucro líquido, já descontado o seu pró-labore.</li>
+      <li>Ação por ação. Somamos o que cada mudança trouxe: preço, <b>imposto</b>, <b>maquininha</b>, campanhas. Um mês fraco por sazonalidade não apaga o que você conquistou.</li>
+      <li>A sua parte: entregar os números certinhos ao <b>Léo</b>, executar as tarefas e comprovar cada entrega.</li>
+      <li>Tudo em contrato, que você recebe na matrícula.</li>
+    </ul></div>
+    <a class="btn cta" data-cta="garantias" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar com as duas garantias →</a>
   </div>
 </section>
 
@@ -784,50 +969,16 @@ b{font-weight:700;color:var(--ink)}
   </div>
 </section>
 
-<!-- 13 · GARANTIAS -->
-<section class="sf pad">
+<section class="dk pad">
   <div class="w">
-    <div class="head rv"><div class="tag"><b>Duas garantias</b></div>
-    <h2>O risco é nosso. <em>Duas vezes.</em></h2></div>
-    <div class="gs">
-      <div class="seal rv"><b>7 dias</b><span>Conhecer por dentro</span><em>Entre, abra a Central, converse com o Léo, assista às aulas. Se em 7 dias achar que não é para você, devolvemos 100% do valor. Sem pergunta.</em></div>
-      <div class="seal rv" style="--d:.1s"><b>R$ 6.000</b><span>Lucro no Bolso · <b>90 dias</b></span><em>Se você fizer as tarefas, com prova, e não colocar R$ 6.000 de lucro no bolso em 90 dias corridos, devolvemos o seu dinheiro.</em></div>
-    </div>
-    <h3 class="rv" style="margin-top:34px">Como medimos, sem letra miúda:</h3>
-    <div class="reg rv"><ul class="l">
-      <li>Lucro líquido, já descontado o seu pró-labore.</li>
-      <li>Ação por ação. Somamos o que cada mudança trouxe: preço, <b>imposto</b>, <b>maquininha</b>, campanhas. Um mês fraco por sazonalidade não apaga o que você conquistou.</li>
-      <li>A sua parte: entregar os números certinhos ao <b>Léo</b>, executar as tarefas e comprovar cada entrega.</li>
-      <li>Tudo em contrato, que você recebe na matrícula.</li>
-    </ul></div>
-    <a class="btn cta" data-cta="garantias" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar com as duas garantias →</a>
-  </div>
-</section>
-
-<!-- 14 · PARA QUEM -->
-<section class="lt pad">
-  <div class="w">
-    <div class="head rv"><div class="tag">Para quem é</div>
-    <h2>O Excelência Lucrativa é para você se:</h2></div>
-    <div class="pq">
-      <div class="card rv"><ul class="l">
-        <li>Tem consultório ou clínica e já domina a técnica</li>
-        <li>Tem a agenda cheia e o caixa não acompanha</li>
-        <li>Quer chegar a <b>R$100.000,00</b> por mês com <b>paz, lucro e liberdade</b></li>
-        <li>Quer saber, com número, quanto sobra no fim do mês</li>
-        <li>Está disposto a reservar <b>4 horas por semana</b> para isso</li>
-        <li>Quer alguém do lado cobrando até o resultado aparecer</li>
-      </ul></div>
-      <div class="card rv" style="--d:.1s"><h3 style="margin-bottom:6px">Não é para você se:</h3><ul class="l x">
-        <li>Procura uma fórmula para enriquecer sem mudar nada</li>
-        <li>Não aceita olhar os próprios números</li>
-        <li>Quer só mais um curso para assistir quando der</li>
-        <li>Não vai separar duas horas, duas vezes por semana</li>
-      </ul></div>
-    </div>
-    <div class="pct rv"><div><b>58%</b>do público é feminino</div><div><b>64%</b>tem mais de 41 anos</div></div>
-    <p class="lead rv">Mais da metade tem <b>mais de 15 anos de formado</b>. Sem iniciantes.</p>
-    <div style="text-align:center;margin-top:34px"><a class="btn cta" data-cta="paraquem" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
+    <div class="head rv"><div class="tag">Pense nisso</div>
+    <h2>Até quando? <em>É para isso que você fez odontologia?</em></h2></div>
+    <ul class="l big2 rv">
+      <li>Para <b>pagar para trabalhar</b>?</li>
+      <li>Para <b>parar uma semana</b> e o dinheiro parar junto?</li>
+      <li>Para chegar aos 60 <b>sem segurança</b> de se aposentar com qualidade?</li>
+    </ul>
+    <div style="margin-top:28px"><a class="btn cta" data-cta="faca" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
   </div>
 </section>
 
@@ -857,90 +1008,23 @@ b{font-weight:700;color:var(--ink)}
   </div>
 </section>
 
-<!-- 16 · CUSTO DE FICAR + OFERTA + PREÇO -->
-<section class="sf pad">
+<section class="lt2 pad">
   <div class="w">
-    <div class="head rv"><div class="tag">Quanto custa ficar onde você está</div>
-    <h2>Primeiro, o preço de <em>não fazer nada.</em></h2></div>
-    <div class="card rv">
-      <div class="bars">
-        <div class="brow"><div class="lab"><span>Imposto pago a mais, como o do Rafael <span class="mut">(R$ 1.720 por mês)</span></span><b>R$ 20.640</b></div><div class="tr"><span class="fl" style="--w:100%"></span></div></div>
-        <div class="brow"><div class="lab"><span>3 canais com o furo da Amanda <span class="mut">(R$ 600 por mês)</span></span><b>R$ 7.200</b></div><div class="tr"><span class="fl" style="--w:34.9%"></span></div></div>
-        <div class="brow"><div class="lab"><span>1,6 ponto de <b>maquininha</b>, como a Bianca, sobre R$ 30 mil em cartão <span class="mut">(R$ 480 por mês, exemplo ilustrativo)</span></span><b>R$ 5.760</b></div><div class="tr"><span class="fl" style="--w:27.9%"></span></div></div>
-        <div class="brow p me"><div class="lab"><span>Programa Excelência Lucrativa, o ano inteiro</span><b>R$ 2.000</b></div><div class="tr"><span class="fl" style="--w:9.7%"></span></div></div>
-      </div>
-      <p class="cap" style="margin:0">Perda em <b>12 meses</b>, na mesma escala.</p>
-    </div>
-    <p class="big rv" style="margin-top:28px">Um furo só já custa mais, em um ano, do que o programa inteiro. A maioria dos consultórios tem mais de um.</p>
-
-    <h3 class="rv" style="margin:clamp(44px,6vw,80px) 0 22px">E compare com o que você já faz.</h3>
-    <div class="vs">
-      <div class="c rv"><span class="k">Curso de técnica</span><span class="nm bad">3 a 4 dias</span><p>parado, pagando de R$ 1.000 a R$ 2.000 para aprender a trabalhar mais na cadeira.</p></div>
-      <div class="c win rv" style="--d:.1s"><span class="k">Excelência Lucrativa</span><span class="nm good"><b>4 horas por semana</b></span><p>para ganhar mais fora da cadeira.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="dk pad" id="oferta">
-  <div class="w">
-    <div class="head rv"><div class="tag">A oferta</div>
-    <h2>Tudo o que você recebe por <em>12 meses</em></h2></div>
-    <div class="of">
-      <div>
-        <div class="rv" style="margin-bottom:26px"><img src="images/mock-central.webp" alt="Central de Excelência em celular, tablet e computador" width="1000" height="1000" loading="lazy" style="border-radius:22px;border:1px solid var(--line)" /></div>
-        <ul class="stack rv">
-          <li><b>Central de Excelência</b>, o app com tudo num lugar só</li>
-          <li>Aulas de 5 minutos em trilhas para a sua realidade</li>
-          <li><b>Léo</b> no app e no WhatsApp, cobrando e respondendo</li>
-          <li>Calculadora de <b>precificação</b>, procedimento por procedimento</li>
-          <li>Processo Seletivo, Contratos e muito mais</li>
-          <li>Consultores de lucro, <b>faturamento</b> e liberdade</li>
-          <li>Acesso da sua secretária às ferramentas que você liberar</li>
-          <li>Uma <b>tarefa por semana</b>, com prova e correção</li>
-          <li><b>Placar do Lucro</b></li>
-          <li>Reunião de <b>mentoria mensal</b> ao vivo com o Leandro</li>
-          <li><b>Duas garantias</b></li>
-        </ul>
-      </div>
-      <div>
-        <div class="rv">
-          <h3>Bônus para os primeiros</h3>
-          <p class="mut">Os <b>bônus</b> são cumulativos e acabam conforme as pessoas entram. Vale a ordem de aprovação do pagamento.</p>
-          <div class="esc" style="grid-template-columns:1fr">
-            <div class="st"><h3>1º ao 5º</h3><ul><li><b>Diagnóstico Individual</b> com Leandro Stecca: 1 hora, só você e ele, olhando os seus números</li><li>Kit de Aquisição de Pacientes Qualificados a Custo Zero: site pronto para ranquear no Google e campanhas de WhatsApp validadas</li><li><b>Consultoria Tributária</b></li></ul></div>
-            <div class="st"><h3>6º ao 10º</h3><ul><li>Kit de Aquisição de Pacientes Qualificados a Custo Zero</li><li><b>Consultoria Tributária</b></li></ul></div>
-            <div class="st"><h3>11º ao 15º</h3><ul><li><b>Consultoria Tributária</b></li></ul></div>
-          </div>
-        </div>
-        <div class="pbox rv">
-          <div class="tg">Condição de Black Friday · não se repete</div>
-          <div class="price"><span class="x">12x de</span><span class="v">R$ 199<small>,98</small></span></div>
-          <div class="av">ou R$ 2.000 à vista</div>
-          <div class="tot">Menos de R$ 6,70 por dia. No cartão, o total parcelado é R$ 2.399,76.</div>
-          <a class="btn cta" data-cta="oferta" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a>
-        </div>
-        <p class="seg">Pagamento seguro · Acesso liberado por e-mail · <b>Duas garantias</b></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 17 · FECHAMENTO -->
-<section class="lt pad">
-  <div class="w">
-    <div class="head rv"><div class="tag">Fechamento</div>
-    <h2>Daqui a 12 meses, você vai estar em <em>um destes dois lugares.</em></h2></div>
-    <div class="paths">
-      <div class="pa n1 rv" style="color:#F2F1EE;background:#3a1d22"><b>Caminho 1</b><p>Você fecha esta página. A agenda continua cheia e o caixa continua apertado. Você segue na <b>corrida dos ratos</b>, correndo mais para sobrar o mesmo.</p></div>
-      <div class="pa n2 rv" style="--d:.1s;color:#F2F1EE;background:#16443a"><b>Caminho 2</b><p>Você entra hoje. Em <b>7 dias</b>, sabe onde está o seu <b>lucro escondido</b>. Em 90, ele está no seu bolso, ou o seu dinheiro volta. Em 12 meses, a clínica caminha para os R$100.000,00 com paz, lucro e liberdade.</p></div>
+    <div class="head rv"><div class="tag">Três caminhos</div>
+    <h2>Daqui a 12 meses, você vai estar em <em>um destes três lugares.</em></h2></div>
+    <div class="paths p3">
+      <div class="pa n1 rv" style="color:#F2F1EE;background:#3a1d22"><b>Caminho 1 · Ignorar</b><p>Você fecha esta página. A agenda continua cheia e o caixa apertado. Mais um ano na <b>corrida dos ratos</b>: o corpo cobra, a mão cobra, e a aposentadoria fica sem <b>segurança</b>. É o fundo do poço de quem trabalha demais e não sobra nada.</p></div>
+      <div class="pa n3 rv" style="--d:.08s;color:#F2F1EE;background:#3a2e14"><b>Caminho 2 · Tentar sozinho</b><p>Você já tentou tantas vezes: curso, agência, planilha. Isso <b>custou caro</b> e deixou tudo na gaveta. Boa sorte.</p></div>
+      <div class="pa n2 rv" style="--d:.16s;color:#F2F1EE;background:#16443a"><b>Caminho 3 · Ter método</b><p>Metodologia, ferramenta e acompanhamento, mais <b>30 anos de experiência</b> para te acelerar. Em <b>7 dias</b>, você sabe onde está o seu <b>lucro escondido</b>. Em 90, ele está no seu bolso, ou o dinheiro volta.</p></div>
     </div>
     <p class="big rv" style="margin:34px 0 26px">Você já é excelente na cadeira. Está na hora de ser excelente no lucro.</p>
     <a class="btn pulse cta" data-cta="final" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a>
-    <p class="sub"><b>Duas garantias</b> · <b>Bônus</b> pela ordem de pagamento</p>
+    <p class="sub"><b>Duas garantias</b> · <b>Bônus</b> para os primeiros 15</p>
     <p class="ps"><b>P.S.</b> Se você pulou direto para o fim: o programa acha o <b>lucro escondido</b> no seu consultório em <b>7 dias</b> e coloca R$ 6.000 no seu bolso em 90, ou devolve o seu dinheiro. Os bônus acabam conforme as vagas são preenchidas.</p>
     <p class="ps" style="margin-top:12px"><b>P.P.S.</b> O <b>Diagnóstico Individual</b> de 1 hora com o Leandro existe para só 5 pessoas.</p>
   </div>
 </section>
+
 
 <footer>
   <div class="w">
