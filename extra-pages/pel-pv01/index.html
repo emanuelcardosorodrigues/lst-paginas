@@ -581,6 +581,40 @@ details summary{font-weight:700}
 @media(min-width:960px){.bals{grid-template-columns:repeat(3,1fr);gap:34px 26px}.tiers{grid-template-columns:repeat(3,1fr);gap:24px}.pil{grid-template-columns:repeat(3,1fr)}.mais{grid-template-columns:1fr 1fr}.pq{grid-template-columns:1.2fr .8fr}.vs{grid-template-columns:1fr 1fr}.gs{grid-template-columns:1fr 1fr;gap:26px}.fcards{grid-template-columns:repeat(3,1fr)}.paths.p3{grid-template-columns:repeat(3,1fr)}.ld .ph{grid-template-columns:1fr}.hg{gap:48px}}
 @media(max-width:520px){.stk .it{grid-template-columns:48px 1fr;}.stk .it s{grid-column:2;justify-self:start}.stk .it img,.stk .gi{width:48px;height:48px}.stk .it.inc em{grid-column:2}}
 .disc{margin:22px 0 0;font-size:13.5px;line-height:1.5;color:#2a3448;text-align:center;max-width:70ch;margin-inline:auto}
+/* ===== v7 ===== */
+img{height:auto}
+.aviso{background:linear-gradient(135deg,#22457F,#13254A);color:#fff;text-align:center;border-block:4px solid var(--ouro);--ink:#fff}
+.aviso h2{font-size:clamp(2.2rem,6vw,4rem);margin:10px auto 14px;max-width:16ch}.aviso h2 em{color:var(--ouro3)}
+.aviso p{max-width:40ch;margin:0 auto;font-size:clamp(1.05rem,2vw,1.3rem);color:#e6e9f0}.aviso b{color:#fff;background:linear-gradient(transparent 62%,rgba(179,141,85,.55) 62%)}
+.aviso .tag{justify-content:center}
+.loud p{max-width:46ch;margin-inline:auto}.loud .tag{justify-content:center}
+.btn.dark{background:#0B1426;color:#fff}
+ul.l.big2 li{padding:12px 0 12px 34px}
+ul.l.big2 li::before,.lt ul.l.big2 li::before,.lt2 ul.l.big2 li::before{content:"";left:3px;top:20px;bottom:auto;width:14px;height:8px;border-radius:0;background:none;border:0;border-left:3px solid var(--good);border-bottom:3px solid var(--good);transform:rotate(-45deg)}
+ol.l.big2 li{padding-left:34px}
+ol.l.big2 li::before{content:counter(o) ".";width:auto;height:auto;left:0;top:11px;border:0;border-radius:0;background:none;transform:none;display:block;color:var(--ouro2);font:700 1.25rem/1.3 var(--serif);text-align:left}
+.dk ol.l.big2 li::before,.sf ol.l.big2 li::before{color:var(--ouro3)}
+.selos div{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:92px}
+.selos b{margin-bottom:4px}
+.tier .bd{position:static;display:inline-block;margin:0 0 12px;background:var(--ouro);color:#0B1426;font:700 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:8px 13px;border-radius:999px}
+.tier.t5 .bd{background:#fff}
+.tier .im{aspect-ratio:4/3}.tier.t5 .im img{object-fit:cover;object-position:50% 12%;width:100%;height:100%}
+.ld .ph1{padding:0;background:none}.ld .ph1 img{width:100%;max-height:520px;object-fit:cover;object-position:50% 10%;border-radius:22px}
+.plur{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+.plur img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--ouro)}
+.plur b{display:block;margin-bottom:6px}.plur .n{display:block;margin-bottom:4px}.plur p b{display:inline;font:inherit;letter-spacing:0;text-transform:none;color:#fff;background:none}
+.paths .pa p b{color:#fff;background:none}
+.cmp th,.cmp td{padding-inline:8px}
+@media(min-width:960px){
+ body{font-size:16.5px}
+ h1{font-size:clamp(2.1rem,3.7vw,3.3rem)}
+ h2{font-size:clamp(1.7rem,2.9vw,2.4rem)}
+ .loud h2{font-size:clamp(2rem,3.6vw,3rem)}
+ .loud .turn,.loud .knife{font-size:clamp(1.3rem,2.2vw,1.8rem)}
+ .bigq{font-size:clamp(1.6rem,2.8vw,2.2rem)}
+ .ofic strong{font-size:4.2rem}.sum s{font-size:2.4rem}
+ .mp .cd b,.pil h3{font-size:1.05rem}
+}
 </style>
 </head>
 <body>
@@ -600,7 +634,7 @@ details summary{font-weight:700}
         <div class="selos">
           <div><b>30</b>anos de odontologia</div>
           <div><b>1.600+</b>dentistas acompanhados</div>
-          <div><b>Garantia de LUCRO</b>em <b>90 dias</b></div>
+          <div><b>90 dias</b>garantia de lucro</div>
         </div>
         <a class="btn pulse sc" data-cta="hero" href="#corrida">Quero ver como funciona ↓</a>
       </div>
@@ -631,7 +665,7 @@ details summary{font-weight:700}
         <div class="bq">“Gerar <b>lucro</b> faz parte do trabalho. <b>Sem culpa.</b>”</div>
         <div class="ba">
           <div><b>Antes</b>Trabalhava muito e a <u>remuneração não condizia</u> com o esforço.</div>
-          <div class="d"><b>Depois</b>Na mentoria, passou a olhar o próprio <u>lucro</u>. Hoje cobra e lucra <u>sem culpa</u>.</div>
+          <div class="d"><b>Depois</b>Passou a olhar o próprio <u>lucro</u>. Hoje cobra e lucra <u>sem culpa</u>.</div>
         </div>
       </div>
     </div>
@@ -662,18 +696,12 @@ details summary{font-weight:700}
   </div>
 </section>
 
-<!-- 4 · GIRAR A FACA -->
-<section class="loud pad">
+<!-- 4 · AVISO -->
+<section class="aviso pad">
   <div class="w">
-    <div class="tag">Uma pergunta só</div>
-    <h2>Quantos pacientes você atendeu esse mês?</h2>
-    <div class="nums"><span>30?</span><span>40?</span><span>60?</span></div>
-    <p class="turn">Agora me responde: <b>quanto REALMENTE sobrou no seu bolso?</b></p>
-    <p>Você olha o extrato. Vê aquele faturamento bonito. Aí bate a conta do <b>laboratório</b>. O <b>imposto</b>. A <b>folha</b>. O <b>aluguel</b>. O <b>material</b>.</p>
-    <p>E não sobra quase nada.</p>
-    <p class="knife">Você trabalha como nunca para ganhar menos do que deveria.</p>
-    <p>Nem sempre é falta de paciente. Não é falta de marketing. Não é a economia. Muitas vezes é o <b>preço</b>, e o <b>furo</b> que ninguém te mostrou.</p>
-    <p class="turn"><b>Até quando</b> vai ser assim? <b>Isso não é normal.</b></p>
+    <div class="tag">Um dado que quase ninguém olha</div>
+    <h2>Faturamento <em>não é lucro.</em></h2>
+    <p>O que entra na conta não é o que sobra no seu bolso. No meio do caminho ficam o <b>laboratório</b>, o <b>imposto</b>, a <b>folha</b>, o <b>aluguel</b> e o <b>material</b>.</p>
   </div>
 </section>
 
@@ -681,7 +709,7 @@ details summary{font-weight:700}
 <section class="lt pad">
   <div class="w">
     <div class="head rv"><div class="tag">Por que nada do que você tentou funcionou</div>
-    <h2>Tudo o que te ofereceram até hoje <em>pedia mais de você.</em></h2><p class="lead"><b>Não é culpa sua.</b> Nunca foi falta de conhecimento. Faltou <b>alguém do lado</b>, uma <b>ferramenta</b> e conhecimento organizado para a sua realidade.</p></div>
+    <h2>Tudo o que te ofereceram até hoje <em>pedia mais de você.</em></h2><p class="lead"><b>Não é culpa sua.</b> Nunca foi falta de metodologia. Faltou <b>alguém do lado</b>, uma <b>ferramenta</b> e uma <b>metodologia</b> organizada para a sua realidade.</p></div>
     <div class="mais">
       <div class="m rv"><div class="ic">+</div><div><b>Mais paciente</b><span>A agência trouxe. Muitos vieram de plano que paga pouco.</span></div></div>
       <div class="m rv" style="--d:.06s"><div class="ic">+</div><div><b>Mais curso</b><span>Você comprou. Ficou na gaveta.</span></div></div>
@@ -690,14 +718,15 @@ details summary{font-weight:700}
     </div>
     <h3 class="rv" style="margin:clamp(34px,5vw,60px) 0 20px">O que você já tentou, e por que não bastou</h3>
     <div class="tw rv"><table class="cmp">
-      <thead><tr><th></th><th>Curso</th><th>Agência</th><th>Contador</th><th class="p">Excelência Lucrativa</th></tr></thead>
+      <thead><tr><th></th><th>Curso</th><th>Mentoria</th><th>Agência</th><th>Contador</th><th class="p">Excelência Lucrativa</th></tr></thead>
       <tbody>
-      <tr><td>Diz o que fazer, em ordem</td><td><span class="yes">Sim</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
-      <tr><td>Faz a conta do seu lucro por procedimento</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
-      <tr><td>Resolve sem você investir em tráfego</td><td><span class="yes">Sim</span></td><td><span class="no">Não</span></td><td><span class="yes">Sim</span></td><td class="p"><span class="yes">Sim</span></td></tr>
-      <tr><td>Alguém cobra a execução toda semana</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
-      <tr><td>Treina a equipe e ajuda a contratar</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
-      <tr><td>Garante o resultado em dinheiro</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
+      <tr><td>Diz o que fazer, em ordem</td><td><span class="yes">Sim</span></td><td><span class="yes">Sim</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
+      <tr><td>Faz a conta do seu lucro por procedimento</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
+      <tr><td>Resolve sem você investir em tráfego</td><td><span class="yes">Sim</span></td><td><span class="yes">Sim</span></td><td><span class="no">Não</span></td><td><span class="yes">Sim</span></td><td class="p"><span class="yes">Sim</span></td></tr>
+      <tr><td>Alguém cobra a execução toda semana</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
+      <tr><td>Treina a equipe e ajuda a contratar</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
+      <tr><td>Garante o resultado em dinheiro</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
+      <tr><td>Tira a dúvida na hora, sem esperar</td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td><span class="no">Não</span></td><td class="p"><span class="yes">Sim</span></td></tr>
       </tbody>
     </table></div>
   </div>
@@ -811,15 +840,15 @@ details summary{font-weight:700}
     <h2>Mais de 1.600 dentistas já foram acompanhados. <em>Veja o que alguns encontraram.</em></h2>
     </div>
     <div class="bals">
-      <div class="bal rv"><div class="bub"><span class="k">Lucro no bolso</span><span class="n">R$ 1.720<small>/mês</small></span><p>a mais ficam no bolso. São <b>R$ 20.640 por ano</b>, depois de rever o regime e reservar 4 horas para gestão.</p></div><div class="pp"><img src="images/rafael-foto.webp" alt="Dr. Rafael Castro" width="560" height="560" loading="lazy" /><div><b>Dr. Rafael Castro</b><span>na mentoria</span></div></div></div>
-      <div class="bal rv" style="--d:.06s"><div class="bub"><span class="k">Hora clínica</span><span class="n">Agenda<small>no verde</small></span><p>Depois de 4 anos pagando para atender, fez a conta e descobriu <b>onde a agenda dava prejuízo</b>.</p></div><div class="pp"><img src="images/elisa-foto.webp" alt="Dra. Elisa" width="192" height="192" loading="lazy" /><div><b>Dra. Elisa</b><span>na mentoria</span></div></div></div>
+      <div class="bal rv"><div class="bub"><span class="k">Lucro com um ajuste</span><span class="n">+R$ 20.640<small>/ano</small></span><p><b>R$ 1.720 por mês</b> a mais no bolso, depois de rever o regime e reservar 4 horas para a gestão.</p></div><div class="pp"><img src="images/rafael-foto.webp" alt="Dr. Rafael Castro" width="560" height="560" loading="lazy" /><div><b>Dr. Rafael Castro</b></div></div></div>
+      <div class="bal rv" style="--d:.06s"><div class="bub"><span class="k">Hora clínica</span><span class="n">Agenda<small>no verde</small></span><p>Depois de 4 anos pagando para atender, fez a conta e descobriu <b>onde a agenda dava prejuízo</b>.</p></div><div class="pp"><img src="images/elisa-foto.webp" alt="Dra. Elisa" width="192" height="192" loading="lazy" /><div><b>Dra. Elisa</b></div></div></div>
       <div class="bal rv" style="--d:.12s"><div class="bub"><span class="k">Tempo e lucro</span><span class="n">Menos<small>horas</small></span><p>Já teve clínica com 10 cadeiras, recomeçou com 2 e trabalhava de segunda a sábado. Hoje tem <b>um método para trabalhar menos e ganhar mais</b>.</p></div><div class="pp"><img src="images/igor-foto.webp" alt="Dr. Igor" width="560" height="560" loading="lazy" /><div><b>Dr. Igor</b><span>18 anos de formado</span></div></div></div>
-      <div class="bal rv"><div class="bub"><span class="k">Procedimento</span><span class="n">–22%<small>a coroa</small></span><p>A coroa que ele achava que dava +59% de lucro dava prejuízo. Hoje sabe <b>qual procedimento paga a conta</b>.</p></div><div class="pp"><img src="images/cyro-foto.webp" alt="Dr. Cyro" width="560" height="560" loading="lazy" /><div><b>Dr. Cyro</b><span>na mentoria</span></div></div></div>
-      <div class="bal rv" style="--d:.06s"><div class="bub"><span class="k">Resina e canal</span><span class="n">–R$ 75<small>–R$ 200</small></span><p>de prejuízo em cada resina e em cada canal. <b>Descobriu o furo</b> e parou de perder dinheiro.</p></div><div class="pp"><img src="images/amanda-foto.webp" alt="Amanda" width="560" height="560" loading="lazy" /><div><b>Amanda</b><span>na mentoria</span></div></div></div>
-      <div class="bal rv" style="--d:.12s"><div class="bub"><span class="k">Maquininha</span><span class="n">4,5% → 2,9%</span><p>Uma conversa. <b>Dinheiro que volta todo mês</b>, para sempre.</p></div><div class="pp"><span class="mono-av">B</span><div><b>Bianca</b><span>na mentoria</span></div></div></div>
+      <div class="bal rv"><div class="bub"><span class="k">Lucro com um ajuste</span><span class="n">Coroa<small>no azul</small></span><p>A coroa que ele achava lucrativa dava <b>–22%</b>. Com um ajuste, passou a dar lucro.</p></div><div class="pp"><img src="images/cyro-foto.webp" alt="Dr. Cyro" width="560" height="560" loading="lazy" /><div><b>Dr. Cyro</b></div></div></div>
+      <div class="bal rv" style="--d:.06s"><div class="bub"><span class="k">Lucro com um ajuste</span><span class="n">+R$ 7.200<small>/ano</small></span><p>Achou o furo de <b>R$ 200 por canal</b>, em 3 canais, e parou de perder dinheiro todo mês.</p></div><div class="pp"><img src="images/amanda-foto.webp" alt="Amanda" width="560" height="560" loading="lazy" /><div><b>Amanda</b></div></div></div>
+      <div class="bal rv" style="--d:.12s"><div class="bub"><span class="k">Lucro com um ajuste</span><span class="n">+R$ 5.760<small>/ano</small></span><p>Taxa do cartão de <b>4,5% para 2,9%</b>, num exemplo de R$ 30 mil por mês no cartão.</p></div><div class="pp"><span class="mono-av">B</span><div><b>Bianca</b></div></div></div>
     </div>
-    <p class="disc rv">Resultados individuais de alunos da mentoria, com autorização. Não são promessa nem garantia de resultado: o único compromisso de resultado é a Garantia Lucro no Bolso, nas condições do contrato.</p>
-    <div class="plur rv"><b>Clínica Plurale</b><span class="n">R$ 12 mil</span><p>era o que a <b>diária</b> escondia.</p></div>
+    <p class="disc rv">Resultados individuais de alunos, com autorização. Não são promessa nem garantia de resultado: o único compromisso de resultado é a Garantia Lucro no Bolso, nas condições do contrato.</p>
+    <div class="plur rv"><img src="images/mara-foto.webp" alt="Mara, da Clínica Plurale" width="560" height="560" loading="lazy" /><div><b>Mara · Clínica Plurale</b><span class="n">R$ 12 mil</span><p>de prejuízo que a <b>diária</b> escondia, até ela fazer a conta.</p></div></div>
     <div style="text-align:center;margin-top:34px"><a class="btn cta" data-cta="depo2" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
   </div>
 </section>
@@ -967,9 +996,9 @@ details summary{font-weight:700}
     <h2>Quanto antes você entra, <em>mais você leva.</em></h2>
     <p class="lead">Os <b>bônus</b> são cumulativos e <b>acabam conforme as vagas são preenchidas</b>. Começa pelos <b>15 primeiros</b>; quem está entre os 5 primeiros leva os três.</p></div>
     <div class="tiers">
-      <div class="tier t15 rv"><div class="im"><img src="images/bonus-15.webp" alt="Time de dentistas em reunião, ilustração" width="880" height="497" loading="lazy" /><span class="bd">Primeiros 15</span></div><div class="bo"><h3>Consultoria Tributária</h3><p>Com o time que atende grandes clínicas, antes de a CBS entrar, em 2027.</p></div></div>
-      <div class="tier t10 rv" style="--d:.08s"><div class="im"><img src="images/p-website.webp" alt="Quanto custa criar um website: de R$ 450 a R$ 10.000" width="540" height="259" loading="lazy" /><span class="bd">Primeiros 10</span></div><div class="bo"><h3>+ Kit de Aquisição de Pacientes Qualificados a Custo Zero</h3><p>Site pronto para o Google e campanhas de reativação. Um site sozinho custa de R$ 450 a R$ 10.000.</p><em>Mais a Consultoria Tributária dos 15 primeiros.</em></div></div>
-      <div class="tier t5 rv" style="--d:.16s"><div class="im"><img src="images/leandro-retrato.webp" alt="Prof. Leandro Stecca" width="772" height="1231" loading="lazy" /><span class="bd">Primeiros 5</span></div><div class="bo"><h3>+ Diagnóstico Individual com o Leandro</h3><p><b>1 hora</b>, só você e ele, olhando os seus números.</p><em>Mais o Kit de Aquisição e a Consultoria Tributária.</em></div></div>
+      <div class="tier t15 rv"><div class="im"><img src="images/bonus-15.webp" alt="Dentista tranquilo ao entardecer, ilustração" width="882" height="495" loading="lazy" /></div><div class="bo"><span class="bd">Primeiros 15</span><h3>Consultoria Tributária</h3><p>Com o time que atende grandes clínicas, antes de a CBS entrar, em 2027.</p></div></div>
+      <div class="tier t10 rv" style="--d:.08s"><div class="im"><img src="images/p-website.webp" alt="Quanto custa criar um website: de R$ 450 a R$ 10.000" width="540" height="259" loading="lazy" /></div><div class="bo"><span class="bd">Primeiros 10</span><h3>+ Kit de Aquisição de Pacientes Qualificados a Custo Zero</h3><p>Site pronto para o Google e campanhas de reativação. Um site sozinho custa de R$ 450 a R$ 10.000.</p><em>Mais a Consultoria Tributária dos 15 primeiros.</em></div></div>
+      <div class="tier t5 rv" style="--d:.16s"><div class="im"><img src="images/leandro-sinpla.webp" alt="Prof. Leandro Stecca" width="794" height="1280" loading="lazy" /></div><div class="bo"><span class="bd">Primeiros 5</span><h3>+ Diagnóstico Individual com o Leandro</h3><p><b>1 hora</b>, só você e ele, olhando os seus números.</p><em>Mais o Kit de Aquisição e a Consultoria Tributária.</em></div></div>
     </div>
     <div style="text-align:center;margin-top:30px"><a class="btn cta" data-cta="bonus" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
   </div>
@@ -1056,7 +1085,7 @@ details summary{font-weight:700}
 <section class="lt pad">
   <div class="w">
     <div class="ld">
-      <div class="ph rv"><div class="ph1"><img src="images/leandro-retrato.webp" alt="Prof. Leandro Stecca" width="772" height="1231" loading="lazy" /></div><div class="ph2"><img src="images/leandro-evento.webp" alt="Prof. Leandro Stecca no palco" width="1000" height="667" loading="lazy" /></div></div>
+      <div class="ph rv"><div class="ph1"><img src="images/leandro-sinpla.webp" alt="Prof. Leandro Stecca" width="794" height="1280" loading="lazy" /></div><div class="ph2"><img src="images/leandro-evento.webp" alt="Prof. Leandro Stecca no palco" width="1000" height="667" loading="lazy" /></div></div>
       <div class="rv" style="--d:.1s">
         <div class="tag">Quem conduz</div>
         <h2>Prof. Leandro Stecca</h2>
@@ -1074,16 +1103,26 @@ details summary{font-weight:700}
   </div>
 </section>
 
-<section class="dk pad pense">
+<!-- 14b · GIRAR A FACA -->
+<section class="loud pad">
   <div class="w">
-    <div class="head rv"><div class="tag">Pense nisso</div>
-    <h2>Até quando? <em>É para isso que você fez odontologia?</em></h2></div>
-    <ul class="l big2 rv">
-      <li>Para <b>pagar para trabalhar</b>?</li>
-      <li>Para <b>parar uma semana</b> e o dinheiro parar junto?</li>
-      <li>Para chegar aos 60 <b>sem segurança</b> de se aposentar com qualidade?</li>
-    </ul>
-    <div style="margin-top:28px"><a class="btn cta" data-cta="faca" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
+    <div class="tag">Uma pergunta só</div>
+    <h2>Quantos pacientes você atendeu esse mês?</h2>
+    <div class="nums"><span>30?</span><span>40?</span><span>60?</span></div>
+    <p class="turn">Agora me responde: <b>quanto REALMENTE sobrou no seu bolso?</b></p>
+    <p>Deixa eu adivinhar… <b>muito menos do que você esperava</b>, certo?</p>
+    <p>Você olha o extrato. Vê aquele faturamento bonito. Aí bate a conta do <b>laboratório</b>. O <b>imposto</b>. A <b>folha de pagamento</b>. O <b>aluguel</b>. O <b>material</b>.</p>
+    <p>E não sobra quase nada…</p>
+    <p class="knife">A verdade é que você está trabalhando como nunca para ganhar menos do que deveria.</p>
+    <p>E sabe por quê?</p>
+    <p class="turn">Porque o <b>preço</b> tá errado. Simples assim.</p>
+    <p>Nem sempre é falta de paciente. Não é falta de marketing. Não é a economia. É o <b>preço</b>.</p>
+    <p>É por isso que a <b>Calculadora OdontoLucro</b> existe. Para resolver isso por você em minutos.</p>
+    <p class="turn">10 minutos.</p>
+    <p>Você coloca seus custos reais. A calculadora mostra o preço certo. Pronto.</p>
+    <p>Agora você decide:</p>
+    <p class="knife">Continua cobrando errado e trabalhando de graça? Ou investe esse pequeno valor para descobrir onde você está perdendo dinheiro?</p>
+    <div style="margin-top:26px"><a class="btn cta dark" data-cta="faca" href="https://l.leandrostecca.com.br/pel-garantir-vaga-pv">Quero entrar no Excelência Lucrativa →</a></div>
   </div>
 </section>
 

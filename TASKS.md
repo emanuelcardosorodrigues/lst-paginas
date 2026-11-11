@@ -48,3 +48,7 @@ Deploy do fix pendente (Chefe). Depois: confirmar 74×4 em 200 com ≤ 1 redirec
 - v6: contraste (--ink escuro em chip/seal/pbox), negrito aninhado inline, bullets em barra dourada, stack com miniatura e preço riscado (soma R$ 15.200, VALORES INVENTADOS: Chefe/Leandro validar), R$ 5.000 oficial riscado, bônus 15/10/5 com imagem, depoimentos em balões com foto, FAQ de objeções (36-doc), faca reescrita, Léo corpo inteiro, Leandro retrato.
 - Dúvidas: nome do Igor (foto "Raitelli" × copy "Mazzioli": página usa "Dr. Igor"); "#51"/imagem 48/"Mais trabalho" interpretados; sem render em navegador (contraste não medido); aviso de resultado individual adicionado.
 - Seguem pendentes: autorização dos alunos, contrato da garantia, 7 dias na plataforma, contador, história da mão, âncora Águia, R$28 mil receita×lucro, direitos de prints de terceiros.
+
+## pel-pv01 v7 (11/11/2026, NO AR, noindex; 76/76 em 200; auditoria Sonnet: 1 achado tratado, R$100 mil no H1 mantido)
+- v7: fonte menor no desktop, selos iguais, check no lugar da barra, lista numerada sem círculo, tabela com coluna Mentoria, seção "Faturamento não é lucro" (azul), bloco da faca amarelo no fim, balões "Lucro com um ajuste", Mara na Plurale, Leandro em frente ao painel Sinpla, tag dos bônus fora da imagem, sem "na mentoria".
+- Dúvidas: imagem "#51" do bônus 15 (usei entardecer), R$ 12 mil da Plurale sem fonte, "+X%" sem dados, R$100 mil no H1 vs garantia, sem render em navegador.
