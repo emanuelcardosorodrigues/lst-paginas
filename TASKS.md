@@ -14,9 +14,10 @@ Tudo de `leandrostecca.com.br/p/*` vive no `w-lst-paginas`. Não criar Worker no
 36 páginas deram 404 (deploy de assets sem elas). Regras: CLAUDE.md "Produção compartilhada" + PADRAO-CONSTRUCAO D11–D12.
 
 ## Incidente 09/11/2026 (loop com query)
-`/p/<slug>?qualquer-query` dava loop 301 em TODAS as 74 páginas (`toString() + "/"` no w-lst-paginas). Fix: `url.pathname += "/"`.
-Trava: `w-lst-paginas/test/barra-final.test.mjs` roda no início do `deploy-full.sh`; `chk` agora testa 4 formas por slug.
-Deploy do fix pendente (Chefe). Depois: confirmar 74×4 em 200 com ≤ 1 redirect.
+Loop 301 com query: fix `url.pathname += "/"` NO AR (13/11: curl 76/76 x 4 formas = 200, ≤ 1 redirect, col-pvia04 incl.). Trava: `test/barra-final.test.mjs` (+ casos col-pvia04/404, WP 1.4) no `deploy-full.sh`. Controle negativo: código antigo falha 6 casos. Antes/depois de deploy: `scripts/smoke-slugs.sh`.
+
+## WP 1.3b relay de eventos (13/11, branch wp-1-4-1-3b-relay, NÃO deployado)
+`POST /p/_evt` (`w-lst-paginas/src/evento.js`) -> quiz-intake `pagina_evento`; snippet `snippets/pagina-evt.js`; secrets `CRM_QUIZ_INTAKE_URL/SECRET` (já usados na inscrição; `wrangler secret put` em DEPLOY.md, Chefe). Testes `evento/snippet.test.mjs`. Falta: deploy, VTurb em navegador real, marcar `data-evt` nas páginas PLO.
 
 ## GTM → Sentinela (Chefe 11/11/2026, NO AR: w-lst-paginas e7bb1ac3, GTM_MODO=sem)
 - 76/76 em 200, 0 GTM, tag Sentinela 1x (curl 11/11 ~15:25Z). kal-pv01..05 agora vêm do w-lst-paginas; w-lst-kal-pv APAGADO (rota cai no w-lst-paginas).

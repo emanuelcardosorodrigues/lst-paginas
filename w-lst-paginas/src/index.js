@@ -1,5 +1,6 @@
 import { handleInscricao, retryPending, SLUGS } from "./inscricao.js";
 import { SCK_FIX_SLUGS } from "./sck-slugs.js";
+import { handleEvento } from "./evento.js";
 import { withSentinelaTag } from "./sentinela-tag.js";
 
 // Corretor de atribuição (sck) injetado em toda página /p/.
@@ -56,6 +57,8 @@ export default {
       ctx.waitUntil(retryPending(env));
       return handleInscricao(request, env, insc[1]);
     }
+
+    if (url.pathname === "/p/_evt") return handleEvento(request, env, ctx);
 
     if (url.pathname.startsWith("/p/")) {
       // Only redirect /p/slug (no trailing slash, no sub-path) → /p/slug/
