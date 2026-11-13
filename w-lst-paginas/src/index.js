@@ -1,5 +1,6 @@
 import { handleInscricao, retryPending } from "./inscricao.js";
 import { SCK_FIX_SLUGS } from "./sck-slugs.js";
+import { handleEvento } from "./evento.js";
 
 // Corretor de atribuição (sck) injetado em toda página /p/.
 // O decorator de sck do container GTM (compartilhado, read-only) deriva o slug de
@@ -54,6 +55,8 @@ export default {
       ctx.waitUntil(retryPending(env));
       return handleInscricao(request, env);
     }
+
+    if (url.pathname === "/p/_evt") return handleEvento(request, env, ctx);
 
     if (url.pathname.startsWith("/p/")) {
       // Only redirect /p/slug (no trailing slash, no sub-path) → /p/slug/
