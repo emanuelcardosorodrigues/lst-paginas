@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { transform, TAG } from "./gtm-to-sentinela.mjs";
+import { transform, TAG, BEACON, addBeacon, semBeacon } from "./gtm-to-sentinela.mjs";
 import { lerModo } from "./gtm-modo.mjs";
 const PIXEL = `<script>!function(f,b,e,v,n,t,s){n=f.fbq=function(){};}(window,document);fbq('init','1');fbq('track','PageView');</script>`;
 const OTHER = `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('config','G-1')</script>`;
@@ -207,4 +207,16 @@ test("stripTag tira a tag Sentinela e preserva o GTM", async () => {
   assert.equal(count(out, "track.leandrostecca.com.br"), 0);
   assert.ok(out.includes(gtm) && out.includes("ns.html?id=GTM-X"));
   assert.equal(stripTag(out), out);
+});
+
+// Executa o <script> do beacon num DOM falso e conta as chamadas a /r/i.
+const roda = (search) => { const calls = []; const code = BEACON.replace(/^<script>|<\/script>$/g, "");
+  vm.runInNewContext(code, { URLSearchParams, encodeURIComponent, location: { search }, navigator: { sendBeacon: (u) => calls.push(u) } }); return calls; };
+test("beacon: com _abp chama /r/i?p= exatamente 1x", () => assert.deepEqual(roda("?utm=a&_abp=tok-1"), ["https://leandrostecca.com.br/r/i?p=tok-1"]));
+test("beacon negativo: sem _abp 0 chamadas", () => assert.equal(roda("?fbclid=x").length, 0));
+test("addBeacon põe o beacon 1x em toda página, idempotente", () => {
+  const h = addBeacon(transform(page(PIXEL))); assert.equal(count(h, "/r/i?p="), 1); assert.equal(addBeacon(h), h);
+});
+test("trava: dist sem beacon é apontado, com beacon passa", () => {
+  assert.deepEqual(semBeacon({ "a/index.html": page(PIXEL), "b/index.html": addBeacon(transform(page(PIXEL))) }), ["a/index.html"]);
 });

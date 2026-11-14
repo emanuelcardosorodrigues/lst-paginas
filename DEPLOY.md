@@ -117,3 +117,9 @@ Abre em: `http://localhost:5173/dpl-pv01/`
 - [ ] **Bundle** — Imagem do bundle de produtos (seção Re-engajamento)
 - [ ] **Foto do Leandro** — Verificar se a foto da página de referência pode ser reutilizada ou precisa de nova
 - [ ] **Política de Privacidade / Termos de Uso** — Links reais no rodapé
+
+---
+
+## Beacon A/B nas páginas /p/* (WP-10, 14/11/2026)
+
+O page_view do teste A/B (`w-ab-test-tool`, `IMPRESSION_MODE=beacon`) exige que o navegador chame `https://leandrostecca.com.br/r/i?p=<_abp>`. Sem GTM, o beacon é um `<script>` inline injetado em todo HTML do dist por `scripts/build-full-dist.mjs` (`addBeacon`). O build aborta (modo `sem`) se algum HTML não tiver exatamente 1; `w-lst-paginas/deploy-full.sh` repete a checagem no ar (`chktag`).
