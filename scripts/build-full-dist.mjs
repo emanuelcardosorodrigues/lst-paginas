@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { checkSentinelaDir } from "./guard-sentinela.mjs";
-import { transform, transformTracker, stripTag } from "./gtm-to-sentinela.mjs";
+import { transform, transformTracker, stripTag, beaconCount, addBeacon } from "./gtm-to-sentinela.mjs";
 import { lerModo } from "./gtm-modo.mjs";
 const MODO = lerModo();
 const SENTINELA_SLUGS = new Set(fs.readFileSync(path.resolve(import.meta.dirname, "../sentinela-slugs.list"), "utf8").split("\n").map((l) => l.trim()).filter((l) => l && !l.startsWith("#"))); // com = GTM como espelhado/versionado (default); sem = remove GTM e escreve a tag
@@ -45,7 +45,7 @@ for (const n of fs.readdirSync(dist, { recursive: true }).filter((n) => path.bas
 }
 for (const h of htmls) {
   const keep = MODO === "com" && SENTINELA_SLUGS.has(path.relative(dist, h).split(path.sep)[0]);
-  const t = MODO === "sem" ? transform(fs.readFileSync(h, "utf8")) : keep ? fs.readFileSync(h, "utf8") : stripTag(fs.readFileSync(h, "utf8"));
+  const t = MODO === "sem" ? addBeacon(transform(fs.readFileSync(h, "utf8"))) : keep ? fs.readFileSync(h, "utf8") : stripTag(fs.readFileSync(h, "utf8"));
   fs.writeFileSync(h, t);
   const tag = t.split("/api/t/tracker.js").length - 1;
   // com (Chefe 09/11): GTM intacto e SEM a tag Sentinela (Worker com SENTINELA_TAG "0"); exceção: sentinela-slugs.list leva a tag 1x (index.html).
@@ -55,6 +55,7 @@ for (const h of htmls) {
   // Stape GTM não tem a string googletagmanager: checa também gtm.start e o domínio ts.
   // + resíduo de GTM no JS de página (dataLayer, data-gtm-id, ts.leandrostecca) e chamada solta de push()/dl() de wrapper removido.
   if (/googletagmanager\.com|gtm\.start|ts\.leandrostecca|dataLayer|data-gtm-id|(?<![.\w$])(?:push|dl)\(\{\s*event\s*:/i.test(t) || tag !== 1) bad.push(`${path.relative(dist, h)} tag=${tag}`);
+  if (MODO === "sem" && beaconCount(t) !== 1) bad.push(`${path.relative(dist, h)} sem beacon _abp (A/B), esperado 1, achou ${beaconCount(t)}`);
 }
 if (bad.length) { console.error("ABORTADO: " + (MODO === "sem" ? "GTM restante ou tag != 1: " : "tag Sentinela fora do esperado: ") + bad.join("; ")); process.exit(1); }
 const slugs = fs.readdirSync(dist).filter((n) => fs.existsSync(path.join(dist, n, "index.html")));

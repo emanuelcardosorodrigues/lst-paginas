@@ -36,6 +36,7 @@ chktag() { local bad=0 n g s body p; for s in $(cat ../slugs-todos.list); do
   if [ "${1:-}" = antes ]; then [ "$g" = 0 ] || echo "$s" >> "$GTM0"; fi
   if [ "$MODO" = com ]; then t=$(printf '%s' "$body" | grep -o 'track.leandrostecca.com.br' | wc -l); w=0; grep -qx "$s" ../sentinela-slugs.list && w=1; [ "$t" = "$w" ] && [ "$n" = "$w" ] || { echo "  FALHA $s track.leandrostecca x$t (esperado $w)"; bad=$((bad+1)); continue; }
   else [ "$n" = 1 ] || { echo "  FALHA $s tag x$n"; bad=$((bad+1)); continue; }; fi
+  if [ "$MODO" = sem ]; then b=$(printf '%s' "$body" | grep -o '/r/i?p=' | wc -l); [ "$b" = 1 ] || { echo "  FALHA $s beacon A/B x$b (esperado 1)"; bad=$((bad+1)); }; fi
   if [ "$MODO" = sem ]; then [ "$g" = 0 ] || { echo "  FALHA $s gtm x$g"; bad=$((bad+1)); }
   elif [ "${1:-}" = depois ] && [ "$g" = 0 ] && grep -qx "$s" "$GTM0"; then echo "  FALHA $s tinha GTM e ficou com 0"; bad=$((bad+1)); fi
   done; return $((bad>0)); }

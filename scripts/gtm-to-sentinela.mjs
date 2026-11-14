@@ -2,6 +2,14 @@
 // Não toca em Pixel, gtag (third-party.js), Hotmart, t.js/utm.js nem em dns-prefetch/preconnect de clarity/google-analytics.
 // Também remove o código morto que sobrou do GTM (dataLayer em JS de página, holder do Clarity, data-gtm-id, comentários).
 export const TAG = '<script async src="https://track.leandrostecca.com.br/api/t/tracker.js?tid=faafca5a-fb53-404f-8469-499d8869944c"></script>';
+// Beacon de visita do teste A/B (antes uma tag Custom HTML do GTM): com ?_abp=<slug> chama /r/i?p=<slug> 1x; sem _abp não faz nada. Não depende de GTM nem do Sentinela.
+export const BEACON_MARK = "/r/i?p=";
+export const BEACON = `<script>(function(){try{var p=new URLSearchParams(location.search).get('_abp');if(!p)return;var u='https://leandrostecca.com.br${BEACON_MARK}'+encodeURIComponent(p);if(navigator.sendBeacon)navigator.sendBeacon(u);else fetch(u,{keepalive:true,credentials:'include',mode:'no-cors'})}catch(e){}})()</script>`;
+export const beaconCount = (h) => h.split(BEACON_MARK).length - 1;
+// Idempotente; chamado pelo build depois de transform() (que continua só GTM->Sentinela).
+export const addBeacon = (h) => (h.includes(BEACON_MARK) ? h : h.replace(/<\/head>/i, BEACON + "\n</head>"));
+// Trava: lista os HTML (nome -> html) sem exatamente 1 beacon.
+export const semBeacon = (htmls) => Object.entries(htmls).filter(([, h]) => beaconCount(h) !== 1).map(([n]) => n);
 // Remove a tag Sentinela (script /api/t/tracker.js), linha inteira se ela a ocupa sozinha. Não toca no GTM.
 export const stripTag = (h) => h.replace(/^[ \t]*<script\b[^>]*\/api\/t\/tracker\.js[^>]*><\/script>[ \t]*\r?\n/gm, "").replace(/<script\b[^>]*\/api\/t\/tracker\.js[^>]*><\/script>/g, "");
 const esc = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

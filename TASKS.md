@@ -1,5 +1,10 @@
 # TASKS — lst-paginas (atualizado 09/11/2026)
 
+## WP-10 beacon A/B (14/11/2026, branch wp/10-beacon-abp, NÃO deployado)
+- Causa: o GTM saiu das /p/* em 11/11 e levou a tag que chamava `/r/i?p=<_abp>` (page_view do teste A/B, `IMPRESSION_MODE=beacon`). Agora o beacon é inline na própria página: `addBeacon` em `scripts/gtm-to-sentinela.mjs`, aplicado por `build-full-dist.mjs` em todo HTML (modo `sem`). Com `?_abp=` 1 sendBeacon; sem, nada. Não depende de GTM nem Sentinela.
+- Trava: build aborta se algum HTML do dist (modo `sem`) não tiver exatamente 1 beacon; `deploy-full.sh` `chktag` exige 1 por slug no ar. Testes: `node --test scripts/*.test.mjs`.
+- Dist: 76 slugs = `slugs-todos.list` = 76 no ar (diferença 0). Deploy: `cd w-lst-paginas && CONFIRMO=sim ./deploy-full.sh` (Chefe). Rollback: `wrangler rollback 36b7b29a...` (versão atual, id completo em `wrangler deployments list`).
+
 ## Regra: UM Worker só
 Tudo de `leandrostecca.com.br/p/*` vive no `w-lst-paginas`. Não criar Worker novo para página.
 
