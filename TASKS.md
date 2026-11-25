@@ -1,6 +1,6 @@
 # TASKS — lst-paginas
 
-Atualizado: 2026-11-25 21:00 · Sessão/WP: cptel-pv02 · Branch/commit: sentinela-tag-paginas
+Atualizado: 2026-11-25 22:30 · Sessão/WP: cptel-pv02 · Branch/commit: sentinela-tag-paginas
 Progresso: 100% · 2/2 WPs · próximo: aguardar LINK-CHECKOUT e prints do Chefe
 Verificar: local: node --test scripts/*.test.mjs
 
@@ -8,8 +8,8 @@ Verificar: local: node --test scripts/*.test.mjs
 Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-paginas`. WP atual: PV do Curso Prático Transformando Excelência em Lucro (`/p/cptel-pv01`), no ar e indexável, com todos os slugs em 200.
 
 ## Estado agora
-- NO AR (w-lst-paginas 5b97eb01, 25/11 21h): 78 slugs em 200; cptel-pv02 mobile com promessa em painel e CTA na 1ª dobra (390: 714px). Rollback: c7973e76.
-- Auditoria: delta 76cc83d..a9f01d9 LIMPO (ciclo 3).
+- NO AR (w-lst-paginas 99bebfae, 25/11 22h): 78 slugs em 200; cptel-pv02 promessa sem caixa sobre véu creme, logo legível, CTA na 1ª dobra. Rollback: 5b97eb01.
+- Auditoria: delta a9f01d9..4110004 LIMPO (ciclo 3).
 
 ## Decisões
 - Um Worker só para `/p/*`; página nova = `extra-pages/<slug>/` + deploy-full (Chefe).
