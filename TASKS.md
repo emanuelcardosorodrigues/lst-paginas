@@ -1,15 +1,15 @@
 # TASKS — lst-paginas
 
-Atualizado: 2026-11-25 20:40 · Sessão/WP: cptel-pv02 · Branch/commit: sentinela-tag-paginas
-Progresso: 95% · 2/2 WPs · próximo: auditar e publicar ajuste mobile da PV02
+Atualizado: 2026-11-25 21:00 · Sessão/WP: cptel-pv02 · Branch/commit: sentinela-tag-paginas
+Progresso: 100% · 2/2 WPs · próximo: aguardar LINK-CHECKOUT e prints do Chefe
 Verificar: local: node --test scripts/*.test.mjs
 
 ## Objetivo
 Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-paginas`. WP atual: PV do Curso Prático Transformando Excelência em Lucro (`/p/cptel-pv01`), no ar e indexável, com todos os slugs em 200.
 
 ## Estado agora
-- NO AR (w-lst-paginas c7973e76, 25/11): 78 slugs em 200; cptel-pv01 (index, hero com cena) e cptel-pv02 (noindex). Rollback: 18f2ff95.
-- Auditoria: 9fcbc2c LIMPO, delta até 76cc83d LIMPO (ciclo 2).
+- NO AR (w-lst-paginas 5b97eb01, 25/11 21h): 78 slugs em 200; cptel-pv02 mobile com promessa em painel e CTA na 1ª dobra (390: 714px). Rollback: c7973e76.
+- Auditoria: delta 76cc83d..a9f01d9 LIMPO (ciclo 3).
 
 ## Decisões
 - Um Worker só para `/p/*`; página nova = `extra-pages/<slug>/` + deploy-full (Chefe).
@@ -23,7 +23,7 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 - WP-10 beacon A/B no ar; pel-pv01 v9 no ar (noindex).
 
 ## Em andamento
-- PV02 mobile: promessa legível + CTA na 1ª dobra; auditoria e deploy.
+- Nada.
 
 ## Pendente (em ordem)
 1. cptel-pv01: LINK-CHECKOUT, 6 prints de depoimento (9:16), revisão das respostas da FAQ — Chefe.
