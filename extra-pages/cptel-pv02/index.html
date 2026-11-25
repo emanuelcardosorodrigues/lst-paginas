@@ -40,7 +40,7 @@ a{color:inherit}
 .txt{max-width:640px}
 section{position:relative;padding:72px 0;overflow:hidden}
 section.deep{background:var(--cream-deep) url(images/tx-01-papel.webp) repeat}
-section.leather{background:var(--ink) url(images/tx-02-couro.webp) center/600px repeat;color:var(--cream)}
+section.leather{background:linear-gradient(rgba(20,40,74,.55),rgba(20,40,74,.55)),url(images/tx-02-couro.webp) center/600px repeat,var(--ink);color:var(--cream)}
 .glow::before{content:"";position:absolute;left:-10%;top:-20%;width:70%;height:80%;background:radial-gradient(ellipse at top left,rgba(226,169,59,.28),transparent 65%);pointer-events:none}
 .wrap{position:relative;z-index:1}
 h1,h2,h3,.serif{font-family:var(--serif);font-weight:500;line-height:1.05}
@@ -137,7 +137,7 @@ em,.it{font-family:var(--serif);font-style:italic;font-weight:500}
 /* bonus */
 .bn{display:grid;gap:16px;margin:32px 0 40px}
 @media(min-width:800px){.bn{grid-template-columns:1fr 1fr}}
-.b{display:flex;gap:16px;align-items:center;background:rgba(251,246,236,.1);border:1px solid rgba(226,169,59,.5);border-radius:var(--r-md);padding:16px}
+.b{display:flex;gap:16px;align-items:center;background:rgba(20,40,74,.68);border:1px solid rgba(226,169,59,.5);border-radius:var(--r-md);padding:16px}
 .b img{width:72px;height:72px;object-fit:contain;flex:none;background:var(--cream);border-radius:var(--r-sm);padding:6px}
 .b p{font-weight:500}
 .leather .raios{position:absolute;inset:0;background:url(images/ov-01-raios.webp) center/cover;mix-blend-mode:screen;opacity:.3;pointer-events:none}
@@ -158,7 +158,7 @@ em,.it{font-family:var(--serif);font-style:italic;font-weight:500}
 /* garantia */
 .gar{display:grid;gap:32px;align-items:center;justify-items:center;text-align:center}
 @media(min-width:800px){.gar{grid-template-columns:auto 1fr auto;text-align:left;justify-items:start}}
-.selo{width:120px;height:120px;border-radius:50%;background:var(--ink) url(images/tx-02-couro.webp) center/600px repeat;border:3px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--cream);box-shadow:var(--shadow-soft)}
+.selo{width:120px;height:120px;border-radius:50%;background:linear-gradient(rgba(20,40,74,.55),rgba(20,40,74,.55)),url(images/tx-02-couro.webp) center/600px repeat,var(--ink);border:3px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--cream);box-shadow:var(--shadow-soft)}
 .selo b{font:600 28px/1 var(--serif)}
 .selo span{font:500 9px/1.2 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:4px}
 .gar img{width:120px}
