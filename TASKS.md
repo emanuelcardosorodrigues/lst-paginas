@@ -30,8 +30,9 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 2. cptel-pv02: tirar noindex só se o Chefe pedir.
 3. pel-pv01: autorização dos alunos, contrato da garantia, valores do stack (inventados), direitos de prints de terceiros; tirar noindex só depois — Chefe.
 4. col-pvia-frufru03: bloco "Dúvidas?", bio do Leandro — Chefe.
-5. Monitor externo de slugs fora do ar; `/ativos-d` na raiz dá 404.
-6. `w-lst-paginas/package-lock.json` fora de sincronia (miniflare 4 no lock × ^3 no package.json): `npm ci` falha.
+5. Visual: rótulo dourado "BÔNUS DO LOTE 02" e `.selo span` no couro abaixo de AA (2,4–4,0); hero-cena retrato ampliado ~2x em 2140px e og:image retrato (pedir corte paisagem ~2400px).
+6. Monitor externo de slugs fora do ar; `/ativos-d` na raiz dá 404.
+7. `w-lst-paginas/package-lock.json` fora de sincronia (miniflare 4 no lock × ^3 no package.json): `npm ci` falha.
 
 ## Bloqueios
 - Nenhum para a PV01.
