@@ -1,7 +1,7 @@
 # TASKS — lst-paginas
 
 Atualizado: 2026-11-25 20:40 · Sessão/WP: cptel-pv02 · Branch/commit: sentinela-tag-paginas
-Progresso: 100% · 2/2 WPs · próximo: aguardar LINK-CHECKOUT e prints do Chefe
+Progresso: 95% · 2/2 WPs · próximo: auditar e publicar ajuste mobile da PV02
 Verificar: local: node --test scripts/*.test.mjs
 
 ## Objetivo
@@ -23,7 +23,7 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 - WP-10 beacon A/B no ar; pel-pv01 v9 no ar (noindex).
 
 ## Em andamento
-- Nada.
+- PV02 mobile: promessa legível + CTA na 1ª dobra; auditoria e deploy.
 
 ## Pendente (em ordem)
 1. cptel-pv01: LINK-CHECKOUT, 6 prints de depoimento (9:16), revisão das respostas da FAQ — Chefe.
