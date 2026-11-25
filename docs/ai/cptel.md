@@ -8,3 +8,5 @@
 - FAQ: respostas escritas pelo construtor a partir de dicas do Chefe; revisar antes de tratar como fato.
 - O acento circunflexo alto ("ê") é desenho da Cormorant Garamond, não erro.
 - PV02 (pedida em 25/11): página nova `cptel-pv02`, igual à PV01 com primeira dobra nova (cena com janela/monumentos/cadeira/bandeja; arte sem texto virá do Chefe).
+- Enquanto `CHECKOUT_URL` começar com `#[`, os botões de checkout continuam em `#oferta` (não ficam mortos).
+- Grade: aulas 01–05 seg–sex 20h; aula 06 domingo 19h30; gravações das 01–05 até 18h do domingo (FAQ).
