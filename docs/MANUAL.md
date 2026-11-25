@@ -10,8 +10,9 @@ Páginas de `leandrostecca.com.br/p/*`, todas servidas por um único Worker: `w-
 
 ## Padrão de página de vendas
 - Botões acima do preço levam para `#oferta`; do preço para baixo, os botões têm `data-checkout` e recebem `CHECKOUT_URL` (variável no fim do HTML).
-- Placeholders entre colchetes (`[LINK-CHECKOUT]`, `[CNPJ]`, `[PRINT 01]`) até o dado real chegar.
+- Placeholders entre colchetes (`[LINK-CHECKOUT]`, `[PRINT 01]`) até o dado real chegar.
 - Indexação: `robots` no head (`index,follow` só quando o Chefe pede; padrão `noindex`).
 
 ## Páginas
 - `cptel-pv01`: Curso Prático Transformando Excelência em Lucro (R$ 62, lote 02). Indexável. Ver `docs/ai/cptel.md`.
+- `cptel-pv02`: variante da cptel-pv01 com primeira dobra em cena ilustrada. noindex.
