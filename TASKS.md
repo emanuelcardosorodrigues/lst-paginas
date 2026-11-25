@@ -1,15 +1,15 @@
 # TASKS — lst-paginas
 
 Atualizado: 2026-11-25 20:40 · Sessão/WP: cptel-pv02 · Branch/commit: sentinela-tag-paginas
-Progresso: 90% · 1/2 WPs · próximo: auditoria de fechamento da cptel-pv02 e deploy
+Progresso: 100% · 2/2 WPs · próximo: aguardar LINK-CHECKOUT e prints do Chefe
 Verificar: local: node --test scripts/*.test.mjs
 
 ## Objetivo
 Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-paginas`. WP atual: PV do Curso Prático Transformando Excelência em Lucro (`/p/cptel-pv01`), no ar e indexável, com todos os slugs em 200.
 
 ## Estado agora
-- cptel-pv01 NO AR e indexável (w-lst-paginas 18f2ff95, 25/11): 77 slugs em 200, Sentinela 1x.
-- cptel-pv02 auditada LIMPO (9fcbc2c). Delta 9fcbc2c..HEAD (couro uniforme + contraste, hero PV01 com hero-cena.webp, chip 700) aguarda reauditoria e deploy.
+- NO AR (w-lst-paginas c7973e76, 25/11): 78 slugs em 200; cptel-pv01 (index, hero com cena) e cptel-pv02 (noindex). Rollback: 18f2ff95.
+- Auditoria: 9fcbc2c LIMPO, delta até 76cc83d LIMPO (ciclo 2).
 
 ## Decisões
 - Um Worker só para `/p/*`; página nova = `extra-pages/<slug>/` + deploy-full (Chefe).
@@ -23,7 +23,7 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 - WP-10 beacon A/B no ar; pel-pv01 v9 no ar (noindex).
 
 ## Em andamento
-- cptel-pv02 + rodapé sem CNPJ: auditoria Opus, deploy via `deploy-full.sh`.
+- Nada.
 
 ## Pendente (em ordem)
 1. cptel-pv01: LINK-CHECKOUT, 6 prints de depoimento (9:16), revisão das respostas da FAQ — Chefe.
