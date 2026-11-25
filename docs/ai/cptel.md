@@ -7,7 +7,7 @@
 - D07: 6 slots `<figure class="print" data-print="01..06">` para prints de depoimento 9:16.
 - FAQ: respostas escritas pelo construtor a partir de dicas do Chefe; revisar antes de tratar como fato.
 - O acento circunflexo alto ("ê") é desenho da Cormorant Garamond, não erro.
-- PV02 (`extra-pages/cptel-pv02/`, 25/11): cópia da PV01 com primeira dobra nova. `<picture>` hero-mobile.webp (9:16, até 899px) / hero-desktop.webp (16:9), logo-cptel.webp transparente dentro do `<h1>` (alt = nome do curso), barra de lote 78%, chip, 6 resultados em 2 colunas, CTA `#oferta`. `noindex` (variante da PV01, evita duplicado). Slug do tracking = cptel-pv02.
+- PV02 (`extra-pages/cptel-pv02/`, 25/11): cópia da PV01 com primeira dobra nova. `<picture>` hero-mobile.webp (9:16, até 899px) / hero-desktop.webp (16:9), logo-cptel.webp transparente dentro do `<h1>` (alt = nome do curso), barra de lote 78%, chip, 6 resultados em 2 colunas, CTA `#oferta`. `noindex` (variante da PV01, evita duplicado). Slug do tracking = cptel-pv02. O texto do chip ("6 TAREFAS") e os números pintados na arte (R$ 298,00, +32%, 70%) vêm do mockup e da arte enviados pelo Chefe em 25/11. O hero da PV01 usa `hero-cena.webp` com véu creme vindo da esquerda (desktop) e a cena abaixo do texto (mobile).
 - Rodapé sem CNPJ (Chefe, 25/11).
 - Couro: `tx-02-couro.webp` com luz uniforme (sem faixa a cada 600px) + véu ink .55; cartões de bônus rgba ink .68 (AA). Refletor do hero da PV01 com `mask-image` para o braço sumir antes da borda (Chefe, 25/11).
 - Enquanto `CHECKOUT_URL` começar com `#[`, os botões de checkout continuam em `#oferta` (não ficam mortos).

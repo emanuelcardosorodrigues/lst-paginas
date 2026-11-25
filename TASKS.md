@@ -9,7 +9,7 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 
 ## Estado agora
 - cptel-pv01 NO AR e indexável (w-lst-paginas 18f2ff95, 25/11): 77 slugs em 200, Sentinela 1x.
-- cptel-pv02 pronta em `extra-pages/cptel-pv02/` (noindex); CNPJ removido do rodapé das duas. Build 78 páginas; testes scripts 32/0. Falta: auditoria, deploy.
+- cptel-pv02 auditada LIMPO (9fcbc2c). Delta 9fcbc2c..HEAD (couro uniforme + contraste, hero PV01 com hero-cena.webp, chip 700) aguarda reauditoria e deploy.
 
 ## Decisões
 - Um Worker só para `/p/*`; página nova = `extra-pages/<slug>/` + deploy-full (Chefe).
