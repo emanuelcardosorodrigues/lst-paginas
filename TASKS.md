@@ -1,7 +1,7 @@
 # TASKS — lst-paginas
 
 Atualizado: 2026-11-26 17:10 · Sessão/WP: cptel-pv02 fix + cptel-pv03 · Branch/commit: sentinela-tag-paginas
-Progresso: 100% · 2/2 WPs · próximo: commitar bônus (agente terminando), depois depoimentos (brief em docs/ai/cptel-depoimentos.md), auditoria do delta c949de9..HEAD, deploy-full
+Progresso: 100% · 2/2 WPs · próximo: depoimentos (brief em docs/ai/cptel-depoimentos.md), auditoria do delta c949de9..HEAD, deploy-full
 Verificar: local: node --test scripts/*.test.mjs
 
 ## Objetivo
@@ -25,7 +25,7 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 - WP-10 beacon A/B no ar; pel-pv01 v9 no ar (noindex).
 
 ## Em andamento
-- Bônus com prints da Central nas 3 páginas + A4 (MANUAL) e A5 (--gold/--shadow na pv03): agente terminando; conferir e commitar.
+- Bônus com capturas da Central nas 3 páginas + A4/A5 corrigidos: commitado, não publicado, não auditado. Cartões de alturas desiguais (capturas sem recorte).
 - Depoimentos: 59 prints recebidos (26/11). Tratar, emoldurar, combinar e pôr nas 3 páginas conforme `docs/ai/cptel-depoimentos.md`.
 
 ## Pendente (em ordem)
