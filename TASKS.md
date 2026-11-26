@@ -1,15 +1,15 @@
 # TASKS — lst-paginas
 
 Atualizado: 2026-11-26 17:00 · Sessão/WP: cptel-pv02 fix + cptel-pv03 · Branch/commit: sentinela-tag-paginas
-Progresso: 100% · 2/2 WPs · próximo: depoimentos (docs/ai/cptel-depoimentos.md), depois auditoria do delta c949de9..HEAD
+Progresso: 100% · 2/2 WPs · próximo: auditoria do delta c949de9..HEAD (gate pre-auditoria.sh --base c949de9)
 Verificar: local: node --test scripts/*.test.mjs
 
 ## Objetivo
 Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-paginas`. WP atual: PV do Curso Prático Transformando Excelência em Lucro (`/p/cptel-pv01`), no ar e indexável, com todos os slugs em 200.
 
 ## Estado agora
-- NO AR (w-lst-paginas f3979b0a, 26/11, ordem do Chefe): 79 slugs em 200. cptel-pv01/02/03 com checkout real e bônus; pv03 (noindex) com foto de fundo no hero e balde na 04. Rollback: 3e863296.
-- Auditoria: delta c949de9..HEAD (bônus, A4/A5, checkout, balde, fundo do hero) NÃO auditado; publicado antes por ordem do Chefe.
+- NO AR (w-lst-paginas 585ba28c, 26/11, ordem do Chefe): 79 slugs em 200. cptel-pv01/02/03 com checkout, bônus (cartões iguais), depoimentos (4 vídeo + 9 prints, reflow mobile), ingresso novo, dock só vai ao checkout a partir do preço; pv03 com fonte serif opsz 11/600 e lista do stack refinada. Rollback: f3979b0a.
+- Auditoria: delta c949de9..HEAD (bônus, A4/A5, checkout, balde, fundo do hero, fonte, dock, depoimentos, ingresso, stack) NÃO auditado; publicado antes por ordem do Chefe.
 
 ## Decisões
 - cptel: checkout = /r/check/cptel-tck-padrao (302 Hub.la, cupom CPTELSPECIAL011), nas 3 PVs; direito de uso dos depoimentos confirmado (Chefe, 26/11).
@@ -25,7 +25,6 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 - WP-10 beacon A/B no ar; pel-pv01 v9 no ar (noindex).
 
 ## Em andamento
-- Depoimentos: 59 prints recebidos (26/11). Tratar, emoldurar, combinar e pôr nas 3 páginas conforme `docs/ai/cptel-depoimentos.md`.
 
 ## Pendente (em ordem)
 1. cptel-pv01/02/03: FAQ completa (Chefe).
