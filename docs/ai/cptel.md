@@ -34,3 +34,4 @@
 - Favicon (bastão dourado) e selo de garantia em imagem nas 3 PVs (26/11).
 - 26/11 (Chefe): a pv03 (DS v2) virou /p/cptel-pv01, indexável; pv01 e pv02 antigas apagadas do repo (recuperáveis pelo git, commit anterior 6e5f9e4); /p/cptel-pv02 e /p/cptel-pv03 passam a 404 e ficam livres para variações novas.
 - 26/11: entregáveis do hero: "Preço lucrativo dos procedimentos" e "Pacientes qualificados sem anúncios" (Chefe).
+- 26/11 (Chefe, feedback mobile): NÃO em dourado escuro (#B57A00, 3,4:1), h2 das 5 alavancas em Inter 700 com "5 alavancas" em azul, frase-chave da Aula 01 em azul (`.hl-gold`, `.hl-blue`, `.h2-alav`).
