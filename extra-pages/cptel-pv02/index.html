@@ -18,7 +18,7 @@
 <script>
   window.__pageSlug="cptel-pv02"; window.__cfg={consentBypass:true,workerRedirectPrefix:"/r/",externalCheckoutHosts:["l.leandrostecca.com.br","pay.hotmart.com"]}; window.__pending=window.__pending||[]; window.__pendingPush=function(p){try{window.__pending.push(p)}catch(e){}}; document.documentElement.className="js";
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;700;800&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 :root{
 --cream:#FBF6EC;--cream-deep:#F1E6D0;--ink:#14284A;--cobalt:#1F4FB8;--sky:#9CCBF2;
@@ -74,16 +74,16 @@ em,.it{font-family:var(--serif);font-style:italic;font-weight:500}
 .topbar b{font-weight:500}
 .scene{position:relative;background:var(--cream)}
 .scene picture,.scene img.bg{display:block;width:100%}
-.scene{height:126vw;overflow:hidden}.scene picture{height:100%}.scene img.bg{height:100%;object-fit:cover;object-position:center bottom}
+.scene{height:126vw;overflow:hidden}.scene picture{height:100%}.scene img.bg{height:100%;object-fit:cover;object-position:center 90%}
 .scene::after{content:"";position:absolute;left:0;right:0;bottom:0;height:9%;background:linear-gradient(to bottom,rgba(251,246,236,0),var(--cream));pointer-events:none}
 .scene-in{position:absolute;left:0;right:0;top:0;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;padding:10px 16px 0}
-.chip{display:inline-flex;align-items:center;gap:8px;max-width:100%;padding:5px 12px;border:1px solid var(--gold);border-radius:var(--r-pill);background:rgba(251,246,236,.82);font:700 11px/1.35 var(--sans);letter-spacing:.06em;text-transform:uppercase}
+.scene-in::before{content:"";position:absolute;z-index:-1;left:-8%;right:-8%;top:34px;height:250px;pointer-events:none;background:radial-gradient(ellipse 52% 50% at 50% 52%,rgba(251,246,236,.34) 0,rgba(251,246,236,.2) 60%,rgba(251,246,236,0) 100%)}
+.chip{display:inline-flex;align-items:center;gap:8px;max-width:100%;padding:5px 12px;border:1px solid var(--gold);border-radius:var(--r-pill);background:rgba(251,246,236,.82);font:700 11px/1.35 var(--sans);letter-spacing:.06em;text-transform:uppercase;text-shadow:0 0 1px var(--cream),0 0 3px var(--cream),0 0 6px rgba(251,246,236,.95),0 0 14px rgba(251,246,236,.8)}
 .chip svg{flex:none;width:16px;height:16px}
-.hero h1{margin:6px 0 6px;width:80%;max-width:760px;line-height:0}
-.hero h1 img{width:100%;height:auto}
-.scene::before{content:"";position:absolute;left:0;right:0;top:0;height:90vw;z-index:1;pointer-events:none;background:linear-gradient(to bottom,var(--cream) 0,var(--cream) 62%,rgba(251,246,236,.9) 74%,rgba(251,246,236,.45) 88%,rgba(251,246,236,0) 100%)}
-.hero .sub{max-width:34ch;margin:4px 0 0;font:500 16.5px/1.5 var(--sans);color:var(--ink);text-wrap:balance}
-.hero .sub b{font-weight:800;background:linear-gradient(transparent 62%,rgba(226,169,59,.5) 0);padding:0 2px}
+.hero h1{margin:4px 0 4px;width:70%;max-width:760px;line-height:0}
+.hero h1 img{width:100%;height:auto;filter:drop-shadow(0 0 2px rgba(251,246,236,.95)) drop-shadow(0 0 8px rgba(251,246,236,.7))}
+.hero .sub{max-width:31ch;margin:2px 0 0;font:600 21px/1.18 var(--serif);color:var(--ink);text-wrap:balance;-webkit-text-stroke:15px var(--cream);paint-order:stroke fill;text-shadow:0 0 6px var(--cream),0 0 6px var(--cream),0 0 9px var(--cream),0 0 12px var(--cream),0 0 12px var(--cream),0 0 18px rgba(251,246,236,.9),0 0 26px rgba(251,246,236,.6)}
+.hero .sub b{font:800 .72em/1 var(--sans);letter-spacing:.01em;white-space:nowrap;background:linear-gradient(transparent 62%,rgba(226,169,59,.5) 0);padding:0 2px}
 .sub b{font-weight:700}
 .fim{padding:0 16px 40px;margin-top:-12px;position:relative;z-index:3;text-align:center}
 .fim .label{margin-bottom:6px;font-size:11px;letter-spacing:.1em;gap:10px}.fim .label::before,.fim .label::after{width:24px}
@@ -94,9 +94,9 @@ em,.it{font-family:var(--serif);font-style:italic;font-weight:500}
 .fim .cta{max-width:420px;margin:0 auto 16px}
 .fim .lote{margin-inline:auto}
 .fim .lote small{font-style:italic}
-@media(max-width:380px){.fim .cta{font-size:15px;letter-spacing:.05em;padding:0 12px}}@media(max-width:352px){.scene::before{height:112vw}}
+@media(max-width:380px){.fim .cta{font-size:15px;letter-spacing:.05em;padding:0 12px}}
 @media(max-width:359px){.fim ul{grid-auto-flow:row;grid-template-rows:none;grid-template-columns:1fr}.fim li:nth-child(3n){border-bottom:1px solid rgba(226,169,59,.45)}.fim li:last-child{border-bottom:0}}
-@media(min-width:900px){.scene{height:min(100vh,56.25vw);overflow:visible}.scene picture{height:auto}.scene::after{height:14%}.fim{margin-top:0;z-index:auto;padding:20px 24px 40px}.fim ul{column-gap:14px}.fim li{line-height:1.3}.fim li::before{width:22px;height:22px}.fim .label{margin-bottom:16px}.fim ul{margin-bottom:28px}.fim li{padding:10px 0;border-bottom-color:rgba(226,169,59,.45)}.fim .cta{margin-bottom:24px}.hero h1{margin:10px 0 6px}.chip{padding:7px 14px}.scene img.bg{height:100%;aspect-ratio:auto;object-position:center bottom}.scene-in{padding-top:2.2vw}.chip{font-size:12px}.hero h1{width:min(40vw,580px)}.scene::before{height:100%;background:radial-gradient(ellipse 24% 42% at 50% 36%,rgba(251,246,236,.9) 0,rgba(251,246,236,.82) 55%,rgba(251,246,236,0) 100%)}.hero .sub{font-size:19px;line-height:1.5;max-width:34ch}.topbar{justify-content:center;font-size:12px}.topbar .track{flex:none;width:160px}.fim li{font-size:17px}.fim .label{font-size:13px}section{padding:112px 0}}
+@media(min-width:900px){.scene{height:min(100vh,56.25vw);overflow:visible;overflow-x:clip}.scene picture{height:auto}.scene::after{height:14%}.fim{margin-top:0;z-index:auto;padding:20px 24px 40px}.fim ul{column-gap:14px}.fim li{line-height:1.3}.fim li::before{width:22px;height:22px}.fim .label{margin-bottom:16px}.fim ul{margin-bottom:28px}.fim li{padding:10px 0;border-bottom-color:rgba(226,169,59,.45)}.fim .cta{margin-bottom:24px}.hero h1{margin:10px 0 6px}.chip{padding:7px 14px}.scene img.bg{height:100%;aspect-ratio:auto;object-position:center bottom}.scene-in{padding-top:2.2vw}.chip{font-size:12px}.hero h1{width:min(40vw,580px)}.hero .sub{font-size:30px;line-height:1.2;max-width:38ch}.topbar{justify-content:center;font-size:12px}.topbar .track{flex:none;width:160px}.fim li{font-size:17px}.fim .label{font-size:13px}section{padding:112px 0}}
 /* cards numerados */
 .grid4{display:grid;gap:16px;grid-template-columns:1fr}
 @media(min-width:700px){.grid4{grid-template-columns:1fr 1fr}}
@@ -380,7 +380,7 @@ footer .legal{font-family:var(--mono);font-size:12px;opacity:.75}
 <!-- 11 -->
 <section>
 <div class="wrap two r">
-<img class="foto rv" src="images/leandro-retrato.webp" width="772" height="1231" alt="Leandro Stecca, dentista" loading="lazy" />
+<img class="foto rv" src="images/leandro-retrato.webp" width="1000" height="1500" alt="Leandro Stecca, dentista" loading="lazy" />
 <div>
 <h2 class="rv" style="font-size:clamp(28px,3.6vw,44px)">Com 30 anos de Odontologia e clínicas espalhadas pelo Brasil, Leandro Stecca é o dentista que vai te auxiliar.</h2>
 <ul class="bio rv">
