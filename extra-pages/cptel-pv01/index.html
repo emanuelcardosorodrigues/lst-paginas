@@ -419,7 +419,7 @@ footer .legal{font-family:var(--mono);font-size:12px;opacity:.75}
 </div>
 </footer>
 
-<div class="dock" id="dock"><div class="t"><span>Lote 02</span><b>R$ 62,00</b></div><a class="cta" href="#oferta" data-cta="dock" data-checkout>GARANTIR VAGA</a></div>
+<div class="dock" id="dock"><div class="t"><span>Lote 02</span><b>R$ 62,00</b></div><a class="cta" href="#oferta" data-cta="dock">GARANTIR VAGA</a></div>
 
 <script defer src="/p/cptel-pv01/t.js"></script>
 <script>
@@ -431,7 +431,10 @@ footer .legal{font-family:var(--mono);font-size:12px;opacity:.75}
     var heroGone=false,ofVis=false;
     function up(){d.classList.toggle("on",heroGone&&!ofVis)}
     new IntersectionObserver(function(e){heroGone=!e[0].isIntersecting&&e[0].boundingClientRect.top<0;up()}).observe(hero);
+    var dk=d.querySelector("a");
     new IntersectionObserver(function(e){ofVis=e[0].isIntersecting;up()}).observe(of);
+    function lk(){dk.href=of.getBoundingClientRect().top<innerHeight?CHECKOUT_URL:"#oferta"}
+    addEventListener("scroll",lk,{passive:true});lk();
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12,rootMargin:"0px 0px -6% 0px"});
     document.querySelectorAll(".rv").forEach(function(n){io.observe(n)});
   } else { document.querySelectorAll(".rv").forEach(function(n){n.classList.add("in")}); }
@@ -440,7 +443,7 @@ footer .legal{font-family:var(--mono);font-size:12px;opacity:.75}
   ds.forEach(function(x){x.addEventListener("toggle",function(){if(x.open)ds.forEach(function(y){if(y!==x)y.open=false})})});
   document.addEventListener("click",function(ev){
     var a=ev.target.closest&&ev.target.closest("a[data-cta]"); if(!a) return;
-    try{(window.dataLayer=window.dataLayer||[]).push({event:"cta_clique",cta_origem:a.dataset.cta||"?",cta_destino:a.hasAttribute("data-checkout")?"checkout":"oferta"});}catch(e){}
+    try{(window.dataLayer=window.dataLayer||[]).push({event:"cta_clique",cta_origem:a.dataset.cta||"?",cta_destino:(a.hasAttribute("data-checkout")||a.getAttribute("href")===CHECKOUT_URL)?"checkout":"oferta"});}catch(e){}
   });
 })();
 </script>
