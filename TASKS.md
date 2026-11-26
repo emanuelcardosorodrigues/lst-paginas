@@ -8,7 +8,7 @@ Verificar: local: node --test scripts/*.test.mjs
 Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-paginas`. WP atual: PV do Curso Prático Transformando Excelência em Lucro (`/p/cptel-pv01`), no ar e indexável, com todos os slugs em 200.
 
 ## Estado agora
-- NO AR (w-lst-paginas 3ccd56bb, 26/11, ordem do Chefe): 79 slugs em 200. cptel-pv01/02/03 com checkout, bônus (cartões iguais), depoimentos (4 vídeo + 9 prints, reflow mobile), ingresso novo, dock só vai ao checkout a partir do preço; pv03 com fonte serif opsz 11/600 e lista do stack refinada; favicon e selo de garantia nas 3. Rollback: 585ba28c.
+- NO AR: ver próximo deploy (26/11): cptel-pv01 = antiga pv03 (DS v2, indexável); pv02 e pv03 apagadas por ordem do Chefe (404, livres para variações). Rollback: 536d6e4c (pv01/02/03 antigas).
 - Auditoria: delta c949de9..HEAD (bônus, A4/A5, checkout, balde, fundo do hero, fonte, dock, depoimentos, ingresso, stack, favicon, selo) NÃO auditado; publicado antes por ordem do Chefe.
 
 ## Decisões
@@ -16,7 +16,6 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 - Um Worker só para `/p/*`; página nova = `extra-pages/<slug>/` + deploy-full (Chefe).
 - GTM fora (11/11, Chefe); pixel Meta só via Sentinela, `meta_mirror_browser=true`.
 - cptel-pv01: indexável; sem vídeo; CTAs acima do preço → `#oferta`, do preço para baixo → checkout (link virá do Chefe) (Chefe, 25/11).
-- cptel-pv02: slug novo, PV01 fica; promessa sobre a imagem com halo creme (Chefe, 26/11).
 - cptel-pv03: nova ID (DS v2); 4 entregáveis do protótipo mantidos (R$28 mil, sem custo); 78% mantido; texto das demais seções = pv02 (Chefe, 26/11).
 
 ## Feito
@@ -28,7 +27,7 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 
 ## Pendente (em ordem)
 1. cptel-pv01/02/03: FAQ completa (Chefe).
-2. cptel-pv02: tirar noindex só se o Chefe pedir.
+2. Variações novas podem usar /p/cptel-pv02 e /p/cptel-pv03 (Chefe, 26/11).
 3. pel-pv01: autorização dos alunos, contrato da garantia, valores do stack (inventados), direitos de prints de terceiros; tirar noindex só depois — Chefe.
 4. col-pvia-frufru03: bloco "Dúvidas?", bio do Leandro — Chefe.
 5. Visual: rótulo dourado "BÔNUS DO LOTE 02" e `.selo span` no couro abaixo de AA (2,4–4,0); hero-cena retrato ampliado ~2x em 2140px e og:image retrato (pedir corte paisagem ~2400px).
