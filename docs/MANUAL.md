@@ -16,3 +16,4 @@ Páginas de `leandrostecca.com.br/p/*`, todas servidas por um único Worker: `w-
 ## Páginas
 - `cptel-pv01`: Curso Prático Transformando Excelência em Lucro (R$ 62, lote 02). Indexável. Ver `docs/ai/cptel.md`.
 - `cptel-pv02`: variante da cptel-pv01 com primeira dobra em cena ilustrada. noindex.
+- `cptel-pv03`: Curso Prático Transformando Excelência em Lucro com a ID nova (Design System v2, tema claro). Só a primeira dobra e rodapé; seções restantes pendentes. noindex. Ver `docs/ai/cptel.md`.
