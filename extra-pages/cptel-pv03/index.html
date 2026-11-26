@@ -137,21 +137,39 @@ a.cta:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-
 .hl{color:var(--blue);font-weight:600;text-decoration:underline;text-decoration-color:var(--gold-bright);text-decoration-thickness:4px;text-underline-offset:6px}
 .evt{width:100%;max-width:900px;height:auto;margin:0 auto;border-radius:20px;box-shadow:var(--shadow)}
 /* 07 */
-.prints{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.print{margin:0;min-height:220px;display:grid;place-items:center;border:2px dashed #AAB6C5;border-radius:14px;background:#fff;color:var(--muted);font-weight:700;letter-spacing:.08em}
+.depos{display:grid;gap:16px;margin-top:24px}
+.db{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:stretch}
+.dps{min-width:0;display:flex;flex-direction:column;gap:16px;justify-content:center}
+.dp{margin:0;padding:12px;overflow:hidden}
+.dp img{width:100%;height:auto;margin:0 auto}
+.dv{display:flex;flex-direction:column}
+.dv img{flex:1 1 auto;aspect-ratio:4/3;object-fit:cover;min-height:0}
+.dv figcaption{padding:16px 4px 6px}
+.pair{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}.pair .dp{display:flex;align-items:center}
+@media(min-width:640px){.pair{grid-template-columns:repeat(2,minmax(0,1fr))}.dv{max-width:480px;margin:0 auto;width:100%}}
+@media(min-width:1000px){.depos{gap:24px}.db{grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px}.db.r{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}.db.r .dv{order:2}.dv{max-width:none}}
+.dp{background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
+.dp img{border-radius:10px}
+.dv h3{font:600 20px/1.2 var(--serif);color:var(--navy);margin:0 0 10px;font-optical-sizing:none;font-variation-settings:"opsz" 11}
+.dq{font-size:15px;line-height:1.55;color:var(--muted);margin:0 0 12px}
+.dn{display:block;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--blue)}
 /* 08 */
 .bn{align-items:start;display:grid;grid-template-columns:1fr;gap:16px}
 @media(min-width:600px){.bn{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(min-width:900px){.bn{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .b{background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px 12px 16px;display:flex;flex-direction:column;gap:14px;font-weight:600;line-height:1.35;box-shadow:var(--shadow)}
 .b img{width:100%;height:auto;background:#fff;border:1px solid var(--border);border-radius:10px}
+.bn{align-items:stretch;grid-auto-rows:1fr}
+.b img{aspect-ratio:4/3;object-fit:cover;object-position:top}
+.b p{min-height:calc(3*1.35em)}
 /* 09 */
 .oferta{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);padding:36px 28px;max-width:720px;margin:0 auto;scroll-margin-top:16px}
-.oferta .ing{width:min(60%,200px);margin-bottom:12px}
+.oferta .ing{width:min(100%,340px);margin:0 auto -20px}@media(min-width:640px){.oferta .ing{width:420px;margin-bottom:-28px}}
 .oferta h2{font-size:clamp(26px,3.6vw,38px);text-align:center;margin-bottom:24px}
-.itens{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:8px}
-.itens li{display:flex;gap:14px;align-items:center;padding:12px 14px;border:1px solid var(--border);border-radius:11px;background:var(--bg);font-weight:600;line-height:1.35}
-.itens b{flex:none;font:600 22px/1 var(--serif);color:var(--blue);min-width:30px;font-optical-sizing:none;font-variation-settings:"opsz" 11}
+.itens{list-style:none;margin:0 0 28px;padding:0;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold)}
+.itens li{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:14px;align-items:baseline;padding:17px 2px;font:500 16px/1.45 var(--sans);color:var(--ink)}
+.itens li+li{border-top:1px solid rgba(16,29,44,.08)}
+.itens b{font:600 24px/1 var(--serif);color:var(--gold);font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1;font-optical-sizing:none;font-variation-settings:"opsz" 11}
 .preco{text-align:center;margin-bottom:20px}
 .de{display:block;color:var(--muted);font-size:16px;text-decoration:line-through}
 .por{font:600 clamp(48px,9vw,72px)/1.05 var(--serif);color:var(--navy);letter-spacing:-.02em;font-optical-sizing:none;font-variation-settings:"opsz" 11}
@@ -200,8 +218,8 @@ a.cta:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-
 .dock .t b{font:600 22px/1.1 var(--serif);color:var(--navy);font-optical-sizing:none;font-variation-settings:"opsz" 11}
 .dock .cta{width:auto;min-height:48px;margin:0;padding:10px 18px;font-size:14px}
 @media(min-width:900px){.dock{display:none}}
-@media(max-width:899px){.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.aulas,.prints,.bn{grid-template-columns:repeat(2,minmax(0,1fr))}.two,.two.r{grid-template-columns:1fr;gap:28px}.two.r .foto{max-width:320px}body{padding-bottom:72px}}
-@media(max-width:600px){section.s{padding:48px 0}.aulas,.prints,.bn,.esc{grid-template-columns:1fr}.gar{grid-template-columns:1fr;justify-items:center;text-align:center;gap:24px}.oferta{padding:28px 16px}.print{min-height:160px}.pic .obj{max-width:200px}}
+@media(max-width:899px){.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.aulas,.bn{grid-template-columns:repeat(2,minmax(0,1fr))}.two,.two.r{grid-template-columns:1fr;gap:28px}.two.r .foto{max-width:320px}body{padding-bottom:72px}}
+@media(max-width:600px){section.s{padding:48px 0}.aulas,.bn,.esc{grid-template-columns:1fr}.gar{grid-template-columns:1fr;justify-items:center;text-align:center;gap:24px}.oferta{padding:28px 16px}.pic .obj{max-width:200px}}
 @media(max-width:380px){.grid4{grid-template-columns:1fr}.wrap{padding:0 16px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
@@ -313,13 +331,38 @@ a.cta:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-
 <div class="wrap">
 <h2 >Será que vale a pena?</h2>
 <p class="txt">Veja a opinião de quem já participou de outras edições do evento.</p>
-<div class="prints">
-<figure class="print" data-print="01">[PRINT 01]</figure>
-<figure class="print" data-print="02">[PRINT 02]</figure>
-<figure class="print" data-print="03">[PRINT 03]</figure>
-<figure class="print" data-print="04">[PRINT 04]</figure>
-<figure class="print" data-print="05">[PRINT 05]</figure>
-<figure class="print" data-print="06">[PRINT 06]</figure>
+<div class="depos">
+<div class="db">
+<figure class="dp dv"><img src="images/depo-debora.webp" width="1024" height="675" alt="Foto de Dra. Debora Monteiro" loading="lazy" decoding="async" style="object-position:center 22%" /><figcaption><h3>A gente não aprende essa parte na faculdade</h3><p class="dq">Eu achei muito enriquecedora. A gente não aprende essa parte empreendedora ou de gestão na faculdade. Então pra gente que tem consultório, isso ajuda muito. E Leandro trouxe os ensinamentos de uma forma muito prática, muito clara.</p><span class="dn">Dra. Debora Monteiro</span></figcaption></figure>
+<div class="dps">
+<figure class="dp"><picture><source media="(max-width:640px)" srcset="images/depo-elisa-m.webp" width="480" height="297"><img src="images/depo-elisa.webp" width="752" height="219" alt="@elisadiasgomes3173: Eu conversei com os meus dentistas parceiros, e falei que o valor a partir daquele dia não seria mais por %. Mantive os valores pagos e aumentei o preço dos procedimentos. Hoje eu recebo mais que o parceiro. E ele aceitou o valor pago." loading="lazy" decoding="async" /></picture></figure>
+<figure class="dp"><picture><source media="(max-width:640px)" srcset="images/depo-rubens-m.webp" width="480" height="114"><img src="images/depo-rubens.webp" width="726" height="62" alt="@rubenssoares2873: está valendo muito a pena. achava que diária era a melhor forma de pagamento. mais mudei meu conceito" loading="lazy" decoding="async" /></picture></figure>
+<figure class="dp"><picture><source media="(max-width:640px)" srcset="images/depo-nathalia-m.webp" width="480" height="286"><img src="images/depo-nathalia.webp" width="754" height="182" alt="@nathaliacampanella5863: Fui no contador, recalculei a hora clínica, estruturei dentista parceiro e campanhas. Comecei Google essa semana. Valeu muito a pena" loading="lazy" decoding="async" /></picture></figure>
+</div>
+</div>
+<div class="db r">
+<figure class="dp dv"><img src="images/depo-maria.webp" width="1024" height="675" alt="Foto de Dra. Maria Emília" loading="lazy" decoding="async" style="object-position:center 30%" /><figcaption><h3>Hoje lidero uma equipe com 10 dentistas</h3><p class="dq">Mudou não só a minha visão sobre odontologia e gestão, como também transformou toda a minha carreira e o meu negócio. Hoje eu lidero uma equipe com 10 dentistas. Conseguimos criar um ambiente onde cada profissional atua na sua especialidade, entregando um serviço completo e de alta qualidade</p><span class="dn">Dra. Maria Emília</span></figcaption></figure>
+<div class="dps">
+<figure class="dp"><picture><source media="(max-width:640px)" srcset="images/depo-paula-m.webp" width="480" height="261"><img src="images/depo-paula.webp" width="752" height="183" alt="@paulacarneiroribeiroleandr5880: o que estou muito empenhada é fazer a precipitação correta e a remuneração de dentista parceiro. Está muito errada a minha remuneração ao parceiro. a conversa vai acontecer. sim , está valendo. Material muito bom, organizado e fácil de entender" loading="lazy" decoding="async" /></picture></figure>
+<figure class="dp"><picture><source media="(max-width:640px)" srcset="images/depo-cecilia-m.webp" width="480" height="170"><img src="images/depo-cecilia.webp" width="748" height="118" alt="@ceciliafreire1648: Bom dia Leandro e equipe. Assisti todos os dias, foi uma jornada muito esclarecedora. São 32 anos de mocho diário e acho incrível que ainda hoje as faculdades não incluíram na grade essa disciplina" loading="lazy" decoding="async" /></picture></figure>
+<figure class="dp"><picture><source media="(max-width:640px)" srcset="images/depo-mthodonto-m.webp" width="480" height="255"><img src="images/depo-mthodonto.webp" width="720" height="203" alt="@mthodonto: foi um choque de realidade! tá pago!!! esse fator mudou minha realidade. suprema, super está valendo...e não é surpresa!" loading="lazy" decoding="async" /></picture></figure>
+</div>
+</div>
+<div class="db">
+<figure class="dp dv"><img src="images/depo-thais.webp" width="1024" height="675" alt="Foto de Dra. Thais Fernandes" loading="lazy" decoding="async" style="object-position:center 30%" /><figcaption><h3>Não esperava a quantidade de conteúdo que ele entregou</h3><span class="dn">Dra. Thais Fernandes</span></figcaption></figure>
+<div class="dps">
+<figure class="dp"><img src="images/depo-marcio.webp" width="640" height="471" alt="Marcio JF-MG: Foi a melhor aula que tive sobre precificação, com ampla abordagem e considerações. Algumas coisas eu ja conhecia e planilhava. Mas Dr Leandro apresentou iutros componentes que eu desconhecia. Valeu mesmo... MarcioJF-MG. CHECK" loading="lazy" decoding="async" style="max-width:480px" /></figure>
+</div>
+</div>
+<div class="db r">
+<figure class="dp dv"><img src="images/depo-jose.webp" width="816" height="718" alt="Foto de Dr. José Orlando" loading="lazy" decoding="async" style="object-position:center 38%" /><figcaption><h3>Muito acima da média pelo preço cobrado</h3><span class="dn">Dr. José Orlando</span></figcaption></figure>
+<div class="dps">
+<div class="pair">
+<figure class="dp"><img src="images/depo-aula.webp" width="422" height="346" alt="Bom dia. Primeiro quero parabenizar o Leandro e toda equipe pela qualidade das aulas e informações compartilhadas. Assisti a aula de hoje e ele fala sobre a tabela de precificaçao e com mtos elementos que geralmente não incluímos nos cálculos" loading="lazy" decoding="async" style="max-width:422px" /></figure>
+<figure class="dp"><img src="images/depo-grata.webp" width="410" height="312" alt="GRATA. Estou encantada com as aulas. Já tive algumas propostas de gestão. Mas nenhuma atendeu as minhas necessidades e expectativas. Parabéns" loading="lazy" decoding="async" style="max-width:410px" /></figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -345,7 +388,7 @@ a.cta:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-
 <section class="s">
 <div class="wrap">
 <div class="oferta" id="oferta">
-<img class="ing obj" src="images/ingresso.webp" width="402" height="273" alt="Ingresso do Curso Prático" loading="lazy" />
+<img class="ing obj" src="images/ingresso-premium.webp" width="900" height="651" alt="Ingresso do Curso Prático" loading="lazy" />
 <h2>O que você vai levar com o ingresso:</h2>
 <ul class="itens">
 <li><b>01</b>Precificação Lucrativa de Hora Clínica</li>
