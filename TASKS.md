@@ -1,7 +1,7 @@
 # TASKS — lst-paginas
 
-Atualizado: 2026-11-25 22:30 · Sessão/WP: cptel-pv02 · Branch/commit: sentinela-tag-paginas
-Progresso: 100% · 2/2 WPs · próximo: aguardar LINK-CHECKOUT e prints do Chefe
+Atualizado: 2026-11-26 16:30 · Sessão/WP: cptel-pv02 fix + cptel-pv03 · Branch/commit: sentinela-tag-paginas
+Progresso: 100% · 2/2 WPs · próximo: auditoria do delta 4110004..HEAD, depois deploy-full
 Verificar: local: node --test scripts/*.test.mjs
 
 ## Objetivo
@@ -9,13 +9,15 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 
 ## Estado agora
 - NO AR (w-lst-paginas 99bebfae, 25/11 22h): 78 slugs em 200; cptel-pv02 promessa sem caixa sobre véu creme, logo legível, CTA na 1ª dobra. Rollback: 5b97eb01.
-- Auditoria: delta a9f01d9..4110004 LIMPO (ciclo 3).
+- Auditoria: a9f01d9..4110004 LIMPO. Delta 4110004..a666762 NAO_LIMPO (A1 contorno, A2 topbar, A3 TASKS); corrigido, reauditar junto com cptel-pv03.
+- Não publicado (no GitHub): pv02 cena inteira + promessa Cormorant com halo em camada atrás; foto nova do Leandro (pv01/pv02); cptel-pv03 completa na nova ID (DS v2, noindex).
 
 ## Decisões
 - Um Worker só para `/p/*`; página nova = `extra-pages/<slug>/` + deploy-full (Chefe).
 - GTM fora (11/11, Chefe); pixel Meta só via Sentinela, `meta_mirror_browser=true`.
 - cptel-pv01: indexável; sem vídeo; CTAs acima do preço → `#oferta`, do preço para baixo → checkout (link virá do Chefe) (Chefe, 25/11).
-- cptel-pv02: slug novo, PV01 fica; arte de fundo sem texto vem do Chefe (25/11).
+- cptel-pv02: slug novo, PV01 fica; promessa sobre a imagem com halo creme (Chefe, 26/11).
+- cptel-pv03: nova ID (DS v2); 4 entregáveis do protótipo mantidos (R$28 mil, sem custo); 78% mantido; texto das demais seções = pv02 (Chefe, 26/11).
 
 ## Feito
 - cptel-pv01 auditada (LIMPO) e publicada 25/11; rollback alvo 90ae32d2.
@@ -26,7 +28,7 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 - Nada.
 
 ## Pendente (em ordem)
-1. cptel-pv01: LINK-CHECKOUT, 6 prints de depoimento (9:16), revisão das respostas da FAQ — Chefe.
+1. cptel-pv01/02/03: LINK-CHECKOUT, 6 prints de depoimento (9:16), FAQ completa (Chefe vai mandar) — Chefe.
 2. cptel-pv02: tirar noindex só se o Chefe pedir.
 3. pel-pv01: autorização dos alunos, contrato da garantia, valores do stack (inventados), direitos de prints de terceiros; tirar noindex só depois — Chefe.
 4. col-pvia-frufru03: bloco "Dúvidas?", bio do Leandro — Chefe.

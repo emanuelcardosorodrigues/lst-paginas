@@ -83,6 +83,119 @@ footer p{max-width:720px;margin:0 auto 12px}
 footer b{color:var(--navy)}
 footer a{color:#1749B4}
 footer .legal{font-size:13px}
+/* ===== seções abaixo da dobra (DS v2) ===== */
+section.s{padding:64px 0}
+section.alt{background:#fff;border-block:1px solid var(--border)}
+section.tint{background:#EEF3FB;border-block:1px solid var(--border)}
+.wrap{width:min(100%,1100px);margin:0 auto;padding:0 20px}
+.wrap.narrow{width:min(100%,820px)}
+h2{font:500 clamp(30px,4.4vw,48px)/1.12 var(--serif);letter-spacing:-.02em;color:var(--navy);margin:0 0 28px;text-wrap:balance}
+h2.center,.center{text-align:center}
+h3{font:700 clamp(18px,2vw,22px)/1.25 var(--sans);letter-spacing:-.01em;margin:0;color:var(--ink)}
+p{margin:0}
+.lead{font-size:18px;color:var(--muted);margin:-12px 0 28px}
+.label{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--blue);margin:0 0 12px}
+.obj{display:block;margin:0 auto;height:auto;filter:drop-shadow(0 6px 10px rgba(16,29,44,.10))}
+.cta.long{width:min(100%,640px)}
+.s .cta{margin-top:32px}
+a.cta:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+/* 02 */
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:32px}
+.nc{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px 18px;box-shadow:var(--shadow)}
+.nc b{display:block;font:500 34px/1 var(--serif);color:var(--blue);margin-bottom:12px}
+.nc p{font-weight:600;line-height:1.35}
+/* 03 */
+.why{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:12px;counter-reset:w}
+.why li{counter-increment:w;display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;font-size:17px}
+.why li::before{content:counter(w);flex:none;width:36px;height:36px;border-radius:50%;background:var(--blue);color:#fff;font:600 18px/36px var(--serif);text-align:center}
+.center h2,.big2,.s h2:only-child{font-weight:600}
+.close{font:500 clamp(20px,2.4vw,26px)/1.35 var(--serif);color:var(--navy);border-left:4px solid var(--gold);padding-left:18px}
+/* 04 */
+.two{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}
+.q{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.big{font:500 clamp(30px,4vw,44px)/1.12 var(--serif);letter-spacing:-.02em;color:var(--navy);margin-bottom:24px}
+.chk{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.chk li{display:flex;gap:12px;align-items:flex-start;font-size:17px;line-height:1.45}
+.chk li::before{content:"";flex:none;width:28px;height:28px;margin-top:-1px;background:url(images/check-duotone.svg) no-repeat center/contain}
+.pic img{margin:0 auto}
+/* 05 */
+.aulas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.aula{background:#fff;border:1px solid var(--border);border-radius:20px;padding:24px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+.aula .top{display:flex;align-items:center;justify-content:space-between}
+.aula img{width:48px;height:48px}
+.aula .n{font:500 40px/1 var(--serif);color:var(--blue)}
+.aula .dh{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-dark,#995D00)}
+.aula p{color:var(--muted);font-size:15px;line-height:1.5}
+.aula h3{font-size:18px}
+/* 06 */
+.prova{font:500 clamp(28px,4.2vw,50px)/1.15 var(--serif);letter-spacing:-.02em;color:var(--navy);text-align:center;max-width:860px;margin:0 auto 32px;text-wrap:balance}
+.hl{color:var(--blue);font-weight:600;text-decoration:underline;text-decoration-color:var(--gold-bright);text-decoration-thickness:4px;text-underline-offset:6px}
+.evt{width:100%;max-width:900px;height:auto;margin:0 auto;border-radius:20px;box-shadow:var(--shadow)}
+/* 07 */
+.prints{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.print{margin:0;min-height:220px;display:grid;place-items:center;border:2px dashed #AAB6C5;border-radius:14px;background:#fff;color:var(--muted);font-weight:700;letter-spacing:.08em}
+/* 08 */
+.bn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.b{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;gap:14px;align-items:center;font-weight:600;line-height:1.35}
+.b img{width:44px;height:44px;flex:none}
+/* 09 */
+.oferta{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);padding:36px 28px;max-width:720px;margin:0 auto;scroll-margin-top:16px}
+.oferta .ing{width:min(60%,200px);margin-bottom:12px}
+.oferta h2{font-size:clamp(26px,3.6vw,38px);text-align:center;margin-bottom:24px}
+.itens{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:8px}
+.itens li{display:flex;gap:14px;align-items:center;padding:12px 14px;border:1px solid var(--border);border-radius:11px;background:var(--bg);font-weight:600;line-height:1.35}
+.itens b{flex:none;font:500 22px/1 var(--serif);color:var(--blue);min-width:30px}
+.preco{text-align:center;margin-bottom:20px}
+.de{display:block;color:var(--muted);font-size:16px;text-decoration:line-through}
+.por{font:500 clamp(48px,9vw,72px)/1.05 var(--serif);color:var(--navy);letter-spacing:-.02em}
+.por small{display:block;font:700 13px/1 var(--sans);letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.oferta .progress{margin-bottom:8px}
+.lote{max-width:540px;margin:0 auto 8px;text-align:center;font-size:14px;color:var(--muted)}
+.lote span{display:block;font-weight:700;color:var(--ink)}
+.oferta .cta{margin-top:24px}
+.gar-s{text-align:center;font-size:14px;color:var(--muted);margin-top:14px}
+/* 10 */
+.gar{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
+.selo{width:150px;height:150px;border-radius:50%;border:3px solid var(--blue);background:#fff;display:grid;place-content:center;text-align:center;box-shadow:0 0 0 8px #fff,0 0 0 10px var(--gold)}
+.selo b{font:600 30px/1 var(--serif);color:var(--navy)}
+.selo span{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-top:6px}
+.gar h2{margin-bottom:14px;font-size:clamp(26px,3.6vw,40px)}
+.gar p{font-size:18px}
+/* 11 */
+.two.r{grid-template-columns:.8fr 1.2fr}
+.foto{width:100%;max-width:420px;height:auto;border-radius:20px;box-shadow:var(--shadow);margin:0 auto}
+.two.r h2{font-size:clamp(28px,3.4vw,42px)}
+.bio{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:12px}
+.bio li{display:flex;gap:12px;align-items:flex-start;font-size:17px}
+.bio li::before{content:"";flex:none;width:24px;height:24px;background:url(images/check-duotone.svg) no-repeat center/contain}
+.assina{font:500 clamp(24px,3vw,32px)/1.25 var(--serif);color:var(--navy);border-left:4px solid var(--gold);padding-left:18px}
+/* 12 */
+.faq{max-width:820px;margin:0 auto;display:grid;gap:10px}
+.faq details{background:#fff;border:1px solid var(--border);border-radius:14px}
+.faq summary{cursor:pointer;list-style:none;padding:18px 52px 18px 20px;font-weight:700;line-height:1.35;position:relative;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font:600 26px/1 var(--sans);color:var(--blue)}
+.faq details[open] summary::after{content:"\2212"}
+.faq details p{padding:0 20px 18px;color:var(--muted)}
+/* 12+1 */
+.esc{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;text-align:left}
+.e{background:#fff;border:1px solid var(--border);border-radius:20px;padding:26px 24px;box-shadow:var(--shadow)}
+.e2{border:2px solid var(--blue)}
+.e h3{font-size:13px;letter-spacing:.11em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.e1 h3{color:var(--muted)}
+.fecha{text-align:center;display:grid;gap:8px}
+.big2{font:500 clamp(30px,4.4vw,48px)/1.1 var(--serif);color:var(--navy);letter-spacing:-.02em}
+.fecha p:not(.big2){font-size:18px}
+/* dock */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:80;background:rgba(255,255,255,.96);border-top:1px solid var(--border);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;justify-content:space-between;transform:translateY(110%);transition:transform .3s}
+.dock.on{transform:none}
+.dock .t span{display:block;font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.dock .t b{font:600 22px/1.1 var(--serif);color:var(--navy)}
+.dock .cta{width:auto;min-height:48px;margin:0;padding:10px 18px;font-size:14px}
+@media(min-width:900px){.dock{display:none}}
+@media(max-width:899px){.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.aulas,.prints,.bn{grid-template-columns:repeat(2,minmax(0,1fr))}.two,.two.r{grid-template-columns:1fr;gap:28px}.two.r .foto{max-width:320px}body{padding-bottom:72px}}
+@media(max-width:600px){section.s{padding:48px 0}.aulas,.prints,.bn,.esc{grid-template-columns:1fr}.gar{grid-template-columns:1fr;justify-items:center;text-align:center;gap:24px}.oferta{padding:28px 16px}.print{min-height:160px}.pic .obj{max-width:200px}}
+@media(max-width:380px){.grid4{grid-template-columns:1fr}.wrap{padding:0 16px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -110,6 +223,200 @@ footer .legal{font-size:13px}
 </div>
 </div>
 </section>
+
+<!-- 02 -->
+<section class="s tint">
+<div class="wrap">
+<h2>E o que acontece quando você NÃO transforma a sua Excelência em Lucro?</h2>
+<div class="grid4">
+<div class="nc"><b>01</b><p>Não sabe quanto lucra no final do mês</p></div>
+<div class="nc"><b>02</b><p>Vive dando desconto</p></div>
+<div class="nc"><b>03</b><p>Sente que paga para trabalhar</p></div>
+<div class="nc"><b>04</b><p>Preso no mocho e sem dinheiro no bolso</p></div>
+</div>
+<div class="pic" style="margin-top:32px"><img class="obj" src="images/ampulheta.webp" width="327" height="375" alt="" loading="lazy" style="width:130px" /></div>
+</div>
+</section>
+
+<!-- 03 -->
+<section class="s">
+<div class="wrap">
+<h2>Por que você ainda não lucra o quanto poderia com a sua Excelência?</h2>
+<ol class="why">
+<li >A graduação te ensinou só a parte técnica, e você está no país com mais dentistas do mundo.</li>
+<li >Os Gurus Complicadores: fórmulas difíceis, planilhas que ninguém usa e teoria que não chega na cadeira.</li>
+<li >Você não tem tempo para pensar estrategicamente: passa o dia inteiro atendendo.</li>
+</ol>
+<p class="close">Tudo isso só te faz ficar preso no piloto automático de fazer mais e mais, quando, na verdade, o lucro da odontologia não está nisso.</p>
+</div>
+</section>
+
+<!-- 04 -->
+<section class="s tint">
+<div class="wrap two">
+<div>
+<p class="q">Qual é a solução para lucrar mais com a sua Excelência?</p>
+<p class="big">Ter uma Arquitetura de Lucro no seu consultório.</p>
+<ul class="chk">
+<li><span>Hora Clínica pensando em <b>LUCRO</b></span></li>
+<li><span>Preço correto nos procedimentos</span></li>
+<li><span>Negociação estratégica com o Dentista Parceiro</span></li>
+<li><span>WhatsApp para fechamentos e retornos</span></li>
+<li><span>Google e Instagram trazendo pacientes que valorizam o seu trabalho, <b>DE MANEIRA GRATUITA</b></span></li>
+<li><span>Ticket médio de R$ 28.000,00</span></li>
+</ul>
+<a class="cta" href="#oferta" data-cta="d04">QUERO GARANTIR MINHA VAGA! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h17m-7-7 7 7-7 7"/></svg></a>
+</div>
+<div class="pic"><img class="obj" src="images/caderno-ds.webp" width="507" height="435" alt="" loading="lazy" style="width:min(100%,340px)" /></div>
+</div>
+</section>
+
+<!-- 05 -->
+<section class="s">
+<div class="wrap">
+<h2  style="max-width:900px">No Curso Prático Transformando Excelência em Lucro, você vai ajustar as 5 alavancas que mais trazem lucro, paz e liberdade para a odontologia</h2>
+<div class="aulas">
+<article class="aula"><div class="top"><img src="images/hora-clinica-duotone.svg" width="48" height="48" alt="" loading="lazy" /><div class="n">01</div></div><div class="dh">Segunda · 20h · Aula 01</div><h3>O furo ignorado que está te fazendo pagar para trabalhar com excelência e como lucrar 100K com ele todo mês.</h3><p>O jeito mais simples de calcular a sua hora clínica na prática.</p></article>
+<article class="aula"><div class="top"><img src="images/precificacao-duotone.svg" width="48" height="48" alt="" loading="lazy" /><div class="n">02</div></div><div class="dh">Terça · 20h · Aula 02</div><h3>O jeito preguiçoso de colocar o preço lucrativo na sua Excelência Odontológica em 10 minutos ou menos.</h3><p>Como calcular o preço de cada procedimento a partir do lucro e parar de dar desconto.</p></article>
+<article class="aula"><div class="top"><img src="images/parceiro-lucrativo-duotone.svg" width="48" height="48" alt="" loading="lazy" /><div class="n">03</div></div><div class="dh">Quarta · 20h · Aula 03</div><h3>O acordo simples que faz o seu Dentista Parceiro te dar mais lucro e ainda te agradecer por isso.</h3><p>Como e quanto repassar ao parceiro.</p></article>
+<article class="aula"><div class="top"><img src="images/paciente-retorno-duotone.svg" width="48" height="48" alt="" loading="lazy" /><div class="n">04</div></div><div class="dh">Quinta · 20h · Aula 04</div><h3>A estratégia incomum de fazer o WhatsApp gerar R$ 100K por mês sem gastar com marketing e sem ter problemas com o CRO.</h3><p>Orçamentos parados e pacientes que sumiram. TUDO QUE A SUA SECRETÁRIA PRECISA SABER.</p></article>
+<article class="aula"><div class="top"><img src="images/google-maps-duotone.svg" width="48" height="48" alt="" loading="lazy" /><div class="n">05</div></div><div class="dh">Sexta · 20h · Aula 05</div><h3>O mecanismo tímido que lota a sua agenda de pacientes que PAGAM pela sua EXCELÊNCIA.</h3><p>Google Meu Negócio e Instagram, de forma gratuita.</p></article>
+<article class="aula"><div class="top"><img src="images/ticket-medio-duotone.svg" width="48" height="48" alt="" loading="lazy" /><div class="n">06</div></div><div class="dh">Domingo · 19h30 · Aula 06</div><h3>Implementando a estratégia que pequenas clínicas utilizam para ter um ticket médio de R$ 28.000 com fidelização de 70% nos primeiros anos.</h3><p>Ticket médio e o paciente que volta e indica.</p></article>
+</div>
+<a class="cta" href="#oferta" data-cta="d05">QUERO GARANTIR MINHA VAGA! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h17m-7-7 7 7-7 7"/></svg></a>
+</div>
+</section>
+
+<!-- 06 -->
+<section class="s tint">
+<div class="wrap">
+<p class="prova">Mais de <span class="hl">1.700</span> dentistas já estão lucrando mais com a própria Excelência</p>
+<img class="evt" src="images/leandro-evento.webp" width="1000" height="667" alt="Leandro Stecca no palco de um evento com dentistas" loading="lazy" />
+</div>
+</section>
+
+<!-- 07 -->
+<section class="s">
+<div class="wrap">
+<h2 >Será que vale a pena?</h2>
+<p class="txt">Veja a opinião de quem já participou de outras edições do evento.</p>
+<div class="prints">
+<figure class="print" data-print="01">[PRINT 01]</figure>
+<figure class="print" data-print="02">[PRINT 02]</figure>
+<figure class="print" data-print="03">[PRINT 03]</figure>
+<figure class="print" data-print="04">[PRINT 04]</figure>
+<figure class="print" data-print="05">[PRINT 05]</figure>
+<figure class="print" data-print="06">[PRINT 06]</figure>
+</div>
+</div>
+</section>
+
+<!-- 08 -->
+<section class="s tint">
+<div class="wrap">
+<div class="label">Bônus do Lote 02</div>
+<h2 >Acesso à CENTRAL DE EXCELÊNCIA</h2>
+<div class="bn">
+<div class="b"><img src="images/precificacao-duotone.svg" width="44" height="44" alt="" loading="lazy" /><p>Calculadora de Precificação</p></div>
+<div class="b"><img src="images/pratica-duotone.svg" width="44" height="44" alt="" loading="lazy" /><p>Mensagens Prontas para treinar a sua Secretária</p></div>
+<div class="b"><img src="images/pacientes-qualificados-duotone.svg" width="44" height="44" alt="" loading="lazy" /><p>Calculadora de Potencial da Base de Clientes</p></div>
+<div class="b"><img src="images/check-duotone.svg" width="44" height="44" alt="" loading="lazy" /><p>Ferramenta de Processo Seletivo. Não precisa ficar correndo atrás de candidato.</p></div>
+<div class="b"><img src="images/alvo-duotone.svg" width="44" height="44" alt="" loading="lazy" /><p>Campanhas de WhatsApp Prontas</p></div>
+<div class="b"><img src="images/consultoria-duotone.svg" width="44" height="44" alt="" loading="lazy" /><p>Consultor Financeiro, Tributário, Negociador e muitos outros</p></div>
+</div>
+<a class="cta" href="#oferta" data-cta="d08">QUERO GARANTIR MINHA VAGA! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h17m-7-7 7 7-7 7"/></svg></a>
+</div>
+</section>
+
+<!-- 09 -->
+<section class="s">
+<div class="wrap">
+<div class="oferta" id="oferta">
+<img class="ing obj" src="images/ingresso.webp" width="402" height="273" alt="Ingresso do Curso Prático" loading="lazy" />
+<h2>O que você vai levar com o ingresso:</h2>
+<ul class="itens">
+<li><b>01</b>Precificação Lucrativa de Hora Clínica</li>
+<li><b>02</b>Precificação Lucrativa de Procedimentos</li>
+<li><b>03</b>Negociação com Dentistas Parceiros</li>
+<li><b>04</b>Processo de WhatsApp Lucrativo</li>
+<li><b>05</b>Google e Instagram prontos para trazer pacientes que pagam</li>
+<li><b>06</b>Ticket médio de R$ 28.000,00</li>
+<li><b>07</b>Calculadora de Precificação e outras dezenas de ferramentas</li>
+<li><b>08</b>Consultores de apoio</li>
+</ul>
+<div class="preco"><span class="de">De: R$ 697,00</span><div class="por"><small>Por:</small>R$ 62,00</div></div>
+<div class="lote"><div class="progress" role="progressbar" aria-label="Ingressos vendidos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="78"><span></span></div><span>78% dos ingressos vendidos</span></div>
+<a class="cta" href="#oferta" data-cta="oferta" data-checkout>QUERO GARANTIR MINHA VAGA! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h17m-7-7 7 7-7 7"/></svg></a>
+<p class="gar-s">Garantia incondicional de 7 dias</p>
+</div>
+</div>
+</section>
+
+<!-- 10 -->
+<section class="s tint">
+<div class="wrap gar">
+<div class="selo"><b>7 DIAS</b><span>garantia</span></div>
+<div class="txt">
+<h2>Garantia Incondicional de 7 Dias</h2>
+<p>Se por qualquer motivo você mudar de ideia, é só pedir e devolvemos o valor integral. Sem justificativa e sem burocracia. Você já pagou por curso que não aplicou. Aqui, quem corre o risco é a gente, não você.</p>
+</div>
+</div>
+</section>
+
+<!-- 11 -->
+<section class="s">
+<div class="wrap two r">
+<img class="foto" src="images/leandro-retrato.webp" width="1000" height="1500" alt="Leandro Stecca, dentista" loading="lazy" />
+<div>
+<h2  style="font-size:clamp(28px,3.6vw,44px)">Com 30 anos de Odontologia e clínicas espalhadas pelo Brasil, Leandro Stecca é o dentista que vai te auxiliar.</h2>
+<ul class="bio">
+<li><span>Já viveu a agenda cheia e o bolso vazio, e criou a metodologia que mudou esse jogo.</span></li>
+<li><span>Tem clínicas em 3 estados que lucram sem a presença dele.</span></li>
+<li><span>Professor de Graduação e Pós-graduação.</span></li>
+<li><span>Criador do OdontoSummit.</span></li>
+<li><span>Centenas de alunos aplicando o método.</span></li>
+</ul>
+<p class="assina">Faturamento é vaidade, LUCRO é liberdade!</p>
+</div>
+</div>
+</section>
+
+<!-- 12 -->
+<section class="s tint">
+<div class="wrap">
+<h2 class="center">Perguntas frequentes</h2>
+<div class="faq">
+<details><summary>Esse curso é mais um curso de gestão?</summary><p>Não. É um curso prático: em cada aula você aplica a ferramenta no seu consultório, com números seus, e sai com a estratégia montada.</p></details>
+<details><summary>As aulas ficam gravadas?</summary><p>Sim. As gravações das aulas 01 a 05 ficam disponíveis até as 18h do domingo, antes da aula 06.</p></details>
+<details><summary>E se eu perder uma aula?</summary><p>Você assiste à gravação até as 18h do domingo e acompanha o restante normalmente.</p></details>
+<details><summary>Quanto tempo vou precisar por dia?</summary><p>As aulas são de segunda a sexta às 20h e no domingo às 19h30, com 1h a 1h30 cada.</p></details>
+<details><summary>Funciona para consultório de 1 ou 2 cadeiras?</summary><p>Sim. A estratégia foi pensada justamente para o consultório pequeno lucrar mais com a excelência que já tem.</p></details>
+<details><summary>Preciso investir em tráfego pago?</summary><p>Não. Google e Instagram são trabalhados de forma gratuita.</p></details>
+<details><summary>Não sou bom com números. Vou conseguir?</summary><p>Vai. As calculadoras fazem a conta por você; você só preenche os seus dados.</p></details>
+<details><summary>Serve para a minha especialidade?</summary><p>Sim. Hora clínica, preço, parceiro, WhatsApp e ticket médio valem para qualquer especialidade.</p></details>
+<details><summary>Tem material de apoio?</summary><p>Sim. Você recebe acesso à Central de Excelência, com calculadoras, mensagens prontas, campanhas e consultores.</p></details>
+<details><summary>Como e onde vai acontecer?</summary><p>Online e ao vivo, de segunda a sexta às 20h e no domingo às 19h30 (horário de Brasília). O acesso chega por e-mail e WhatsApp.</p></details>
+</div>
+</div>
+</section>
+
+<!-- 12+1 -->
+<section class="s center">
+<div class="wrap">
+<h2 >VOCÊ TEM DUAS ESCOLHAS AGORA:</h2>
+<div class="esc" style="text-align:left">
+<div class="e e1"><h3>ESCOLHA 1</h3><p>Continuar do jeito que está. 12 horas por dia na cadeira, R$ 9 mil sangrando todo mês pelos 3 ralos, aquele aperto no peito no fim do mês, perder mais um aniversário. E daqui a 6 meses, estar igual ou pior.</p></div>
+<div class="e e2"><h3>ESCOLHA 2</h3><p>Tapar os 3 buracos em 1 semana, ter o dobro do lucro trabalhando 7 a 8 horas por dia, abrir um vinho numa terça e buscar o seu filho na escola.</p></div>
+</div>
+<div class="fecha">
+<p class="big2">A ESCOLHA É SUA.</p>
+<p>Mas só uma delas te dá o que você realmente quer:</p>
+<p>Dinheiro no bolso. Tempo com quem você ama. Paz.</p>
+</div>
+<a class="cta long" href="#oferta" data-cta="final" data-checkout>ESTOU DECIDIDO! VOU REESTRUTURAR MEU LUCRO! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h17m-7-7 7 7-7 7"/></svg></a>
+</div>
+</section>
+
 </main>
 <footer>
 <p><b>Curso Prático Transformando Excelência em Lucro · Prof. Leandro Stecca</b></p>
@@ -117,5 +424,28 @@ footer .legal{font-size:13px}
 <p class="legal"><a href="https://leandrostecca.com.br/termos-de-uso">Termos de uso</a> · <a href="https://leandrostecca.com.br/politica-de-privacidade">Política de privacidade</a></p>
 </footer>
 <script defer src="/p/cptel-pv03/t.js"></script>
+<div class="dock" id="dock"><div class="t"><span>Lote 02</span><b>R$ 62,00</b></div><a class="cta" href="#oferta" data-cta="dock" data-checkout>GARANTIR VAGA</a></div>
+
+<script>
+(function(){
+  var CHECKOUT_URL = "#[LINK-CHECKOUT]";
+  document.querySelectorAll("a[data-checkout]").forEach(function(a){if(CHECKOUT_URL.indexOf("#[")!==0)a.href=CHECKOUT_URL});
+  var d=document.getElementById("dock"),hero=document.getElementById("hero"),of=document.getElementById("oferta");
+  if("IntersectionObserver" in window){
+    var heroGone=false,ofVis=false;
+    function up(){d.classList.toggle("on",heroGone&&!ofVis)}
+    new IntersectionObserver(function(e){heroGone=!e[0].isIntersecting&&e[0].boundingClientRect.top<0;up()}).observe(hero);
+    new IntersectionObserver(function(e){ofVis=e[0].isIntersecting;up()}).observe(of);
+  }
+  // accordion: abre um por vez
+  var ds=document.querySelectorAll(".faq details");
+  ds.forEach(function(x){x.addEventListener("toggle",function(){if(x.open)ds.forEach(function(y){if(y!==x)y.open=false})})});
+  document.addEventListener("click",function(ev){
+    var a=ev.target.closest&&ev.target.closest("a[data-cta]"); if(!a) return;
+    try{(window.dataLayer=window.dataLayer||[]).push({event:"cta_clique",cta_origem:a.dataset.cta||"?",cta_destino:a.hasAttribute("data-checkout")?"checkout":"oferta"});}catch(e){}
+  });
+})();
+</script>
+
 </body>
 </html>

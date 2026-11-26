@@ -82,7 +82,10 @@ em,.it{font-family:var(--serif);font-style:italic;font-weight:500}
 .chip svg{flex:none;width:16px;height:16px}
 .hero h1{margin:4px 0 4px;width:70%;max-width:760px;line-height:0}
 .hero h1 img{width:100%;height:auto;filter:drop-shadow(0 0 2px rgba(251,246,236,.95)) drop-shadow(0 0 8px rgba(251,246,236,.7))}
-.hero .sub{max-width:31ch;margin:2px 0 0;font:600 21px/1.18 var(--serif);color:var(--ink);text-wrap:balance;-webkit-text-stroke:15px var(--cream);paint-order:stroke fill;text-shadow:0 0 6px var(--cream),0 0 6px var(--cream),0 0 9px var(--cream),0 0 12px var(--cream),0 0 12px var(--cream),0 0 18px rgba(251,246,236,.9),0 0 26px rgba(251,246,236,.6)}
+.hero .sub{max-width:31ch;margin:2px 0 0;font:600 21px/1.18 var(--serif);color:var(--ink);text-wrap:balance;display:grid}
+.hero .sub>span{grid-area:1/1}
+.hero .sub .bk{-webkit-text-stroke:15px var(--cream);paint-order:stroke fill;text-shadow:0 0 6px var(--cream),0 0 6px var(--cream),0 0 9px var(--cream),0 0 12px var(--cream),0 0 12px var(--cream),0 0 18px rgba(251,246,236,.9),0 0 26px rgba(251,246,236,.6)}
+.hero .sub .bk b{background:none}
 .hero .sub b{font:800 .72em/1 var(--sans);letter-spacing:.01em;white-space:nowrap;background:linear-gradient(transparent 62%,rgba(226,169,59,.5) 0);padding:0 2px}
 .sub b{font-weight:700}
 .fim{padding:0 16px 40px;margin-top:-12px;position:relative;z-index:3;text-align:center}
@@ -94,7 +97,7 @@ em,.it{font-family:var(--serif);font-style:italic;font-weight:500}
 .fim .cta{max-width:420px;margin:0 auto 16px}
 .fim .lote{margin-inline:auto}
 .fim .lote small{font-style:italic}
-@media(max-width:380px){.fim .cta{font-size:15px;letter-spacing:.05em;padding:0 12px}}
+@media(max-width:380px){.topbar{gap:8px;padding:10px 12px;font-size:10px;letter-spacing:.06em}.topbar span{white-space:nowrap}.fim .cta{font-size:15px;letter-spacing:.05em;padding:0 12px}}
 @media(max-width:359px){.fim ul{grid-auto-flow:row;grid-template-rows:none;grid-template-columns:1fr}.fim li:nth-child(3n){border-bottom:1px solid rgba(226,169,59,.45)}.fim li:last-child{border-bottom:0}}
 @media(min-width:900px){.scene{height:min(100vh,56.25vw);overflow:visible;overflow-x:clip}.scene picture{height:auto}.scene::after{height:14%}.fim{margin-top:0;z-index:auto;padding:20px 24px 40px}.fim ul{column-gap:14px}.fim li{line-height:1.3}.fim li::before{width:22px;height:22px}.fim .label{margin-bottom:16px}.fim ul{margin-bottom:28px}.fim li{padding:10px 0;border-bottom-color:rgba(226,169,59,.45)}.fim .cta{margin-bottom:24px}.hero h1{margin:10px 0 6px}.chip{padding:7px 14px}.scene img.bg{height:100%;aspect-ratio:auto;object-position:center bottom}.scene-in{padding-top:2.2vw}.chip{font-size:12px}.hero h1{width:min(40vw,580px)}.hero .sub{font-size:30px;line-height:1.2;max-width:38ch}.topbar{justify-content:center;font-size:12px}.topbar .track{flex:none;width:160px}.fim li{font-size:17px}.fim .label{font-size:13px}section{padding:112px 0}}
 /* cards numerados */
@@ -221,7 +224,7 @@ footer .legal{font-family:var(--mono);font-size:12px;opacity:.75}
 <div class="scene-in">
 <span class="chip"><svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" style="fill:var(--gold)"/><path d="M6 11.5l3.2 3.2L16 7.8" fill="none" style="stroke:var(--ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Curso prático · 6 aulas · 6 tarefas · 6 resultados na mão</span>
 <h1><img src="images/logo-cptel.webp" width="1400" height="467" alt="Curso Prático Transformando Excelência em Lucro" /></h1>
-<p class="sub">O Curso Prático para você construir e dar os primeiros passos na estratégia que vai transformar a sua Excelência Clínica em <b>R$&nbsp;100 mil por mês</b> no seu consultório.</p>
+<p class="sub"><span class="bk" aria-hidden="true">O Curso Prático para você construir e dar os primeiros passos na estratégia que vai transformar a sua Excelência Clínica em <b>R$&nbsp;100 mil por mês</b> no seu consultório.</span><span>O Curso Prático para você construir e dar os primeiros passos na estratégia que vai transformar a sua Excelência Clínica em <b>R$&nbsp;100 mil por mês</b> no seu consultório.</span></p>
 </div>
 </div>
 <div class="wrap fim">
