@@ -141,10 +141,11 @@ em,.it{font-family:var(--serif);font-style:italic;font-weight:500}
 .print img{width:100%;height:100%;object-fit:cover}
 @media(min-width:900px){.prints{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;margin:40px 0 0;padding:0}.print{flex:none;max-width:none}}
 /* bonus */
-.bn{display:grid;gap:16px;margin:32px 0 40px}
-@media(min-width:800px){.bn{grid-template-columns:1fr 1fr}}
-.b{display:flex;gap:16px;align-items:center;background:rgba(20,40,74,.68);border:1px solid rgba(226,169,59,.5);border-radius:var(--r-md);padding:16px}
-.b img{width:72px;height:72px;object-fit:contain;flex:none;background:var(--cream);border-radius:var(--r-sm);padding:6px}
+.bn{align-items:start;display:grid;gap:16px;margin:32px 0 40px}
+@media(min-width:600px){.bn{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:900px){.bn{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.b{display:flex;flex-direction:column;justify-content:flex-start;gap:14px;background:rgba(20,40,74,.68);border:1px solid rgba(226,169,59,.5);border-radius:var(--r-md);padding:12px 12px 16px}
+.b img{width:100%;height:auto;background:#fff;border-radius:var(--r-sm);box-shadow:var(--shadow-soft)}
 .b p{font-weight:500}
 .leather .raios{position:absolute;inset:0;background:url(images/ov-01-raios.webp) center/cover;mix-blend-mode:screen;opacity:.3;pointer-events:none}
 /* oferta */
@@ -332,12 +333,12 @@ footer .legal{font-family:var(--mono);font-size:12px;opacity:.75}
 <div class="label">Bônus do Lote 02</div>
 <h2 class="rv">Acesso à CENTRAL DE EXCELÊNCIA</h2>
 <div class="bn">
-<div class="b rv"><img src="images/el-08_etiquetas.webp" width="72" height="72" alt="" loading="lazy" /><p>Calculadora de Precificação</p></div>
-<div class="b rv"><img src="images/el-10_celular.webp" width="72" height="72" alt="" loading="lazy" /><p>Mensagens Prontas para treinar a sua Secretária</p></div>
-<div class="b rv"><img src="images/el-04_check.webp" width="72" height="72" alt="" loading="lazy" /><p>Calculadora de Potencial da Base de Clientes</p></div>
-<div class="b rv"><img src="images/el-06_caneta.webp" width="72" height="72" alt="" loading="lazy" /><p>Ferramenta de Processo Seletivo. Não precisa ficar correndo atrás de candidato.</p></div>
-<div class="b rv"><img src="images/el-11_pino.webp" width="72" height="72" alt="" loading="lazy" /><p>Campanhas de WhatsApp Prontas</p></div>
-<div class="b rv"><img src="images/el-03_lupas.webp" width="72" height="72" alt="" loading="lazy" /><p>Consultor Financeiro, Tributário, Negociador e muitos outros</p></div>
+<div class="b rv"><img src="images/bonus-precificacao.webp" width="626" height="628" alt="Tela da Calculadora de Precificação da Central de Excelência com o resultado calculado" loading="lazy" /><p>Calculadora de Precificação</p></div>
+<div class="b rv"><img src="images/bonus-mensagens.webp" width="622" height="593" alt="Tela de Mensagens Prontas para treinar a secretária, com a primeira, a segunda e a terceira mensagem" loading="lazy" /><p>Mensagens Prontas para treinar a sua Secretária</p></div>
+<div class="b rv"><img src="images/bonus-potencial.webp" width="899" height="332" alt="Tela da Calculadora de Potencial da Base de Clientes da Central de Excelência" loading="lazy" /><p>Calculadora de Potencial da Base de Clientes</p></div>
+<div class="b rv"><img src="images/bonus-seletivo.webp" width="637" height="580" alt="Tela da Ferramenta de Processo Seletivo da Central de Excelência, com vaga de ASB e candidatos" loading="lazy" /><p>Ferramenta de Processo Seletivo. Não precisa ficar correndo atrás de candidato.</p></div>
+<div class="b rv"><img src="images/bonus-campanhas.webp" width="650" height="321" alt="Tela de Campanhas de WhatsApp Prontas da Central de Excelência, com a campanha Comece a primavera" loading="lazy" /><p>Campanhas de WhatsApp Prontas</p></div>
+<div class="b rv"><img src="images/bonus-consultores.webp" width="647" height="187" alt="Tela com os cards de consultores da Central de Excelência, entre eles o Consultor Financeiro" loading="lazy" /><p>Consultor Financeiro, Tributário, Negociador e muitos outros</p></div>
 </div>
 <a class="cta" href="#oferta" data-cta="d08">QUERO GARANTIR MINHA VAGA!</a>
 </div>

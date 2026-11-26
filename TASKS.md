@@ -1,7 +1,7 @@
 # TASKS — lst-paginas
 
-Atualizado: 2026-11-26 16:30 · Sessão/WP: cptel-pv02 fix + cptel-pv03 · Branch/commit: sentinela-tag-paginas
-Progresso: 100% · 2/2 WPs · próximo: auditoria do delta 4110004..HEAD, depois deploy-full
+Atualizado: 2026-11-26 17:10 · Sessão/WP: cptel-pv02 fix + cptel-pv03 · Branch/commit: sentinela-tag-paginas
+Progresso: 100% · 2/2 WPs · próximo: commitar bônus (agente terminando), depois depoimentos (brief em docs/ai/cptel-depoimentos.md), auditoria do delta c949de9..HEAD, deploy-full
 Verificar: local: node --test scripts/*.test.mjs
 
 ## Objetivo
@@ -25,10 +25,11 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 - WP-10 beacon A/B no ar; pel-pv01 v9 no ar (noindex).
 
 ## Em andamento
-- Nada.
+- Bônus com prints da Central nas 3 páginas + A4 (MANUAL) e A5 (--gold/--shadow na pv03): agente terminando; conferir e commitar.
+- Depoimentos: 59 prints recebidos (26/11). Tratar, emoldurar, combinar e pôr nas 3 páginas conforme `docs/ai/cptel-depoimentos.md`.
 
 ## Pendente (em ordem)
-1. cptel-pv01/02/03: LINK-CHECKOUT, 6 prints de depoimento (9:16), FAQ completa (Chefe vai mandar) — Chefe.
+1. cptel-pv01/02/03: LINK-CHECKOUT, FAQ completa, direito de uso dos depoimentos (Chefe).
 2. cptel-pv02: tirar noindex só se o Chefe pedir.
 3. pel-pv01: autorização dos alunos, contrato da garantia, valores do stack (inventados), direitos de prints de terceiros; tirar noindex só depois — Chefe.
 4. col-pvia-frufru03: bloco "Dúvidas?", bio do Leandro — Chefe.
