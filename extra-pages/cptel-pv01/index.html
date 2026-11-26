@@ -161,9 +161,7 @@ em,.it{font-family:var(--serif);font-style:italic;font-weight:500}
 /* garantia */
 .gar{display:grid;gap:32px;align-items:center;justify-items:center;text-align:center}
 @media(min-width:800px){.gar{grid-template-columns:auto 1fr auto;text-align:left;justify-items:start}}
-.selo{width:120px;height:120px;border-radius:50%;background:linear-gradient(rgba(20,40,74,.55),rgba(20,40,74,.55)),url(images/tx-02-couro.webp) center/600px repeat,var(--ink);border:3px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--cream);box-shadow:var(--shadow-soft)}
-.selo b{font:600 28px/1 var(--serif)}
-.selo span{font:500 9px/1.2 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+.gar .selo-img{display:block;width:200px;height:auto;filter:drop-shadow(0 6px 14px rgba(16,29,44,.18))}@media(min-width:768px){.gar .selo-img{width:220px}}
 .gar img{width:120px}
 /* bio */
 .bio{list-style:none;display:grid;gap:12px;margin:24px 0}
@@ -209,6 +207,8 @@ footer .legal{font-family:var(--mono);font-size:12px;opacity:.75}
 .js .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}.dock,.cta{transition:none}}
 </style>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
 <body>
 
@@ -387,7 +387,7 @@ footer .legal{font-family:var(--mono);font-size:12px;opacity:.75}
 <section class="leather">
 <div class="raios" aria-hidden="true"></div>
 <div class="wrap gar">
-<div class="selo rv"><b>7 DIAS</b><span>garantia</span></div>
+<img class="selo-img rv" src="images/garantia-selo.webp" width="440" height="449" alt="Selo de garantia de 7 dias, risco zero" loading="lazy">
 <div class="txt rv">
 <h2>Garantia Incondicional de 7 Dias</h2>
 <p>Se por qualquer motivo você mudar de ideia, é só pedir e devolvemos o valor integral. Sem justificativa e sem burocracia. Você já pagou por curso que não aplicou. Aqui, quem corre o risco é a gente, não você.</p>

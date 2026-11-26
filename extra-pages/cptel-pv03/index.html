@@ -181,9 +181,7 @@ a.cta:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-
 .gar-s{text-align:center;font-size:14px;color:var(--muted);margin-top:14px}
 /* 10 */
 .gar{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
-.selo{width:150px;height:150px;border-radius:50%;border:3px solid var(--blue);background:#fff;display:grid;place-content:center;text-align:center;box-shadow:0 0 0 8px #fff,0 0 0 10px var(--gold)}
-.selo b{font:600 30px/1 var(--serif);color:var(--navy);font-optical-sizing:none;font-variation-settings:"opsz" 11}
-.selo span{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-top:6px}
+.gar .selo-img{display:block;width:200px;height:auto;filter:drop-shadow(0 6px 14px rgba(16,29,44,.18))}@media(min-width:768px){.gar .selo-img{width:220px}}
 .gar h2{margin-bottom:14px;font-size:clamp(26px,3.6vw,40px)}
 .gar p{font-size:18px}
 /* 11 */
@@ -223,6 +221,8 @@ a.cta:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-
 @media(max-width:380px){.grid4{grid-template-columns:1fr}.wrap{padding:0 16px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
 <body>
 <main>
@@ -411,7 +411,7 @@ a.cta:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-
 <!-- 10 -->
 <section class="s tint">
 <div class="wrap gar">
-<div class="selo"><b>7 DIAS</b><span>garantia</span></div>
+<img class="selo-img" src="images/garantia-selo.webp" width="440" height="449" alt="Selo de garantia de 7 dias, risco zero" loading="lazy">
 <div class="txt">
 <h2>Garantia Incondicional de 7 Dias</h2>
 <p>Se por qualquer motivo você mudar de ideia, é só pedir e devolvemos o valor integral. Sem justificativa e sem burocracia. Você já pagou por curso que não aplicou. Aqui, quem corre o risco é a gente, não você.</p>
