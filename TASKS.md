@@ -8,8 +8,8 @@ Verificar: local: node --test scripts/*.test.mjs
 Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-paginas`. WP atual: PV do Curso Prático Transformando Excelência em Lucro (`/p/cptel-pv01`), no ar e indexável, com todos os slugs em 200.
 
 ## Estado agora
-- NO AR (w-lst-paginas 585ba28c, 26/11, ordem do Chefe): 79 slugs em 200. cptel-pv01/02/03 com checkout, bônus (cartões iguais), depoimentos (4 vídeo + 9 prints, reflow mobile), ingresso novo, dock só vai ao checkout a partir do preço; pv03 com fonte serif opsz 11/600 e lista do stack refinada. Rollback: f3979b0a.
-- Auditoria: delta c949de9..HEAD (bônus, A4/A5, checkout, balde, fundo do hero, fonte, dock, depoimentos, ingresso, stack) NÃO auditado; publicado antes por ordem do Chefe.
+- NO AR (w-lst-paginas 3ccd56bb, 26/11, ordem do Chefe): 79 slugs em 200. cptel-pv01/02/03 com checkout, bônus (cartões iguais), depoimentos (4 vídeo + 9 prints, reflow mobile), ingresso novo, dock só vai ao checkout a partir do preço; pv03 com fonte serif opsz 11/600 e lista do stack refinada; favicon e selo de garantia nas 3. Rollback: 585ba28c.
+- Auditoria: delta c949de9..HEAD (bônus, A4/A5, checkout, balde, fundo do hero, fonte, dock, depoimentos, ingresso, stack, favicon, selo) NÃO auditado; publicado antes por ordem do Chefe.
 
 ## Decisões
 - cptel: checkout = /r/check/cptel-tck-padrao (302 Hub.la, cupom CPTELSPECIAL011), nas 3 PVs; direito de uso dos depoimentos confirmado (Chefe, 26/11).
