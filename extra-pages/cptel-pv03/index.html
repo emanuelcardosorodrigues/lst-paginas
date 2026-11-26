@@ -114,6 +114,13 @@ a.cta:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-
 .two{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}
 .q{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
 .big{font:500 clamp(30px,4vw,44px)/1.12 var(--serif);letter-spacing:-.02em;color:var(--navy);margin-bottom:24px}
+.bi{font-size:16px;color:var(--muted);margin-bottom:10px}
+.bh{margin-bottom:36px}
+.bal{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:40px;align-items:center;margin-bottom:32px}
+.bal img{width:100%;height:auto;border-radius:20px;box-shadow:var(--shadow);border:1px solid var(--gold)}
+.bal p{font-size:clamp(19px,2.2vw,23px);line-height:1.4}
+.bal.r{grid-template-columns:1fr minmax(0,422px)}.bal.r img{order:2}
+@media(max-width:899px){.bal,.bal.r{grid-template-columns:1fr;gap:18px;justify-items:center}.bal.r img{order:0}.bal img{max-width:420px}}
 .chk{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .chk li{display:flex;gap:12px;align-items:flex-start;font-size:17px;line-height:1.45}
 .chk li::before{content:"";flex:none;width:28px;height:28px;margin-top:-1px;background:url(images/check-duotone.svg) no-repeat center/contain}
@@ -255,10 +262,18 @@ a.cta:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-
 
 <!-- 04 -->
 <section class="s tint">
-<div class="wrap two">
+<div class="wrap narrow">
 <div>
-<p class="q">Qual é a solução para lucrar mais com a sua Excelência?</p>
-<p class="big">Ter uma Arquitetura de Lucro no seu consultório.</p>
+<p class="bi">Eu aposto que o mercado te ensinou a correr atrás de faturamento...</p>
+<p class="big bh">Mas nunca te contaram que: é muito mais FÁCIL e inteligente aumentar o lucro do que aumentar o faturamento</p>
+<div class="bal">
+<img src="images/balde-furado.webp" width="420" height="404" alt="Balde furado perdendo água por vários furos" loading="lazy" />
+<p>Ao invés de se matar de <b>trabalhar para encher um balde furado</b></p>
+</div>
+<div class="bal r">
+<img src="images/balde-cheio.webp" width="422" height="406" alt="Balde cheio de água, com os furos tapados e as torneiras ajustadas" loading="lazy" />
+<p><b>Seja estratégico:</b> Tape primeiro os furos, adicione e ajuste as torneiras e contemple o balde da lucratividade encher</p>
+</div>
 <ul class="chk">
 <li><span>Hora Clínica pensando em <b>LUCRO</b></span></li>
 <li><span>Preço correto nos procedimentos</span></li>
@@ -269,7 +284,6 @@ a.cta:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-
 </ul>
 <a class="cta" href="#oferta" data-cta="d04">QUERO GARANTIR MINHA VAGA! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h17m-7-7 7 7-7 7"/></svg></a>
 </div>
-<div class="pic"><img class="obj" src="images/caderno-ds.webp" width="507" height="435" alt="" loading="lazy" style="width:min(100%,340px)" /></div>
 </div>
 </section>
 
