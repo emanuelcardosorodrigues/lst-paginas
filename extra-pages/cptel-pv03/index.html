@@ -125,6 +125,11 @@ a.cta:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-
 .pic img{margin:0 auto}
 /* 05 */
 .aulas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.aula-grupo+.aula-grupo{margin-top:48px}
+.grupo-tag{display:flex;align-items:center;gap:12px;font:600 12px/1 var(--sans);text-transform:uppercase;letter-spacing:.14em;color:#995D00;margin:40px 0 12px}
+.grupo-tag::before{content:"";height:1px;width:40px;background:var(--gold);flex:none}
+.aula-grupo+.aula-grupo .grupo-tag{margin-top:0}
+.grupo-t{font:600 clamp(22px,2.6vw,28px)/1.2 var(--serif);letter-spacing:-.02em;color:var(--navy);margin:0 0 24px;max-width:760px;text-wrap:balance;font-optical-sizing:none;font-variation-settings:"opsz" 11}
 .aula{background:#fff;border:1px solid var(--border);border-radius:20px;padding:24px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
 .aula .top{display:flex;align-items:center;justify-content:space-between}
 .aula img{width:48px;height:48px}
@@ -306,14 +311,16 @@ a.cta:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-
 <section class="s">
 <div class="wrap">
 <h2  style="max-width:900px">No Curso Prático Transformando Excelência em Lucro, você vai ajustar as 5 alavancas que mais trazem lucro, paz e liberdade para a odontologia</h2>
-<div class="aulas">
+<div class="aula-grupo"><div class="grupo-tag">Aulas 1 a 3</div><h3 class="grupo-t">3 noites para garantir mais lucro</h3><div class="aulas">
 <article class="aula"><div class="top"><img src="images/hora-clinica-duotone.svg" width="48" height="48" alt="" loading="lazy" /><div class="n">01</div></div><div class="dh">Segunda · 20h · Aula 01</div><h3>O furo ignorado que está te fazendo pagar para trabalhar com excelência e como lucrar 100K com ele todo mês.</h3><p>O jeito mais simples de calcular a sua hora clínica na prática.</p></article>
 <article class="aula"><div class="top"><img src="images/precificacao-duotone.svg" width="48" height="48" alt="" loading="lazy" /><div class="n">02</div></div><div class="dh">Terça · 20h · Aula 02</div><h3>O jeito preguiçoso de colocar o preço lucrativo na sua Excelência Odontológica em 10 minutos ou menos.</h3><p>Como calcular o preço de cada procedimento a partir do lucro e parar de dar desconto.</p></article>
 <article class="aula"><div class="top"><img src="images/parceiro-lucrativo-duotone.svg" width="48" height="48" alt="" loading="lazy" /><div class="n">03</div></div><div class="dh">Quarta · 20h · Aula 03</div><h3>O acordo simples que faz o seu Dentista Parceiro te dar mais lucro e ainda te agradecer por isso.</h3><p>Como e quanto repassar ao parceiro.</p></article>
+</div></div>
+<div class="aula-grupo"><div class="grupo-tag">Aulas 4 a 6</div><h3 class="grupo-t">3 noites para trazer mais faturamento sem gastar um centavo</h3><div class="aulas">
 <article class="aula"><div class="top"><img src="images/paciente-retorno-duotone.svg" width="48" height="48" alt="" loading="lazy" /><div class="n">04</div></div><div class="dh">Quinta · 20h · Aula 04</div><h3>A estratégia incomum de fazer o WhatsApp gerar R$ 100K por mês sem gastar com marketing e sem ter problemas com o CRO.</h3><p>Orçamentos parados e pacientes que sumiram. TUDO QUE A SUA SECRETÁRIA PRECISA SABER.</p></article>
 <article class="aula"><div class="top"><img src="images/google-maps-duotone.svg" width="48" height="48" alt="" loading="lazy" /><div class="n">05</div></div><div class="dh">Sexta · 20h · Aula 05</div><h3>O mecanismo tímido que lota a sua agenda de pacientes que PAGAM pela sua EXCELÊNCIA.</h3><p>Google Meu Negócio e Instagram, de forma gratuita.</p></article>
 <article class="aula"><div class="top"><img src="images/ticket-medio-duotone.svg" width="48" height="48" alt="" loading="lazy" /><div class="n">06</div></div><div class="dh">Domingo · 19h30 · Aula 06</div><h3>Implementando a estratégia que pequenas clínicas utilizam para ter um ticket médio de R$ 28.000 com fidelização de 70% nos primeiros anos.</h3><p>Ticket médio e o paciente que volta e indica.</p></article>
-</div>
+</div></div>
 <a class="cta" href="#oferta" data-cta="d05">QUERO GARANTIR MINHA VAGA! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h17m-7-7 7 7-7 7"/></svg></a>
 </div>
 </section>

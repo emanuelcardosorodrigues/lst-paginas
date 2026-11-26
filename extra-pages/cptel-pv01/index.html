@@ -106,6 +106,13 @@ em,.it{font-family:var(--serif);font-style:italic;font-weight:500}
 /* aulas */
 .aulas{display:grid;gap:20px;margin:40px 0}
 @media(min-width:800px){.aulas{grid-template-columns:1fr 1fr}}
+.aula-grupo+.aula-grupo{margin:48px 0 40px}
+.aula-grupo .aulas{margin:0}
+@media(min-width:900px){.aula-grupo .aulas{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.grupo-tag{display:flex;align-items:center;gap:14px;font:500 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.24em;color:var(--gold-text);margin:40px 0 12px}
+.grupo-tag::before{content:"";height:1px;width:40px;background:var(--gold);flex:none}
+.aula-grupo+.aula-grupo .grupo-tag{margin-top:0}
+.grupo-t{font:500 clamp(24px,3vw,34px)/1.15 var(--serif);margin:0 0 24px;max-width:760px}
 .aula{position:relative;background:var(--cream-deep);border-radius:var(--r-lg);padding:28px 24px 24px;padding-right:24px;box-shadow:var(--shadow-soft);overflow:hidden;min-height:220px}
 .aula>img{position:absolute;right:12px;top:12px;width:96px;height:96px;object-fit:contain}
 .aula .n{font:600 56px/1 var(--serif);color:var(--gold-text)}
@@ -280,14 +287,16 @@ footer .legal{font-family:var(--mono);font-size:12px;opacity:.75}
 <section>
 <div class="wrap">
 <h2 class="rv" style="max-width:900px">No Curso Prático Transformando Excelência em Lucro, você vai ajustar as 5 alavancas que mais trazem lucro, paz e liberdade para a odontologia</h2>
-<div class="aulas">
+<div class="aula-grupo"><div class="grupo-tag">Aulas 1 a 3</div><h3 class="grupo-t">3 noites para garantir mais lucro</h3><div class="aulas">
 <article class="aula rv"><img src="images/el-07_relogio.webp" width="96" height="96" alt="" loading="lazy" /><div class="n">01</div><div class="dh">Segunda · 20h · Aula 01</div><h3>O furo ignorado que está te fazendo pagar para trabalhar com excelência e como lucrar 100K com ele todo mês.</h3><p>O jeito mais simples de calcular a sua hora clínica na prática.</p></article>
 <article class="aula rv"><img src="images/el-08_etiquetas.webp" width="96" height="96" alt="" loading="lazy" /><div class="n">02</div><div class="dh">Terça · 20h · Aula 02</div><h3>O jeito preguiçoso de colocar o preço lucrativo na sua Excelência Odontológica em 10 minutos ou menos.</h3><p>Como calcular o preço de cada procedimento a partir do lucro e parar de dar desconto.</p></article>
 <article class="aula rv"><img src="images/el-09_acordo.webp" width="96" height="96" alt="" loading="lazy" /><div class="n">03</div><div class="dh">Quarta · 20h · Aula 03</div><h3>O acordo simples que faz o seu Dentista Parceiro te dar mais lucro e ainda te agradecer por isso.</h3><p>Como e quanto repassar ao parceiro.</p></article>
+</div></div>
+<div class="aula-grupo"><div class="grupo-tag">Aulas 4 a 6</div><h3 class="grupo-t">3 noites para trazer mais faturamento sem gastar um centavo</h3><div class="aulas">
 <article class="aula rv"><img src="images/el-10_celular.webp" width="96" height="96" alt="" loading="lazy" /><div class="n">04</div><div class="dh">Quinta · 20h · Aula 04</div><h3>A estratégia incomum de fazer o WhatsApp gerar R$ 100K por mês sem gastar com marketing e sem ter problemas com o CRO.</h3><p>Orçamentos parados e pacientes que sumiram. TUDO QUE A SUA SECRETÁRIA PRECISA SABER.</p></article>
 <article class="aula rv"><img src="images/el-11_pino.webp" width="96" height="96" alt="" loading="lazy" /><div class="n">05</div><div class="dh">Sexta · 20h · Aula 05</div><h3>O mecanismo tímido que lota a sua agenda de pacientes que PAGAM pela sua EXCELÊNCIA.</h3><p>Google Meu Negócio e Instagram, de forma gratuita.</p></article>
 <article class="aula rv"><img src="images/el-12_chave.webp" width="96" height="96" alt="" loading="lazy" /><div class="n">06</div><div class="dh">Domingo · 19h30 · Aula 06</div><h3>Implementando a estratégia que pequenas clínicas utilizam para ter um ticket médio de R$ 28.000 com fidelização de 70% nos primeiros anos.</h3><p>Ticket médio e o paciente que volta e indica.</p></article>
-</div>
+</div></div>
 <a class="cta" href="#oferta" data-cta="d05">QUERO GARANTIR MINHA VAGA!</a>
 </div>
 </section>
