@@ -22,4 +22,4 @@ Pedido do Chefe (26/11): os prints não podem ser simplesmente colados. Precisam
 Fora: só "Valeu"/"Boa noite"/cidade, ranking "Principais fãs", "Deem like", "redes sociais não fazem parte", "socorro defasado", a dúvida da Cecília e a da Rosana ("difícil… subjetivo"), por não provarem nada ou soarem negativas.
 
 ## Risco
-Nomes, handles e fotos de perfil são de pessoas reais. Publicar depende de o Chefe ter direito de uso (mesma pendência da pel-pv01).
+Nomes, handles e fotos de perfil são de pessoas reais. Chefe confirmou o direito de uso (26/11).

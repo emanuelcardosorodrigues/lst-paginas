@@ -13,6 +13,7 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 - Não publicado (no GitHub): pv02 cena inteira + promessa Cormorant com halo em camada atrás; foto nova do Leandro (pv01/pv02); cptel-pv03 completa na nova ID (DS v2, noindex).
 
 ## Decisões
+- cptel: checkout = /r/check/cptel-tck-padrao (302 Hub.la, cupom CPTELSPECIAL011), nas 3 PVs; direito de uso dos depoimentos confirmado (Chefe, 26/11).
 - Um Worker só para `/p/*`; página nova = `extra-pages/<slug>/` + deploy-full (Chefe).
 - GTM fora (11/11, Chefe); pixel Meta só via Sentinela, `meta_mirror_browser=true`.
 - cptel-pv01: indexável; sem vídeo; CTAs acima do preço → `#oferta`, do preço para baixo → checkout (link virá do Chefe) (Chefe, 25/11).
@@ -29,7 +30,7 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 - Depoimentos: 59 prints recebidos (26/11). Tratar, emoldurar, combinar e pôr nas 3 páginas conforme `docs/ai/cptel-depoimentos.md`.
 
 ## Pendente (em ordem)
-1. cptel-pv01/02/03: LINK-CHECKOUT, FAQ completa, direito de uso dos depoimentos (Chefe).
+1. cptel-pv01/02/03: FAQ completa (Chefe).
 2. cptel-pv02: tirar noindex só se o Chefe pedir.
 3. pel-pv01: autorização dos alunos, contrato da garantia, valores do stack (inventados), direitos de prints de terceiros; tirar noindex só depois — Chefe.
 4. col-pvia-frufru03: bloco "Dúvidas?", bio do Leandro — Chefe.
