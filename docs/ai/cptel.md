@@ -33,3 +33,4 @@
 - Mobile dos prints (26/11): 6 prints largos (elisa, nathalia, rubens, paula, mthodonto, cecilia) ganharam `images/depo-*-m.webp` (480 px, <27 KB), servidos por `<picture>` até 640 px; pixels reais reflowed por script (palavras recortadas nos espaços e reempilhadas, avatar/handle na 1a linha), sem rolagem lateral (`.sc` e `.dsw` removidos). Ingresso: `images/ingresso-premium.webp` (900x651) nas 3 páginas; pv03 com lista de itens reformulada (linhas hairline, numeral Bodoni dourado).
 - Favicon (bastão dourado) e selo de garantia em imagem nas 3 PVs (26/11).
 - 26/11 (Chefe): a pv03 (DS v2) virou /p/cptel-pv01, indexável; pv01 e pv02 antigas apagadas do repo (recuperáveis pelo git, commit anterior 6e5f9e4); /p/cptel-pv02 e /p/cptel-pv03 passam a 404 e ficam livres para variações novas.
+- 26/11: entregáveis do hero: "Preço lucrativo dos procedimentos" e "Pacientes qualificados sem anúncios" (Chefe).
