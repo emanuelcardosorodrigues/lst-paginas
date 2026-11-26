@@ -1,16 +1,15 @@
 # TASKS — lst-paginas
 
-Atualizado: 2026-11-26 17:10 · Sessão/WP: cptel-pv02 fix + cptel-pv03 · Branch/commit: sentinela-tag-paginas
-Progresso: 100% · 2/2 WPs · próximo: depoimentos (brief em docs/ai/cptel-depoimentos.md), auditoria do delta c949de9..HEAD, deploy-full
+Atualizado: 2026-11-26 17:00 · Sessão/WP: cptel-pv02 fix + cptel-pv03 · Branch/commit: sentinela-tag-paginas
+Progresso: 100% · 2/2 WPs · próximo: depoimentos (docs/ai/cptel-depoimentos.md), depois auditoria do delta c949de9..HEAD
 Verificar: local: node --test scripts/*.test.mjs
 
 ## Objetivo
 Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-paginas`. WP atual: PV do Curso Prático Transformando Excelência em Lucro (`/p/cptel-pv01`), no ar e indexável, com todos os slugs em 200.
 
 ## Estado agora
-- NO AR (w-lst-paginas 99bebfae, 25/11 22h): 78 slugs em 200; cptel-pv02 promessa sem caixa sobre véu creme, logo legível, CTA na 1ª dobra. Rollback: 5b97eb01.
-- Auditoria: a9f01d9..4110004 LIMPO. Delta 4110004..a666762 NAO_LIMPO (A1 contorno, A2 topbar, A3 TASKS); corrigido, reauditar junto com cptel-pv03.
-- Não publicado (no GitHub): pv02 cena inteira + promessa Cormorant com halo em camada atrás; foto nova do Leandro (pv01/pv02); cptel-pv03 completa na nova ID (DS v2, noindex).
+- NO AR (w-lst-paginas 3e863296, 26/11 17h, deploy por ordem do Chefe): 79 slugs em 200. cptel-pv01/02/03 com checkout real, bônus com capturas; pv03 nova (noindex) com balde na 04. Rollback: 99bebfae.
+- Auditoria: delta c949de9..HEAD (bônus, A4/A5, checkout, balde) NÃO auditado; publicado antes por ordem do Chefe.
 
 ## Decisões
 - cptel: checkout = /r/check/cptel-tck-padrao (302 Hub.la, cupom CPTELSPECIAL011), nas 3 PVs; direito de uso dos depoimentos confirmado (Chefe, 26/11).
@@ -26,7 +25,6 @@ Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-pagi
 - WP-10 beacon A/B no ar; pel-pv01 v9 no ar (noindex).
 
 ## Em andamento
-- Bônus com capturas da Central nas 3 páginas + A4/A5 corrigidos: commitado, não publicado, não auditado. Cartões de alturas desiguais (capturas sem recorte).
 - Depoimentos: 59 prints recebidos (26/11). Tratar, emoldurar, combinar e pôr nas 3 páginas conforme `docs/ai/cptel-depoimentos.md`.
 
 ## Pendente (em ordem)
