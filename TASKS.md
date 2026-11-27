@@ -1,6 +1,6 @@
 # TASKS — lst-paginas
 
-Atualizado: 2026-11-26 17:00 · Sessão/WP: cptel-pv02 fix + cptel-pv03 · Branch/commit: sentinela-tag-paginas
+Atualizado: 2026-11-27 · Sessão/WP: cptel-pv01 ajustes visuais · Branch/commit: sentinela-tag-paginas
 Progresso: 100% · 2/2 WPs · próximo: auditoria do delta c949de9..HEAD (gate pre-auditoria.sh --base c949de9)
 Verificar: local: node --test scripts/*.test.mjs
 
@@ -8,7 +8,7 @@ Verificar: local: node --test scripts/*.test.mjs
 Manter todas as páginas `leandrostecca.com.br/p/*` no Worker único `w-lst-paginas`. WP atual: PV do Curso Prático Transformando Excelência em Lucro (`/p/cptel-pv01`), no ar e indexável, com todos os slugs em 200.
 
 ## Estado agora
-- NO AR (w-lst-paginas 6b9991b0, 26/11, 77 slugs em 200): cptel-pv01 = antiga pv03 (DS v2, indexável); pv02 e pv03 apagadas por ordem do Chefe (404, livres para variações). Rollback: 62f84bf4 (antes dos destaques de cor); 536d6e4c (pv01/02/03 antigas).
+- NO AR (w-lst-paginas 48750166, 27/11, 77 slugs em 200): cptel-pv01 = antiga pv03 (DS v2, indexável); pv02 e pv03 apagadas por ordem do Chefe (404, livres para variações). Rollback: 6b9991b0 (antes do ingresso dourado e painel navy); 536d6e4c (pv01/02/03 antigas).
 - Auditoria: delta c949de9..HEAD (bônus, A4/A5, checkout, balde, fundo do hero, fonte, dock, depoimentos, ingresso, stack, favicon, selo) NÃO auditado; publicado antes por ordem do Chefe.
 
 ## Decisões
