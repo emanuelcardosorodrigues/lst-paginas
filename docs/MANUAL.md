@@ -2,6 +2,8 @@
 
 Páginas de `leandrostecca.com.br/p/*`, todas servidas por um único Worker: `w-lst-paginas`.
 
+Visão geral (rotas, Workers, deploy): `docs/ESTRUTURA-PAGINAS-CLOUDFLARE.md`.
+
 ## Criar uma página nova
 1. Pasta `extra-pages/<slug>/` com `index.html`, `t.js` (atribuição, copiar de outra página) e `images/`.
 2. `node scripts/build-full-dist.mjs`: monta `dist/` (espelho do ar + extra-pages), gera `slugs-todos.list` e `w-lst-paginas/src/sck-slugs.js`, injeta Sentinela e 1 beacon `/r/i?p=_abp` por página (aborta se não for 1).
