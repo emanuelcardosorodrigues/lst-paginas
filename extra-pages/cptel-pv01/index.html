@@ -171,12 +171,20 @@ h2.h2-alav{font:700 clamp(24px,3.4vw,34px)/1.25 var(--sans);letter-spacing:-.01e
 .b p{min-height:calc(3*1.35em)}
 /* 09 */
 .oferta{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);padding:36px 28px;max-width:720px;margin:0 auto;scroll-margin-top:16px}
-.oferta .ing{width:min(100%,340px);margin:0 auto -20px}@media(min-width:640px){.oferta .ing{width:420px;margin-bottom:-28px}}
+.oferta .ing{width:360px;max-width:100%;height:auto;margin:0 auto 4px}@media(min-width:640px){.oferta .ing{width:480px;margin-bottom:8px}}
 .oferta h2{font-size:clamp(26px,3.6vw,38px);text-align:center;margin-bottom:24px}
-.itens{list-style:none;margin:0 0 28px;padding:0;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold)}
-.itens li{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:14px;align-items:baseline;padding:17px 2px;font:500 16px/1.45 var(--sans);color:var(--ink)}
-.itens li+li{border-top:1px solid rgba(16,29,44,.08)}
-.itens b{font:600 24px/1 var(--serif);color:var(--gold);font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1;font-optical-sizing:none;font-variation-settings:"opsz" 11}
+.oferta h2{margin-bottom:20px}
+.itens{list-style:none;margin:0 0 28px;padding:4px 18px;background:var(--navy);border-radius:16px;box-shadow:0 10px 28px rgba(16,29,44,.22);position:relative}
+.itens li{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:baseline;padding:16px 0;font:600 16px/1.4 var(--sans);color:#F3EDE2}
+.itens li+li{border-top:1px solid rgba(216,146,9,.22)}
+.itens b{font:600 26px/1 var(--serif);color:#E3A82B;font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1;font-optical-sizing:none;font-variation-settings:"opsz" 11}
+@media(min-width:900px){
+.oferta{max-width:880px}
+.itens{padding:8px 24px;display:grid;grid-auto-flow:column;grid-template-rows:repeat(4,auto);column-gap:49px}
+.itens::before{content:"";position:absolute;top:20px;bottom:20px;left:50%;width:1px;background:rgba(216,146,9,.5)}
+.itens li{font-size:17px}
+.itens li:nth-child(5){border-top:0}
+}
 .preco{text-align:center;margin-bottom:20px}
 .de{display:block;color:var(--muted);font-size:16px;text-decoration:line-through}
 .por{font:600 clamp(48px,9vw,72px)/1.05 var(--serif);color:var(--navy);letter-spacing:-.02em;font-optical-sizing:none;font-variation-settings:"opsz" 11}
@@ -397,7 +405,7 @@ h2.h2-alav{font:700 clamp(24px,3.4vw,34px)/1.25 var(--sans);letter-spacing:-.01e
 <section class="s">
 <div class="wrap">
 <div class="oferta" id="oferta">
-<img class="ing obj" src="images/ingresso-premium.webp" width="900" height="651" alt="Ingresso do Curso Prático" loading="lazy" />
+<img class="ing obj" src="images/ingresso-dourado.webp" width="1000" height="512" alt="Ingresso do Curso Prático" loading="lazy" />
 <h2>O que você vai levar com o ingresso:</h2>
 <ul class="itens">
 <li><b>01</b>Precificação Lucrativa de Hora Clínica</li>
